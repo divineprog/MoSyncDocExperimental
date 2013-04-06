@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stylus</title>
+
+    <meta name="viewport" content="width=devicewidth,initial-scale=1.0,user-scalable=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" href="../../../../js/jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.css" />
+
+    <style>
+    .ui-header .ui-title
+    {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+    </style>
+
+    <script src="../../../../js/jquery.mobile-1.3.0/jquery.js"></script>
+
+    <script>
+    // Do one-time initialisation here.
+    $(document).bind('mobileinit', function() {
+        // Set default transitions.
+        $.mobile.defaultPageTransition = "none";
+        $.mobile.defaultDialogTransition = "none";
+    });
+    </script>
+
+    <script src="../../../../js/jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.js"></script>
+
+    <script>
+    /*
+    // Insert header and panel into page.
+    $(document).on("pagebeforecreate", function(event)
+    {
+        console.log("pagebeforecreate: " + event.target.id);
+        $("#" + event.target.id).append($("#slide-panel").html());
+        $("#" + event.target.id).prepend($("#slide-header").html());
+        // No need to call .trigger('create') here.
+    });
+
+    function showSlide(slideId)
+    {
+        console.log("Show slide: " + slideId);
+        console.log($("#" + slideId).html());
+        $("#slide-container").html(
+            $("#" + slideId).html());
+        $("#page-slide").trigger("create");
+        //$("#panel-content").panel("close");
+    }
+    */
+    
+    function showDocPage(path)
+    {
+        /*$.mobile.changePage(path, { 
+            //pageContainer: $("#page-content"),
+            //role: "content",
+            transition: "none" });
+        */
+        $("#page-content").load(path);
+    }
+</script>
+</head>
+
+<body>
+    <div data-role="page" id="page-template">
+        
+        <div data-role="header" data-position="fixed">
+            <h1>Stylus</h1>
+            <a href="#panel-content"
+                class="ui-btn-left"
+                data-icon="bars">Content</a>
+        </div>
+        
+        <div data-role="content" id="page-content">
+            
+<p>Stylus is a simple drawing program, where you draw with your mouse/stylus.<!--break--></p>
+<p>The code for this example can be found in the example folder of the MoSync SDK, typically c:/MoSync/examples on your local installation.</p>
+<p><img src="http://www.mosync.com/system/files/Stylus.jpg"></p>
+<p><em>Installation</em></p>
+<ol>
+<li>Choose "Import" from the file menu in MoSync</li>
+<li>Select "Old MoSync project" to load into workspace</li>
+<li>Locate the project from the examples folder (don't select 'make copy')</li>
+<li>Choose your preferred target Device</li>
+<li>Press 'Run Project'</li>
+</ol>
+<p><em>Expected Output/Behaviour</em></p>
+<p>The screen is black with a color bar on the top end. Use the pointer to draw, select color by clicking desired color bar.</p>
+<p>At the time of this writing, touch support is very limited. In the 2.3 release of MoSync full support can be expected.</p>
+<p><em>Key Presses</em></p>
+<dl><dd>Any key exits the application</dd></dl>
+        </div>
+        
+        <!-- Content Panel -->
+        <div data-role="panel"
+            id="panel-content"
+            data-position="left"
+            data-display="overlay"
+            data-theme="a">
+            <a href="#"
+                data-rel="close"
+                data-role="button"
+                data-mini="true"
+                data-icon="delete"
+                data-inline="true"
+                data-theme="a">Close</a>
+            <ul data-role="listview" data-inset="true" data-theme="a">
+                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/home/index.html">Overview</a></li>
+                <li><a data-ajax="false" href="#">Screencasts</a></li>
+                
+                <li data-role="list-divider">Quick Start</li>
+                <li><a data-ajax="false" href="#">Your First C/C++ App</a></li>
+                <li><a data-ajax="false" href="#">Your First JavaScript App</a></li>
+                <li><a data-ajax="false" href="#">Kickstart MoSync Reload</a></li>
+                
+                <li data-role="list-divider">C/C++</li>
+                <li><a rel="external" href="http://www.mosync.com/files/imports/doxygen/latest/html/index.html">API Reference</a></li>
+                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/cpp/guides/index.html">Coding Guides</a></li>
+                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/cpp/tutorials/index.html">Tutorials</a></li>
+                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/cpp/examples/index.html">Example Apps</a>
+                
+                <li data-role="list-divider">JavaScript</li>
+                <li><a rel="external" href="http://www.mosync.com/files/imports/doxygen/latest/html5/index.html">API Reference</a></li>
+                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/js/guides/index.html">Coding Guides</a></li>
+                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/js/tutorials/index.html">Tutorials</a></li>
+                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/js/examples/index.html">Example Apps</a></li></li>
+                
+                <li data-role="list-divider">Tools</li>
+                <li><a data-ajax="false" href="">MoSync SDK</a></li>
+                <li><a data-ajax="false" href="">MoSync Reload</a></li>
+                
+                <li data-role="list-divider">Products</li>
+                <li><a data-ajax="false" href="">MoSync SDK</a></li>
+                <li><a data-ajax="false" href="">MoSync Reload</a></li>
+                <li><a data-ajax="false" href="">Product Comparison</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

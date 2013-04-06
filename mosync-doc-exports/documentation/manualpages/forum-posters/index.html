@@ -1,0 +1,20 @@
+<html><head><title>Top 200 forum posters last 365 days</title></head><body><?php
+ 
+  db_query("CREATE TEMPORARY TABLE posts (uid INT(11), created int(11))",0,0);
+  db_query("INSERT INTO posts select uid, created from  mosyncweb_node where type='forum'",0,0);
+
+  db_query("INSERT INTO posts select uid, timestamp from  mosyncweb_comments",0,0);
+
+  $active_forever_result = db_query("
+select  posts.uid, mosyncweb_realname.realname, mosusers.mail, mosusers.name, count(*) forumposts from posts,mosyncweb_realname, mosyncweb_users mosusers where (mosyncweb_realname.uid = posts.uid) and FROM_UNIXTIME(posts.created)>date_sub(now(),interval 365 day) and mosusers.uid=posts.uid group by posts.uid order by forumposts DESC limit 200
+"); 
+
+$list = array();
+while ($row = db_fetch_array($active_forever_result)) {
+  $account = user_load(array('uid' => $row['uid']));
+  $list[] = theme('username', $account) ." (". $row['forumposts'] .")";
+ 
+}
+  print theme('item_list', $list);
+  
+?></body></html>

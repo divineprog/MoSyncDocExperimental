@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MoDoc</title>
+
+    <meta name="viewport" content="width=devicewidth,initial-scale=1.0,user-scalable=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" href="jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.css" />
+
+    <style>
+    .ui-header .ui-title
+    {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+
+    pre
+    {
+        font-size: 1.4em;
+        font-weight: 900;
+    }
+
+    p
+    {
+        font-size: 1.3em;
+        font-weight: 900;
+    }
+
+    textarea
+    {
+        font-weight: 900;
+    }
+    </style>
+
+    <script src="jquery.mobile-1.3.0/jquery.js"></script>
+
+    <script>
+    // Do one-time initialisation here.
+    $(document).bind('mobileinit', function() {
+        // Set default transitions.
+        $.mobile.defaultPageTransition = "none";
+        $.mobile.defaultDialogTransition = "none";
+    });
+    </script>
+
+    <script src="jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.js"></script>
+
+    <script>
+    /*
+    // Insert header and panel into page.
+    $(document).on("pagebeforecreate", function(event)
+    {
+        console.log("pagebeforecreate: " + event.target.id);
+        $("#" + event.target.id).append($("#slide-panel").html());
+        $("#" + event.target.id).prepend($("#slide-header").html());
+        // No need to call .trigger('create') here.
+    });
+
+    function showSlide(slideId)
+    {
+        console.log("Show slide: " + slideId);
+        console.log($("#" + slideId).html());
+        $("#slide-container").html(
+            $("#" + slideId).html());
+        $("#page-slide").trigger("create");
+        //$("#panel-content").panel("close");
+    }
+    */
+    
+    function showDocPage(path)
+    {
+        /*$.mobile.changePage(path, { 
+            //pageContainer: $("#page-content"),
+            //role: "content",
+            transition: "none" });
+        */
+        $("#page-content").load(path);
+    }
+</script>
+</head>
+
+<body>
+
+    <div id="slide-header">
+    </div>
+
+    <div id="slide-panel">
+    </div>
+
+    <div data-role="page" id="page-template">
+        
+        <div data-role="header" data-position="fixed">
+            <h1>JavaScript Libraries for Mobile Development</h1>
+            <a href="#panel-content"
+                class="ui-btn-left"
+                data-icon="bars">Content</a>
+        </div>
+        
+        <div data-role="content" id="page-content">
+            <h1>MoDoc</h1>
+            <ul data-role="listview" data-inset="true">
+                <li><a onclick="showDocPage('docs/accelerometeropengles/index.html')">Show Sample Page</a></li>
+            </ul>
+        </div>
+        
+        <!-- Content Panel -->
+        <div data-role="panel"
+            id="panel-content"
+            data-position="left"
+            data-display="overlay"
+            data-theme="a">
+            <a href="#"
+                data-rel="close"
+                data-role="button"
+                data-mini="true"
+                data-icon="delete"
+                data-inline="true"
+                data-theme="a">Close</a>
+            <ul data-role="listview" data-inset="true" data-theme="a">
+                <li><a href="#page-start">Start</a></li>
+                <li><a href="#page-overview">JavaScript Libraries</a></li>
+                <li><a href="#page-jquery">jQuery and jQM</a></li>
+                <li><a href="#page-cascaded-messages">Cascaded Messages</a></li>
+                <li><a href="#page-jquery-example-1">jQuery By Example 1</a></li>
+                <li><a href="#page-jquery-example-2">jQuery By Example 2</a></li>
+                <li><a href="#page-jquery-example-3">jQuery By Example 3</a></li>
+                <li><a href="#page-code-styles">Code Styles</a></li>
+                <li><a rel="external" href="jqm-demo.html">jQuery Mobile Demo</a></li>
+            </ul>
+        </div>
+        
+    </div>
+
+	<script>
+    // Function to make it easier to define swipe events.
+    function swipeBetween(pages, i, j)
+    {
+		var left = "#" + pages[i].id;
+		var right = "#" + pages[j].id;
+        $(document).on("swipeleft", left, function() {
+            $.mobile.changePage(
+                right,
+                { transition: "slide" });
+        });
+        $(document).on("swiperight", right, function() {
+            $.mobile.changePage(
+                left,
+                { transition: "slide", reverse: true });
+        });
+    }
+/*
+	// Set up swipe between all pages.
+	var pages = $("[data-role='page']");
+	for (var i = 0; i < pages.length - 1; ++i)
+	{
+		swipeBetween(pages, i, i + 1);
+	}
+	swipeBetween(pages, i, 0);
+*/
+	</script>
+</body>
+</html>
