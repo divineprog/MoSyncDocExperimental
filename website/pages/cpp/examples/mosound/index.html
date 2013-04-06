@@ -71,6 +71,10 @@
             <a href="#panel-content"
                 class="ui-btn-left"
                 data-icon="bars">Content</a>
+            <a rel="external"
+                href="../../../home/index.html"
+                class="ui-btn-right"
+                data-icon="home">Home</a>
         </div>
         
         <div data-role="content" id="page-content">
@@ -92,40 +96,88 @@
             id="panel-content"
             data-position="left"
             data-display="overlay"
+            data-mini="false"
             data-theme="a">
-            <a href="#"
+           <!-- <a href="#"
                 data-rel="close"
                 data-role="button"
-                data-mini="true"
+                data-mini="false"
                 data-icon="delete"
-                data-inline="true"
-                data-theme="a">Close</a>
-            <ul data-role="listview" data-inset="true" data-theme="a">
-                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/home/index.html">Overview</a></li>
+                data-inline="true">Close</a> -->
+            
+            <!--
+            <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+                <div data-role="collapsible">
+                    <h3>Quick Start</h3>
+                    <ul data-role="listview" data-inset="false">
+                        <li><a data-ajax="false" href="#">Your First C/C++ App</a></li>
+                        <li><a data-ajax="false" href="#">Your First JavaScript App</a></li>
+                        <li><a data-ajax="false" href="#">Kickstart MoSync Reload</a></li>
+                    </ul>
+                </div>
+                <div data-role="collapsible">
+                    <h3>C/C++</h3>
+                    <ul data-role="listview" data-inset="false">
+                        <li><a rel="external" href="http://www.mosync.com/files/imports/doxygen/latest/html/index.html">API Reference</a></li>
+                        <li><a data-ajax="false" href="../../../cpp/guides/index.html">Coding Guides</a></li>
+                        <li><a data-ajax="false" href="../../../cpp/tutorials/index.html">Tutorials</a></li>
+                        <li><a data-ajax="false" href="../../../cpp/examples/index.html">Example Apps</a>
+                    </ul>
+                </div>
+                <div data-role="collapsible">
+                    <h3>JavaScript</h3>
+                    <ul data-role="listview" data-inset="false">
+                        <li><a rel="external" href="http://www.mosync.com/files/imports/doxygen/latest/html5/index.html">API Reference</a></li>
+                        <li><a data-ajax="false" href="../../../js/guides/index.html">Coding Guides</a></li>
+                        <li><a data-ajax="false" href="../../../js/tutorials/index.html">Tutorials</a></li>
+                        <li><a data-ajax="false" href="../../../js/examples/index.html">Example Apps</a></li></li>
+                    </ul>
+                </div>
+                <div data-role="collapsible">
+                    <h3>Tools</h3>
+                    <ul data-role="listview" data-inset="false">
+                        <li><a data-ajax="false" href="">MoSync SDK</a></li>
+                        <li><a data-ajax="false" href="">MoSync Reload</a></li>
+                    </ul>
+                </div>
+                <div data-role="collapsible">
+                    <h3>Products</h3>
+                    <ul data-role="listview" data-inset="false">
+                        <li><a data-ajax="false" href="">MoSync SDK</a></li>
+                        <li><a data-ajax="false" href="">MoSync Reload</a></li>
+                        <li><a data-ajax="false" href="">Product Comparison</a></li>
+                    </ul>
+                </div>
+            </div>
+            -->
+            
+            <ul data-role="listview" data-inset="false" data-mini="false" data-theme="c">
+                <li data-role="list-divider" data-theme="a">Contents</li>
+                <li><a data-ajax="false" href="../../../home/index.html">Overview</a></li>
                 <li><a data-ajax="false" href="#">Screencasts</a></li>
-                
-                <li data-role="list-divider">Quick Start</li>
+
+                <li data-role="list-divider" data-theme="a">Quick Start</li>
                 <li><a data-ajax="false" href="#">Your First C/C++ App</a></li>
                 <li><a data-ajax="false" href="#">Your First JavaScript App</a></li>
                 <li><a data-ajax="false" href="#">Kickstart MoSync Reload</a></li>
                 
-                <li data-role="list-divider">C/C++</li>
+                <li data-role="list-divider" data-theme="a">C/C++</li>
                 <li><a rel="external" href="http://www.mosync.com/files/imports/doxygen/latest/html/index.html">API Reference</a></li>
-                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/cpp/guides/index.html">Coding Guides</a></li>
-                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/cpp/tutorials/index.html">Tutorials</a></li>
-                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/cpp/examples/index.html">Example Apps</a>
-                
-                <li data-role="list-divider">JavaScript</li>
+                <li><a data-ajax="false" href="../../../cpp/guides/index.html">Coding Guides</a></li>
+                <li><a data-ajax="false" href="../../../cpp/tutorials/index.html">Tutorials</a></li>
+                <li><a data-ajax="false" href="../../../cpp/examples/index.html">Example Apps</a>
+
+                <li data-role="list-divider" data-theme="a">JavaScript</li>
                 <li><a rel="external" href="http://www.mosync.com/files/imports/doxygen/latest/html5/index.html">API Reference</a></li>
-                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/js/guides/index.html">Coding Guides</a></li>
-                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/js/tutorials/index.html">Tutorials</a></li>
-                <li><a data-ajax="false" href="TEMPLATE_DOC_PATH/js/examples/index.html">Example Apps</a></li></li>
-                
-                <li data-role="list-divider">Tools</li>
+                <li><a data-ajax="false" href="../../../js/guides/index.html">Coding Guides</a></li>
+                <li><a data-ajax="false" href="../../../js/tutorials/index.html">Tutorials</a></li>
+                <li><a data-ajax="false" href="../../../js/examples/index.html">Example Apps</a></li></li>
+
+                <li data-role="list-divider" data-theme="a">Tools</li>
                 <li><a data-ajax="false" href="">MoSync SDK</a></li>
                 <li><a data-ajax="false" href="">MoSync Reload</a></li>
-                
-                <li data-role="list-divider">Products</li>
+
+                <li data-role="list-divider" data-theme="a">Products</li>
                 <li><a data-ajax="false" href="">MoSync SDK</a></li>
                 <li><a data-ajax="false" href="">MoSync Reload</a></li>
                 <li><a data-ajax="false" href="">Product Comparison</a></li>

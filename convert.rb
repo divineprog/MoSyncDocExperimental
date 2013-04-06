@@ -85,6 +85,7 @@ def buildDocPages
       destFile = destPath + "index.html"
       jsDirRelativePath = jsDir.relative_path_from(destPath)
       pagesDirRelativePath = pagesDir.relative_path_from(destPath)
+      puts("pagesDirRelativePath: " + pagesDirRelativePath.to_s)
       destPath.mkpath()
       html = File.open(sourceFile, "rb") { |f| f.read }
       #html = cleanHTML(html)
@@ -92,7 +93,7 @@ def buildDocPages
         "TEMPLATE_PAGE_TITLE", getPageTitle(html)).sub(
           "TEMPLATE_PAGE_CONTENT", getPageContent(html)).gsub(
             "TEMPLATE_JS_PATH", jsDirRelativePath.to_s).gsub(
-              "TEMPATE_DOC_PATH", pagesDirRelativePath.to_s)
+              "TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
       File.open(destFile, "wb") { |f| f.write(html) }
       puts "Building #{sourceFile} #{destFile}"
       # FileUtils.cp(sourceFile, destFile)
@@ -121,12 +122,14 @@ def buildCodingGuidesPage
   jsDir = Pathname.new("./website/js")
   jsDirRelativePath = jsDir.relative_path_from(destFile.parent)
   puts("jsDirRelativePath: " + jsDirRelativePath.to_s)
+  pagesDirRelativePath = "../.."
   templateFile = Pathname.new("./templates/docpage.html")
   template = File.open(templateFile, "rb") { |f| f.read }
       html = template.gsub(
         "TEMPLATE_PAGE_TITLE", "C/C++ Coding Guides").sub(
           "TEMPLATE_PAGE_CONTENT", list).gsub(
-            "TEMPLATE_JS_PATH", jsDirRelativePath.to_s)
+            "TEMPLATE_JS_PATH", jsDirRelativePath.to_s).gsub(
+              "TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
   File.open(destFile, "wb") { |f| f.write(html) }
 end
 
