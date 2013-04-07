@@ -1,0 +1,217 @@
+http://www.metaltoad.com/sites/default/files/Responsive-Widths_0.png
+http://rubular.com/
+http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
+
+replace links
+
+syntax highlight
+
+
+Search
+
+Products
+  MoSync SDK
+  MoSync Reload
+  Product Comparison
+
+MoSync SDK
+  IDE
+  ...
+  
+MoSync Reload
+  ...
+
+Quick Start
+  C/C++
+  HTML5/JS
+
+Tutorials
+  C/C++
+    [by subject]
+  HTML5/JS
+    [by subject]
+  
+Coding Guides
+  C/C++
+    Bluetooth
+    Native UI
+    [by topic/feature]
+  HTML5/JS
+    [by topic/feature]
+ 
+Example Apps
+  C/C++
+    [by subject]
+  HTML5/JS
+    [by subject]
+
+API Reference
+  C/C++
+  HTML5/JS
+  
+Common Pitfalls
+
+--
+
+Search
+
+Overview (Home)
+
+Quick Start
+  MoSync SDK JavaScript
+  MoSync SDK C/C++
+  MoSync Reload
+  
+References
+  C/C++ API
+  JavaScript API
+  Panic Codes
+  Resource Compiler
+
+Coding Guides 
+  C/C++
+  JavaScript
+  
+Tutorials
+  C/C++
+  JavaScript
+  
+Tools Guides
+  MoSync SDK
+  MoSync Reload
+
+Products
+  MoSync SDK
+  MoSync Reload
+  Product Comparison
+
+-------- :)
+
+Search
+
+Overview (Home)
+
+Quick Start
+  Creating Your First C/C++ App
+  Creating Your First JavaScript App (Getting Started with HTML5 and JavaScript)
+  Getting Started with MoSync Reload (Using MoSync Reload)
+  
+  MoSync SDK and JavaScript
+  MoSync SDK and C/C++
+  MoSync Reload
+
+C/C++
+  API Reference
+  Coding Guides
+  
+JavaScript
+  API Reference
+  Coding Guides
+
+Tools
+  MoSync SDK
+  MoSync Reload
+
+Screencasts
+
+Products
+  MoSync SDK
+  MoSync Reload
+  Product Comparison
+
+----------------------
+
+
+Topics focus on one feature - Guide = ONE feature
+Subjects can be broader is scope and focus on several features - Tutorial = many features
+All "getting started" (quick-start) are tutorials
+Tutorial = beginner's guide
+Guide = also for advanced users, more of a reference explained, with example code
+
+----------------------
+
+prettyprint
+
+opening/closing nl + indent
+ html
+ body
+ head
+ ul
+ ol
+ div
+
+closing nl
+  h1
+  h2
+  h3
+  h4
+  p
+  pre
+  li
+
+----------------------
+
+Update to page export
+
+Title into h1
+
+Ddd:
+  labels
+  author, date
+
+----------------------
+Page conversion
+
+Remove:
+  <!--break-->[toc]
+
+Convert to pre:
+{syntaxhighlighter brush: cpp;fontsize: 100; first-line: 1; }
+{/syntaxhighlighter}
+
+----------------------
+
+Mapping from old url to new url, redirect every page
+
+Update hrefs
+
+----------------------
+
+Insert into generated pages:
+
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" dir="ltr">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="fb:app_id" content=""/>
+
+----------------------
+
+Google Analytics
+
+    <!--Moved to header by pbarrientos, request from Alex based on this info
+		https://support.google.com/analytics/bin/answer.py?hl=en&answer=1008080-->
+ <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-223119-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    // http://support.google.com/analytics/answer/1136920?hl=en
+    function recordOutboundLink(link, category, action) {
+      try {
+        var pageTracker=_gat._getTracker("UA-223119-1");
+        pageTracker._trackEvent(category, action);
+        setTimeout('document.location = "' + link.href + '"', 100)
+      }catch(err){}
+    }
+</script>
+    
+    
