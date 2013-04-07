@@ -3,8 +3,6 @@ require 'pathname'
 
 load 'structure.rb' 
 
-puts(SDK)
-
 puts($pages)
 
 def sh(cmd)
@@ -35,127 +33,292 @@ def convertHtmlToMarkdown
   end
 end
 
-# Import HTML files from Drupal.
+# Import HTML files exported from Drupal.
 def importHTML
   sourceDir = Pathname.new("./mosync-doc-exports")
   destDir = Pathname.new("./documents")
+  
   n = 1
-  $pages.each do |pageData|
+  docPages().each do |page|
     puts "Processing file " + n.to_s
     n = n + 1
-    params = pageData[2]
-    if not params.include? REDIRECT then
-      sourceFile = sourceDir + pageData[0] + "index.html"
-      destPath = destDir + pageData[1]
-      destFile = destPath + "index.html"
-      destPath.mkpath()
-      html = File.open(sourceFile, "rb") { |f| f.read }
-      html = prettifyHTML(html)
-      File.open(destFile, "wb") { |f| f.write(html) }
-      puts "Importing #{sourceFile} #{destFile}"
-      # FileUtils.cp(sourceFile, destFile)
-    end
+    
+    sourceFile = sourceDir + pageOriginalFile(page) + "index.html"
+    destPath = destDir + pageTargetFile(page)
+    destFile = destPath + "index.html"
+    destPath.mkpath()
+    html = File.open(sourceFile, "rb") { |f| f.read }
+    html = htmlReplaceSyntaxHighlighterTags(html)
+    html = htmlReplaceTabsWithSpaces(html)
+    html = htmlPrettify(html)
+    File.open(destFile, "wb") { |f| f.write(html) }
+    puts "Importing #{sourceFile} #{destFile}"
+    
+    # Not used: FileUtils.cp(sourceFile, destFile)
   end
 end
 
-def buildWebSite
-  #buildHomePage
-  buildCodingGuidesPage
-  #buildTutorialsPage
-  #buildExamplesPage
-  buildDocPages
+def webSiteBuild
+  webSiteBuildHomePage
+  webSiteBuildDocPages
+  webSiteBuildLinkPages
 end
 
-def buildDocPages
-  # Replace template elements in each file
+def webSiteBuildDocPages
   sourceDir = Pathname.new("./documents")
   destDir = Pathname.new("./website/pages")
-  jsDir = Pathname.new("./website/js")
-  pagesDir = Pathname.new("./website/pages")
-  templateFile = Pathname.new("./templates/docpage.html")
-  template = File.open(templateFile, "rb") { |f| f.read }
+  
+  # Replace template elements in each file and save.
   n = 1
-  $pages.each do |pageData|
+  docPages().each do |page|
     puts "Processing file " + n.to_s
     n = n + 1
-    params = pageData[2]
-    if not params.include? REDIRECT then
-      sourceFile = sourceDir + pageData[1] + "index.html"
-      destPath = destDir + pageData[1]
-      destFile = destPath + "index.html"
-      jsDirRelativePath = jsDir.relative_path_from(destPath)
-      pagesDirRelativePath = pagesDir.relative_path_from(destPath)
-      puts("pagesDirRelativePath: " + pagesDirRelativePath.to_s)
-      destPath.mkpath()
-      html = File.open(sourceFile, "rb") { |f| f.read }
-      #html = cleanHTML(html)
-      html = template.gsub(
-        "TEMPLATE_PAGE_TITLE", getPageTitle(html)).sub(
-          "TEMPLATE_PAGE_CONTENT", getPageContent(html)).gsub(
-            "TEMPLATE_JS_PATH", jsDirRelativePath.to_s).gsub(
-              "TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
-      File.open(destFile, "wb") { |f| f.write(html) }
-      puts "Building #{sourceFile} #{destFile}"
-      # FileUtils.cp(sourceFile, destFile)
-    end
+    
+    sourceFile = sourceDir + pageTargetFile(page) + "index.html"
+    destPath = destDir + pageTargetFile(page)
+    destFile = destPath + "index.html"
+
+    puts "Building #{sourceFile} #{destFile}"
+      
+    html = File.open(sourceFile, "rb") { |f| f.read }
+    webSiteBuildPageFromStandardTemplate(
+      htmlGetPageTitle(html),
+      htmlGetPageContent(html),
+      destFile)
   end
 end
 
-def buildCodingGuidesPage
-  # Build list with links to all guides.
-  sourceDir = Pathname.new("./documents")
-  list = "<ul data-role=\"listview\" data-inset=\"true\">\n"
-  $pages.each do |pageData|
-    params = pageData[2]
-    if params.include?(CPP) and params.include?(GUIDE) then
-      sourceFile = sourceDir + pageData[1] + "index.html"
-      linkTitle = getPageTitleFromFile(sourceFile)
-      puts "Generating Guide Link: " + linkTitle
-      linkTarget = sourceFile.to_s.split("cpp/guides/")[1]
-      list = list + "<li><a data-ajax=\"false\" href=\"#{linkTarget}\">#{linkTitle}</a></li>\n"
-    end
-  end
-  list = list + "</ul>\n"
+# Build link pages for all categories and page types.
+def webSiteBuildLinkPages
+  title = "C/C++ Coding Guides"
+  webSiteBuildCategoryLinkPage(CPP, GUIDE, "cpp/guides/", title)
   
-  # Insert list and write page.
-  destFile = Pathname.new("./website/pages/cpp/guides/index.html")
-  jsDir = Pathname.new("./website/js")
-  jsDirRelativePath = jsDir.relative_path_from(destFile.parent)
-  puts("jsDirRelativePath: " + jsDirRelativePath.to_s)
-  pagesDirRelativePath = "../.."
-  templateFile = Pathname.new("./templates/docpage.html")
-  template = File.open(templateFile, "rb") { |f| f.read }
-      html = template.gsub(
-        "TEMPLATE_PAGE_TITLE", "C/C++ Coding Guides").sub(
-          "TEMPLATE_PAGE_CONTENT", list).gsub(
-            "TEMPLATE_JS_PATH", jsDirRelativePath.to_s).gsub(
-              "TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
-  File.open(destFile, "wb") { |f| f.write(html) }
+  title = "C/C++ Tutorials"
+  webSiteBuildCategoryLinkPage(CPP, TUTORIAL, "cpp/tutorials/", title)
+  
+  title = "C/C++ Examples"
+  webSiteBuildCategoryLinkPage(CPP, EXAMPLE, "cpp/examples/", title)
+  
+  title = "JavaScript Coding Guides"
+  webSiteBuildCategoryLinkPage(JS, GUIDE, "js/guides/", title)
+  
+  title = "JavaScript Tutorials"
+  webSiteBuildCategoryLinkPage(JS, TUTORIAL, "js/tutorials/", title)
+  
+  title = "JavaScript Examples"
+  webSiteBuildCategoryLinkPage(JS, EXAMPLE, "js/examples/", title)
 end
 
-def getPageTitle(html)
-  getTagContents(html, "title")
+def webSiteBuildHomePage
+  title = "MoSync Documentation"
+
+  # Get content HTML.
+  homePageFile = Pathname.new("./templates/home.html")
+  html = File.open(homePageFile, "rb") { |f| f.read }
+  
+  # Save the page.
+  destFile = Pathname.new("./website/pages") + "index.html"
+  webSiteBuildPageFromStandardTemplate(
+      title,
+      html,
+      destFile)
+      
+  # Copy images.
+  #FileUtils.cp(
+  #  Pathname.new("./templates/mosync_logo.jpg"),
+  #  Pathname.new("./website/pages/mosync_logo.jpg"))
 end
 
-def getPageContent(html)
-  getTagContents(html, "body")
+# Builds and saves a page of links for the given category and type.
+# Exampel of pageShortPath: "cpp/guides/"
+def webSiteBuildCategoryLinkPage(category, type, pageShortPath, pageTitle)
+  # Create page path.
+  destDir = Pathname.new("./website/pages")
+  destFile = destDir + pageShortPath + "index.html"
+  
+  puts "Building page: " + destFile.to_s
+  
+  # Get content HTML.
+  html = webSiteBuildLinkListForCategoryType(category, type, pageShortPath)
+  
+  # Save the page.
+  webSiteBuildPageFromStandardTemplate(
+      pageTitle,
+      html,
+      destFile)
 end
 
-def getPageTitleFromFile(filePath)
-  html = File.open(filePath, "rb") { |f| f.read }
-  getPageTitle(html)
-end
+# Returns HTML with list items for each label found in 
+# pages of the given category and type.
+# baseDir is a string naming the directory of the
+# target page, e.g. "cpp/guides/".
+def webSiteBuildLinkListForCategoryType(category, type, baseDir)
+  # Get pages.
+  pages = pagesForType(
+     pagesForCategory(docPages(), category),
+     type)
+     
+  # Get labels.
+  labels = pagesGetAllLabels(pages).sort
+  
+  ## Generate lists for each label
+  html = ""
+  labels.each do |label|
+    html += webSiteBuildLinkListForPages(
+      pagesForLabel(pages, label),
+      label,
+      baseDir)
+  end
 
-# Works for simple cases.
-def getTagContents(html, tagName)
-  html.split("<#{tagName}>")[1].split("</#{tagName}>")[0]
-end
-
-def cleanHTML(html)
   html
 end
 
-def prettifyHTML(html)
+# Return HTML for a list with links to the given pages.
+# baseDir is a string naming the directory of the
+# target page, e.g. "cpp/guides/".
+# TODO: Sort kist by title of pages.
+def webSiteBuildLinkListForPages(pages, label, baseDir)
+  html = "<ul data-role=\"listview\" data-inset=\"true\">\n"
+  html += "<li data-role=\"list-divider\">#{label}</li>\n"
+  pages.each do |page|
+    title = pageGetTitleFromTargetFile(page)
+    target = pageTargetFile(page) + "/index.html"
+    url = target.split(baseDir)[1]
+    html += "<li><a data-ajax=\"false\" href=\"#{url}\">#{title}</a></li>\n"
+  end
+  html += "</ul>\n"
+  html
+end
+
+# Build and save page from template file.
+def webSiteBuildPageFromStandardTemplate(title, content, destFile)
+  # Set up paths.
+  templateFile = Pathname.new("./templates/docpage.html")
+  pagesDir = Pathname.new("./website/pages")
+  jsDir = Pathname.new("./website/js")
+  destPath = destFile.parent
+  
+  # Relative paths used for links and js/css imports.
+  pagesDirRelativePath = pagesDir.relative_path_from(destPath)
+  jsDirRelativePath = jsDir.relative_path_from(destPath)
+
+  # Read template.
+  template = File.open(templateFile, "rb") { |f| f.read }
+  
+  # Cerate HTML from template.
+  html = webSiteBuildPageFromTemplate(
+    template,
+    title,
+    content,
+    jsDirRelativePath,
+    pagesDirRelativePath)
+  
+  # Make sure dest path exists and write file.
+  destPath.mkpath()
+  File.open(destFile, "wb") { |f| f.write(html) }
+end
+
+# Returns HTML for page built from template.
+def webSiteBuildPageFromTemplate(template, title, content, jsDirRelativePath, pagesDirRelativePath)
+  html = template.gsub(
+    "TEMPLATE_PAGE_TITLE", title).sub(
+      "TEMPLATE_PAGE_CONTENT", content).gsub(
+        "TEMPLATE_JS_PATH", jsDirRelativePath.to_s).gsub(
+          "TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
+  html
+end
+
+def docPages()
+  $pages.select { |page| not pageIsRedirect?(page) }
+end
+
+def redirectPages()
+  $pages.select { |page| pageIsRedirect?(page) }
+end
+
+def pagesForCategory(pages, category)
+  pages.select { |page| pageHasCategory?(page, category) }
+end
+
+def pagesForType(pages, type)
+  pages.select { |page| pageHasType?(page, type) }
+end
+
+def pagesForLabel(pages, label)
+  pages.select { |page| pageHasLabel?(page, label) }
+end
+
+def pagesGetAllLabels(pages)
+  (pages.inject([]) { |result,page| 
+    result + pageLabels(page) }).uniq
+end
+
+def pageIsRedirect?(page)
+  pageCategory(page) == REDIRECT
+end
+
+def pageOriginalFile(page)
+  page[0]
+end
+
+def pageTargetFile(page)
+  page[1]
+end
+
+def pageCategory(page)
+  page[2]
+end
+
+def pageHasCategory?(page,category)
+  pageCategory(page) == category
+end
+
+def pageType(page)
+  page[3]
+end
+
+def pageHasType?(page,type)
+  pageType(page) == type
+end
+
+def pageLabels(pageData)
+  pageData[4]
+end
+
+def pageHasLabel?(page,label)
+  pageLabels(page).include? label
+end
+
+def pageGetTitleFromTargetFile(page)
+  dir = Pathname.new("./documents")
+  file = dir + pageTargetFile(page) + "index.html"
+  fileGetPageTitle(file)
+end
+
+def htmlGetPageTitle(html)
+  htmlGetTagContents(html, "title")
+end
+
+def htmlGetPageContent(html)
+  htmlGetTagContents(html, "body")
+end
+
+def fileGetPageTitle(filePath)
+  html = File.open(filePath, "rb") { |f| f.read }
+  htmlGetPageTitle(html)
+end
+
+# Works for simple cases.
+def htmlGetTagContents(html, tagName)
+  html.split("<#{tagName}>")[1].split("</#{tagName}>")[0]
+end
+
+# TODO: Implement. Make a fun that insert pre tags.
+def htmlClean(html)
+  html
+end
+
+def htmlPrettify(html)
   newLineAfterOpeningAndClosingTags = ["html", "head", "body", "div", "ul", "ol", "table"]
   newLineAfterClosingTags = ["title", "h1", "h2", "h3", "h4", "p", "pre", "li", "tr"]
   #start = html.index("</p>", 0)
@@ -168,6 +331,15 @@ def prettifyHTML(html)
     html = html.gsub(tag, tag + "\n")
   end
   html
+end
+
+def htmlReplaceSyntaxHighlighterTags(html)
+  html.gsub(/{syntaxhighlighter(.*?)}/, "<pre>").gsub(
+    /{\/syntaxhighlighter}/, "</pre>")
+end
+
+def htmlReplaceTabsWithSpaces(html)
+  html.gsub("\t", "    ")
 end
 
 def cleanmd
@@ -188,7 +360,7 @@ elsif (ARGV.include? "cleanmd")
 elsif (ARGV.include? "import")
     importHTML
 elsif (ARGV.include? "build")
-    buildWebSite
+    webSiteBuild
 else
     puts "Options:"
     #puts "  html2md"

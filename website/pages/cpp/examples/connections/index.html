@@ -20,10 +20,13 @@
 
     <script>
     // Do one-time initialisation here.
-    $(document).bind('mobileinit', function() {
+    $(document).on('mobileinit', function() {
         // Set default transitions.
         $.mobile.defaultPageTransition = "none";
         $.mobile.defaultDialogTransition = "none";
+        $.mobile.ajaxEnabled = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.buttonMarkup.hoverDelay = 50;
     });
     </script>
 
@@ -68,11 +71,17 @@
         
         <div data-role="header" data-position="fixed">
             <h1>Connection</h1>
-            <a href="#panel-content"
-                class="ui-btn-left"
-                data-icon="bars">Content</a>
-            <a rel="external"
-                href="../../../home/index.html"
+             <div data-type="horizontal" data-role="controlgroup" class="ui-btn-left">
+               <a href="#"
+                 data-rel="back"
+                 data-role="button"
+                 data-icon="back">Back</a>
+               <a href="#panel-content"
+                 data-role="button"
+                 data-icon="bars">Content</a>
+            </div>
+            <a data-ajax="false"
+                href="../../../index.html"
                 class="ui-btn-right"
                 data-icon="home">Home</a>
         </div>
@@ -158,9 +167,7 @@
             -->
             
             <ul data-role="listview" data-inset="false" data-mini="false" data-theme="c">
-                <li data-role="list-divider" data-theme="a">Contents</li>
-                <li><a data-ajax="false" href="../../../home/index.html">Overview</a></li>
-                <li><a data-ajax="false" href="#">Screencasts</a></li>
+                <li data-role="list-divider" data-theme="c"><input type="search" name="search" id="search-basic" value="" /></li>
 
                 <li data-role="list-divider" data-theme="a">Quick Start</li>
                 <li><a data-ajax="false" href="#">Your First C/C++ App</a></li>
@@ -187,6 +194,9 @@
                 <li><a data-ajax="false" href="">MoSync SDK</a></li>
                 <li><a data-ajax="false" href="">MoSync Reload</a></li>
                 <li><a data-ajax="false" href="">Product Comparison</a></li>
+                
+                <li data-role="list-divider" data-theme="a">Screencasts</li>
+                <li><a data-ajax="false" href="#">View Screencasts</a></li>
             </ul>
         </div>
     </div>

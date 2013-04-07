@@ -20,10 +20,13 @@
 
     <script>
     // Do one-time initialisation here.
-    $(document).bind('mobileinit', function() {
+    $(document).on('mobileinit', function() {
         // Set default transitions.
         $.mobile.defaultPageTransition = "none";
         $.mobile.defaultDialogTransition = "none";
+        $.mobile.ajaxEnabled = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.buttonMarkup.hoverDelay = 50;
     });
     </script>
 
@@ -68,11 +71,17 @@
         
         <div data-role="header" data-position="fixed">
             <h1>Creating New Fonts in MAUI</h1>
-            <a href="#panel-content"
-                class="ui-btn-left"
-                data-icon="bars">Content</a>
-            <a rel="external"
-                href="../../../../home/index.html"
+             <div data-type="horizontal" data-role="controlgroup" class="ui-btn-left">
+               <a href="#"
+                 data-rel="back"
+                 data-role="button"
+                 data-icon="back">Back</a>
+               <a href="#panel-content"
+                 data-role="button"
+                 data-icon="bars">Content</a>
+            </div>
+            <a data-ajax="false"
+                href="../../../../index.html"
                 class="ui-btn-right"
                 data-icon="home">Home</a>
         </div>
@@ -142,14 +151,16 @@
 .include "resources/YahooSmooth.mof"</pre>
 <p>To use a font in your application, you need to add a reference to MAHeaders.h and MAUI/Font.h in your code, and create a new Font in code.</p>
 <p>&nbsp;</p>
-{syntaxhighlighter brush: cpp;fontsize: 100; first-line: 1; }// Create the fonts
-Font* yahooFont = new Font(YAHOOFONT);{/syntaxhighlighter}<p>You can then reference this when creating labels.</p>
+<pre>// Create the fonts
+Font* yahooFont = new Font(YAHOOFONT);</pre>
+<p>You can then reference this when creating labels.</p>
 <p>&nbsp;</p>
-{syntaxhighlighter brush: cpp;fontsize: 100; first-line: 1; }// Create a screen title, using the Yahoo font
+<pre>// Create a screen title, using the Yahoo font
 Label* titleLabel = new Label(0, 0, 240, 32, layout,
-"MoSync!", 0x0000C0, yahooFont);{/syntaxhighlighter}<p>I’ve created a short example application using free fonts I’ve created in BMFont.</p>
+"MoSync!", 0x0000C0, yahooFont);</pre>
+<p>I’ve created a short example application using free fonts I’ve created in BMFont.</p>
 <p>&nbsp;</p>
-{syntaxhighlighter brush: cpp;fontsize: 100; first-line: 1; }// Create the fonts
+<pre>// Create the fonts
 Font* standardFont = new Font(STANDARDFONT);
 Font* yahooFont = new Font(YAHOOFONT);
 Font* yahooSmoothed = new Font(YAHOOSMOOTH);
@@ -174,7 +185,8 @@ Label* newsLabel = new Label(0, 0, 240, 32, layout,
 newsLabel-&gt;setAutoSizeY(true);
 newsLabel-&gt;setMultiLine(true);
 this-&gt;setMain(layout);
-{/syntaxhighlighter}<p>This is the application running:</p>
+</pre>
+<p>This is the application running:</p>
 <p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_16c87zvthq_b"></p>
 <p>For comparison, I’ve blown-up the two title bars. One has the smaller but un-smoothed font, and the second is the larger, anti-aliased font. There is a big difference.</p>
 <p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_17dxmshpg5_b" width="280" height="212"></p>
@@ -185,14 +197,15 @@ eng.setDefaultFont(standardFont);</pre>
 <p>You can then create labels without specifying a font, and it will use the one you set up here.</p>
 <p>The label constructor is different though if you don’t specify a font. You can’t pass the label text without supplying a background colour and a font, so if you want to use the default font, you need to call the <strong>setCaption(<em>text</em>)</strong> method.</p>
 <p>&nbsp;</p>
-{syntaxhighlighter brush: cpp;fontsize: 100; first-line: 1; }// Create some more text, using the default font
+<pre>// Create some more text, using the default font
 Label* newsLabel = new Label(0, 0, 240, 32, layout);
 newsLabel-&gt;setCaption("Here is some interesting information. 
     In 1964, a gang of eight pigs held their farmer hostage for 
     14 hours. When questioned, they said 'oink'.");
 newsLabel-&gt;setBackgroundColor(0xc00000);
 newsLabel-&gt;setAutoSizeY(true);
-newsLabel-&gt;setMultiLine(true);{/syntaxhighlighter}<p>&nbsp;</p>
+newsLabel-&gt;setMultiLine(true);</pre>
+<p>&nbsp;</p>
 <p>This will produce exactly the same result as the previous code.</p>
 <h2>Coloured Fonts</h2>
 <p>Finally a note on coloured fonts. By default, the mof tool will produce the font in white. However you can produce fonts in whatever colour you want, but <strong><em>in only one colour at a time</em></strong><em>. </em>You can’t have fonts with coloured borders for instance. You’ll need to produce a mof file for every colour of every font you want to use.</p>
@@ -267,9 +280,7 @@ newsLabel-&gt;setMultiLine(true);{/syntaxhighlighter}<p>&nbsp;</p>
             -->
             
             <ul data-role="listview" data-inset="false" data-mini="false" data-theme="c">
-                <li data-role="list-divider" data-theme="a">Contents</li>
-                <li><a data-ajax="false" href="../../../../home/index.html">Overview</a></li>
-                <li><a data-ajax="false" href="#">Screencasts</a></li>
+                <li data-role="list-divider" data-theme="c"><input type="search" name="search" id="search-basic" value="" /></li>
 
                 <li data-role="list-divider" data-theme="a">Quick Start</li>
                 <li><a data-ajax="false" href="#">Your First C/C++ App</a></li>
@@ -296,6 +307,9 @@ newsLabel-&gt;setMultiLine(true);{/syntaxhighlighter}<p>&nbsp;</p>
                 <li><a data-ajax="false" href="">MoSync SDK</a></li>
                 <li><a data-ajax="false" href="">MoSync Reload</a></li>
                 <li><a data-ajax="false" href="">Product Comparison</a></li>
+                
+                <li data-role="list-divider" data-theme="a">Screencasts</li>
+                <li><a data-ajax="false" href="#">View Screencasts</a></li>
             </ul>
         </div>
     </div>
