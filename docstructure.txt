@@ -1,3 +1,8 @@
+
+check pages that are missing, blogposts, webview example apps,
+photogallery pages, wormhole guides, quick-start guides, etc.
+
+
 http://www.metaltoad.com/sites/default/files/Responsive-Widths_0.png
 http://rubular.com/
 http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
