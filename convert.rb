@@ -229,7 +229,8 @@ def webSiteBuildPageFromTemplate(template, title, content, jsDirRelativePath, pa
 end
 
 def docPages()
-  $pages.select { |page| not pageIsRedirect?(page) }
+  $pages.select { |page| 
+    not pageIsRedirect?(page) and not pageIsIgnore?(page) }
 end
 
 def redirectPages()
@@ -254,7 +255,11 @@ def pagesGetAllLabels(pages)
 end
 
 def pageIsRedirect?(page)
-  pageCategory(page) == REDIRECT
+  pageHasCategory?(page, REDIRECT)
+end
+
+def pageIsIgnore?(page)
+  pageHasCategory?(page, IGNORE)
 end
 
 def pageOriginalFile(page)
