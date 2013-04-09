@@ -12,7 +12,7 @@
 <p>The fundamental building blocks of MAUI interfaces are <strong>screens </strong>and <strong>widgets</strong>.</p>
 <p>Screens represent a particular instances of the application's user interface, a whole screen display. A screen is typically associated with a specific activity — like logging in, or browsing a list of albums, or viewing the description of a shopping item. Screens are essentially different logical locations in your application that the user can navigate between to perform different tasks.</p>
 <p>To use the MAUI <strong>Screen </strong>class in your application you need to include the header file:</p>
-<pre>#include &lt;MAUI/Screen.h&gt;</pre>
+<pre class="mosync-code-cpp">#include &lt;MAUI/Screen.h&gt;</pre>
 <p>There is no inherent hierarchy or other relationship between individual screens, although one can be implied or even enforced at the application level. Some screens may be considered side-by-side "siblings" of other screens, others have a hierarchical parent-child relationship.</p>
 <p>To show a particular screen (and send all other screens to the background) you use the class's <strong>show </strong>method. There is also a corresponding <strong>hide </strong>method.</p>
 <p>Screens are containers for widgets. There is always a main widget, which is resized to match the screen resolution of the device. To set the main widget, you use the <strong>setMain </strong>method, and to get it you use <strong>getMain</strong>.</p>
@@ -26,7 +26,7 @@
 <li>images</li>
 </ul>
 <p>All widgets are direct or indirect subclasses of the base class <strong>MAUI::Widget</strong><strong>&nbsp;</strong>. To use a MAUI widget<strong> </strong>class in your application you need to include the appropriate header file, for example, if you want to use labels:</p>
-<pre>#include &lt;MAUI/Label.h&gt;</pre>
+<pre class="mosync-code-cpp">#include &lt;MAUI/Label.h&gt;</pre>
 <p>A widget can be a container for other widgets. For instance, if you want an image with text overlaid, you can create an <strong>Image</strong> widget, and then set the <strong>Image </strong>to be the parent of a <strong>Label</strong> widget. When a parent widget is destroyed, all of its children are destroyed as well.</p>
 <h2>Arranging Widgets</h2>
 <p>The UI of a screen is built by creating a hierarchy of widgets.</p>
@@ -40,7 +40,7 @@
 <p>On a mobile device, the x and y positions are often less useful than you might imagine. In reality you may find that you do almost all of your positioning through <strong>Layout</strong> and <strong>ListBox</strong> widgets, and by setting the padding properties of the widgets with methods like w-&gt;<strong>setPaddingBottom</strong>(5); which will put a margin against the bottom of that widget.</p>
 <p>Some standard methods of widgets set the background colour of the widget, and whether it should draw a background at all.</p>
 <p>&nbsp;</p>
-<pre>// Set the widget background colour to a dark green
+<pre class="mosync-code-cpp">// Set the widget background colour to a dark green
 widget-&gt;setBackgroundColor(0x30A030);
 
 // Ensure the widget is drawing a background colour
@@ -50,7 +50,7 @@ widget -&gt;setDrawBackground(true);</pre>
 <p>There are a lot of different screen sizes around now. It used to be that there were two or three common sizes which virtually all phones shared. Now, with so many different aspect ratios it is almost impossible to predict what the screen size and shape will be.</p>
 <p>However, it is easy to query a device's screen size from within your application using the <strong>maGetScrSize()</strong> function:</p>
 <p>&nbsp;</p>
-<pre>// Returns size of the screen to screenSize.
+<pre class="mosync-code-cpp">// Returns size of the screen to screenSize.
 MAExtent screenSize = maGetScrSize();
 
 // Returns width of the screen to scrWidth.
@@ -60,7 +60,7 @@ int scrWidth = EXTENT_X(screenSize);
 int scrHeight = EXTENT_Y(screenSize);</pre>
 <p>This will give you the height and width of the screen in pixels.&nbsp; To know whether the screen is in landscape or portrait mode, you need to test the sizes:</p>
 <p>&nbsp;</p>
-<pre>// If Width is greater than Height of the screen, the screen 
+<pre class="mosync-code-cpp">// If Width is greater than Height of the screen, the screen 
 // is in Landscape mode otherwise in portrait mode.
 if(scrWidth &gt; scrHeight)
 {
@@ -77,7 +77,7 @@ else
 <p>At the heart of the MAUI model is the Moblet. This is the event-based platform which all MAUI applications are based on. When your application starts, it is the moblet which runs first. The moblet will create (at least) the first screen of your application and show it. The moblet is also responsible for closing your application down, and managing system events. Some events it passes to screens automatically, for instance key presses or screen touches. Other events occur and the moblet may need code to inform your screens of the event, like getting a new location from GPS.</p>
 <p>If you create a new MAUI project (see the tutorial on starting a new MAUI project to do this), then you get some standard code. We’ve added some additional comments to it below.</p>
 <p>&nbsp;</p>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include &lt;MAUI/Screen.h&gt;
 #include &lt;MAUI/Label.h&gt;
 using namespace MAUtil;
@@ -141,7 +141,7 @@ extern "C" int MAMain()
 <p>You may want to make changes to this when you start a new project. Firstly, you may want screen definitions in their own files, so delete the <strong>MyScreen</strong> class here, and create it elsewhere.&nbsp; Secondly, Moblet automatically passes key and screen events to my screens, so you don’t need the additional methods here.&nbsp; They would be useful if you wanted to capture screen presses when you’ve not got a screen displayed, or for a button which you can use on every screen, but for your applications you may prefer to handle it screen by screen.</p>
 <p>Some developers also don’t start with a Screen, but with their own class of ScreenController. ( This will be the topic of another tutorial. In this example, we're going to show a screen instead.)</p>
 <p>&nbsp;</p>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include "Screens/Menu.h"
 using namespace MAUtil;
 using namespace MAUI;
@@ -178,7 +178,7 @@ extern "C" int MAMain()
 <p>We’re going to look at creating Widgets shortly, but you can use code similar to that you’ll find in the MAUIex example supplied with MoSync. That has some small factory methods which return you the widgets, rather than duplicating code in every screen.</p>
 <p><strong>Menu.h</strong></p>
 <p>&nbsp;</p>
-<pre>/*
+<pre class="mosync-code-cpp">/*
  * @file: Menu.h
  * @Author: Naveed Asif, Niklas Nummelin
  *
@@ -251,7 +251,7 @@ private:
 <p>This header file defines a new class called ‘Menu’, inheriting from ‘Screen’.&nbsp; For the screen to capture button presses and respond, the method <strong>keyPressEvent</strong> must be implemented, and there is reference to a <strong>ListBox</strong> widget called <strong>mContentBox</strong>.</p>
 <p><strong>Menu.cpp</strong></p>
 <p>&nbsp;</p>
-<pre>/*
+<pre class="mosync-code-cpp">/*
  * @File: Menu.cpp
  * @Author: Naveed Asif, Niklas Nummelin
  *
@@ -439,7 +439,7 @@ myLabel-&gt;setCaption("My label");</pre>
 <pre>myLabel-&gt;setMultiLine(true);</pre>
 <p>You can also let the label decide how much space it needs. You can specify exactly how big you want the label to be, but you can also let it stretch automatically vertically and horizontally. Generally, you may find that you don’t want to let it resize horizontally, but you do vertically.</p>
 <p>&nbsp;</p>
-<pre>// Allow the label to resize vertically automatically.
+<pre class="mosync-code-cpp">// Allow the label to resize vertically automatically.
 label-&gt;setAutoSizeY(true);
 // Prevent the label from resizing horizontally automatically.
 label-&gt;setAutoSizeX(false);</pre>
@@ -447,13 +447,13 @@ label-&gt;setAutoSizeX(false);</pre>
 <h2>Images</h2>
 <p>An image will let you put a picture in your application.&nbsp; These are used frequently as buttons. Creating them is very simple. In addition to the default Widget constructor, there is</p>
 <p>&nbsp;</p>
-<pre>// Create a new Image object based on the PNG file in the resources.
+<pre class="mosync-code-cpp">// Create a new Image object based on the PNG file in the resources.
 Image* image = new Image(0, 0, 100, 100, listbox, true, true, IMAGE);</pre>
 <p>Where the last three arguments are to automatically resize automatically horizontally, resize automatically vertically and the MAHandle of the image resource. By setting the resize arguments as above, you can use this command to create any image you want and it will be the correct size for the image. If you set the resize arguments to false, it does not resize the image. If the sizes you’ve specified are too small, it will crop from the centre of the image. If the sizes are too large, it will show the background colour, if it has been set. This image has been cropped.</p>
 <p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_26cf4bswfn_b"></p>
 <p>If you want to show a border on the image, you can use the padding as described earlier. If you’ve got it automatically resizing, you won’t see the entire image. This is because the widget has sized to dimensions of the image, but then the padding will eat some of that space.</p>
 <p>&nbsp;</p>
-<pre>// Create a new Image object based on the PNG file in the resources.
+<pre class="mosync-code-cpp">// Create a new Image object based on the PNG file in the resources.
 Image* image = new Image(0, 0, 150, 150, listbox, true, true, IMAGE);
 image-&gt;setPaddingTop(10);
 image-&gt;setPaddingLeft(10);</pre>
@@ -473,13 +473,13 @@ image-&gt;setPaddingLeft(10);</pre>
 <pre>infobox = new ListBox(0, 0, scrWidth, scrHeight, layout);</pre>
 <p>You need to add all of the arguments specific to ListBox.</p>
 <p>&nbsp;</p>
-<pre>infobox = new ListBox(0, 0, scrWidth, scrHeight, layout, 
+<pre class="mosync-code-cpp">infobox = new ListBox(0, 0, scrWidth, scrHeight, layout, 
           ListBox::LBO_VERTICAL, ListBox::LBA_LINEAR, true);</pre>
 <p>You can decide whether it is going to grow vertically or horizontally, whether it is going to be animated, and whether it will wrap to the beginning when you get to the end. Typically, an app screen will contain a Layout with a child ListBox. In the diagram below, there is a Layout in a 1x3 grid. The widgets in the Layout have been marked.</p>
 <p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_28njv35gr4_b"></p>
 <p>The ListBox will not break out of its space in the layout. Should it grow longer than its space, it will scroll as items are selected in it. When a specific widget in the ListBox is selected, it will scroll so that widget is on screen. You can scroll a widget using <strong>selectNextItem()</strong> and<strong>selectPreviousItem()</strong> methods. In this example, key press on the screen has been captured, and the application is going to scroll up and down the ListBox (contentBox):</p>
 <p>&nbsp;</p>
-<pre>void Menu::keyPressEvent(int keycode)
+<pre class="mosync-code-cpp">void Menu::keyPressEvent(int keycode)
 {
     // A full list of the key constants is available at 
     // http://www.mosync.com/docs/2.0b1/html/maapi_8h.html
@@ -509,7 +509,7 @@ image-&gt;setPaddingLeft(10);</pre>
 <h2>EditBox</h2>
 <p>An EditBox allows for text capture, so users can use their phone keypad to enter text into the application.</p>
 <p>&nbsp;</p>
-<pre>EditBox* editBox = new EditBox(
+<pre class="mosync-code-cpp">EditBox* editBox = new EditBox(
                    0, 0, scrWidth, 60, NULL, “”, 
                    0xFFFFFF, aFont, true, true, 256, 
                    EditBox::IM_STANDARD
@@ -524,7 +524,7 @@ image-&gt;setPaddingLeft(10);</pre>
 <p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_29d2x4b6dr_b"></p>
 <p>To define the skin, you don’t specify the top left and bottom right corners of the center box as you might expect, but instead you specify the horizontal positions of the vertical cuts, and then the vertical positions of the horizontal cuts.</p>
 <p>&nbsp;</p>
-<pre>gSkin = new WidgetSkin(
+<pre class="mosync-code-cpp">gSkin = new WidgetSkin(
         RES_SELECTED, RES_UNSELECTED, 
         16, 32, 16, 32, true, true
         );</pre>
@@ -535,7 +535,7 @@ image-&gt;setPaddingLeft(10);</pre>
 <p>The best thing about the Widget model is that it is easily extendible. There are many widgets to handle common features like softkey bars, progress bars, buttons, calendars and sliders. There will be another tutorial which will go into detail on creating your own widgets. In short, you need to inherit from Widget, and implement the drawWidget() method.</p>
 <p>This is from the ProgressBar widget:</p>
 <p>&nbsp;</p>
-<pre>#ifndef _PROGRESSBAR_H_
+<pre class="mosync-code-cpp">#ifndef _PROGRESSBAR_H_
 #define _PROGRESSBAR_H_
 
 #include &lt;MAUI/Widget.h&gt;
@@ -566,7 +566,7 @@ namespace DatiloUI
 <p>The <strong>drawWidget()</strong> method is the essential one. It will be called when the screen is painted, and it must plot its contents <em>in the confines of the widget<strong>.</strong></em></p>
 <p>Here is an extract from the drawWidget() method:</p>
 <p>&nbsp;</p>
-<pre>void ProgressBar::drawWidget()
+<pre class="mosync-code-cpp">void ProgressBar::drawWidget()
 {
     int w = this-&gt;getWidth() - this-&gt;getPaddingLeft() - this-&gt;getPaddingRight();
     int amountRemaining = (w * percent) / 100;
@@ -595,7 +595,7 @@ namespace DatiloUI
 </pre>
 <p>You can see that in the drawWidget method, you can get the <strong>PaddedPosition</strong> of the widget. This tells you where the Widget is on screen. In the <strong>plotSection()</strong> method, you get the space you're allowed to use</p>
 <p>&nbsp;</p>
-<pre>void ProgressBar::plotSection(MAPoint2d* offset, int  width, Handle h)
+<pre class="mosync-code-cpp">void ProgressBar::plotSection(MAPoint2d* offset, int  width, Handle h)
 {
     if(mDrawBorder)
     {

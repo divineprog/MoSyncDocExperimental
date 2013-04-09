@@ -39,32 +39,32 @@
 <p>For a list of all functions (syscalls) in the PIM module, see the <span style="color: #000000;"><a href="http://www.mosync.com/files/imports/doxygen/latest/html/index.html">MoSync API Reference</a></span><span style="color: #ff0000;"></span>.</p>
 <h3>Working with lists and items</h3>
 <p>To open a PIM list, use the function <strong>maPimListOpen</strong>. If a list of the selected type is available, you will get back a handle to it that you can use in subsequent calls.</p>
-<pre>MAHandle mContactsListHandle = maPimListOpen(MA_PIM_CONTACTS);</pre>
+<pre class="mosync-code-cpp">MAHandle mContactsListHandle = maPimListOpen(MA_PIM_CONTACTS);</pre>
 <p>To open the items on the list, use <strong> maPimListNext</strong>. You will get back a handle to the next item on the list or 0 if there are no more items.</p>
-<pre>MAHandle pimItemHandle = maPimListNext(mContactsListHandle);</pre>
+<pre class="mosync-code-cpp">MAHandle pimItemHandle = maPimListNext(mContactsListHandle);</pre>
 <p>You can create new item in a list using <strong>maPimItemCreate</strong>.</p>
-<pre>MAHandle newContactHandle = maPimItemCreate(mContactsListHandle);</pre>
+<pre class="mosync-code-cpp">MAHandle newContactHandle = maPimItemCreate(mContactsListHandle);</pre>
 <p>The newly created item is empty. The function <strong>maPimItemRemove </strong>removes an item from the list.</p>
-<pre>int resultCode = maPimItemRemove(mContactsListHandle, newContactHandle);
+<pre class="mosync-code-cpp">int resultCode = maPimItemRemove(mContactsListHandle, newContactHandle);
 if (resultCode &lt; 0)
 {
     printf("Remove Item Error: %d", resultCode);
 }</pre>
 <p><em><strong>Important! </strong></em>To prevent memory leaks, always call <strong>maPimItemClose </strong>to close the item as soon as you are finished with it before opening the next item. This function also commits changes made by <strong>maPimItemAddValue</strong>, <strong>maPimItemRemoveValue</strong>, and <strong>maPimItemSetValue </strong>to permanent storage. It should also be used after <strong>maPimItemCreate</strong>.</p>
-<pre>int resultCode = maPimItemClose(pimItemHandle);
+<pre class="mosync-code-cpp">int resultCode = maPimItemClose(pimItemHandle);
 if (resultCode &lt; 0)
 {
     printf("Close Item Error: %d", resultCode);
 }</pre>
 <p>To close a list when you have finished with it, use <strong>maPimListClose</strong>. (This function does not close the list's items, but it does invalidate them, so <strong>maPimItemClose </strong>will now be the only function you can safely use on items.)</p>
-<pre>int resultCode = maPimListClose(mContactsListHandle );
+<pre class="mosync-code-cpp">int resultCode = maPimListClose(mContactsListHandle );
 if (resultCode &lt; 0)
 {
     printf("Close List Error: %d", resultCode);
 }</pre>
 <h3>Working with fields and attributes</h3>
 <p>To count the number of fields an item has, use the function <strong> maPimItemCount</strong>.</p>
-<pre>int countFields = maPimItemCount(pimItemHandle);
+<pre class="mosync-code-cpp">int countFields = maPimItemCount(pimItemHandle);
 if (countFields &gt;= 0)
 {
     printf("The item has %d fields", countFields);
@@ -74,7 +74,7 @@ else
     printf("Count Item Error: %d", countFields);
 }</pre>
 <p>To count the number of values that exist for the field for the item, use <strong>maPimItemFieldCount</strong>.</p>
-<pre>int countValues = maPimItemFieldCount(mItemHandle, MA_PIM_FIELD_CONTACT_ADDR);
+<pre class="mosync-code-cpp">int countValues = maPimItemFieldCount(mItemHandle, MA_PIM_FIELD_CONTACT_ADDR);
 if (countValues &gt;= 0)
 {
     printf("The field has %d values", countValues);
@@ -84,7 +84,7 @@ else
     printf("Count Item Field Error: %d", countValues);
 }</pre>
 <p>Each field of the item has a type. To get the field's type (Address, Birthday, Name, etc.), use <strong>maPimItemGetField </strong>passing it the the position of the field and the item handle that was returned by <strong>maPimListNext</strong>.</p>
-<pre>for (int index = 0; index &lt; countFields; i++)
+<pre class="mosync-code-cpp">for (int index = 0; index &lt; countFields; i++)
 {
     int type = maPimItemGetField(pimItemHandle, index);
     if (type &gt; 0)
@@ -97,7 +97,7 @@ else
     }
 } </pre>
 <p>You can use the <strong>maPimFieldType </strong>function to get the data type (integer, boolean, string, etc.) of the field. The value returned will be one of the MA_PIM_TYPE_* constants (date, boolean, string array, etc.).</p>
-<pre>int type = maPimItemGetField(pimItemHandle, 0);
+<pre class="mosync-code-cpp">int type = maPimItemGetField(pimItemHandle, 0);
 if (type &gt;0)
 { 
     int dataType = maPimFieldType(mContactsListHandle, type);
@@ -111,7 +111,7 @@ if (type &gt;0)
     }
 } </pre>
 <p>To get the attribute for a value in a field use <strong>maPimItemGetAttributes</strong>.</p>
-<pre>for (int index = 0; index &lt; countValues; i++)
+<pre class="mosync-code-cpp">for (int index = 0; index &lt; countValues; i++)
 {
     int attribute = maPimItemGetAttributes(pimItemHandle, MA_PIM_FIELD_CONTACT_ADDR, index);
     if (attribute &gt; 0)
@@ -129,7 +129,7 @@ if (type &gt;0)
     }
 }</pre>
 <p>You can retrieve the label for a value in a field, if the value has a custom label, using the <strong>maPimItemGetLabel</strong> function. To set a custom label for a value in a field use the function <strong>maPimItemSetLabel</strong>. The field must of course be writable.</p>
-<pre>if (countValues &gt; 0)
+<pre class="mosync-code-cpp">if (countValues &gt; 0)
 {
     int attribute = maPimItemGetAttributes(pimItemHandle, MA_PIM_FIELD_CONTACT_ADDR, 0);
     if (attribute &gt; 0)
@@ -170,14 +170,14 @@ if (type &gt;0)
 }</pre>
 <h3>Getting and setting values</h3>
 <p>To read the value of a field and copy it to the argument buffer (<strong>args.buf </strong> ), call <strong>maPimItemGetValue</strong>. You will need to specify the index of the value (<strong> 0 &lt;= index &lt; maPimItemFieldCount()</strong> ). The argument buffer should look like this:</p>
-<pre>struct MA_PIM_ARGS {
+<pre class="mosync-code-cpp">struct MA_PIM_ARGS {
     MAHandle item; // Opened by maPimListNext().
     int field;     // One of the MA_PIM_FIELD constants.
     MAAddress buf; // The buffer address where a value is stored.
     int bufSize;   // The size of the buffer, in bytes.
 }</pre>
 <p>If the buffer created is too small, the syscall will return the miminum needed size for your buffer</p>
-<pre>MA_PIM_ARGS args;
+<pre class="mosync-code-cpp">MA_PIM_ARGS args;
 args.field = MA_PIM_FIELD_CONTACT_NAME;
 
 // Get value from name field at position 0.

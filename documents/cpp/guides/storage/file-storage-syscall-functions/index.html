@@ -26,9 +26,9 @@
 <h2>Example: File Listing</h2>
 <p>Before files can be opened you must know their names.</p>
 <p>You may read the list of root directories and their contents using <strong>maFileList</strong>, or find your app's private directory using:</p>
-<pre> maGetSystemProperty("mosync.path.local"); </pre>
+<pre class="mosync-code-cpp"> maGetSystemProperty("mosync.path.local"); </pre>
 <p>This function prints a list of all files in readable directories on the entire device. Note: on most devices, it will take a <em>long</em> time to complete.</p>
-<pre>void printFileList(const char* path) {
+<pre class="mosync-code-cpp">void printFileList(const char* path) {
     // The buffer is static to conserve stack space.
     static char buffer[1024];
 
@@ -66,7 +66,7 @@ int MAMain() {
 }</pre>
 <h2>Example: Reading a File</h2>
 <p>This program reads a named file from the local path. If the file does not exist, it is created. If the local path does not exist, an attempt is made to use the root of the first available filesystem instead.</p>
-<pre>#include &lt;ma.h&gt;
+<pre class="mosync-code-cpp">#include &lt;ma.h&gt;
 #include &lt;maassert.h&gt;
 #include &lt;conprint.h&gt;
 #include &lt;MAUtil/String.h&gt;
@@ -202,7 +202,7 @@ extern "C" int MAMain() {
 </pre>
 <h2>Example: Reading an Image File</h2>
 <p>This snippet reads an image file from the local/root path, then decodes it and displays it on screen.</p>
-<pre>    // Allocate a data object.
+<pre class="mosync-code-cpp">    // Allocate a data object.
     MAHandle data = maCreatePlaceholder();
     res = maCreateData(data, size);
     MAASSERT(res == RES_OK);

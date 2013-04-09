@@ -86,7 +86,7 @@ maCloseStore(imagestore, 1);</pre>
 <pre>MAHandle TEMPIMAGE = maCreatePlaceholder();</pre>
 <h2>Sequential Files</h2>
 <p>Not every file has to have its own resource label. You can create a series of resources which are each accessed from the same root<strong> MAHandle</strong>. For instance, if you wanted to create an animation in a <strong>MAUI::Image</strong> widget, you can set up four frames for the animation in the <strong>.lst</strong> file.</p>
-<pre>.res ANIMATION
+<pre class="mosync-code-cpp">.res ANIMATION
 .image "frame1.png"
 .res
 .image "frame2.png"
@@ -95,7 +95,7 @@ maCloseStore(imagestore, 1);</pre>
 .res ENDANIMATION
 .image "frame4.png"</pre>
 <p>Each image has its own<strong> .res</strong> declaration, which will create an index number for it, but it doesn’t need to be named. As <strong>MAHandle </strong>is a synonym for ‘int’, you can perform arithmetic operations on it. This excerpt will update an image every time a downloader informs your listener that more data has been downloaded, and you can update an animation on screen to show your user that it is working.</p>
-<pre>MAHandle h = ANIMATION;
+<pre class="mosync-code-cpp">MAHandle h = ANIMATION;
 Image* waitingAnim = new Image(0, 0, 100, 100, NULL);
 ...
 void NotifyProgress(Downloader* dl, int downloadedBytes, int totalBytes)
@@ -135,7 +135,7 @@ void NotifyProgress(Downloader* dl, int downloadedBytes, int totalBytes)
 <p>To read the value of the string, it isn’t as simple as</p>
 <pre>String* myString = new String(RESOURCENAME);</pre>
 <p>Instead, you have to make a more explicit call out to the resources file. There is an object which can help with this called <strong>DataHandler.</strong> This will let you read from the handle, and keeps track of its own position.</p>
-<pre>bool GetString(DataHandler* dh, String&amp; output)
+<pre class="mosync-code-cpp">bool GetString(DataHandler* dh, String&amp; output)
 {
     char c;
     output.clear();
@@ -156,7 +156,7 @@ void NotifyProgress(Downloader* dl, int downloadedBytes, int totalBytes)
 <p>In the first example above, you can see that the method takes a DataHandler and a String as parameters. It uses the DataHandler to read from the resource file one character at a time, and builds the string.&nbsp;</p>
 <p>This on its own should be enough to convince you to always use <strong>.pstring</strong> whenever possible.</p>
 <p>You can avoid a String object and create the string in a faster way using this function.</p>
-<pre>char* GetString(MAHandle stringResource)
+<pre class="mosync-code-cpp">char* GetString(MAHandle stringResource)
 {
     // Get the length of the string data.
     int length = maGetDataSize(stringResource);
@@ -178,7 +178,7 @@ void NotifyProgress(Downloader* dl, int downloadedBytes, int totalBytes)
 <pre>delete[] buffer;</pre>
 <p>when you’ve finished with it. It uses the function <strong>maGetDataSize()</strong> to determine the length of the string and then reads it in one go. It will add the null terminator on, so this would be suitable with resource string of the <strong>.string</strong> type.</p>
 <p>The next example read Pascal strings into a String object without doing it character by character:</p>
-<pre>bool GetPascalString(MAHandle stringResource, String&amp; output)
+<pre class="mosync-code-cpp">bool GetPascalString(MAHandle stringResource, String&amp; output)
 {
     bool success = false;
     output.clear();
@@ -197,7 +197,7 @@ void NotifyProgress(Downloader* dl, int downloadedBytes, int totalBytes)
 }</pre>
 <p>It uses the DataHandler as well, and it creates a new <strong>StringData</strong> object with the string in. This would be a good way to read .pstrings from the resources file.</p>
 <p>Finally, the fourth way doesn’t make use of <strong>DataHandler</strong>, and will probably be the fastest and sleekest way to read strings:</p>
-<pre>bool GetPascalStringWithoutDataHandler(MAHandle stringResource, String&amp; output)
+<pre class="mosync-code-cpp">bool GetPascalStringWithoutDataHandler(MAHandle stringResource, String&amp; output)
 {
     output.clear();
     byte length;
@@ -238,7 +238,7 @@ void NotifyProgress(Downloader* dl, int downloadedBytes, int totalBytes)
 </pre>
 <p>I’ve created some content I want to put on to the screen, using some of the resource techniques we’ve already looked at. I can write a simple parser to create screen dynamically at runtime.</p>
 <p>(Creating screens at runtime is the subject of the tutorial <a href="/documentation/tutorials/creating-new-screens">Creating New Screens</a>.)</p>
-<pre>// Read the first byte. This determines the number of widgets
+<pre class="mosync-code-cpp">// Read the first byte. This determines the number of widgets
 maReadData(BINARYDEMO, &amp;length, 0, 1);
 while(completed &lt; length)
 {

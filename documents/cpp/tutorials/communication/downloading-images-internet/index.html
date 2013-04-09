@@ -6,7 +6,7 @@
 <p>Often when using images in MoSync, then the images are available to you as a developer, and you can package them with your application, as described in the tutorial '<a href="http://www.mosync.com/documentation/tutorials/adding-resources-mosync-project">Adding Resources to a Project</a>'. &nbsp;However, there will be many scenarios where you want to show a picture you've not been able to package. &nbsp;<!--break-->This may be because there are &nbsp;too many pictures, or you are responding to user input. &nbsp;An image search of Google or Bing would be an example of this, there you cannot possibly know what the user is going to search for, nor could you package the images in advance.</p>
 <h2>The ImageDownloader</h2>
 <p>There is a class which has been specifically created to remove some of the complexities of downloading images from the Web. &nbsp;The <strong>ImageDownloader</strong>&nbsp;class is defined in <strong>MAUtil/Downloader.h</strong>, and will create an image resource for you. &nbsp;To use the <strong>ImageDownloader</strong>, you will need to create a new class which inherits from <strong>DownloadListener</strong>. &nbsp;By doing this, your program will be informed when the image has downloaded and is ready to display.</p>
-<pre>/**
+<pre class="mosync-code-cpp">/**
  * @file DownloadImage.cpp
  *
  * This program downloads and displays an Image file from the Internet.

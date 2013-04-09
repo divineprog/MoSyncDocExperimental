@@ -20,7 +20,7 @@
 </pre>
 <p>If we just want to get the latitude out of this data, we don't need to parse the complete XML.</p>
 <div>
-<pre>String xml = readXml();//Build a string with the xml in it
+<pre class="mosync-code-cpp">String xml = readXml();//Build a string with the xml in it
 int start = xml.find("&lt;geo:lat&gt;") + 9;
 int end = xml.find("&lt;/geo:lat&gt;", start);
 String lat = xml.substr(start, end - start);</pre>
@@ -45,7 +45,7 @@ String lat = xml.substr(start, end - start);</pre>
 <blockquote><p>You&nbsp;<strong>must</strong>&nbsp;implement all of the methods in XmlListener. If you leave any methods unimplemented, the program may crash if a call to an unimplemented method is made. Just create an empty method, or in the case of&nbsp;<strong>mtxunicodeCharacter</strong>, use the standard implementation.</p>
 </blockquote><p>This is an example from a class which is designed to process XML data. It implements the XmlListener interface, which allows it to process XML.&nbsp;</p>
 <div>
-<pre>class XMLProcessor : public XmlListener
+<pre class="mosync-code-cpp">class XMLProcessor : public XmlListener
 {
   public:
   XMLProcessor();
@@ -70,7 +70,7 @@ String lat = xml.substr(start, end - start);</pre>
 <blockquote><pre>&lt;title&gt;Conditions for Carcassonne, FR at 10:00 am CEST&lt;/title&gt; &lt;geo:lat&gt;43.22&lt;/geo:lat&gt; &lt;geo:long&gt;2.35&lt;/geo:long&gt;&nbsp;</pre>
 </blockquote><p>The&nbsp;<strong>mtxTagStart</strong>&nbsp;method is passed the name of the tag. For instance, if the XML contained &lt;title&gt; the&nbsp;<strong>mtxTagStart</strong>&nbsp;would be called with 'title'. We can examine these values at runtime.</p>
 <div>
-<pre>void XMLProcessor::mtxTagStart(const char* name, int len)
+<pre class="mosync-code-cpp">void XMLProcessor::mtxTagStart(const char* name, int len)
 {
   lprintfln("%s", name);
   lprintfln("%d", len);
@@ -80,7 +80,7 @@ String lat = xml.substr(start, end - start);</pre>
 <p>To be able to read the &lt;title&gt; tag, we need to maintain the state of the XML. When the&nbsp;<strong>mtxTagData&nbsp;</strong>method is called, it needs to know which tag the data is for. A good way of doing this is by keeping a variable with different values you can test for.</p>
 <p>One way of doing this is to create an enum of the different tags you want to process. This code shows an&nbsp;<strong>enum&nbsp;</strong>representing the tags in the XML, and a private&nbsp;<strong>int&nbsp;</strong>variable which will keep state:</p>
 <div>
-<pre>enum XmlTags
+<pre class="mosync-code-cpp">enum XmlTags
 {
   TITLE,
   LATITUDE,
@@ -90,7 +90,7 @@ int mState; </pre>
 </div>
 <p>When you receive a tag, you can then set the&nbsp;<strong>mState</strong>&nbsp;variable.</p>
 <div>
-<pre>void XMLProcessor::mtxTagStart(const char* name, int len)
+<pre class="mosync-code-cpp">void XMLProcessor::mtxTagStart(const char* name, int len)
 {
    if(strcmp(name, "title", 5) == 0) //Compare the char* with the word 'title'
    {
@@ -107,16 +107,16 @@ int mState; </pre>
 <p>The&nbsp;<strong>mtxTagData</strong>&nbsp;method will be called&nbsp;<em>at least</em>&nbsp;three times, once with '<span style="font-family: 'courier new';">Conditions for Carcassonne, FR at 10:00 am CEST</span>', once with '<span style="font-family: 'courier new';">43.22'</span>&nbsp;and once with '<span style="font-family: 'courier new';">2.35</span>'.</p>
 <p><strong>mtxTagData</strong>&nbsp;may actually be called more than this. If the data source is coming from the Internet, then it may be called&nbsp;<em>before</em>&nbsp;then end of the data. Imagine that the packet we get from the connection contains this data.</p>
 <div>
-<pre>&lt;title&gt;Conditions for Carcassonne, FR at 10:00 am CEST&lt;/title&gt; &lt;geo:lat&gt;43.2</pre>
+<pre class="mosync-code-cpp">&lt;title&gt;Conditions for Carcassonne, FR at 10:00 am CEST&lt;/title&gt; &lt;geo:lat&gt;43.2</pre>
 </div>
 <p>This is processed, and the XML callbacks are made. The call to&nbsp;<strong>mtxTagData&nbsp;</strong>for the 'geo:lat' tag will contain '43.2' at this point, and not '43.22'</p>
 <p>We then get some more data:</p>
 <div>
-<pre>2&lt;/geo:lat&gt; &lt;geo:long&gt;2.35&lt;/geo:long&gt; </pre>
+<pre class="mosync-code-cpp">2&lt;/geo:lat&gt; &lt;geo:long&gt;2.35&lt;/geo:long&gt; </pre>
 </div>
 <p><strong>mtxTagData&nbsp;</strong>will now have been called&nbsp;<em>four</em>&nbsp;times. In fact, you'll never want to start processing in the&nbsp;<strong>mtxTagData&nbsp;</strong>method. Save it for&nbsp;<strong>mtxTagEnd</strong>. A good implementation for&nbsp;<strong>mtxTagData</strong>&nbsp;would be:</p>
 <div>
-<pre>void XmlProcessor::mtxTagData(const char* data, int len)
+<pre class="mosync-code-cpp">void XmlProcessor::mtxTagData(const char* data, int len)
 {
   //Add the data to the buffer, but don't process until we've got the end tag
   temp.append(data, len);
@@ -125,7 +125,7 @@ int mState; </pre>
 <p>Where 'temp' is a&nbsp;<strong>String</strong>. This will continue to fill up until the end tag is reached.</p>
 <p>Because we've been using the&nbsp;<strong>mState</strong>&nbsp;variable to hold state information, we know how to deal with this data. In&nbsp;<strong>mtxTagEnd</strong>&nbsp;we can use the data we collected in&nbsp;<strong>mtxTagData</strong>, and the state information we've set up in&nbsp;<strong>mtxTagStart</strong>&nbsp;to do something useful with the data.</p>
 <div>
-<pre>void XmlProcessor::mtxTagEnd(const char* name, int len)
+<pre class="mosync-code-cpp">void XmlProcessor::mtxTagEnd(const char* name, int len)
 {
     switch(mState)
     {

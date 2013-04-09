@@ -25,7 +25,7 @@
 <p>For maximum efficiency, you should replace calls to <strong>maDestroyObject</strong> in your existing code with calls to <strong>maDestroyPlaceholder</strong>, given that the placeholder is not reused. But never use <strong>maDestroyPlaceholder</strong> if the placeholder is going to be reused!</p>
 <h2>Code examples</h2>
 <p>In the first example we read a PNG image file from a data store and display it, them we deallocate the image data:</p>
-<pre>// Read and image and display it, then 
+<pre class="mosync-code-cpp">// Read and image and display it, then 
 // deallocate the image data.
 MAHandle image = maCreatePlaceholder();
 MAHandle store = maOpenStore("cat.png", 0);
@@ -35,7 +35,7 @@ maUpdateScreen();
 maDestroyPlaceholder(image);</pre>
 <p>This is a useful technique if you have lots of images in your application, and all of them will not fit in application memory.</p>
 <p>Next example shows how to write a block of memory allocated on the C heap to a data object, and then later read it back.</p>
-<pre>// Allocate a block of data.
+<pre class="mosync-code-cpp">// Allocate a block of data.
 void* pData = (void*) malloc(DATASIZE);
 
 // TODO: Write data into the data block.
@@ -49,7 +49,7 @@ maWriteData(data, pData, 0, DATASIZE);
 // can free the C data block.
 free(pData);</pre>
 <p>When you need the data, read it back again:</p>
-<pre>// Allocate data block.
+<pre class="mosync-code-cpp">// Allocate data block.
 pData = (void*) malloc(DATASIZE);
 
 // Read data from the handle.
@@ -58,7 +58,7 @@ maReadData(data, pData, 0, DATASIZE);
 // TODO: Now the data is in C memory and you 
 // can access it using the pointer.</pre>
 <p>Finally, when you are done with everything, make sure both the data block and the data handle are deallocated:</p>
-<pre>free(pData);
+<pre class="mosync-code-cpp">free(pData);
 maDestroyPlaceholder(data);</pre>
 </body>
 </html>

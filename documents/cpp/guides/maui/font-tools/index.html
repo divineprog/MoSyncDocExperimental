@@ -45,18 +45,18 @@
 <h2>Using the Font</h2>
 <p>The resulting <strong>mof</strong>-file can be added to your MoSync project as a binary resource and passed to the constructor of MAUI::Font to create a runtime instance of the font.</p>
 <p>To draw text using the font, use one of the methods <strong>drawString</strong> or <strong>drawBoundedString</strong>. The <strong>drawBoundedString</strong> method features linebreaking and is therefore slower, so it is recommended to use <strong>drawString</strong> when possible. We'll show this by making a simple example. <br><br>Start Eclipse and create a new project called fonttest. Make it a Moblet project. Also, in the project's build settings, add MAUI.lib to Additional Libraries. <br><br>Begin by adding a new resource file called <strong>res.lst</strong> with the contents:</p>
-<pre>.res R_FONT
+<pre class="mosync-code-cpp">.res R_FONT
 .bin
 .include "myfont.mof"
 </pre>
 <p>In the source file, add the following inclusions:&nbsp;</p>
-<pre>#include &lt;MAUtil/Moblet&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet&gt;
 #include &lt;MAUI/Font.h&gt;
 #include &lt;MAHeaders.h&gt;
 </pre>
 <p><strong>Font.h</strong>. is required for bitmap font handling. <strong>MAHeaders.h</strong>, which will be generated from the compiled resource file, contains the handles to the resources in the resource file.</p>
 <p>In the code we will begin by adding an instance of <strong>MAUI::Font</strong> as a member to the Moblet. We will also make sure it is initialized with a handle to our font resource.</p>
-<pre>using namespace MAUtil;
+<pre class="mosync-code-cpp">using namespace MAUtil;
 class MyMoblet : public Moblet {
 private:
     MAUI::Font font;
@@ -65,7 +65,7 @@ public:
     }
 </pre>
 <p>Finally we use the font to draw a text whenever the user presses a key.</p>
-<pre>    void keyPressEvent(int keyCode) {
+<pre class="mosync-code-cpp">    void keyPressEvent(int keyCode) {
         font.drawString("Hello world!", 2, 2);
         maUpdateScreen();
     }

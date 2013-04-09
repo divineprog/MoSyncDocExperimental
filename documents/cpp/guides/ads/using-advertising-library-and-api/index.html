@@ -22,7 +22,7 @@
 <li><strong>BannerListener</strong> —&nbsp; Provides methods for handling any changes in a <strong>Banner</strong> object. The class’s methods are called when a new advertisement is loaded, when a user interacts with an advertisement, and when errors occur.</li>
 </ul>
 <p>The Advertising Library really makes developer’s life really easy: only three lines of code are needed to get a banner working inside your application:</p>
-<pre>Banner* banner = new Banner("yourPublisherID");
+<pre class="mosync-code-cpp">Banner* banner = new Banner("yourPublisherID");
 banner-&gt;requestContent(true);
 aLayout-&gt;addBanner(banner);</pre>
 <p>In this example, on both iOS and Android, the advertisement will be created at the default banner size of 320 * 50 pixels. On Android you can specify other sizes for the advertisement in the constructor, including rectangular banner, IAB full banner and leaderboard sizes.</p>

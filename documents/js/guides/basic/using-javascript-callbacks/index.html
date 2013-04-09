@@ -10,10 +10,10 @@
 <p>Suppose you call a function that explicitly returns a value, and that return just never happens? You code will simply hang, waiting for forever for a return value that never arrives.<br> <br>The solution to this problem is to use callbacks&nbsp;— that is to pass along with the call to the server a JavaScript function that the server should invoke whenever the result is ready.<br> <br>We make extensive use of callbacks throughout the <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/index.html">MoSync Wormhole JavaScript API</a>; a call through Wormhole to the underlying C++ code behaves in the same way as a call to a server: letting you (or requiring you) to specify a callback function when you make the call. <br><br></p>
 <h2>A Simple Callback</h2>
 <p>One of the most common implementations of a callback that you are likely to encounter is found in the standard JavaScript <strong>addEventListener</strong> function which you can be attach to many different targets. This function has the general syntax:</p>
-<pre>target.addEventListener(event-type, callback);
+<pre class="mosync-code-cpp">target.addEventListener(event-type, callback);
 </pre>
 <p>Here <em>event-type</em> is a string representing the type of event to listen for,&nbsp;<em>callback</em> is the callback function that will receive a notification when an event of the specified type occurs, and target is the JavaScript object that you want to receive the event from.<br> <br>Here is a typical implementation when the target is a NativeUI widget (in this case a pre-defined button):</p>
-<pre>var myButton = document.getNativeElementById("myButton");
+<pre class="mosync-code-cpp">var myButton = document.getNativeElementById("myButton");
 myButton.addEventListener("Clicked", function()
 {
    alert("The button was clicked");
@@ -21,7 +21,7 @@ myButton.addEventListener("Clicked", function()
 <p>&nbsp;</p>
 <h2>Standalone Callback Functions</h2>
 <p>The callback function in the code above was defined in-line. It simply opened an alert box when a notification arrived from the listener. (The example above also serves to illustrate that, In JavaScript, code can be passed as an argument to a function, just like a variable or an object.) <br><br>In-line functions can be hard to read when they contain more than a couple of lines of code, so sometimes a better approach is to name the callout function and define it separately. This also allows you to use the callback function in another context:</p>
-<pre>// Define the callback function.
+<pre class="mosync-code-cpp">// Define the callback function.
 function buttonCallback()
 {
    alert("A button was clicked");
@@ -34,7 +34,7 @@ myButton2.addEventListener("Clicked", buttonCallback);</pre>
 <h2>A Typical Wormhole Callback Function</h2>
 <p>In the code above we didn’t do anything useful with the notification coming from the event listener, we just popped-up an alert when the notification arrived. Let’s look at a callback function that actually does something useful with the data in the notification object.</p>
 <p>In the following example, the callback function (<strong>updateAccelerometer</strong>) handles data coming from the accelerometer sensor:</p>
-<pre>// Initialization of the Accelerometer sensor.
+<pre class="mosync-code-cpp">// Initialization of the Accelerometer sensor.
 var accelerometer = new SensorConnection("Accelerometer");
 
 // Add an event listener to the sensor and identify a callback function.
@@ -55,13 +55,13 @@ function updateAccelerometer(sensorData)
 <p>&nbsp;</p>
 <h2>Defining Functions with Callback Arguments</h2>
 <p>So far we have been looking at the "client" side where the call originates and the callback function is defined. Now let’s look at the other side, where the original call gets processed, and from where the callback is invoked.<br> <br>Here is a simple maths function that generates a random number between two values, <strong>min</strong> and <strong>max</strong>, and passes the result to a callback function:</p>
-<pre>function randomGenerator(min, max, callback)
+<pre class="mosync-code-cpp">function randomGenerator(min, max, callback)
 {
    var myNumber = Math.floor(Math.random() * (max - min + 1)) + min;
    setTimeout(function() { callback(myNumber); }, 500);
 }</pre>
 <p>This maths function accepts three arguments, the third of which is the callback function to which the results should be sent. The function first does the required calculation (using the values of the first two arguments), then we make it wait 500 milliseconds (using <strong>setTimeout</strong>) before invoking the callback function passing the result. <br><br>(We are using <strong>setTimeout</strong> here merely to simulate what might happen with a complex asynchronous computation of a random number -- imagine how slow your app could become if this function is called multiple times and you had to wait each time for the result via a standard return from the called function.) <br> <br>On the client side, we can now make use of our random number generation function like this:</p>
-<pre>randomGenerator (5, 15, function(num)
+<pre class="mosync-code-cpp">randomGenerator (5, 15, function(num)
 {
    console.log("Your number is " + num);
 });</pre>
@@ -69,7 +69,7 @@ function updateAccelerometer(sensorData)
 <p>&nbsp;</p>
 <h2>Parallel Operations via Callbacks</h2>
 <p>Common JavaScript frameworks like <a href="http://jquery.com/">jQuery</a> make extensive use of callbacks. Here is an example of a call to the jQuery <strong>fadeIn()</strong> method. This method, which is used to fade in graphical interface elements until they become opaque, accepts two arguments: the duration of the animation and an optional callback function. We could use it on an element, for example, like this:</p>
-<pre>$("#element").fadeIn(2000, function()
+<pre class="mosync-code-cpp">$("#element").fadeIn(2000, function()
 {
    alert("Fade in complete");
 });</pre>
@@ -77,7 +77,7 @@ function updateAccelerometer(sensorData)
 <p>&nbsp;</p>
 <h2>Closures</h2>
 <p>A callback function can be used as a <em>closure</em>. A closure is a function that remembers references to variables outside of it's local scope. By this we mean variables that are neither parameters of the function, nor local variables defined inside the function with <strong>var</strong> keyword, but variables defined outside of the function, for example global variables or local variables defined in the containing function. Here is an example:</p>
-<pre>// Global variable.
+<pre class="mosync-code-cpp">// Global variable.
 var name = "Chris";
 
 function lottery()

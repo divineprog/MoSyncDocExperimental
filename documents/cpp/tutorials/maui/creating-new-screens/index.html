@@ -9,7 +9,7 @@
 <p>When you are creating your application, you will probably want to create screens with different information. To create a new screen at design time, you need to inherit from <strong>MAUI::Screen</strong>. When you create a new MAUI application in MoSync, then you get some example code to do this. I’ve built a new screen here to show a menu.</p>
 <h3>Menu.h</h3>
 <p>&nbsp;</p>
-<pre>#ifndef MENU_H_
+<pre class="mosync-code-cpp">#ifndef MENU_H_
 #define MENU_H_
 #include &lt;MAUI/Screen.h&gt;
 #include &lt;MAUI/Layout.h&gt;
@@ -34,7 +34,7 @@ private:
 <p>We can see that class Menu inherits from Screen.</p>
 <p>In the C++ code we can see what a Screen might do. (This is not a complete listing.)</p>
 <p>&nbsp;</p>
-<pre>#include "Menu.h"
+<pre class="mosync-code-cpp">#include "Menu.h"
 // Constructor for Menu. Takes a pointer to the Moblet object created in main.cpp
 Menu::Menu(Moblet* moblet) : mlet(moblet)
 {
@@ -81,7 +81,7 @@ void Menu::buildMenu()
 <p><strong>Note</strong>: Screens cannot have any sections which don’t have a widget on. The main widget will be resized to the size of the screen.</p>
 <p>To create the screen, you need to create a new instance of it. In the most simple example, the controlling <strong>Moblet</strong> (see the tutorial <a href="/documentation/tutorials/starting-new-moblet-project">Starting a New Moblet Project</a>) will call an initial screen to start.</p>
 <p>&nbsp;</p>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include "Screens/Menu.h"
 
 using namespace MAUtil;
@@ -134,7 +134,7 @@ void pointerMoveEvent(MAPoint2d point);
 void pointerReleaseEvent(MAPoint2d point);</pre>
 <p>Typically, we might want to capture these to control navigation on screen. In our menu, we’ve got a ListBox with the menu options. We want to capture key presses to navigate the menu.</p>
 <p>&nbsp;</p>
-<pre>/*
+<pre class="mosync-code-cpp">/*
  * This is inherited from Screen, and captures key presses.
  */
 void Menu::keyPressEvent(int keyCode)
@@ -178,7 +178,7 @@ void Menu::keyPressEvent(int keyCode)
 <p>The <strong>KeyPress </strong>and <strong>KeyRelease </strong>events pass an int, which is an index of the button pressed. These are constants in MoSync, and are in the format <strong>MAK_</strong>. There is a full list available in the <a href="/content/api-reference">MoSync API Reference Guide</a>. In this example, we’ve a simple<strong> switch</strong> statement. If the right soft key button is pressed, we end the application. If the up, left, 2 or 4 key is pressed, we tell the ListBox to go to the previous item. On the down, right, 6 or 8 buttons, we scroll down. When fire or 5 is pressed, we perform an action based on the selected item in the <strong>ListBox</strong>. We can see that we’ve created a navigation system just by simply plugging into the functions already available.</p>
 <p>When we capture a screen touch, we get a location on screen which has been touched.</p>
 <p>&nbsp;</p>
-<pre>void TouchListBox::pointerPressEvent(MAPoint2d point)
+<pre class="mosync-code-cpp">void TouchListBox::pointerPressEvent(MAPoint2d point)
 {
     locateItem(point);
 }</pre>
@@ -186,7 +186,7 @@ void Menu::keyPressEvent(int keyCode)
 <h2>Navigating to Other Screens</h2>
 <p>When you start writing MoSync apps, you’ll start by creating a couple of screens in the way described above, and then get stuck wondering how to navigate between screens. How does this screen go back to the one before? Or that one over there? In the MAUI example supplied with MoSync, there is a simple method for managing this.</p>
 <p>&nbsp;</p>
-<pre>LayoutScreen::LayoutScreen(Screen *previous) : previous(previous) 
+<pre class="mosync-code-cpp">LayoutScreen::LayoutScreen(Screen *previous) : previous(previous) 
 {
     mainLayout = createMainLayout("", "back");
     this-&gt;setMain(mainLayout);
@@ -207,7 +207,7 @@ void Menu::keyPressEvent(int keyCode)
 <pre>Screen layoutScreen = new LayoutScreen(this));</pre>
 <p>where <strong>this</strong> is the menu screen. This means that the LayoutScreen has an anchor to another screen, and when it wants to show the menu again, it can call the show() method on it.</p>
 <p>&nbsp;</p>
-<pre>/*
+<pre class="mosync-code-cpp">/*
  * Pressing soft right key will display previous screen.
  */
 void LayoutScreen::keyPressEvent(int keyCode) 
@@ -227,7 +227,7 @@ void LayoutScreen::keyPressEvent(int keyCode)
 .include "resources/data.bin"</pre>
 <p>A second way is for you to describe it in the resource file itself.</p>
 <p>&nbsp;</p>
-<pre>.res DYNAMICSCREENDEMO
+<pre class="mosync-code-cpp">.res DYNAMICSCREENDEMO
 .bin
 .byte 4 // The number of widgets
 .byte 1 // A label widget
@@ -241,7 +241,7 @@ void LayoutScreen::keyPressEvent(int keyCode)
 <p>I use my own format. I’ve a server which compiles data for my applications and sends it to the phone.</p>
 <p>I can build a screen at runtime based on the values in the resource file:</p>
 <p>&nbsp;</p>
-<pre>#ifndef BINARYSCREEN_H_
+<pre class="mosync-code-cpp">#ifndef BINARYSCREEN_H_
 #define BINARYSCREEN_H_
 #include "UIBuilder.h"
 #include &lt;MAUI/Screen.h&gt;
@@ -266,7 +266,7 @@ private:
 </pre>
 <p>This<strong> </strong><strong>BinaryScreen </strong>has a reference to the previous screen, so it can return. It also has a method for reading strings from the resource file.&nbsp; This code reads sequentially through the data in the resource file and determines the type of widget it wants to create. It then builds that widget and set the data in it accordingly.</p>
 <p>&nbsp;</p>
-<pre>#include "BinaryScreen.h"
+<pre class="mosync-code-cpp">#include "BinaryScreen.h"
 BinaryScreen::BinaryScreen(Screen* returnTo) : homeScreen(returnTo)
 {
     buildScreen();

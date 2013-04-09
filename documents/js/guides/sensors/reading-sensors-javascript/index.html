@@ -13,11 +13,11 @@
 <p>To visualize the data from the accelerometer on the screen we make use of the HTML5 <strong>canvas</strong> element.</p>
 <blockquote><p>A useful introduction to canvas is provided by Mozilla here:<a href="https://developer.mozilla.org/en/Canvas_tutorial"> https://developer.mozilla.org/en/Canvas_tutorial</a>.</p>
 </blockquote><p>We have separate images for the spirit level's base, its bubble, and the calibration lines on the tube. We use the <strong>drawImage</strong> function of the canvas context to scale and draw the images, starting with the spirit level's base, then the bubble with a dynamic position in the axis of the base (its position will later be determined by the accelerometer), and finally the calibration lines on top.<br><br>All we need to create the body of the main page is an HTML5 &lt;canvas&gt; tag:</p>
-<pre>&lt;body onload="initialize()"&gt;
+<pre class="mosync-code-cpp">&lt;body onload="initialize()"&gt;
    &lt;canvas id="tutorial"&gt;&lt;/canvas&gt;
 &lt;/body&gt;</pre>
 <p>We add an <strong>onload</strong> callback in the &lt;body&gt; tag to calls our <strong>initialize()</strong> function which is responsible for setting up several standard things — like listening to the <strong>Back</strong> button on devices that have one, and waiting for the <strong>ondeviceready</strong> event. <br><br>When the device is ready we set up our application-specific things. First we get the context to our canvas and resize the canvas to be the size of the screen (as we want this app to be a full screen canvas app.)<br><br>Next we initialize the variables that will hold our target angle and current angle retrieved from the accelerometer. <br><br>We continue by setting up the accelerometer. First we create a <strong>SensorConnection</strong> object of type <strong>Accelerometer</strong>. Then we attach a callback to it that gets invoked whenever new sensor data is available (in our case this callback function is called <strong>updateAccelerometer</strong>). <br><br>Next we start the accelerometer by invoking the method <strong>startWatch</strong> of the SensorConnection object. It takes one argument: a map of properties to be set. We are only interested in specifying the rate it should deliver sensor data. This is an element with the key interval and a number which specifies the rate in milliseconds. Finally we load the images in sequence in order to make sure all images are loaded before we start to draw them.<br><br>Here is our completed HTML/JavaScript code:</p>
-<pre>&lt;!DOCTYPE html&gt;
+<pre class="mosync-code-cpp">&lt;!DOCTYPE html&gt;
 &lt;!--
 * @file index.html
 * @author Niklas Nummelin

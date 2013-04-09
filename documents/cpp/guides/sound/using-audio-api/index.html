@@ -28,7 +28,7 @@
 <h2>Playing an audio resource</h2>
 <p>Before playing a resource you can set the number of times the sound should loop using <strong>maAudioSetNumberOfLoops</strong>: <strong>0</strong> means play once, <strong>1</strong> means play twice, and so on. A loop value of <strong>-1</strong> means that it should loop forever.<br><br>The current resource instance can also has it’s volume changed with <strong>maAudioSetVolume</strong>. Volume is a value between <strong>0</strong> and <strong>1</strong> where <strong>0</strong> is mute and <strong>1</strong> is full volume.<br><br><strong>maAudioGetLength</strong> gets the length of the sound in milliseconds while <strong>maAudioSetPosition</strong> lets you set the position in the file. You can also use <strong>maAudioGetPosition</strong> to get the current position in the file in milliseconds from the start. Note that these three functions may not be available for non-streaming sounds on all platforms. Check your return values and you will be safe.<br><br><strong>maAudioPlay</strong> will start playing the sound. The EVENT_TYPE_AUDIO_COMPLETED event will be fired when it’s finished. If you have set the number of loops to <strong>1</strong> you will hear the sound play twice and then you will get the event.<br><br>During playback you can always use <strong>maAudioPause</strong> to pause the current playback and it will be resumed by calling <strong>maAudioPlay</strong> again.<br><br> When you call <strong>maAudioStop</strong> the sound might get unprepared which means that you need to prepare it again. If you want to stop playback and start at the beginning again it’s better to use <strong>maAudioSetPosition</strong> and set the position to <strong>0</strong>.<br><br>When you don’t need to play a sound anymore you can destroy the <strong>MAudioInstance</strong> with <strong>maAudioInstanceDestroy</strong>. If you want to clean up the sound data just use <strong>maAudioDataDestroy</strong> to destroy the <strong>MAAudioData</strong>.<br><br></p>
 <h2 dir="ltr">Example: playing multiple sounds simultaneously</h2>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include &lt;conprint.h&gt;
 
 #include "MAHeaders.h"
@@ -199,7 +199,7 @@ extern "C" int MAMain()
     return 0;
 }</pre>
 <h2 dir="ltr">Example: streaming over HTTP (on Android)</h2>
-<pre>#include &lt;ma.h&gt;
+<pre class="mosync-code-cpp">#include &lt;ma.h&gt;
 #include &lt;conprint.h&gt;
 
 /**

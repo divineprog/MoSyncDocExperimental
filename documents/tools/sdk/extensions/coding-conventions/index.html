@@ -92,18 +92,18 @@
 <p>Syscalls are named using a ma- prefix. Only actual Syscalls and IOCTLs are named this way. Examples:<br>&nbsp;<br>void maDisposeLayer(Handle layer);<br>void maSetMap(Handle layer, Handle srcMapResource, int destX, int destY);</p>
 <h2>Library functions</h2>
 <p>Library functions that are directly associated with the manipulation of some complex datatype (such as a struct) should be prefixed with the name of the type followed by an underscore, followed by the function name in camel case. Examples:</p>
-<pre>MAVec3_normalize(MAVec3* v);
+<pre class="mosync-code-cpp">MAVec3_normalize(MAVec3* v);
 MARect_containsPoint(const MAVec3* v, const MAPoint2d* p);&nbsp;
 </pre>
 <p>Library functions that are not directly and strongly related to a datatype should be prefixed with an identifying name for the library, which should always contain an initial 'MA'. Examples:</p>
-<pre>MAMath_solveLinearSystem();
+<pre class="mosync-code-cpp">MAMath_solveLinearSystem();
 MAInet_sendMail();</pre>
 <h2>Design Patterns</h2>
 <h4>Syscalls and extensions</h4>
 <p>Syscalls and extensions constitute the lowest-level APIs available in MoSync. They are typically directly mapped to underlying platform features and are also subject to a number of restrictions:<br>&nbsp;<br>The number of parameters is limited to four. If more information must be passed, the stack or struct pointers can be used.<br>Parameters cannot be function pointers. If a notification mechanism is required, one is required to make use of (custom) events.<br>The only allowed parameter types are primitive IDL types (see IDL documentation) and IDL structs that actually are declared in the relevant IDL file.<br>The only allowed return types are primitive IDL types.<br>MoSync memory cannot be allocated within syscalls, other than in the specific case of built-in or custom events.</p>
 <h4>Syscalls that manipulate objects/resources</h4>
 <p>Allocation, manipulation and deallocation of native objects (resources) is typically implemented by means of handles.<br>Typically, there is an maCreateX() function, which takes a placeholder handle to represent the allocated native object. Subsequent access to this object is provided through other syscalls that accept handles as their first parameter.<br>Finally, all objects are destroyed using maDestroyObject(). As an example, these are some functions that create and manipulate images:<br>&nbsp;</p>
-<pre>void maCreateImageFromData(
+<pre class="mosync-code-cpp">void maCreateImageFromData(
 in Handle placeholder,
 in Handle data,
 in int offset,

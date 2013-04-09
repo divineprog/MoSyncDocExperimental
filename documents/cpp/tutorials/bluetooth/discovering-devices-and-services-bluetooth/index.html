@@ -12,12 +12,12 @@
 <p><span style="line-height: 21px; font-size: 15px; font-weight: bold;">BluetoothDeviceDiscoveryListener</span></p>
 <p>To implement Bluetooth discovery, you need to create a class which will respond to Bluetooth events. If you are creating a MAUI application, this will often be a <strong>MAUI::Screen</strong> class. In the following example, we've built a screen called <strong>Devices</strong>. It searches for and reports on Bluetooth devices in detectable range. When we define this class, we make it inherit from the interface class <strong>BluetoothDeviceDiscoveryListener</strong>:</p>
 <div>
-<pre>class Devices : public Screen, public BluetoothDeviceDiscoveryListener
+<pre class="mosync-code-cpp">class Devices : public Screen, public BluetoothDeviceDiscoveryListener
 {</pre>
 </div>
 <p>We also need it to implement the two methods defined in <strong>BluetoothDeviceDiscoveryListener</strong>, <strong>btNewDevice</strong> and <strong>btDeviceDiscoveryFinished</strong>:</p>
 <div>
-<pre>#include &lt;MAUtil/BluetoothDiscovery.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/BluetoothDiscovery.h&gt;
 ... 
     //Members for the BluetoothDeviceDiscoveryListener
     void btNewDevice (const BtDevice &amp;dev);
@@ -25,13 +25,13 @@
 </div>
 <p>To perform a Bluetooth device discovery, you will need an instance of <strong>BluetoothDiscoverer</strong>:</p>
 <div>
-<pre>    //The BT discovery class
+<pre class="mosync-code-cpp">    //The BT discovery class
     BluetoothDiscoverer* mDiscoverer;</pre>
 </div>
 <p>The process will be that you create an instance of the <strong>BluetoothDiscoverer</strong>, and set the <strong>BluetoothDiscoverer</strong>'s listener to be your new class. This instructs the <strong>BluetoothDiscoverer</strong> to inform your class whenever it finds a Bluetooth device, and when it has finished looking for them.</p>
 <p>The specific method for starting a device discovery is <strong>startDeviceDiscovery()</strong> to inform your class whenever it finds a Bluetooth device, and when it has finished looking for them<strong></strong>:</p>
 <div>
-<pre>  //Create the bt discoverer
+<pre class="mosync-code-cpp">  //Create the bt discoverer
   mDiscoverer = new BluetoothDiscoverer();
   mDiscoverer-&gt;startDeviceDiscovery(this, true); </pre>
 </div>
@@ -42,14 +42,14 @@
 <p><em><strong>Note</strong>: Getting names is not guaranteed. The discovery class will negotiate with each device and request its name, but some devices are slow and time out, and sometimes they move out of range between detecting their existence and retrieving their names. You should always code defensively for device names, and either substitute their address or leave them out of your UI if you can't detect their name. </em></p>
 <p>When the discoverer detects a device, it will call the listener's <strong>btNewDevice </strong>method. It will pass a reference to a <strong>BtDevice </strong>(BtDevice&amp;). <strong>BtDevice </strong>is a struct which contains a <strong>MAUtil::String</strong> for the name, and another struct containing the Bluetooth address called <strong>MABtAddr</strong>.</p>
 <div>
-<pre>void Devices::btNewDevice (const BtDevice &amp;dev)
+<pre class="mosync-code-cpp">void Devices::btNewDevice (const BtDevice &amp;dev)
 {
   lprintfln("Found new device");
   mDevices.add(dev);
   mContentBox-&gt;add(createLabel(dev.name.c_str()));
 }</pre>
 <p>When the discover has completed its search, it will call the <strong>btDeviceDiscoveryFinished()</strong> method of the listener:</p>
-<pre>void Devices::btDeviceDiscoveryFinished (int state)
+<pre class="mosync-code-cpp">void Devices::btDeviceDiscoveryFinished (int state)
 {
   lprintfln("Device discovery finished");
   mStatus-&gt;setCaption("Idle");
@@ -60,7 +60,7 @@
 <p>Below is the code for our example screen. It searches for devices and builds a list of nearby devices. (Note: this code requires UIBuilder.cpp and UIBuilder.h, which are available as a <a href="http://www.mosync.com/files/UIBuilder.zip">zip file</a> at the bottom of this tutorial.)</p>
 <p><strong>Devices.h</strong></p>
 <div>
-<pre>/**
+<pre class="mosync-code-cpp">/**
  * @file Devices.h
  * @author Sam Pickard, Naveed Asif
  *
@@ -139,7 +139,7 @@ private:
 </div>
 <p><strong>Devices.cpp</strong></p>
 <div>
-<pre>/**
+<pre class="mosync-code-cpp">/**
  * @file Devices.cpp
  * @author Sam Pickard, Naveed Asif
  *
@@ -333,11 +333,11 @@ extern "C" int MAMain()
 <p>Just as in device discovery, we use the <strong>BluetoothDiscoverer</strong> class to find services. Instead of calling the <strong>startDeviceDiscovery</strong> method, we call <strong>startServiceDiscovery</strong>. To do this, we need a class which inherits from <strong>BluetoothServiceDiscoveryListener</strong>. In the device discovery phase this was the screen class.</p>
 <p>The example shows a different screen for service discovery, so we can use the Services screen as the listener as well.</p>
 <div>
-<pre>class Services : public Screen, BluetoothServiceDiscoveryListener</pre>
+<pre class="mosync-code-cpp">class Services : public Screen, BluetoothServiceDiscoveryListener</pre>
 </div>
 <p>To implement <strong>BluetoothServiceDiscoveryListener</strong>, you need to implement the following methods:</p>
 <div>
-<pre>    void btNewService (const BtService &amp;serv);
+<pre class="mosync-code-cpp">    void btNewService (const BtService &amp;serv);
     void btServiceDiscoveryFinished (int state);</pre>
 </div>
 <p>When a new service is called, then your implementation of <strong>btNewService</strong> will be called, and just as in the device discovery, when it is complete it will call your <strong>btServiceDiscoveryFinished</strong>.</p>
@@ -346,7 +346,7 @@ extern "C" int MAMain()
 <p>MAUUIDs are the MoSync SDK implementation of Bluetooth UUIDs (universally unique identifiers). These UUIDs are constants, and are common to all Bluetooth implementations. Each UUID maps to a Bluetooth service. If you decide to create a brand new Bluetooth service, then you should generate a new UUID for it. If you implement an existing Bluetooth service, then you should use the existing UUID. The MoSync SDK contains definitions of common Bluetooth services in <strong>MAUtil/mauuid.h</strong> for you to use.</p>
 <p>To start a service discovery phase, you need to call the <strong>startServiceDiscovery</strong> method. This is being called from a method in our example <strong>Services </strong>object, where the <strong>Devices </strong>object has passed a <strong>BtDevice</strong> to the <strong>Services </strong>object for it to use in the search for services.</p>
 <div>
-<pre>void Services::getServices(BtDevice&amp; device)
+<pre class="mosync-code-cpp">void Services::getServices(BtDevice&amp; device)
 {
   if(!mIsWorking)
   {
@@ -364,7 +364,7 @@ extern "C" int MAMain()
 <p><em><strong>A word of caution</strong>: If you try to start a service discovery before the previous discovery has finished, the application will crash. The BluetoothDiscoverer class can't tell you directly when it is busy, so you will need to keep your own flag, which in this example is mIsWorking.</em></p>
 <p>Once your service search is running, you will receive a call to your listener's <strong>btNewService(BtService&amp;)</strong> method. This receives the <strong>BtService</strong> struct as defined above. You can filter services you may be interested in by comparing their UUIDs with values in <strong>MAUtil/mauuid.h</strong>. In our example, we are going to keep a <strong>Vector&lt;BtService&gt;</strong> of the services we've discovered, but also report the service names to the screen. The names come through populated, and you don't have to look up the name in a table.</p>
 <div>
-<pre>void Services::btNewService (const BtService&amp; serv)
+<pre class="mosync-code-cpp">void Services::btNewService (const BtService&amp; serv)
 {
   lprintfln("Found new service %s", serv.name.c_str());
   mContentBox-&gt;add(createLabel(serv.name.c_str()));
@@ -373,7 +373,7 @@ extern "C" int MAMain()
 </div>
 <p>When the service discovery phase is complete, your listener's <strong>btServiceDiscoveryFinished </strong>method is called.</p>
 <div>
-<pre>void Services::btServiceDiscoveryFinished(int state)
+<pre class="mosync-code-cpp">void Services::btServiceDiscoveryFinished(int state)
 {
   lprintfln("Service discovery finished");
   mStatus-&gt;setCaption("Idle");
@@ -384,7 +384,7 @@ extern "C" int MAMain()
 <p>The complete listing for Services is below</p>
 <p><strong>Services.h</strong></p>
 <div>
-<pre>/**
+<pre class="mosync-code-cpp">/**
  * @file Services.h
  * @author Sam Pickard, Naveed Asif
  *
@@ -451,7 +451,7 @@ private:
 </div>
 <p><strong>Services.cpp</strong></p>
 <div>
-<pre>/**
+<pre class="mosync-code-cpp">/**
  * @file Services.h
  * @author Sam Pickard, Naveed Asif
  *

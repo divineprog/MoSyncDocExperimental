@@ -26,7 +26,7 @@
 <p>To create our Moblet application, we have to use some controls from the MAUI library. The first one we want to use is the Screen control. This is a canvas which we can put other controls on, and can be shown to the user.</p>
 <p>The code that the project wizard creates looks something like this:</p>
 <div>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include &lt;MAUI/Screen.h&gt;
 #include &lt;MAUI/Label.h&gt;
 
@@ -182,7 +182,7 @@ extern "C" int MAMain()
 <p>The Moblet code exists to give the developer access to some basic phone functions. It manages the environment, and it can tell you when a key has been pressed, when the screen has been touched, what the screen size is, and so on.&nbsp; By basing our application on the Moblet code, we automatically have access to all of these things, regardless of the device it is going to run on. We are not going to have to change any code between an Android device, Symbian device, a Windows Mobile device, or a phone running J2ME.</p>
 <p>To create our screen, we need to look at the code for <strong>MAUIScreen</strong>:</p>
 <div>
-<pre>class MAUIScreen : public Screen
+<pre class="mosync-code-cpp">class MAUIScreen : public Screen
 {
 public:
     /**
@@ -276,29 +276,29 @@ private:
 <p>Click <strong>Next</strong>. Type the file name <strong>res.lst</strong>, then click <strong>Finish</strong>. You will see the new file appear in the <strong>MoSyncDemoApp</strong> project.</p>
 <p>Open up <strong>res.lst</strong> and add the following entry.</p>
 <div>
-<pre>.res MYFONT
+<pre class="mosync-code-cpp">.res MYFONT
 .bin
 .include "../../examples/MAUI/MAUIex/pretty.mof"</pre>
 </div>
 <p>MoSync font files have the <strong>.mof</strong> extension. This one, <strong>pretty.mof</strong>, is supplied with one of the examples.</p>
 <p>Obviously, you’ll need to change the path here if you’ve installed MoSync anywhere other than <em>C:\MoSync</em>. Note that the path to the font file cannot be absolute. Furthermore you must use either forward slashes in the path or escaped backslashes like this:</p>
 <div>
-<pre>.include "..\\..\\examples\\MAUI\\MAUIex\\pretty.mof"</pre>
+<pre class="mosync-code-cpp">.include "..\\..\\examples\\MAUI\\MAUIex\\pretty.mof"</pre>
 </div>
 <p>Now that you’ve included the font file in the project, you can reference it your program. To do this, you need to add an additional #<strong>include</strong> directive. You’ll also need to reference the <strong>Font </strong>class. Add these lines to the existing list of includes:</p>
 <div>
-<pre>#include &lt;MAUI/Font.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUI/Font.h&gt;
 #include &lt;MAHeaders.h&gt;
 </pre>
 </div>
 <p><strong>MAHeaders.h</strong> is a special file which is created when you build the application. It provides a reference (known as an <strong>MAHandle</strong>) to your program.</p>
 <p>With these included, we can create a font in the application:</p>
 <div>
-<pre>Font* f = new Font(MYFONT);</pre>
+<pre class="mosync-code-cpp">Font* f = new Font(MYFONT);</pre>
 </div>
 <p>And we can use it to create a label:</p>
 <div>
-<pre>Label* l = new Label(0, 0, 50, 50, NULL);
+<pre class="mosync-code-cpp">Label* l = new Label(0, 0, 50, 50, NULL);
 l-&gt;setFont(f);
 l-&gt;setCaption("Welcome to my mobile application");</pre>
 </div>
@@ -308,21 +308,21 @@ l-&gt;setCaption("Welcome to my mobile application");</pre>
 <h2>Tracing Your Application</h2>
 <p>You can trace the execution of your application with a command <strong>lprintfln()</strong>. This sends a formatted line to debug console in Eclipse. You need to add an include directive as:</p>
 <div>
-<pre>#include &lt;conprint.h&gt;</pre>
+<pre class="mosync-code-cpp">#include &lt;conprint.h&gt;</pre>
 </div>
 <p>If you add the line:</p>
 <div>
-<pre>lprintfln("Starting");</pre>
+<pre class="mosync-code-cpp">lprintfln("Starting");</pre>
 </div>
 <p>as the first line in the constructor code, then you will see this in the console window in Eclipse. Use <strong>lprintfln </strong>as you write your program so you can see what it being executed.</p>
 <h2>Interacting with the User</h2>
 <p>You can now use the Moblet interfaces to interact with the user. We can capture key presses and cause different things to happen. In our application, we want it to exit.</p>
 <p>There are five basic events for user interaction. Key press, key release, screen touch, screen drag and screen release. Each of these events has already been set up for you, you just need to write some code to react to these events in the screen. In fact, in the Moblet class, you can even see example stubs for these. However, I want to capture key presses in the <strong>MyScreen </strong>class</p>
 <div>
-<pre>void keyPressEvent(int keyCode)</pre>
+<pre class="mosync-code-cpp">void keyPressEvent(int keyCode)</pre>
 </div>
 <div>
-<pre>{
+<pre class="mosync-code-cpp">{
     lprintfln("Caught a key press");
     if(keyCode == MAK_5)
     maExit(0);
@@ -332,7 +332,7 @@ l-&gt;setCaption("Welcome to my mobile application");</pre>
 <p>If the key pressed is 5 on the keypad, then we’re going to do a brute force exit of the program. There is a <strong>Moblet::close()</strong> method which is probably preferred, but this will do for our demonstration.</p>
 <p>There we have it, a mobile application. You now got a basis for creating your own applications. If you want to check what you’ve got against my program, here is my listing:</p>
 <div>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include &lt;MAUI/Screen.h&gt;
 #include &lt;MAUI/Label.h&gt;
 #include &lt;MAUI/Font.h&gt;

@@ -71,7 +71,7 @@
 </ul>
 <h2>Widget Creation</h2>
 <p>For each type of widget there is a corresponding class, so the routine in which a widget is instantiated is very simple:</p>
-<pre>WidgetType* myNewWidget = new WidgetType().</pre>
+<pre class="mosync-code-cpp">WidgetType* myNewWidget = new WidgetType().</pre>
 <p>Do not forget to include the header file for all widgets, <strong>Widgets.h</strong>, or each widget class one by one.</p>
 <h2>Widget Properties</h2>
 <p>The shared methods implemented across all widgets include:</p>
@@ -112,7 +112,7 @@
 <li><strong>editBoxReturn(editBox)</strong></li>
 </ul>
 <p>More than just one listener can be attached to a widget. Attaching a listener to a widget can be done in this way:</p>
-<pre>EditBox* myEditBox = new EditBox();
+<pre class="mosync-code-cpp">EditBox* myEditBox = new EditBox();
 myEditBox-&gt;addEditBoxListener(this);</pre>
 <h2>Dialogs</h2>
 <p>A Dialog is a modal view that can look different depending on the platform:</p>
@@ -125,7 +125,7 @@ myEditBox-&gt;addEditBoxListener(this);</pre>
 <p>When a Dialog widget is created it is empty, it has no content. Use setMainWidget(mainLayout) to set the main widget of the dialog.</p>
 <p>A Dialog gets visible only after calling show() method.</p>
 <p>Usage example:</p>
-<pre>Dialog* myDialog = new Dialog();
+<pre class="mosync-code-cpp">Dialog* myDialog = new Dialog();
 myDialog-&gt;setTitle("My Form");
 // Set specific iPad property for position, so that
 // the dialog arrow points up.
@@ -146,7 +146,7 @@ myDialog-&gt;show();</pre>
 <li><strong>Navigation bar's title</strong>.</li>
 </ul>
 <p>Example:</p>
-<pre>// Get the first available font of the device.
+<pre class="mosync-code-cpp">// Get the first available font of the device.
 if ( maFontGetCount() &gt; 0 )
 {
     char buf[256];
@@ -156,14 +156,14 @@ if ( maFontGetCount() &gt; 0 )
         myLabel-&gt;setFont( fontHandle );
 }</pre>
 <p>At any time the font color can be set by calling the method <strong>setFontColor</strong>:</p>
-<pre>enum Colors
+<pre class="mosync-code-cpp">enum Colors
 {
     INTENSE_BLUE = 0x104E8B ,
     LIGHT_BLUE = 0xB2DFEE
 };
 myLabel-&gt;setFontColor(LIGHT_BLUE);</pre>
 <p>Also, the font size can be set for the widget in use, without having to actually modify the font resource:</p>
-<pre>#define FONT_SIZE_REGULAR 15.3
+<pre class="mosync-code-cpp">#define FONT_SIZE_REGULAR 15.3
 
 myLabel-&gt;setFontSize(FONT_SIZE_REGULAR);</pre>
 <p>Note: When building applications that use Native UI, &nbsp;remember to select an iOS, Android or WP7 target in the right-hand device profile panel.</p>

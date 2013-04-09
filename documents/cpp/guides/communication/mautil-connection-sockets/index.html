@@ -8,7 +8,7 @@
 <p>An FTP client begins by setting up a socket to the FTP server, authorize itself and then continues by sending instructions. All communication is done in plain text which makes the protocol both easy to understand and use. For further information about the FTP protocol see <a href="http://cr.yp.to/ftp.html">cr.yp.to/ftp.html</a>.</p>
 <h2>Implementation</h2>
 <p>We will implement all functionality as functions in a class inherited from Moblet, so we begin by creating a project from a Moblet template, adding a few #include directives, and declaring inheritance from the <strong>MAUtil::ConnectionListener</strong> class:</p>
-<pre>#include &lt;MAUtil/Moblet.h&gt; 
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt; 
 #include &lt;MAUtil/Connection.h&gt; 
 #include &lt;MAUtil/Util.h&gt; 
 #include &lt;conprint.h&gt;
@@ -17,11 +17,11 @@ using namespace MAUtil;
 class MyMoblet : public Moblet, ConnectionListener 
 {</pre>
 <p>Then add the member variables of the class, a Connection instance, and a temporary string buffer. The string buffer will be used to store the incoming responses from the server:</p>
-<pre>private:
+<pre class="mosync-code-cpp">private:
 Connection mConnection;
 char lineBuffer[1024];</pre>
 <p>We continue by defining the Constructor. In the initialization list we initialize the connection by passing a pointer to <tt>this</tt> (the <strong>MAUtil::ConnectionListener</strong>). In the constructor we connect the connection to a socket, i.e. the FTP server we're going to communicate with. FTP communication defaults to port 21, but in some cases FTP servers may use other ports. We verify that the connection has been successfully initiated by checking the return value from <tt>connect</tt>.</p>
-<pre>public: 
+<pre class="mosync-code-cpp">public: 
 MyMoblet() : mConnection(this)
 {
     int res = mConnection.connect("socket://ftp.sunet.se:21");
@@ -31,12 +31,12 @@ MyMoblet() : mConnection(this)
     }
 }</pre>
 <p>Now we will add some helper functions to receive, parse, and send the FTP response and requests. First we add a function that receives incoming data to the temporary string buffer:</p>
-<pre>void getNextFtpResponse()
+<pre class="mosync-code-cpp">void getNextFtpResponse()
 {
     mConnection.recv(lineBuffer, 1024);
 }</pre>
 <p>When the response has been received the <tt>connRecvFinished</tt> function derived from the <tt>ConnectionListener</tt>, which we will implement later, is invoked. Next we implement a function to put an FTP request. It adds a line breaking sequence that conforms to the FTP standard and writes the request to the connection. The <tt>connWriteFinished</tt> function will be invoked when the request has been written.</p>
-<pre>void putFtpRequest(const char *req)
+<pre class="mosync-code-cpp">void putFtpRequest(const char *req)
 {
     char temp[1024];
     int len = sprintf(temp, "%s\015\012", req);
@@ -44,7 +44,7 @@ MyMoblet() : mConnection(this)
 }</pre>
 <p>Finally, we add a function that parses the response code of a response line. (The link to the FTP protocol description at the top of this guide describes the format of a response.)</p>
 <p>We first trim the spaces in the beginning and then parse the following number:</p>
-<pre>int parseFtpResponseCode(const char *lineBuffer)
+<pre class="mosync-code-cpp">int parseFtpResponseCode(const char *lineBuffer)
 {
     int i=0;
     char temp[16];
@@ -56,7 +56,7 @@ MyMoblet() : mConnection(this)
     return atoi(temp);
 }</pre>
 <p>Now that the helper functions are ready we can implement the actual communication. First we implement the <tt>connectFinished</tt> function derieved from the <tt>ConnectionListener</tt> which checks if everything went well and if that is the case, receives the next FTP server response.</p>
-<pre>void connectFinished(Connection* conn, int result)
+<pre class="mosync-code-cpp">void connectFinished(Connection* conn, int result)
 {
     if(result &lt; 0) 
     {
@@ -66,7 +66,7 @@ MyMoblet() : mConnection(this)
     getNextFtpResponse();
 }</pre>
 <p>The <tt>connWriteFinished</tt> will look exactly the same. Whenever we've sent an FTP request we want to receive a new FTP response.</p>
-<pre>void connWriteFinished(Connection* conn, int result)
+<pre class="mosync-code-cpp">void connWriteFinished(Connection* conn, int result)
 {
     if(result &lt; 0)
     {
@@ -77,7 +77,7 @@ MyMoblet() : mConnection(this)
 }</pre>
 <p>When we've received a response from the server we can decide on what to do next. The final function <tt>connRecvFinished</tt> derived from the <tt>ConnectionListener</tt> will be called when a response has been received. First we split the lines of the response into a list of strings, one for each line. The response code will be the same for each line, so we parse the response code of the first line. By analyzing the response code, the client program can determine what state the FTP connection is in and choose what to do next.</p>
 <p>We will only implement a few steps in the initial handshaking procedure. After the <tt>PASV</tt> command has been sent, a response with a new IP address and port is recieved. This IP address should be used to set up a data connection. All data traffic will be handled over this connection. Even the result from requests like <tt>LIST</tt>, which list all files in a directory. Implementing this functionality is left as an exercise for the reader.</p>
-<pre>void connRecvFinished(Connection* conn, int result)
+<pre class="mosync-code-cpp">void connRecvFinished(Connection* conn, int result)
 {
     if(result &lt; 0) 
     {

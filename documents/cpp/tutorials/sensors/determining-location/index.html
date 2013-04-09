@@ -16,7 +16,7 @@
 <h2>Accessing GPS Data</h2>
 <p>The MoSync SDK provides an API for interfacing with GPS modules. &nbsp;You don't need to do anything special,&nbsp;<span style="color: #000000;">just start requesting</span>&nbsp;GPS data for your application. &nbsp;</p>
 <div>
-<pre>int res = maLocationStart();      
+<pre class="mosync-code-cpp">int res = maLocationStart();      
 maLocationStop();</pre>
 </div>
 <p>These start and stop methods tell the GPS module to start collecting location data, and deliver it to your application.&nbsp;</p>
@@ -24,7 +24,7 @@ maLocationStop();</pre>
 <blockquote><p><em><strong>Note</strong>:&nbsp;The MoSync IDE's MoRE emulator does not provide GPS data. It will always return -1.&nbsp;</em></p>
 </blockquote><p>To receive data, your Moblet needs to respond to system events. You can do this by putting the following code in your&nbsp;<strong>Moblet&nbsp;</strong>class. This code listens to all events and responds to those that are location messages.</p>
 <div>
-<pre>void customEvent(const MAEvent&amp; event)
+<pre class="mosync-code-cpp">void customEvent(const MAEvent&amp; event)
 {
   //Check to see if this is a location event
   if(event.type == EVENT_TYPE_LOCATION)
@@ -41,7 +41,7 @@ maLocationStop();</pre>
 <p>In the following example of a location-handling application, we have a small framework. We have created interfaces for location providers (implemented by&nbsp;<strong>Moblet</strong>) and for location listeners (our screens which need location data).</p>
 <p><strong>Location.h</strong></p>
 <div>
-<pre>#ifndef LOCATION_H_
+<pre class="mosync-code-cpp">#ifndef LOCATION_H_
 #define LOCATION_H_
  
 #include &lt;maapi.h&gt;
@@ -73,7 +73,7 @@ class ILocation
 <p><strong>MapScreen.h</strong></p>
 <p>We can use the ILocationListener interface with a map screen to automatically update the map with the user's location.</p>
 <div>
-<pre>#ifndef _MAPSCREEN_H_
+<pre class="mosync-code-cpp">#ifndef _MAPSCREEN_H_
 #define _MAPSCREEN_H_
 
 #include &lt;MAUI/Screen.h&gt;
@@ -105,7 +105,7 @@ class MapScreen : public Screen, public ILocationListener
 </div>
 <p><strong>MapScreen.cpp</strong></p>
 <div>
-<pre>#include "MapScreen.h"
+<pre class="mosync-code-cpp">#include "MapScreen.h"
 
 MapScreen::MapScreen()
 {

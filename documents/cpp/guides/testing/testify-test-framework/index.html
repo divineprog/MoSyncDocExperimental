@@ -11,21 +11,21 @@
 <p>Before you start using Testify, we would like to introduce you to two important concepts: <em>hooks </em>and <em>functors</em>.</p>
 <h3><a name="Hooks_7101796493699488_5487067" id="Hooks_7101796493699488_5487067"></a>Hooks</h3>
 <p>A hook is the mechanism you use to add your test or test listener to Testify at link time. It's just a class which you instantiate, preferably in the same file as your test. A typical use of a hook looks like this:</p>
-<pre>static Testify::TestHook hook( new MyTestCase( ) );</pre>
+<pre class="mosync-code-cpp">static Testify::TestHook hook( new MyTestCase( ) );</pre>
 <p>where <strong>Testify::TestHook </strong>is the actual hook, and <strong>MyTestCase</strong> is a test case that you've written.</p>
 <h3><a name="Functors_16222712713195286_354" id="Functors_16222712713195286_354"></a>Functors</h3>
 <p>The workhorse of Testify are the function or method wrappers, otherwise known as "functors". If you've ever used the Boost library, you might be familiar with the concept. A functor wraps a function or a method, possibly along with its parameters, and can conveniently be called without having to care about it's details.<br><br> A typical use of a functor in Testify looks like this:</p>
-<pre>Testify::bind( MyFunction ) </pre>
+<pre class="mosync-code-cpp">Testify::bind( MyFunction ) </pre>
 <p>or like this:</p>
-<pre>Testify::bind( MyFunction2, 1, 2.0f ) </pre>
+<pre class="mosync-code-cpp">Testify::bind( MyFunction2, 1, 2.0f ) </pre>
 <p>where <strong>MyFunction </strong>and <strong>MyFunction2</strong> are functions in your code. The second case wraps two parameters which are to be passed to <strong>MyFunction2 </strong>while invoking it. <br><br> When it comes to methods, it's slightly different, you also have to pass the object which the method belongs to as well, from inside the class, the constructor for instance. It could look like this:</p>
-<pre>Testify::bind( &amp;MyClass::myMethod, this )</pre>
+<pre class="mosync-code-cpp">Testify::bind( &amp;MyClass::myMethod, this )</pre>
 <p>and of course, in this case you can wrap parameters as well.</p>
 <p>Once you've written your tests and their hooks and you are ready to run them, you only need to link to <em><strong>testify.lib</strong> </em>and run your program as usual. Testify will take care of booting itself and running the tests, you do not need to care about the details. Any existing <strong>MAMain </strong>will be overridden (not overwritten) as long as you are linking to <strong>testify.lib</strong>.</p>
 <h3><a name="_Other_concepts_68940498182425_08960115882277664" id="_Other_concepts_68940498182425_08960115882277664"></a> Other Features</h3>
 <p><strong>Testify::TestFunction</strong> is used to run test functions. These are normally never used explicitly. <br><br><strong>Testify::TestCase</strong> is a class which is inherited when you need a bit more support, such as set up and tear down before or after each test or each case.<br><br><strong>Testify::TestListener</strong> describes an interface that can be overridden to make your own custom listeners to the events that Testify broadcasts. Events occur when a test suite starts or ends, when a test starts or ends, or when a test fails.</p>
 <p>To add your own custom test listener to Testify, you use the hook concept, but this time you use <strong>Testify::ListenerHook</strong>, i.e:</p>
-<pre>static Testify::ListenerHook( new MyTestListener( ) ); </pre>
+<pre class="mosync-code-cpp">static Testify::ListenerHook( new MyTestListener( ) ); </pre>
 <h2><a name="Creating_a_Test_34894458465111" id="Creating_a_Test_34894458465111"></a>Creating a Test</h2>
 <p>Now let's look at how to write a simple test case. We'll start with the testing of a simple function. The steps involved are the following:</p>
 <ul>
@@ -34,7 +34,7 @@
 <li>Link with <strong>testify.lib</strong></li>
 </ul>
 <p>Example (in your application):</p>
-<pre>#include &lt;testify/testify.hpp&gt;
+<pre class="mosync-code-cpp">#include &lt;testify/testify.hpp&gt;
 
 static void SumTest ( void )
 {

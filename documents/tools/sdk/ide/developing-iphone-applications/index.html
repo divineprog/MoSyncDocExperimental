@@ -27,7 +27,7 @@
 <h2>Apple Guidelines and Exiting an App</h2>
 <p>Apple provides&nbsp;<a href="http://developer.apple.com/iphone/library/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/StandardBehaviors/StandardBehaviors.html">detailed guidelines</a>&nbsp;describing how a well-behaved iPhone application should be written.</p>
 <p>Generally, MoSync runtimes are completely conformant with Apple's guidelines, so you should have no trouble getting your application in the Apple App Store. Note, however, that Apple expects all applications to be closed by the "Home" button on their device, and are likely to reject applications which explicitly show an "Exit" button. If you want such a button on other platforms, simply skip it on iOS:</p>
-<pre>#include &lt;maprofile.h&gt;
+<pre class="mosync-code-cpp">#include &lt;maprofile.h&gt;
 ...
 #ifndef MA_PROF_SUPPORT_OS_IPHONEOS
    &lt;code for initializing an exit button&gt;

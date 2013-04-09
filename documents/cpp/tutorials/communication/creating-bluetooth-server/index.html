@@ -11,7 +11,7 @@
 <p>When you receive a new connection, the <strong>serverAccepted</strong><strong> </strong>method is called, and it is passed a pointer to a new <strong>Connection</strong> object. This is the same class as you would use for outgoing connections so all of the same methods for reading and writing data are available. The only difference is that you’ve got to code responses to incoming data.</p>
 <p>A very simple <strong>Server</strong> implementation would look like this:</p>
 <div>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include &lt;MAUtil/Server.h&gt;
 #include &lt;conprint.h&gt;
 using namespace MAUtil;
@@ -77,13 +77,13 @@ extern "C" int MAMain()
 <p>When Bluetooth clients are searching for your service, they will need to know what the UUID is. If you are writing the client software as well, you’ll need to use the UUID to discover the service. See our tutorial on <a href="http://www.mosync.com/documentation/tutorials/discovering-devices-and-services-bluetooth"><strong>Discovering Devices and Services with Bluetooth</strong></a> for more information.</p>
 <p>In the MoSync SDK, Bluetooth service UUIDs are defined as being a <strong>struct </strong>of an <strong>int[4]</strong>. Bluetooth UUIDs are 32 bytes long, but large parts of the UUID are common to all Bluetooth UUIDs. If you want to create your own UUID, you would need to check that it isn’t being used by any other Bluetooth service, and also ensure that its unique segment (the first <strong>int </strong>in the <strong>struct</strong>) ANDs with 0x1000 (4096). The following is a line from <strong>mauuid.h</strong>, defining the UUID for the serial port service.</p>
 <div>
-<pre>DEFINE_BTMAUUID(SerialPort_Service_MAUUID, 0x1101);</pre>
+<pre class="mosync-code-cpp">DEFINE_BTMAUUID(SerialPort_Service_MAUUID, 0x1101);</pre>
 </div>
 <p>Its unique segment is 0x1101. The first "1" signals that it is a specific service, and not a service collection (compare with DEFINE_BTMAUUID(RFCOMM_PROTOCOL_MAUUID, 0x0003);). The remaining value 0x101 (257) is the part that matches the standard definition for serial port.</p>
 <h2>Creating Server IDs</h2>
 <p>Your UUID must be unique. In this example, we will use a value of 355. We can then define our new service UUID as follows:</p>
 <div>
-<pre>DEFINE_BTMAUUID(Example_Service_MAUUID, 0x1163);</pre>
+<pre class="mosync-code-cpp">DEFINE_BTMAUUID(Example_Service_MAUUID, 0x1163);</pre>
 </div>
 <p>The format of a Bluetooth service URL is:</p>
 <p style="padding-left: 30px;"><strong>btspp://localhost:</strong><em>&lt;service uuid&gt;</em><strong>[;name=</strong><em>&lt;plain text name of the service&gt;</em><strong>]</strong></p>
@@ -91,13 +91,13 @@ extern "C" int MAMain()
 <h2>Formatting Connection URLs</h2>
 <p>This little function will create a valid URL:</p>
 <div>
-<pre>void MyServer::formatUrl(char* output, MAUUID&amp; serviceID, const char* servicename)
+<pre class="mosync-code-cpp">void MyServer::formatUrl(char* output, MAUUID&amp; serviceID, const char* servicename)
 {
     sprintf(output, "btspp://localhost:%08x%08x%08x%08x;name=%s\0", serviceID.i[0], serviceID.i[1], serviceID.i[2], serviceID.i[3], servicename);
 }</pre>
 </div>
 <p>You can now use the URL to start the server. The connect method takes this URL instead.</p>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include &lt;MAUtil/Server.h&gt;
 #include &lt;MAUtil/mauuid.h&gt;
 #include &lt;conprint.h&gt;
@@ -174,7 +174,7 @@ extern "C" int MAMain()
 <p>If you’ve run the above examples, you will notice that neither the <strong>serverAccepted</strong> or the <strong>serverAcceptFailed</strong> methods have been called. To make the server binding work, you need to call the accept method, and pass it a <strong>ConnectionListener</strong>.</p>
 <p><strong>ConnectionListener</strong><strong> </strong>will be familiar to anyone who has developed a network client in MoSync. It responds to connection events from the Connection class. The ConnectionListener has the following methods you need to implement:</p>
 <div>
-<pre> void connectFinished(Connection* conn, int result);
+<pre class="mosync-code-cpp"> void connectFinished(Connection* conn, int result);
  void connRecvFinished(Connection* conn, int result);
  void connWriteFinished(Connection* conn, int result);
  void connReadFinished(Connection* conn, int result);</pre>
@@ -183,7 +183,7 @@ extern "C" int MAMain()
 <h2>Creating ConnectionListeners</h2>
 <p>A common way to develop this <strong>ConnectionListener </strong>is to create a connection handler. This is the class which will maintain the connection state and manage the data flow.</p>
 <div>
-<pre>class MyConnectionHandler : public ConnectionListener
+<pre class="mosync-code-cpp">class MyConnectionHandler : public ConnectionListener
 {
     private:
         Connection* mConn;
@@ -221,7 +221,7 @@ extern "C" int MAMain()
 <h2>Processing a connection</h2>
 <p>There is also a method <strong>start</strong>. This is so we can start the connection handler with a valid connection, and it can start requesting data from the stream. As an example, we’re going to create a server that receives data, counts the number of bytes it has received in total, and respond to the client with this value. We’ve got a buffer to read into, but we’re not really interested in the data, just the values, so we can write the data to the console and keep track of the quantity. When data is received, we’re going to increase the total counter, create a text value to that amount and write it to the output stream.</p>
 <div>
-<pre>     void MyConnectionHandler::connRecvFinished(Connection* conn, int result)
+<pre class="mosync-code-cpp">     void MyConnectionHandler::connRecvFinished(Connection* conn, int result)
      {
          if(result &gt; 0)
          {
@@ -246,7 +246,7 @@ extern "C" int MAMain()
      }</pre>
 </div>
 <p>We’ve also put an error check in there to ensure that no error codes have been sent.Now we’ve got a connection handler that can read and write data, we can call the accept method on the Server.</p>
-<pre>        {
+<pre class="mosync-code-cpp">        {
             if(mServer.isOpen())
                 lprintfln("Already open");
             else
@@ -269,7 +269,7 @@ extern "C" int MAMain()
         }</pre>
 <p>Once the server has bound to the port or service, the <strong>serverAccepted </strong>method is called, and you can start your connection handler receiving data.</p>
 <p>In a more sophisticated example, you would also need a listener to the connection handler for it to report errors to, and to close the connection when it has finished. The complete listing is below</p>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include &lt;MAUtil/Server.h&gt;
 #include &lt;MAUtil/mauuid.h&gt;
 #include &lt;conprint.h&gt;

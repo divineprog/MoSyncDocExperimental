@@ -1,131 +1,232 @@
+Documentation Exports and Website Structure
+===========================================
 
-check pages that are missing, blogposts, webview example apps,
+Document documentation system
+-----------------------------
+
+Make documentation for documentation system :)
+Design considerations, how the structure works, etc.
+Doc author's guide.
+
+
+Page coverage
+-------------
+
+Check pages that are missing, blogposts, webview example apps,
 photogallery pages, wormhole guides, quick-start guides, etc.
 
-
-http://www.metaltoad.com/sites/default/files/Responsive-Widths_0.png
-http://rubular.com/
-http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
-
-replace links
-
-syntax highlight
+Export all files in given directories, rather than using content labels?
 
 
-Search
+Replace links
+-------------
 
-Products
-  MoSync SDK
-  MoSync Reload
-  Product Comparison
+What to use as base directory on web server?
 
-MoSync SDK
-  IDE
-  ...
+WHat is the case directory in MoSync dist for Doxygen docs?
+
+Use relative paths to everything, also to Doxygen?
+Or use Docygen absolute paths on website and make Doxygen urls 
+relative when building docs for MoSync dist?
+
+
+Update to page export
+---------------------
+
+Title into h1 ?? (not needed really, better without it)
+
+Ddd:
+  author, date ?? As comment?
   
-MoSync Reload
-  ...
+Fix images.
 
-Quick Start
-  C/C++
-  HTML5/JS
 
-Tutorials
-  C/C++
-    [by subject]
-  HTML5/JS
-    [by subject]
-  
-Coding Guides
-  C/C++
-    Bluetooth
-    Native UI
-    [by topic/feature]
-  HTML5/JS
-    [by topic/feature]
- 
-Example Apps
-  C/C++
-    [by subject]
-  HTML5/JS
-    [by subject]
+Page conversion
+---------------
 
-API Reference
-  C/C++
-  HTML5/JS
-  
-Common Pitfalls
+Remove:
+  <!--break-->[toc]
 
---
+Convert syntaxhighlighter to pre with custom class: 
+<pre class="mosync-code-cpp">...</pre>
 
-Search
+(we can assume most code is cpp or js)
 
-Overview (Home)
+{syntaxhighlighter brush: cpp;fontsize: 100; first-line: 1; }
+{/syntaxhighlighter}
 
-Quick Start
-  MoSync SDK JavaScript
-  MoSync SDK C/C++
-  MoSync Reload
-  
-References
-  C/C++ API
-  JavaScript API
-  Panic Codes
-  Resource Compiler
+Add some other syntax highlight css or so for class mosync-code-cpp
 
-Coding Guides 
-  C/C++
-  JavaScript
-  
-Tutorials
-  C/C++
-  JavaScript
-  
-Tools Guides
-  MoSync SDK
-  MoSync Reload
 
-Products
-  MoSync SDK
-  MoSync Reload
-  Product Comparison
+Redirects
+---------
 
--------- :)
+Mapping from old url to new url, redirect every page.
+Build SQL statements from conversion table in structure.rb
 
-Search
 
-Overview (Home)
+What to insert into generated pages
+-----------------------------------
 
-Quick Start
-  Creating Your First C/C++ App
-  Creating Your First JavaScript App (Getting Started with HTML5 and JavaScript)
-  Getting Started with MoSync Reload (Using MoSync Reload)
-  
-  MoSync SDK and JavaScript
-  MoSync SDK and C/C++
-  MoSync Reload
+Is this needed? (from old pages)
 
-C/C++
-  API Reference
-  Coding Guides
-  
-JavaScript
-  API Reference
-  Coding Guides
+    <!DOCTYPE html>
+    <html lang="en" xml:lang="en" dir="ltr">
 
-Tools
-  MoSync SDK
-  MoSync Reload
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="fb:app_id" content=""/>
 
-Screencasts
 
-Products
-  MoSync SDK
-  MoSync Reload
-  Product Comparison
+Google Analytics
+----------------
 
-----------------------
+    <!--Moved to header by pbarrientos, request from Alex based on this info
+            https://support.google.com/analytics/bin/answer.py?hl=en&answer=1008080-->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-223119-1']);
+        _gaq.push(['_trackPageview']);
 
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+        // http://support.google.com/analytics/answer/1136920?hl=en
+        function recordOutboundLink(link, category, action) {
+          try {
+            var pageTracker=_gat._getTracker("UA-223119-1");
+            pageTracker._trackEvent(category, action);
+            setTimeout('document.location = "' + link.href + '"', 100)
+          }catch(err){}
+        }
+    </script>
+
+
+Page menu structure
+-------------------
+
+Alternative one (by language, tool):
+
+    Search
+
+    Products
+      MoSync SDK
+      MoSync Reload
+      Product Comparison
+
+    MoSync SDK
+      IDE
+      ...
+      
+    MoSync Reload
+      ...
+
+    Quick Start
+      C/C++
+      HTML5/JS
+
+    Tutorials
+      C/C++
+        [by subject]
+      HTML5/JS
+        [by subject]
+      
+    Coding Guides
+      C/C++
+        Bluetooth
+        Native UI
+        [by topic/feature]
+      HTML5/JS
+        [by topic/feature]
+     
+    Example Apps
+      C/C++
+        [by subject]
+      HTML5/JS
+        [by subject]
+
+    API Reference
+      C/C++
+      HTML5/JS
+      
+    Common Pitfalls (permissions, memory settings, etc,
+                     ask around for input)
+
+Alternative two, by document type:
+
+    Search
+
+    Overview (Home)
+
+    Quick Start
+      MoSync SDK JavaScript
+      MoSync SDK C/C++
+      MoSync Reload
+      
+    References
+      C/C++ API
+      JavaScript API
+      Panic Codes
+      Resource Compiler
+
+    Coding Guides 
+      C/C++
+      JavaScript
+      
+    Tutorials
+      C/C++
+      JavaScript
+      
+    Tools Guides
+      MoSync SDK
+      MoSync Reload
+
+    Products
+      MoSync SDK
+      MoSync Reload
+      Product Comparison
+
+Alternative three (by language, currently used):
+
+    Search
+
+    Overview (Home)
+
+    Quick Start
+      Your First C/C++ App (MoSync SDK and C/C++)
+      Your First JavaScript App (MoSync SDK: Getting Started with HTML5 and JavaScript)
+      Kickstart MoSync Reload (Using MoSync Reload)
+
+    C/C++
+      API Reference
+      Coding Guides
+      Tutorials
+      Examples
+      
+    JavaScript
+      API Reference
+      Coding Guides
+      Tutorials
+      Examples
+
+    Tools
+      MoSync SDK
+      MoSync Reload
+
+    Screencasts
+
+    Products
+      MoSync SDK
+      MoSync Reload
+      Product Comparison
+
+
+Document types - difference between Guide and Tutorial
+------------------------------------------------------
 
 Topics focus on one feature - Guide = ONE feature
 Subjects can be broader is scope and focus on several features - Tutorial = many features
@@ -133,9 +234,11 @@ All "getting started" (quick-start) are tutorials
 Tutorial = beginner's guide
 Guide = also for advanced users, more of a reference explained, with example code
 
-----------------------
+Tutorial is longer than a guide
 
-prettyprint
+
+Prettyprint HTML
+----------------
 
 opening/closing nl + indent
  html
@@ -154,69 +257,11 @@ closing nl
   pre
   li
 
-----------------------
+Links
+-----
 
-Update to page export
+http://www.metaltoad.com/sites/default/files/Responsive-Widths_0.png
+http://rubular.com/
+http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
 
-Title into h1
 
-Ddd:
-  labels
-  author, date
-
-----------------------
-Page conversion
-
-Remove:
-  <!--break-->[toc]
-
-Convert to pre:
-{syntaxhighlighter brush: cpp;fontsize: 100; first-line: 1; }
-{/syntaxhighlighter}
-
-----------------------
-
-Mapping from old url to new url, redirect every page
-
-Update hrefs
-
-----------------------
-
-Insert into generated pages:
-
-<!DOCTYPE html>
-<html lang="en" xml:lang="en" dir="ltr">
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta property="fb:app_id" content=""/>
-
-----------------------
-
-Google Analytics
-
-    <!--Moved to header by pbarrientos, request from Alex based on this info
-		https://support.google.com/analytics/bin/answer.py?hl=en&answer=1008080-->
- <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-223119-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-    // http://support.google.com/analytics/answer/1136920?hl=en
-    function recordOutboundLink(link, category, action) {
-      try {
-        var pageTracker=_gat._getTracker("UA-223119-1");
-        pageTracker._trackEvent(category, action);
-        setTimeout('document.location = "' + link.href + '"', 100)
-      }catch(err){}
-    }
-</script>
-    
-    

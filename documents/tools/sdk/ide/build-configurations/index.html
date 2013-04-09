@@ -20,7 +20,7 @@
 <h2>Command Line Builds</h2>
 <p>Use the following syntax to build MoSync projects from the command line:</p>
 <div>
-<pre>mosyncc.exe -application com.mobilesorcery.sdk.builder.headless  -data workspacelocation -project
+<pre class="mosync-code-cpp">mosyncc.exe -application com.mobilesorcery.sdk.builder.headless  -data workspacelocation -project
   &nbsp;[-f finalizerscript] projectname</pre>
 </div>
 <p>Replace <em>workspacelocation</em> with the location of your workspace, and <em>projectname</em> with the name of the project to build. This will actually launch a <strong>Finalizer </strong>build with the currently set device filters.<br><br> If you wish to produce binaries for a different set of devices you will need to create a Finalizer script and use the <em>-f</em> switch. A finalizer script is just a text file containing lines like the ones produced when you click the <strong>Propagate </strong>button in the <strong>Finalize </strong>view in the IDE.</p>

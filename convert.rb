@@ -38,6 +38,13 @@ def importHTML
   sourceDir = Pathname.new("./mosync-doc-exports")
   destDir = Pathname.new("./documents")
   
+  # Clean target directory.
+  begin
+    destDir.rmtree()
+  rescue
+  end
+  
+  # Process and copy pages.
   n = 1
   docPages().each do |page|
     puts "Processing file " + n.to_s
@@ -59,9 +66,42 @@ def importHTML
 end
 
 def webSiteBuild
+  webSiteClean
   webSiteBuildHomePage
   webSiteBuildDocPages
   webSiteBuildLinkPages
+end
+
+def webSiteClean
+  # Clean target directory.
+  dir = Pathname.new("./website/pages")
+  begin
+    dir.rmtree()
+  rescue
+  end
+end
+
+def webSiteBuildHomePage
+  title = "MoSync Documentation"
+
+  # Get content HTML.
+  homePageFile = Pathname.new("./templates/home.html")
+  html = File.open(homePageFile, "rb") { |f| f.read }
+  
+  # Save the page.
+  destFile = Pathname.new("./website") + "index.html"
+  webSiteBuildPageFromStandardTemplate(
+      title,
+      html,
+      destFile)
+      
+  # Copy JavaScript libs.
+  FileUtils.cp_r(Dir["./templates/js/*"], "./website/js/")
+  
+  # Copy images.
+  #FileUtils.cp(
+  #  Pathname.new("./templates/mosync_logo.jpg"),
+  #  Pathname.new("./website/pages/mosync_logo.jpg"))
 end
 
 def webSiteBuildDocPages
@@ -109,26 +149,6 @@ def webSiteBuildLinkPages
   webSiteBuildCategoryLinkPage(JS, EXAMPLE, "js/examples/", title)
 end
 
-def webSiteBuildHomePage
-  title = "MoSync Documentation"
-
-  # Get content HTML.
-  homePageFile = Pathname.new("./templates/home.html")
-  html = File.open(homePageFile, "rb") { |f| f.read }
-  
-  # Save the page.
-  destFile = Pathname.new("./website/pages") + "index.html"
-  webSiteBuildPageFromStandardTemplate(
-      title,
-      html,
-      destFile)
-      
-  # Copy images.
-  #FileUtils.cp(
-  #  Pathname.new("./templates/mosync_logo.jpg"),
-  #  Pathname.new("./website/pages/mosync_logo.jpg"))
-end
-
 # Builds and saves a page of links for the given category and type.
 # Exampel of pageShortPath: "cpp/guides/"
 def webSiteBuildCategoryLinkPage(category, type, pageShortPath, pageTitle)
@@ -153,15 +173,16 @@ end
 # baseDir is a string naming the directory of the
 # target page, e.g. "cpp/guides/".
 def webSiteBuildLinkListForCategoryType(category, type, baseDir)
-  # Get pages.
-  pages = pagesForType(
-     pagesForCategory(docPages(), category),
-     type)
-     
-  # Get labels.
+  # Filter pages.
+  pages = docPages()
+  pages = pagesForLabel(pages, category)
+  pages = pagesForLabel(pages, type)
+
+  # Get all labels except category and type.
   labels = pagesGetAllLabels(pages).sort
+  labels = labels - [category, type]
   
-  ## Generate lists for each label
+  # Generate lists for each label.
   html = ""
   labels.each do |label|
     html += webSiteBuildLinkListForPages(
@@ -230,19 +251,12 @@ end
 
 def docPages()
   $pages.select { |page| 
+    #puts "Page:" + page.to_s
     not pageIsRedirect?(page) and not pageIsIgnore?(page) }
 end
 
 def redirectPages()
   $pages.select { |page| pageIsRedirect?(page) }
-end
-
-def pagesForCategory(pages, category)
-  pages.select { |page| pageHasCategory?(page, category) }
-end
-
-def pagesForType(pages, type)
-  pages.select { |page| pageHasType?(page, type) }
 end
 
 def pagesForLabel(pages, label)
@@ -255,11 +269,11 @@ def pagesGetAllLabels(pages)
 end
 
 def pageIsRedirect?(page)
-  pageHasCategory?(page, REDIRECT)
+  pageHasLabel?(page, REDIRECT)
 end
 
 def pageIsIgnore?(page)
-  pageHasCategory?(page, IGNORE)
+  pageHasLabel?(page, IGNORE)
 end
 
 def pageOriginalFile(page)
@@ -270,24 +284,8 @@ def pageTargetFile(page)
   page[1]
 end
 
-def pageCategory(page)
-  page[2]
-end
-
-def pageHasCategory?(page,category)
-  pageCategory(page) == category
-end
-
-def pageType(page)
-  page[3]
-end
-
-def pageHasType?(page,type)
-  pageType(page) == type
-end
-
 def pageLabels(pageData)
-  pageData[4]
+  pageData[2]
 end
 
 def pageHasLabel?(page,label)
@@ -339,7 +337,7 @@ def htmlPrettify(html)
 end
 
 def htmlReplaceSyntaxHighlighterTags(html)
-  html.gsub(/{syntaxhighlighter(.*?)}/, "<pre>").gsub(
+  html.gsub(/{syntaxhighlighter(.*?)}/, "<pre class=\"mosync-code-cpp\">").gsub(
     /{\/syntaxhighlighter}/, "</pre>")
 end
 

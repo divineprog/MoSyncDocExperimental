@@ -38,9 +38,9 @@
 </ul>
 <h2>Taking a picture with the Capture API</h2>
 <p>1. Launch image capture user interface:<strong></strong></p>
-<pre>maCaptureAction(MA_CAPTURE_ACTION_TAKE_PICTURE);</pre>
+<pre class="mosync-code-cpp">maCaptureAction(MA_CAPTURE_ACTION_TAKE_PICTURE);</pre>
 <p>2.&nbsp; Listen for MA_CAPTURE_EVENT_TYPE_IMAGE events in custom event listener, and save the image to a file:</p>
-<pre>void MainScreen::customEvent(const MAEvent&amp; event)
+<pre class="mosync-code-cpp">void MainScreen::customEvent(const MAEvent&amp; event)
 {
 &nbsp; char path[1024];
 &nbsp; char os[64];
@@ -76,9 +76,9 @@
 </ul>
 <h2>Recording video with the Capture API</h2>
 <p>1. Launch the native image picker in video recording mode:</p>
-<pre>maCaptureAction(MA_CAPTURE_ACTION_RECORD_VIDEO);</pre>
+<pre class="mosync-code-cpp">maCaptureAction(MA_CAPTURE_ACTION_RECORD_VIDEO);</pre>
 <p>2.&nbsp; Listen for MA_CAPTURE_EVENT_TYPE_VIDEO type events in customEvent listener, and grab the video handle:</p>
-<pre>void MainScreen::customEvent(const MAEvent&amp; event)
+<pre class="mosync-code-cpp">void MainScreen::customEvent(const MAEvent&amp; event)
 {
     if (event.type == EVENT_TYPE_CAPTURE)
     {
@@ -92,11 +92,11 @@
 }
 </pre>
 <p>3.&nbsp; Get the full path of the recorded video using the video object handle:</p>
-<pre>char videoPath[MAX_BUF_SIZE];
+<pre class="mosync-code-cpp">char videoPath[MAX_BUF_SIZE];
 maCaptureGetVideoPath(mLatestVideoRecordedHandle, videoPath,  MAX_BUF_SIZE);
 maMessageBox("Video file path = %s", videoPath);</pre>
 <p>4. The video can be played in a video widget using the full path:</p>
-<pre>videoWidget-&gt;setVideoFilePath(videoPath);</pre>
+<pre class="mosync-code-cpp">videoWidget-&gt;setVideoFilePath(videoPath);</pre>
 <p>5. Deallocate the image data object when it is not needed anymore using<strong> maCaptureDestroyData</strong>.</p>
 </body>
 </html>

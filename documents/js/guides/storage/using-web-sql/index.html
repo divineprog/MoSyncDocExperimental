@@ -20,7 +20,7 @@ p>img {
 </blockquote><p>Database files are stored in the application's local file directory.</p>
 <h2>A tour of the Web SQL API</h2>
 <p>Use the global function openDatabase to open a <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/database.md.html#Database">Database</a>:</p>
-<pre>var db = openDatabase("MyDB", "1", "MyDB", 65536);</pre>
+<pre class="mosync-code-cpp">var db = openDatabase("MyDB", "1", "MyDB", 65536);</pre>
 <p>Parameters are:</p>
 <ul>
 <li>database name</li>
@@ -29,7 +29,7 @@ p>img {
 <li>database size</li>
 </ul>
 <p>Use the transaction() function in the database object to execute queries, and execute the actual queries using the executeSql() function in the <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/sqltransaction.md.html#SQLTransaction">SQLTransaction</a> object:</p>
-<pre>db.transaction(
+<pre class="mosync-code-cpp">db.transaction(
     function(tx)
     {
         tx.executeSql(
@@ -71,7 +71,7 @@ p>img {
 <p>Note that the transaction error function will be called only if you do not supply a query error function to executeSql(). If you provide a query error function, that function will be called, and the transaction success function is called, rather than the transaction error function. Thus, in the above example, the transaction error function will not be called if the query fails.</p>
 <p>Also note that queries are executed asynchronously. When the transaction success function is called, you should be guaranteeded that all queries have been executed.</p>
 <p>When doing a search query, the result is obtained as a set of rows, which involves using the <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/sqlresultset.md.html#SQLResultSet">SQLResultSet</a> and the <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/sqlresultsetlist.md.html#SQLResultSetList">SQLResultSetList</a> objects:</p>
-<pre>tx.executeSql("SELECT * FROM pet", [],
+<pre class="mosync-code-cpp">tx.executeSql("SELECT * FROM pet", [],
 &nbsp;&nbsp;&nbsp; function(tx, result)
 &nbsp;&nbsp;&nbsp; {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; console.log("All rows:");

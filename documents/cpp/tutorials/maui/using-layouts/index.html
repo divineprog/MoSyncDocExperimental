@@ -16,7 +16,7 @@
 <p>Any specific spacing you’ve set for widgets in a layout will be ignored. You can’t offset a widget within its own cell. You have to make that widget larger if you want it to appear with a border, so the first two arguments when creating a child for a widget can be ignored.</p>
 <p>You add widgets into the layout with the <strong>add(Widget* w)</strong> method.</p>
 <p>&nbsp;</p>
-<pre>/*
+<pre class="mosync-code-cpp">/*
  * This program will generate a basic menu.
  */
 Layout* createMainLayout(const char *left, const  char *right)
@@ -40,7 +40,7 @@ Layout* createMainLayout(const char *left, const  char *right)
 <p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_33qjsp2qg5_b"></p>
 <p>To do this, the Widget has inherited from Layout instead of Widget.&nbsp; By doing this you can control some of the placements within your control, and make it really easy to reuse it.</p>
 <p>&nbsp;</p>
-<pre>#ifndef _GRID_MENU_H_
+<pre class="mosync-code-cpp">#ifndef _GRID_MENU_H_
 #define _GRID_MENU_H_
 #include &lt;MAUI/Layout.h&gt;
 #include &lt;MAUI/Widget.h&gt;
@@ -119,7 +119,7 @@ private:
 <p>There is a lot of other code to examine in the tutorials about creating your own widgets.</p>
 <p>Below is some of the code for managing this advanced Layout. This is not a complete code example.</p>
 <p>&nbsp;</p>
-<pre>/*
+<pre class="mosync-code-cpp">/*
  * Some of the member functions of GridMenu class are declared here.
  */
 #include "GridMenu.h"
@@ -283,14 +283,14 @@ void GridMenu::setPanelActive(int panelID, bool active)
 <pre>Vector&lt;int&gt; activePanels;</pre>
 <p>When the menu is created, the panels can be set to active.</p>
 <p>&nbsp;</p>
-<pre>// set all the panels to active
+<pre class="mosync-code-cpp">// set all the panels to active
 for(int i = 0; i &lt; _rows * _cols; i++)
 {
     activePanels.add(1);
 }</pre>
 <p>When a widget is added to the menu, it is added to the base Layout and to keep a track of the number of items which have been added.</p>
 <p>&nbsp;</p>
-<pre>void GridMenu::add(Widget *button)
+<pre class="mosync-code-cpp">void GridMenu::add(Widget *button)
 {
     if(button != NULL &amp;&amp; itemCount &lt; _rows * _cols)
     {
@@ -303,7 +303,7 @@ for(int i = 0; i &lt; _rows * _cols; i++)
 </pre>
 <p>When the user navigates the Layout, we can check to see if the panel is active or not, and decide whether it should be skipped.</p>
 <p>&nbsp;</p>
-<pre>void GridMenu::selectNext()
+<pre class="mosync-code-cpp">void GridMenu::selectNext()
 {
     // lprintfln("Current index: %d", selectedIndex);
     int nextItem = (selectedIndex + 1) % itemCount;
@@ -319,7 +319,7 @@ for(int i = 0; i &lt; _rows * _cols; i++)
 <p>Keep moving onto the next panel (going back to the start if necessary) until we find one which is active.</p>
 <p>When we move up or down a row, we have to do the same thing:</p>
 <p>&nbsp;</p>
-<pre>void GridMenu::selectNextRow()
+<pre class="mosync-code-cpp">void GridMenu::selectNextRow()
 {
     int nextItem = (selectedIndex + _cols) % itemCount;
     while(activePanels[nextItem] == 0)
@@ -329,7 +329,7 @@ for(int i = 0; i &lt; _rows * _cols; i++)
 </pre>
 <p>So, when creating the menu Layout, you can set which panels you want to use.</p>
 <p>&nbsp;</p>
-<pre>// Creates an iPhone-style grid menu
+<pre class="mosync-code-cpp">// Creates an iPhone-style grid menu
 Widget* createGridMenu(IGridMenuListener* listener)
 {
     GridMenu* gridMenu = new GridMenu(0, 0, scrWidth, scrHeight, NULL);

@@ -6,7 +6,7 @@
 <p><span style="color: #ff0000;"><span style="color: #ff0000;"><span style="color: #000000;">Our </span></span></span><a href="http://www.mosync.com/files/imports/doxygen/latest/html5/nativeui.md.html#Native%20UI">JavaScript NativeUI API</a>&nbsp;g<span style="color: #ff0000;"><span style="color: #ff0000;"><span style="color: #000000;">ives you&nbsp;direct access to native user interface widgets, like&nbsp;nav bars, buttons, tab screens, and list boxes, directly from HTML or JavaScript. Use it standalone, or side-by-side with the other APIs in <span style="color: #000000;">Wormhole</span><span style="color: #ff0000;"></span> to extend the capabilities of your apps.<!--break-->[toc]</span> </span></span></p>
 <h2>Getting started</h2>
 <p>The <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/nativeui.md.html#Native%20UI">JavaScript NativeUI Library</a><span style="color: #ff0000;"><span style="color: #ff0000;"><span style="color: #000000;"> </span></span></span>is included in the MoSync package. Choose one of our HTML5 templates when you create your project, then simply call the library in your JavaScript to use it:</p>
-<pre>&lt;script src="wormhole.js"&gt;</pre>
+<pre class="mosync-code-cpp">&lt;script src="wormhole.js"&gt;</pre>
 <h2>Example application</h2>
 <p>We include an example application project for iOS and Android, <a href="http://www.mosync.com/documentation/manualpages/wormholenativeui">WormholeNativeUI</a>, which is a complete simple application that uses the library.</p>
 <p>Notice that the example application has a sub-folder named <em>/LocalFiles</em> which will include all of your HTML, JavaScript and CSS files and also the resource file that you will use from JavaScript/HTML. There are also some C++ files in the project folder that in most cases you do not need to touch, unless you want to extend the system or override the low-level functionality.</p>
@@ -20,7 +20,7 @@
 <p>First let’s have a quick look at the example application's index file. All of the Native widgets are &lt;div&gt; tags wrapped inside a main &lt;div&gt; tag with ID “NativeUI”. Then there is a <strong>TabScreen</strong> screen widget which wraps everything else. When initiated the system loads the tag “mainScreen” to the actual screen of the phone.</p>
 <p>There are several widget placed inside this main screen in a specific layout (to figure out what each of them does, refer to the <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/widgetTypes.md.html#Widget%20Types">NativeUI Widget Types</a> documentation). <strong></strong></p>
 <p>&nbsp;</p>
-<pre>&lt;body&nbsp; onload="NativeUI.initUI()"&gt;
+<pre class="mosync-code-cpp">&lt;body&nbsp; onload="NativeUI.initUI()"&gt;
 
 &nbsp;&nbsp; &nbsp;&lt;div id="NativeUI"&gt;
 &nbsp;&nbsp; &nbsp;
@@ -73,7 +73,7 @@
 &lt;/body&gt;
 </pre>
 <p>Now let’s add another Tab to our application. Insert the following code just before the closing &lt;/div&gt; tag of the <strong>TabScreen</strong>:</p>
-<pre>&lt;div data-widgetType="Screen" 
+<pre class="mosync-code-cpp">&lt;div data-widgetType="Screen" 
 &nbsp;&nbsp; &nbsp;id="ThirdScreen" 
 &nbsp;&nbsp; &nbsp;data-title="New Screen" 
 &nbsp;&nbsp; &nbsp;data-icon="img/TabIconWebView.png"&gt;

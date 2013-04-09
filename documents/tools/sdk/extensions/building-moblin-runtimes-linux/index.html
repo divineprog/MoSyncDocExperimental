@@ -5,7 +5,7 @@
 <body>
 <p>These instructions describe how to build the MoSync runtimes for Moblin. The runtimes can then be included when you <a href="http://www.mosync.com/documentation/manualpages/building-mosync-source-windows">build the MoSync SDK for Windows</a> or <a href="http://www.mosync.com/documentation/manualpages/building-mosync-sdk-source-os-x">build the MoSync SDK for OS X</a>.<!--break--></p>
 <p>To build the Moblin runtimes you will need a machine running <a href="http://releases.ubuntu.com/karmic/">Ubuntu (9.10)</a>.<br><br><strong>1.</strong> First install the runtime dependencies in the Linux terminal:</p>
-<p><pre>sudo apt-get install gcc g++ ruby rake subversion rpm
+<p><pre class="mosync-code-cpp">sudo apt-get install gcc g++ ruby rake subversion rpm
 sudo apt-get install libgtk2.0-dev libexpat1-dev
 sudo apt-get install libbluetooth3-dev libsdl1.2-dev
 sudo apt-get install libsdl-image1.2-dev libsdl-ttf2.0-dev
@@ -23,28 +23,28 @@ sudo apt-get install libfreeimage-dev libssl-dev</pre>
 <li>MoSync website: <a href="http://www.mosync.com/nightly-builds">http://www.mosync.com/nightly-builds</a></li>
 </ul>
 <p>or through TortoiseGit:</p>
-<p><pre>git clone https://github.com/MoSync/MoSync.git MoSync
+<p><pre class="mosync-code-cpp">git clone https://github.com/MoSync/MoSync.git MoSync
 git clone https://github.com/MoSync/Eclipse.git Eclipse</pre>
 </p>
 <p><strong>Important! </strong>You
  must download the same version as you downloaded to build the MoSync 
 SDK for Windows or OS X. If you do not, when you try to use the SDK you 
 may get an “IDL Version Mismatch” error.<br><br><strong>3.</strong> Run the Linux runtime builder script in the MoSync source directory::</p>
-<p><pre>/tools/RuntimeBuilder/linux/build-linux-runtime-package.sh</pre>
+<p><pre class="mosync-code-cpp">/tools/RuntimeBuilder/linux/build-linux-runtime-package.sh</pre>
 </p>
 <p><strong>4.</strong> You will now have two files in the current directory:</p>
-<p><pre>runtime.ubuntu.r*.i386.dbg.tar.gz
+<p><pre class="mosync-code-cpp">runtime.ubuntu.r*.i386.dbg.tar.gz
 runtime.ubuntu.r*.i386.rel.tar.gz</pre>
 </p>
 <p>Rename them to:</p>
-<p><pre>runtime.dbg.tar.gz
+<p><pre class="mosync-code-cpp">runtime.dbg.tar.gz
 runtime.rel.tar.gz</pre>
 </p>
 <p><strong>5. </strong>If you are building the MoSync SDK for Windows, move the files to the following folder on the Windows build machine,</p>
-<p><pre>c:\mb\MoSyncReleasePackage\profiles\runtimes\moblin\1\</pre>
+<p><pre class="mosync-code-cpp">c:\mb\MoSyncReleasePackage\profiles\runtimes\moblin\1\</pre>
 </p>
 <p>You are then ready to run the SDK build script.<br><br>If you are building the MoSync SDK for OS X, copy the runtimes to the machine on which you have installed the MoSync SDK, in the directory:</p>
-<p><pre>/Applications/MoSync/profiles/runtimes/moblin/1/</pre>
+<p><pre class="mosync-code-cpp">/Applications/MoSync/profiles/runtimes/moblin/1/</pre>
 </p>
 <p><strong>6. </strong>Done.</p>
 </body>

@@ -10,14 +10,14 @@
 <h2>Creating ConnectionListeners</h2>
 <p>Creating <strong>Connection</strong> objects is discussed at length in the tutorial <a href="http://www.mosync.com/documentation/tutorials/downloading-data-internet-0">Downloading Data from the Internet</a>, but the one thing you do have to do though is to implement <strong>ConnectionListener</strong>. The <strong>ConnectionListener </strong>has the following methods you need to implement:</p>
 <div>
-<pre>void connectFinished(Connection* conn, int result);
+<pre class="mosync-code-cpp">void connectFinished(Connection* conn, int result);
 void connRecvFinished(Connection* conn, int result);
 void connWriteFinished(Connection* conn, int result);
 void connReadFinished(Connection* conn, int result);</pre>
 </div>
 <p>When the <strong>Connection</strong> object reads to writes data, it will inform your <strong>ConnectionListener</strong> of the result.</p>
 <div>
-<pre>//ConnectionListener
+<pre class="mosync-code-cpp">//ConnectionListener
 void connectFinished(Connection* conn, int result)
 {
  lprintfln("Connection established");
@@ -44,7 +44,7 @@ void connReadFinished(Connection* conn, int result)
 <p>The device address is in an <strong>MABtAddr</strong> object in <strong>BtDevice.address</strong>. The <strong>MABtAddr</strong> is a <strong>struct </strong>that contains <strong>byte[6]</strong>. Each of these bytes needs to be converted to two-character hex value in array order.</p>
 <p>This little function will convert it for you:</p>
 <div>
-<pre>void BluetoothClient::formatConnection(char* output, BtDevice&amp; device, int port)
+<pre class="mosync-code-cpp">void BluetoothClient::formatConnection(char* output, BtDevice&amp; device, int port)
 {
     MABtAddr a = device.address;
     sprintf(output, "btspp://%02x%02x%02x%02x%02x%02x:%i",
@@ -56,7 +56,7 @@ void connReadFinished(Connection* conn, int result)
 <p>In this example, we are going to create a client which is for the Bluetooth service created for the tutorial <a href="http://www.mosync.com/documentation/tutorials/creating-bluetooth-server">Creating a Bluetooth Server</a>. In that tutorial, the service simply receives a stream of bytes, counts them, and then returns a running total to the client. Our client is going to connect to that server, send a short string, and then listen for the count to be returned.</p>
 <p>To do this, we need to expand the implementation of <strong>ConnectionListener</strong> we produced earlier. The first stage is to make the connection to the correct URL. This means we need to write a short method to start the connection:</p>
 <div>
-<pre>void BluetoothClient::connect(BtDevice&amp; device, BtService&amp; service)
+<pre class="mosync-code-cpp">void BluetoothClient::connect(BtDevice&amp; device, BtService&amp; service)
 {
     char buffer[100];
     formatConnection(&amp;buffer[0], device, service.port);
@@ -65,7 +65,7 @@ void connReadFinished(Connection* conn, int result)
 </div>
 <p>We use the <strong>formatConnection</strong> method from earlier to create the URL, and make a connection. If successful, our <strong>connectFinished</strong> method will be called:</p>
 <div>
-<pre>void BluetoothClient::connectFinished(Connection* conn, int result)
+<pre class="mosync-code-cpp">void BluetoothClient::connectFinished(Connection* conn, int result)
 {
  lprintfln("Connection established");
  //Connection finished, start sending data
@@ -74,7 +74,7 @@ void connReadFinished(Connection* conn, int result)
 </div>
 <p>Once the connection is open, we can write data into it. As with all <strong>Connection</strong> objects, the write is asynchronous, so don’t write from local variables as they can go out of scope before the write has completed. Here, we are just writing six bytes representing the characters one to six. Once the write has finished, our <strong>connWriteFinished</strong> method will be called.</p>
 <div>
-<pre>void BluetoothClient::connWriteFinished(Connection* conn, int result)
+<pre class="mosync-code-cpp">void BluetoothClient::connWriteFinished(Connection* conn, int result)
 {
  lprintfln("Wrote %d bytes", result);
  //Listen for response
@@ -83,7 +83,7 @@ void connReadFinished(Connection* conn, int result)
 </div>
 <p>We know that we’ve written data to the server, so now we can wait for the server to respond with the lenght of the data we’ve sent. There is a char[64] already declared to read the response into. When data has been received, our <strong>connRecvFinished</strong> method will be called.</p>
 <div>
-<pre>void BluetoothClient::connRecvFinished(Connection* conn, int result)
+<pre class="mosync-code-cpp">void BluetoothClient::connRecvFinished(Connection* conn, int result)
 {
  lprintfln("Received %d bytes", result);
  //Received the data
@@ -96,7 +96,7 @@ void connReadFinished(Connection* conn, int result)
 <h2>The Completed Client</h2>
 <p>There is a conversation between the client and the server, but the responses and the actions will depend on the protocol you wish to create. The complete source code follows:</p>
 <div>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include &lt;MAUtil/Connection.h&gt;
 #include &lt;MAUtil/BluetoothDiscovery.h&gt;
 #include &lt;conprint.h&gt;

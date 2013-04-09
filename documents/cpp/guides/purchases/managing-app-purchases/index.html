@@ -60,7 +60,7 @@
 <blockquote><p>You might also want to store all your purchase information to a database, so the users will see how many products (and of which type) they have purchased, even if the application gets closed. See <a href="http://www.mosync.com/documentation/manualpages/sql-database-api">Database API</a> for more information.</p>
 </blockquote><h3 dir="ltr">Checking for in-app purchase support</h3>
 <p dir="ltr">In the <strong>main.cpp</strong> file in the project, add the <strong>#include</strong> directive for the <strong>PurchaseManager</strong> and the IAP namespace, then use the <strong>checkPurchaseSupported</strong> method to check that in-app purchasing/billing is supported on the device.</p>
-<pre>#include &lt;MAUtil/Moblet.h&gt;
+<pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include &lt;IX_WIDGET.h&gt;
 #include &lt;Purchase/PurchaseManager.h&gt;
 
@@ -90,20 +90,20 @@ NativeUIMoblet()
 <p>For each purchased item a receipt is available. When one of the purchased items is selected, a dialog shows its receipt details.</p>
 <h3 dir="ltr">Setting the keys/URLs needed for receipt validation</h3>
 <p>Before any purchase request can be made from Google Play, you need to set your Android developer public Key. (This is available in your <a href="https://accounts.google.com/ServiceLogin?service=androiddeveloper">Android Developer Console</a>. Always check that the key you provide is not malformed: the syscall should return MA_PURCHASE_RES_OK).<br><br>And before a purchase request can be made to Apple iTunes you need to set the iOS store URL for receipt validation.</p>
-<pre>PurchaseManager::getInstance()-&gt;setPublicKey(“Your key here”); 
+<pre class="mosync-code-cpp">PurchaseManager::getInstance()-&gt;setPublicKey(“Your key here”); 
 PurchaseManager::getInstance()-&gt;setStoreURL(sAppStoreSandboxURL);</pre>
 <h3 dir="ltr">Handling purchase-related events</h3>
 <p>Create a class for handling all events that are related to in-app purchases. This will be the <strong>ApplicationController</strong> class and it will be responsible for updating the UI whenever a purchase event is detected.<br><br>To create this class, first add the <strong>#include</strong> directives for the Purchase library files:</p>
-<pre>#include &lt;Purchase/Purchase.h&gt;
+<pre class="mosync-code-cpp">#include &lt;Purchase/Purchase.h&gt;
 #include &lt;Purchase/PurchaseListener.h&gt;
 #include &lt;Purchase/PurchaseManager.h&gt;
 #include &lt;Purchase/Receipt.h&gt;</pre>
 <p>(If you want, you can also include <strong>PurchaseManagerListener.h</strong> to listen for events that notify the user of restored transactions or refunds.)<br><br>Then add the <strong>PurchaseListener</strong> to the <strong>ApplicationController</strong> class:</p>
-<pre>class ApplicationController:
+<pre class="mosync-code-cpp">class ApplicationController:
    public PurchaseListener
 {</pre>
 <p>Now, implement the listener methods:</p>
-<pre>virtual void productValid(const Purchase&amp; purchase)
+<pre class="mosync-code-cpp">virtual void productValid(const Purchase&amp; purchase)
 {
     // Product has been validated. We can now request a purchase:
     mPurchase-&gt;requestPurchase();
@@ -155,7 +155,7 @@ virtual void receiptError(const Purchase&amp; purchase, const int errorCode)
 <li>If the Receipt is valid, your application can get all the transaction information, like <strong>applicationId</strong>, <strong>productId</strong>, transaction date, and <strong>transactionID</strong>.</li>
 </ol>
 <p>In our <a href="http://www.mosync.com/documentation/manualpages/purchaseexample">PurchaseExample</a> application there is a list of available products from which you can choose:</p>
-<pre>void MainScreen::createProductIdList()
+<pre class="mosync-code-cpp">void MainScreen::createProductIdList()
 {
    if ( getPlatform() == ANDROID )
    {
@@ -174,7 +174,7 @@ virtual void receiptError(const Purchase&amp; purchase, const int errorCode)
 }</pre>
 <p>When a product is selected, and the <strong>Buy</strong> button is pressed, the <strong>ApplicationController</strong> will create a <strong>Purchase</strong> object with that <strong>productId</strong>.</p>
 <p>The <strong>Purchase</strong> constructor sets the parent as the listener so that it will receive purchase events: <strong>PurchaseListener::productValid</strong>, and <strong>PurchaseListener::productInvalid</strong>.</p>
-<pre>void ApplicationController::buttonClicked(Widget* button)
+<pre class="mosync-code-cpp">void ApplicationController::buttonClicked(Widget* button)
 {
 Purchase* purchaseObj = new Purchase(
                mMainScreen-&gt;getSelectedAvailableProduct(), this);

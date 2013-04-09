@@ -1,18 +1,25 @@
 require 'fileutils'
 require 'pathname'
 
-
+# Old export
 def exportsDir1
  "./mosync-doc-exports/"
 end
 
+# New export
 def exportsDir2
  "./mosync-doc-exports-2/"
 end
 
-def allHtmlFiles(path)
-  Pathname.glob(path + "**/*.html").collect { |item| 
-    item.to_s.split(path)[1] }
+# All HTML file names stripped of basePath
+def allHtmlFiles(basePath)
+  Pathname.glob(basePath + "**/*.html").collect { |item| 
+    item.to_s.split(basePath)[1] }
+end
+
+# All HTML file names including basePath
+def allHtmlPaths(basePath)
+  Pathname.glob(basePath + "**/*.html")
 end
 
 def countFiles
@@ -42,6 +49,40 @@ def listAllFiles
   puts "========================================================="
 end
 
+# Collect link in all documents and list them
+def listAllLinks
+  dir = exportsDir2()
+  files = allHtmlPaths(dir)
+  links = (files.collect { |path|
+    html = File.open(path, "rb") { |f| f.read }
+    html.scan(/href="(.*?)"/)
+  }).flatten.uniq.sort
+  puts "========================================================="
+  puts "All links in all files in " + dir
+  puts links
+  puts "========================================================="
+end
+
+# Collect link in all documents and list them
+def listAnchors
+  dir = exportsDir2()
+  files = allHtmlPaths(dir)
+  hrefs = (files.collect { |path|
+    html = File.open(path, "rb") { |f| f.read }
+    html.scan(/href="(.*?)"/)
+  }).flatten
+  anchors = (files.collect { |path|
+    html = File.open(path, "rb") { |f| f.read }
+    html.scan(/<a(.*?)>/)
+  }).flatten
+  puts "========================================================="
+  puts "All anchors in all files in " + dir
+  puts anchors.uniq.sort
+  puts "Num hrefs:   " + hrefs.size.to_s
+  puts "Num anchors: " + anchors.size.to_s
+  puts "========================================================="
+end
+
 if (ARGV.include? "new")
   newFiles
 elsif (ARGV.include? "count")
@@ -50,6 +91,8 @@ elsif (ARGV.include? "all")
   listAllFiles
 elsif (ARGV.include? "links")
   listAllLinks
+elsif (ARGV.include? "a")
+  listAnchors
 else
   puts "========================================================="
   puts "Options:"

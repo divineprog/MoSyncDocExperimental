@@ -10,7 +10,7 @@
 <p>This example also shows how to detect&nbsp;<strong>close&nbsp;</strong>events. &nbsp;A close event is an event that is generated when a user attempts to forcibly terminate the application in some (platform-dependent) way, commonly by using some type of task manager. The purpose of the close event is to notify the application that it will be closed down very shortly (the exact amount of time being platform-dependent) and that it should perform emergency shutdown operations, such as saving critical data.</p>
 <p>Here is an example in C:</p>
 <div>
-<pre>/**
+<pre class="mosync-code-cpp">/**
 * This program shows that how can we handle events in MoSync. 
 * Here we are handling Close event using the C code.
 * 
@@ -63,7 +63,7 @@ int MAMain()
 <p>For instance, if you want to capture the key presses from the C example above, you would implement&nbsp;<strong>keyPressEvent(int keycode, int nativeCode).</strong>&nbsp;&nbsp;You can then compare the value of button pressed with the value you are looking for.</p>
 <blockquote><p>As an aside, when you capture key presses you get two values. &nbsp;The first (referred to as&nbsp;<strong>keyCode</strong>) is a platform independent value. &nbsp;There is a long list of keys which you can handle in this way defined in&nbsp;<strong>maapi.h</strong>. &nbsp;In the example below, we are looking for the 0 key, so we can compare it with&nbsp;<strong>MAK_0</strong>. &nbsp;This way, we don't need to have code to check the key value for the 0 key on each platform. &nbsp;There are also some keys which may be implemented on just a few handsets. &nbsp;The Android 'back' key, or volume keys on a phone are not implemented in the platform independent way as their are so few phones which support them. &nbsp;You can still handle key presses from these buttons through, by accessing the&nbsp;<strong>nativeCode</strong>&nbsp;value of the button, which is platform specific.</p>
 </blockquote><p>And here is a similar example in C++ which makes use of MoSync's moblet framework:</p>
-<pre>/**
+<pre class="mosync-code-cpp">/**
 * This is another program for handling events using C++ syntax.
 * 
 * @file EventHandlingCPPProgram.cpp

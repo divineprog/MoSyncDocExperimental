@@ -66,16 +66,16 @@
 .include "resources/YahooSmooth.mof"</pre>
 <p>To use a font in your application, you need to add a reference to MAHeaders.h and MAUI/Font.h in your code, and create a new Font in code.</p>
 <p>&nbsp;</p>
-<pre>// Create the fonts
+<pre class="mosync-code-cpp">// Create the fonts
 Font* yahooFont = new Font(YAHOOFONT);</pre>
 <p>You can then reference this when creating labels.</p>
 <p>&nbsp;</p>
-<pre>// Create a screen title, using the Yahoo font
+<pre class="mosync-code-cpp">// Create a screen title, using the Yahoo font
 Label* titleLabel = new Label(0, 0, 240, 32, layout,
 "MoSync!", 0x0000C0, yahooFont);</pre>
 <p>I’ve created a short example application using free fonts I’ve created in BMFont.</p>
 <p>&nbsp;</p>
-<pre>// Create the fonts
+<pre class="mosync-code-cpp">// Create the fonts
 Font* standardFont = new Font(STANDARDFONT);
 Font* yahooFont = new Font(YAHOOFONT);
 Font* yahooSmoothed = new Font(YAHOOSMOOTH);
@@ -112,7 +112,7 @@ eng.setDefaultFont(standardFont);</pre>
 <p>You can then create labels without specifying a font, and it will use the one you set up here.</p>
 <p>The label constructor is different though if you don’t specify a font. You can’t pass the label text without supplying a background colour and a font, so if you want to use the default font, you need to call the <strong>setCaption(<em>text</em>)</strong> method.</p>
 <p>&nbsp;</p>
-<pre>// Create some more text, using the default font
+<pre class="mosync-code-cpp">// Create some more text, using the default font
 Label* newsLabel = new Label(0, 0, 240, 32, layout);
 newsLabel-&gt;setCaption("Here is some interesting information. 
     In 1964, a gang of eight pigs held their farmer hostage for 

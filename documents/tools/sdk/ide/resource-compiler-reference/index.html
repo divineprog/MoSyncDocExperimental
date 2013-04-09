@@ -16,7 +16,7 @@
 </ul>
 <h2>About resources</h2>
 <p>Resources are files that are external to your main application code. They are compiled separately from your code during the build process into a binary file which is put into the package ready to be delivered to the target platforms. As well as the compiled binary file, the resource compiler creates the header file <strong>MAheaders.h</strong> which needs to be included in your application program through the preprocessor directive:</p>
-<pre>#include &lt;MAHeaders.h&gt;</pre>
+<pre class="mosync-code-cpp">#include &lt;MAHeaders.h&gt;</pre>
 <p>This header file contains the <strong>#define</strong>s that symbolically link your application to its resources.</p>
 <p>Resources can include:</p>
 <ul>
@@ -35,19 +35,19 @@
 <p>This command line will compile the resources organized as per the default directory structure:</p>
 <p><strong>rescomp</strong> <em>platform</em> <em>outputdir directory1</em> <em>directory2</em> …</p>
 <p>For example:</p>
-<pre>rescomp Android output/resources Resources</pre>
+<pre class="mosync-code-cpp">rescomp Android output/resources Resources</pre>
 <p>This command compiles all resources in the “Resources” directory for the Android platform and creates a binary called “resources” in the “output” directory.</p>
 <p><em>Note</em>: If you build a project via the IDE, the directory is always the “Resources” directory located in the project’s root directory.</p>
 <h3>For custom folders with LSTX XML resource lists</h3>
 <p>This command line will compile the resources organized in the default directory structure (it must end with the <strong>lstx</strong> extension):</p>
 <p><strong>rescomp</strong> <em>platform</em> <em>outputdir</em> <em>resourcefile1.lstx</em> <em>resourcefile2.lstx</em></p>
 <p><em>Note: </em>You may combine folders and .lstx files. For example:</p>
-<pre>rescomp Android output/resources resources.lstx</pre>
+<pre class="mosync-code-cpp">rescomp Android output/resources resources.lstx</pre>
 <p>This command compiles all resources in the “resources.lstx” file for the Android platform and creates a binary called “resources” in the “output” directory.</p>
 <h3>For custom folders with LST resource lists</h3>
 <p><strong>pipe-tool -R</strong> <em>outfile</em> <em>infile1</em> [<em>infile2</em> ...]</p>
 <p>For example:</p>
-<pre>pipe-tool -R output/resources audio.lst images.lst other.lst</pre>
+<pre class="mosync-code-cpp">pipe-tool -R output/resources audio.lst images.lst other.lst</pre>
 <p>This command compiles all the resources referenced in the resource list files audio.lst, images.lst, and other.lst and concatenates them into a binary file called resources, ready for deployment to the device.</p>
 <h2>Standard Folders</h2>
 <p>The simplest way to add resources to a project is to add them to the “Resource” directory, located in the project’s root directory. Then add the resources to the proper sub-directories of the “Resource” directory. For example, images should be put in the “image” sub-directory, and binary resources should be put in the “binary” sub-directory. The name of the file will be used to name the resource by upper-casing it and removing the file extension. So, for example, the image “AnImage.png” will get the name ANIMAGE in the generated MAHeaders.h file (and consequently, in the code that uses the image resource).</p>
@@ -91,7 +91,7 @@
 <h2>Custom Folders and LSTX XML resource lists</h2>
 <p>As an alternative and a complement to the standard folders approach, there is an XML format for adding variant resources.</p>
 <p>To accomplish the same as the example for standard folders (see screenshot below, and note the name of the resource folder is changed), we can instead add a file in the project root directory that ends with <strong>.lstx</strong>:</p>
-<pre>&lt;resources&gt;
+<pre class="mosync-code-cpp">&lt;resources&gt;
     &lt;image id="BRICK1" resource="image/brick1.png"/&gt;
     &lt;image id="BRICK2" resource="image/brick2.png"/&gt;
     &lt;image id="BRICK3" resource="image/brick3.png"/&gt;
@@ -120,7 +120,7 @@
 <h4>File resource tags (image, audio, media, binary)</h4>
 <p>All tags that define a resource must have an id attribute, which will be the same used in C code.<br>The loadType attribute of a resource tag indicates whether the resource should be loaded at startup (attribute value “startup”) or later (attribute value “unloaded”). All tags that define a resource located in a file (image, audio, media, binary) must have a resource attribute with the file path, relative to the .lstx file. (The .lstx file/files may be located anywhere in the project’s directory structure.)</p>
 <p>Media tags have a mimeType attribute that should be set to indicate the type of the file. For a few audio file types a default mimeType will be automatically set unless specified by this tag. All files with the file extensions .mp3, .mp4 or .m4a will be assigned "audio/<span class="s1">mpeg" mimeType, and all files with the file extension .wav will be assigned the "audio/wav" mimeType.</span></p>
-<pre>&lt;image id="BRICK7" resource="image/brick7.png"/&gt;
+<pre class="mosync-code-cpp">&lt;image id="BRICK7" resource="image/brick7.png"/&gt;
 &lt;audio id="BOOM" resource="audio/boom.mp3"/&gt;
 &lt;media id="BOOM_AGAIN resource="audio/boom.mp3" mimeType="audio/mpeg"/&gt;
 &lt;binary id="BLOB" resource="binary/blob.bin"/&gt;   </pre>
@@ -157,29 +157,29 @@ A string to remember.
 <p>This section describe the various commands that can be included within the definitions in a resource list file.</p>
 <h4>.res [<em>symbol</em>]</h4>
 <p>Initializes a new resource, optionally with the symbolic name symbol:</p>
-<pre>.res myimage
+<pre class="mosync-code-cpp">.res myimage
 .image "myimage.png"</pre>
 <h4>.image "<em>imagefile</em>"</h4>
 <p>Declares a resource as an image and loads and stores an image file into the resource. The recommend image format is PNG which is supported by almost all devices. (Any type may be declared but whether or not the device supports it is another matter....) The filename can include a relative path, but always use forward slashes or escaped backslashes in the pathname.</p>
-<pre>.res picture
+<pre class="mosync-code-cpp">.res picture
 .image "myfile\\myimage.png"</pre>
 <h4>.bin</h4>
 <p>Declares the resource as a binary. A binary resource is created and has 0 length.</p>
-<pre>.res myfile
+<pre class="mosync-code-cpp">.res myfile
 .bin</pre>
 <h4>.ubin</h4>
 <p>Declares the resource as an unloaded binary. A binary resource is created and has 0 length. At runtime this resource will not be memory resident, but is accessed from the file system directly.</p>
 <h4>.media "<em>MimeTypeString</em>", " <em>MediaFile</em>"</h4>
 <p>Declares the resource as a media file with a particular MIME type. (Any type may be declared but whether or not the device supports it is another matter....) The filename can include a relative path, but always use forward slashes or escaped backslashes in the pathname.</p>
-<pre>.res tune1
+<pre class="mosync-code-cpp">.res tune1
 .media "audio/mp3", "myfiles/mysound.mp3"</pre>
 <h4>.umedia "MimeTypeString", "MediaFile"</h4>
 <p>Declares the resource as a unloaded media file with a particular MIME type. (Any type may be declared but whether or not the device supports it is another matter....) At runtime this resource will not be memory resident, but is accessed from the file system directly. The filename can include a relative path, but always use forward slashes or escaped backslashes in the pathname.</p>
-<pre>res tune2
+<pre class="mosync-code-cpp">res tune2
 .umedia "audio/mp3", "mysound2.mp3"</pre>
 <h4>.sprite <em>imageRef</em>, <em>start_x</em>, <em>start_y</em>, <em>size_x</em>, <em>size_y</em>[, <em>ref_x</em>, <em>ref_y</em>]</h4>
 <p>Declares the resource as a sprite object. It requires an image reference for a previously loaded image. The sprite is cut out from this image at start_x and start_y. The size of the sprite is defined by size_x and size_y. Optionally, the sprite's reference point is defined by ref_x and ref_y. If ref_x and ref_y are omitted, the reference point is set as top-left (0,0).</p>
-<pre>.res myimage    // set symbol for base image
+<pre class="mosync-code-cpp">.res myimage    // set symbol for base image
 .image "myimage.png"   // load base image, the top-left is always 0,0
 
 .res mysprite1
@@ -190,24 +190,24 @@ A string to remember.
 </pre>
 <h4>.tileset "<em>imageFile</em>",<em> tilesize_x</em>,<em>tilesize_y</em></h4>
 <p>Declares the resource as a tileset image. The image contains tiles of the specified tilesizes. The filename can include a relative path, but always use forward slashes or escaped backslashes in the pathname.</p>
-<pre>.res
+<pre class="mosync-code-cpp">.res
 .tileset "mytiles.png",16,16</pre>
 <h4>.tilemap "<em>tilemap.bin</em>",<em>mapsize_x</em>,<em>mapsize_y</em></h4>
 <p>Declares a tilemap. The tilemap binary file contains mapsize_x*mapsize_y 16-bit indices that refer to a tileset. The actual connection between tilemap and tileset is created at runtime. The filename can include a relative path, but always use forward slashes or escaped backslashes in the pathname.</p>
-<pre>.res
+<pre class="mosync-code-cpp">.res
 .tilemap "mytilemap.bin",64,64</pre>
 <h4>.dispose</h4>
 <p>Marks a resource as disposable. When the resource loader has finished loading all resources, it deletes all those resources marked for disposal.</p>
-<pre>.res image1  
+<pre class="mosync-code-cpp">.res image1  
 .dispose    // dispose of resource after loading
 .image "myimage.png"</pre>
 <h4>.placeholder</h4>
 <p>Creates an empty resource that can be filled with something at runtime.</p>
-<pre>.res myspace
+<pre class="mosync-code-cpp">.res myspace
 .placeholder</pre>
 <h4>.skip</h4>
 <p>Skips a resource when loading. This can be useful when you have duplicated resource list files and wish to skip some resources in some lists.</p>
-<pre>myreslist1.lst:
+<pre class="mosync-code-cpp">myreslist1.lst:
 .res image1
 .image "myfile/myimage1.png"
 
@@ -223,10 +223,10 @@ myreslist2.lst:
 .skip</pre>
 <h4>.label "<em>name</em>"</h4>
 <p>Creates a marker label resource entry, so the application can search for the resource symbolically at runtime. This allows libraries to find their resources.</p>
-<pre>.label ui_resource_begin</pre>
+<pre class="mosync-code-cpp">.label ui_resource_begin</pre>
 <h4>.enum {<em>variable</em>[= <em>expression</em>][, <em>variable</em>[=<em>expression</em>] ...]}</h4>
 <p>Defines an enumerated set of variables that can be used in expressions.</p>
-<pre>.res myenum
+<pre class="mosync-code-cpp">.res myenum
 .enum
 {
 a = 0,
@@ -236,57 +236,57 @@ d         // assigns to d the value of the next enum (366)
 }</pre>
 <h4>.string "<em>string</em>"</h4>
 <p>For binary resources only: &nbsp;inserts an ASCII string. Note: This string has no null terminator.</p>
-<pre>.res welcome
+<pre class="mosync-code-cpp">.res welcome
 .bin
 .string "hello"    //  write non-null-terminated string to binary resource</pre>
 <h4>.cstring "<em>string</em>"</h4>
 <p>For binary resources only: inserts an ASCII null-terminated string.</p>
-<pre>.res
+<pre class="mosync-code-cpp">.res
 .bin
 .cstring "hello"    //  write null-terminated string to binary resource
 .pstring "string"</pre>
 <p>For binary resources only: inserts a Pascal string.</p>
-<pre>.res
+<pre class="mosync-code-cpp">.res
 .bin
 .pstring "hello"    // write Pascal string to binary resource</pre>
 <h4>.fill <em>size</em>, <em>filler</em></h4>
 <p>For binary resources only: &nbsp;fills the resource with size bytes of the filler. The data will be inserted at the current data position.</p>
-<pre>.res
+<pre class="mosync-code-cpp">.res
 .bin
 .fill 8, '?'    // insert '?' 8 times</pre>
 <h4>.byte <em>n1</em>[,<em>n2</em> ...]</h4>
 <p>For binary resources only: inserts bytes into the resource. The data is inserted at the current data position.</p>
-<pre>.res
+<pre class="mosync-code-cpp">.res
 .bin
 .byte 1,2,3,4    //  write bytes 1,2,3,4 to binary resource</pre>
 <h4>.half <em>n1</em>[,<em>n2</em>] ...</h4>
 <p>For binary resources only: inserts half words (16 bits) into the resource. The data is inserted at the current data position.</p>
-<pre>.res myfile
+<pre class="mosync-code-cpp">.res myfile
 .bin
 .half 1,2,3,4    // write shorts 1,2,3,4 to the binary resource</pre>
 <h4>.word <em>n1</em>[, <em>n2</em>] ...</h4>
 <p>For binary resources only: inserts (32-bit) words into the resource. The data is inserted at the current data position.</p>
-<pre>.res myfile
+<pre class="mosync-code-cpp">.res myfile
 .bin
 .word 1,2,3,4    // write ints 1,2,3,4 to the binary resource</pre>
 <h4>.include "file"</h4>
 <p>For binary resources only: inserts a binary file into the resource. The data is inserted at the current data position. The filename can include a relative path, but always use forward slashes or escaped backslashes in the pathname.</p>
-<pre>.res myfile
+<pre class="mosync-code-cpp">.res myfile
 .bin
 .include "bin/test.bin"   // write the contents of test.bin to the binary resource</pre>
 <h4>.index symbol</h4>
 <p>For binary resources only: add an index so that a single resource can contain sub-indices. A resource with indices will contain an index table, which can be read by the user's program code with the resource index reading functions.</p>
-<pre>.res
+<pre class="mosync-code-cpp">.res
 .bin
 .index "MySym"</pre>
 <h4>.wideindex</h4>
 <p>For binary resources only: forces a indexed resource to use 32 bit indices's, so an index table may contain data pointers greater than 64K.</p>
-<pre>.res
+<pre class="mosync-code-cpp">.res
 .bin
 .wideindex</pre>
 <h4>.set <em>variable</em>[=<em>expression</em>]</h4>
 <p>Sets a script variable with the value of expression.</p>
-<pre>.res
+<pre class="mosync-code-cpp">.res
 .set hello = 1</pre>
 <p>[img_assist|nid=8045|title=|desc=|link=none|align=none|width=177|height=198]</p>
 <p>&nbsp;</p>
