@@ -4,7 +4,7 @@
 </head>
 <body>
 <p>Many people are developing Bluetooth applications in MoSync. Some of the most interesting applications involve creating a new Bluetooth service so that the user’s phone can receive incoming messages on Bluetooth and act on them. In this tutorial we take a look at using the <strong>MAUtil::Server</strong> class to provide Bluetooth services.</p>
-<p><!--break--> [toc]</p>
+<p><!--break--> </p>
 <h2>The Server Base Class</h2>
 <p>In the MoSync <strong>MAUtil </strong>library there is a class called <strong>Server</strong>. It is a base class that you can adapt to accept network connections over Bluetooth and TCP. You create a new Bluetooth service by creating a new <strong>Server</strong><strong> </strong>instance and inheriting from <strong>ServerListener</strong>. Your class becomes a wrapper around <strong>Server</strong> and can process both incoming and outgoing messages.</p>
 <p>The <strong>ServerListener</strong><strong> </strong>interface allows your service class to respond to events raised by your <strong>Server</strong><strong> </strong>instance. There are two methods that you need to implement: <strong>serverAccepted</strong><strong> </strong>and <strong>serverAcceptFailed</strong>. These methods inform your application when a new connection has been made to your server, or when an attempt to connect has failed.</p>
@@ -74,7 +74,7 @@ extern "C" int MAMain()
 <h2>Creating Servers for Bluetooth Connections</h2>
 <p>Binding to Bluetooth addresses is a little more complex. Instead of simply binding to a port you need to bind to the Bluetooth address of the device, and provide a service UUID.</p>
 <p>Each Bluetooth service has its own UUID (universally unique identifier). These are common across platforms, just as TCP ports are. If you create a brand-new service, you should generate a new UUID for it. If you are implementing an existing service (such as OBEX Push), then you should use the existing UUID. Common UUIDs have been defined in the file <strong>MAUtil/mauuid.h</strong>.</p>
-<p>When Bluetooth clients are searching for your service, they will need to know what the UUID is. If you are writing the client software as well, you’ll need to use the UUID to discover the service. See our tutorial on <a href="http://www.mosync.com/documentation/tutorials/discovering-devices-and-services-bluetooth"><strong>Discovering Devices and Services with Bluetooth</strong></a> for more information.</p>
+<p>When Bluetooth clients are searching for your service, they will need to know what the UUID is. If you are writing the client software as well, you’ll need to use the UUID to discover the service. See our tutorial on <a href="TEMPLATE_DOC_PATH/cpp/tutorials/bluetooth/discovering-devices-and-services-bluetooth/index.html"><strong>Discovering Devices and Services with Bluetooth</strong></a> for more information.</p>
 <p>In the MoSync SDK, Bluetooth service UUIDs are defined as being a <strong>struct </strong>of an <strong>int[4]</strong>. Bluetooth UUIDs are 32 bytes long, but large parts of the UUID are common to all Bluetooth UUIDs. If you want to create your own UUID, you would need to check that it isn’t being used by any other Bluetooth service, and also ensure that its unique segment (the first <strong>int </strong>in the <strong>struct</strong>) ANDs with 0x1000 (4096). The following is a line from <strong>mauuid.h</strong>, defining the UUID for the serial port service.</p>
 <div>
 <pre class="mosync-code-cpp">DEFINE_BTMAUUID(SerialPort_Service_MAUUID, 0x1101);</pre>

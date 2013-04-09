@@ -43,25 +43,28 @@ def importHTML
     destDir.rmtree()
   rescue
   end
+  destDir.mkpath()
   
   # Process and copy pages.
-  n = 1
+  n = 0
   docPages().each do |page|
-    puts "Processing file " + n.to_s
     n = n + 1
     
     sourceFile = sourceDir + pageOriginalFile(page) + "index.html"
     destPath = destDir + pageTargetFile(page)
     destFile = destPath + "index.html"
+    
+    puts "Importing File #{n.to_s} #{sourceFile} #{destFile}"
+    puts " "
+    
     destPath.mkpath()
     html = File.open(sourceFile, "rb") { |f| f.read }
+    html = htmlUpdateLinks(html)
+    html = htmlStripTOC(html)
     html = htmlReplaceSyntaxHighlighterTags(html)
     html = htmlReplaceTabsWithSpaces(html)
     html = htmlPrettify(html)
     File.open(destFile, "wb") { |f| f.write(html) }
-    puts "Importing #{sourceFile} #{destFile}"
-    
-    # Not used: FileUtils.cp(sourceFile, destFile)
   end
 end
 
@@ -74,11 +77,13 @@ end
 
 def webSiteClean
   # Clean target directory.
-  dir = Pathname.new("./website/pages")
+  dir = Pathname.new("./docsite/pages/")
   begin
     dir.rmtree()
   rescue
   end
+  dir.mkpath()
+  Pathname.new("./docsite/js/").mkpath()
 end
 
 def webSiteBuildHomePage
@@ -89,24 +94,24 @@ def webSiteBuildHomePage
   html = File.open(homePageFile, "rb") { |f| f.read }
   
   # Save the page.
-  destFile = Pathname.new("./website") + "index.html"
+  destFile = Pathname.new("./docsite") + "index.html"
   webSiteBuildPageFromStandardTemplate(
       title,
       html,
       destFile)
       
   # Copy JavaScript libs.
-  FileUtils.cp_r(Dir["./templates/js/*"], "./website/js/")
+  FileUtils.cp_r(Dir["./templates/js/*"], "./docsite/js/")
   
   # Copy images.
   #FileUtils.cp(
   #  Pathname.new("./templates/mosync_logo.jpg"),
-  #  Pathname.new("./website/pages/mosync_logo.jpg"))
+  #  Pathname.new("./docsite/pages/mosync_logo.jpg"))
 end
 
 def webSiteBuildDocPages
   sourceDir = Pathname.new("./documents")
-  destDir = Pathname.new("./website/pages")
+  destDir = Pathname.new("./docsite/pages")
   
   # Replace template elements in each file and save.
   n = 1
@@ -153,7 +158,7 @@ end
 # Exampel of pageShortPath: "cpp/guides/"
 def webSiteBuildCategoryLinkPage(category, type, pageShortPath, pageTitle)
   # Create page path.
-  destDir = Pathname.new("./website/pages")
+  destDir = Pathname.new("./docsite/pages")
   destFile = destDir + pageShortPath + "index.html"
   
   puts "Building page: " + destFile.to_s
@@ -215,8 +220,8 @@ end
 def webSiteBuildPageFromStandardTemplate(title, content, destFile)
   # Set up paths.
   templateFile = Pathname.new("./templates/docpage.html")
-  pagesDir = Pathname.new("./website/pages")
-  jsDir = Pathname.new("./website/js")
+  pagesDir = Pathname.new("./docsite/pages")
+  jsDir = Pathname.new("./docsite/js")
   destPath = destFile.parent
   
   # Relative paths used for links and js/css imports.
@@ -242,11 +247,15 @@ end
 # Returns HTML for page built from template.
 def webSiteBuildPageFromTemplate(template, title, content, jsDirRelativePath, pagesDirRelativePath)
   html = template.gsub(
-    "TEMPLATE_PAGE_TITLE", title).sub(
-      "TEMPLATE_PAGE_CONTENT", content).gsub(
+    "TEMPLATE_PAGE_CONTENT", content).gsub(
+      "TEMPLATE_PAGE_TITLE", title).gsub(
         "TEMPLATE_JS_PATH", jsDirRelativePath.to_s).gsub(
           "TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
   html
+end
+
+def allPages()
+  $pages
 end
 
 def docPages()
@@ -343,6 +352,36 @@ end
 
 def htmlReplaceTabsWithSpaces(html)
   html.gsub("\t", "    ")
+end
+
+# Update links to point to new urls.
+def htmlUpdateLinks(html)
+  puts "Page BEFORE URL update: " + html
+  puts " "
+  
+  # Step 1: Update urls and insert marker
+  allPages().each do |page|
+    html = html.gsub(
+      (pageOriginalFile(page)), 
+      ("NEWDOC_UPDATED_URL:TEMPLATE_DOC_PATH/" + pageTargetFile(page) + "/index.html"))
+  end
+  
+  # Step 2: Strip off absolute urls and markers
+  html = html.gsub("http://www.mosync.com/NEWDOC_UPDATED_URL:", "")
+  html = html.gsub("/NEWDOC_UPDATED_URL:", "")
+  
+  # Step 3: Clean up weird urls
+  html = html.gsub("//index.html", "/index.html") 
+  html = html.gsub("//index.html", "/index.html") 
+  html = html.gsub("index.html/", "index.html") 
+  
+  puts "Page AFTER URL update: " + html
+  puts " "
+  html
+end
+
+def htmlStripTOC(html)
+  html.gsub("[toc]", "")
 end
 
 def cleanmd

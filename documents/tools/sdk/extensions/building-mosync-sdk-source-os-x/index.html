@@ -11,8 +11,8 @@ like our <a href="http://www.mosync.com/download">featured releases</a> and our 
  MoSync runtimes, you will need a Windows, a Mac OS X, and a Linux 
 machine. If you want an installation package that just has the iPhone 
 runtime, you can build the whole thing on a single OS X machine.<!--break--></p>
-<p>To be able to follow these instructions you will need to be<a href="http://developer.apple.com/programs/register/"> registered</a> as an Apple Developer. Instructions for<a href="http://www.mosync.com/documentation/manualpages/building-mosync-source-windows"> building the MoSync SDK for Windows</a> are also available.</p>
-<p>[toc]</p>
+<p>To be able to follow these instructions you will need to be<a href="http://developer.apple.com/programs/register/"> registered</a> as an Apple Developer. Instructions for<a href="TEMPLATE_DOC_PATH/tools/sdk/extensions/building-mosync-source-windows/index.html"> building the MoSync SDK for Windows</a> are also available.</p>
+<p></p>
 <h2>Hardware Requirements</h2>
 <p>To build the MoSync Eclipse IDE, the MoSync libraries, and the MoSync tools, you will need a Mac OS X Snow Leopard (OS X v. 10.6) computer capable of running Xcode.<br class="kix-line-break"><br>To build the MoSync <em>runtimes </em>you will need:</p>
 <ul>
@@ -50,12 +50,12 @@ sudo port install doxygen</pre>
 <p>then run:</p>
 <p><pre class="mosync-code-cpp">./build_mac_package.sh</pre>
 </p>
-<p><strong>10.</strong> If everything goes as it should, the script will build a <strong>.dmg</strong> installation package in the folder called /results.<br><br><strong>11. </strong>Install the <strong>.dmg</strong> installation package on an OS X machine.<br><br><strong>12.</strong> If required, <a href="http://www.mosync.com/documentation/manualpages/building-moblin-runtimes">build the Moblin runtimes on Linux</a>.<br><br><strong>13. </strong>If required, build the Windows Mobile, &nbsp;Java ME, Android, and Symbian runtimes on Windows (see <a href="http://www.mosync.com/documentation/manualpages/building-mosync-source-windows">Building the MoSync SDK on Windows</a>).<br><br><strong>14. </strong>Add the runtimes to the folder:</p>
+<p><strong>10.</strong> If everything goes as it should, the script will build a <strong>.dmg</strong> installation package in the folder called /results.<br><br><strong>11. </strong>Install the <strong>.dmg</strong> installation package on an OS X machine.<br><br><strong>12.</strong> If required, <a href="TEMPLATE_DOC_PATH/tools/sdk/extensions/building-moblin-runtimes-linux/index.html">build the Moblin runtimes on Linux</a>.<br><br><strong>13. </strong>If required, build the Windows Mobile, &nbsp;Java ME, Android, and Symbian runtimes on Windows (see <a href="TEMPLATE_DOC_PATH/tools/sdk/extensions/building-mosync-source-windows/index.html">Building the MoSync SDK on Windows</a>).<br><br><strong>14. </strong>Add the runtimes to the folder:</p>
 <p><pre class="mosync-code-cpp">/Applications/MoSync/profiles</pre>
 </p>
 <p><strong>15. </strong>Done.</p>
 <h2>Building an iPhone Runtime for the MoSync SDK on Windows</h2>
-<p>If you want to create an iPhone runtime <em>to use with the Windows version of the MoSync SDK </em>(see<a href="http://www.mosync.com/documentation/manualpages/building-mosync-source-windows"> building the MoSync SDK for Windows</a> ), here’s how:<br><br><strong>1. </strong>Follow the instructions above for Preparing the Mac and Getting the MoSync Source Code. (You do not need to get Eclipse or make the MoSync package.)<br><br><strong>2. </strong>Give your user the correct permissions to the /MoSync folder by entering the following command at the Terminal (replace user with you actual user name):</p>
+<p>If you want to create an iPhone runtime <em>to use with the Windows version of the MoSync SDK </em>(see<a href="TEMPLATE_DOC_PATH/tools/sdk/extensions/building-mosync-source-windows/index.html"> building the MoSync SDK for Windows</a> ), here’s how:<br><br><strong>1. </strong>Follow the instructions above for Preparing the Mac and Getting the MoSync Source Code. (You do not need to get Eclipse or make the MoSync package.)<br><br><strong>2. </strong>Give your user the correct permissions to the /MoSync folder by entering the following command at the Terminal (replace user with you actual user name):</p>
 <p><pre class="mosync-code-cpp">sudo chown -R user  /Applications/MoSync</pre>
 </p>
 <p><strong>3. </strong>To build the MoSync base prerequisites, go to your cloned MoSync source directory and run the command:</p>

@@ -4,7 +4,7 @@
 </head>
 <body>
 <p>The MoSync Facebook C++ Library implements most of the Facebook Graph C API. Here we describe how to connect to Facebook through the Facebook library, retrieve information about them, post links, vidoes and other object types, create new albums, and a whole host of other cool operations.</p>
-<p><!--break-->[toc]</p>
+<p><!--break--></p>
 <h3>Introduction</h3>
 <p>Facebook is a modeled as a social graph. Its official API, the <a href="http://developers.facebook.com/docs/reference/api/">Facebook Graph API</a>, represents the objects in the graph (people, photos, albums, events...) and the connections between them (friend relationships, photo tags...).<br>&nbsp;<br>Every object in the social graph has a unique ID. You can fetch any object from Facebook if you know the ID. Alternatively, people with usernames can be accessed using their username as an ID. There is also a special identifier "me" which refers to the current user.<br>&nbsp;<br>You can retrieve the public information about a user (first name, last name, profile picture) by using the ID or the username. To get additional information about a user, you must first get their permission for which you need to get an access token. After you obtain the access token, you can perform authorized requests and publish on behalf of that user.<br>&nbsp;<br>The MoSync Facebook Library defines a <strong>FacebookManager </strong>class that provides the interface between the Facebook platform and your own application. Use this class if you want to retrieve data, publish on Facebook, or retrieve an <strong>access token</strong> for your application.</p>
 <h3>Authentication and access tokens</h3>
@@ -15,7 +15,7 @@ String oAuthUrl = mFacebookManager-&gt;getOAuthUrl();
 mLoginScreen = new FacebookLoginScreen();
 mLoginScreen-&gt;setUrl ( oAuthUrl );
 mLoginScreen-&gt;show(); //displays the login screen</pre>
-<p>After the user logs in, we are redirected to the <strong> redirect_uri</strong>. The access token is passed in the <strong>redirect_uri</strong>. The <strong>redirect_uri</strong> must be parsed to get the access token. An example of how to extract the access token can be found in our <a href="http://www.mosync.com/documentation/manualpages/facebookdemo">FacebookDemo</a> example application in <strong>FacebookDemoMoblet::customEvent</strong>.<br>&nbsp;<br>After retrieving the access token, we must send it to the FacebookManager:</p>
+<p>After the user logs in, we are redirected to the <strong> redirect_uri</strong>. The access token is passed in the <strong>redirect_uri</strong>. The <strong>redirect_uri</strong> must be parsed to get the access token. An example of how to extract the access token can be found in our <a href="TEMPLATE_DOC_PATH/cpp/examples/facebookdemo/index.html">FacebookDemo</a> example application in <strong>FacebookDemoMoblet::customEvent</strong>.<br>&nbsp;<br>After retrieving the access token, we must send it to the FacebookManager:</p>
 <pre class="mosync-code-cpp">mFacebookManager-&gt;setAccessToken(accessToken); </pre>
 <h3>Permissions</h3>
 <p>You must request specific permissions from the user if your app needs more information than the user has made available to everyone on Facebook. To do this, pass the <strong>FacebookManager </strong>the permissions you need.</p>

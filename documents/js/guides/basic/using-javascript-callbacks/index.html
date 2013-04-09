@@ -4,7 +4,7 @@
 </head>
 <body>
 <p>Callback functions are very common in JavaScript, because JavaScript in the browser is single-threaded. Working with callbacks is an important part of your skillset as an app developer. This beginner's tutorial introduces callbacks and looks at their use within the MoSync Application Framework.<!--break--></p>
-<p>[toc]</p>
+<p></p>
 <h2>What is a Callback?</h2>
 <p>When a call is made to an entity that is external to your JavaScript code, like for example a server, your code cannot usually afford to wait for a reply because that reply may be several seconds in coming. Furthermore, there are likely to be other calls that need to be made without delay and you just cannot hang around waiting for something that may or may not happen.</p>
 <p>Suppose you call a function that explicitly returns a value, and that return just never happens? You code will simply hang, waiting for forever for a return value that never arrives.<br> <br>The solution to this problem is to use callbacks&nbsp;— that is to pass along with the call to the server a JavaScript function that the server should invoke whenever the result is ready.<br> <br>We make extensive use of callbacks throughout the <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/index.html">MoSync Wormhole JavaScript API</a>; a call through Wormhole to the underlying C++ code behaves in the same way as a call to a server: letting you (or requiring you) to specify a callback function when you make the call. <br><br></p>

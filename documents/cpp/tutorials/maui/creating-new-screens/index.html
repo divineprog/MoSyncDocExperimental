@@ -76,10 +76,10 @@ void Menu::buildMenu()
     // Set the widget from the UIBuilder as the main widget for the screen
     this-&gt;setMain(w);
 }</pre>
-<p>A screen contains <strong>Widgets</strong> (for more information, see the tutorial <a href="/documentation/tutorials/introduction-maui">Introduction to MAUI</a>). In our example, we can see that in the constructor we call <strong>buildMenu</strong> which calls out to an external function to create Widgets on our behalf. These widgets will make up the content of our screen.</p>
+<p>A screen contains <strong>Widgets</strong> (for more information, see the tutorial <a href="TEMPLATE_DOC_PATH/cpp/tutorials/maui/introduction-maui/index.html">Introduction to MAUI</a>). In our example, we can see that in the constructor we call <strong>buildMenu</strong> which calls out to an external function to create Widgets on our behalf. These widgets will make up the content of our screen.</p>
 <p>The final command here is <strong>setMain(w);</strong> Each screen has one main widget, which is the parent widget of this screen. When this screen is painted, it calls the <strong>drawWidget</strong> method on the main widget to paint it. Each of the children of the main widget will be painted as well.</p>
 <p><strong>Note</strong>: Screens cannot have any sections which don’t have a widget on. The main widget will be resized to the size of the screen.</p>
-<p>To create the screen, you need to create a new instance of it. In the most simple example, the controlling <strong>Moblet</strong> (see the tutorial <a href="/documentation/tutorials/starting-new-moblet-project">Starting a New Moblet Project</a>) will call an initial screen to start.</p>
+<p>To create the screen, you need to create a new instance of it. In the most simple example, the controlling <strong>Moblet</strong> (see the tutorial <a href="TEMPLATE_DOC_PATH/cpp/tutorials/maui/starting-new-moblet-project/index.html">Starting a New Moblet Project</a>) will call an initial screen to start.</p>
 <p>&nbsp;</p>
 <pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
 #include "Screens/Menu.h"
@@ -182,7 +182,7 @@ void Menu::keyPressEvent(int keyCode)
 {
     locateItem(point);
 }</pre>
-<p>We can use this point to identify a widget which has been pressed, or perform any other action you may want to with the screen. I prefer for touch sensitive widgets to handle their own touch events, and I’ll be presenting my <strong>TouchListBox</strong> in the tutorial <a href="/documentation/tutorials/creating-new-screens">Creating New Screens</a>.</p>
+<p>We can use this point to identify a widget which has been pressed, or perform any other action you may want to with the screen. I prefer for touch sensitive widgets to handle their own touch events, and I’ll be presenting my <strong>TouchListBox</strong> in the tutorial <a href="TEMPLATE_DOC_PATH/cpp/tutorials/maui/creating-new-screens/index.html">Creating New Screens</a>.</p>
 <h2>Navigating to Other Screens</h2>
 <p>When you start writing MoSync apps, you’ll start by creating a couple of screens in the way described above, and then get stuck wondering how to navigate between screens. How does this screen go back to the one before? Or that one over there? In the MAUI example supplied with MoSync, there is a simple method for managing this.</p>
 <p>&nbsp;</p>

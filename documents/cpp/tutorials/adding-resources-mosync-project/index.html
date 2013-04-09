@@ -5,14 +5,14 @@
 <body>
 <p>This tutorial provides an introduction to adding resources, such as images and sounds, to a MoSync application. These external files need to be added into the project, so that they can be packaged with your code and deployed to the device.</p>
 <p><!--break--></p>
-<p><em><strong>Note: new ways of organizing resources were introduced in the MoSync SDK 3.0; see: <a href="http://www.mosync.com/documentation/manualpage/resource-compiler-tutorial">Resource Compilation</a>.</strong></em></p>
-<p>[toc]</p>
+<p><em><strong>Note: new ways of organizing resources were introduced in the MoSync SDK 3.0; see: <a href="TEMPLATE_DOC_PATH/tools/sdk/ide/resource-compiler-tutorial/index.html">Resource Compilation</a>.</strong></em></p>
+<p></p>
 <h2>The Resource Compiler</h2>
-<p>The resource compiler is part of MoSync's <strong><a href="http://www.mosync.com/documentation/manualpages/toolchain">Pipe-Tool</a></strong> (<em>pipe-tool.exe</em>). When you build your application in Eclipse, the resource compiler concatenates all the resources your program needs into a file called "<em>resources</em>" and then it creates an index by which your program can access the resources.</p>
+<p>The resource compiler is part of MoSync's <strong><a href="TEMPLATE_DOC_PATH/tools/sdk/architecture/toolchain/index.html">Pipe-Tool</a></strong> (<em>pipe-tool.exe</em>). When you build your application in Eclipse, the resource compiler concatenates all the resources your program needs into a file called "<em>resources</em>" and then it creates an index by which your program can access the resources.</p>
 <p>When it runs, the resource compiler looks for <strong>resource list files</strong> in your project. Resource list files are files that end with the <strong>.lst</strong> extension. Each resource list file references one or more resources. You don’t have to do anything special to make this work, you just need to create a file with a <strong>.lst</strong> extension and identify in it what resources you want to be included in the final packages.</p>
 <p>You can include any file that will be useful for your program. Typically these will be images (in <strong>.png</strong> format), sounds (in .<strong>mp3</strong> format), and MoSync-specific formats such as <strong>.mof</strong> font files.</p>
 <p>If you are going to be creating data at runtime, or want somewhere to store downloaded data, then the resource list file is also useful for that. You can create a <strong>placeholder</strong> resource which is going to have a handle, but doesn’t yet contain any data.</p>
-<p>There is a full description of all of the types of data you can put into a resource file in the <a href="/documentation/manualpages/resource-compiler-reference">Resource Compiler Reference</a>. In this tutorial we will focus on a few of the common types of resource you are likely to use.</p>
+<p>There is a full description of all of the types of data you can put into a resource file in the <a href="TEMPLATE_DOC_PATH/tools/sdk/ide/resource-compiler-reference/index.html">Resource Compiler Reference</a>. In this tutorial we will focus on a few of the common types of resource you are likely to use.</p>
 <h2>Creating a Resource List File</h2>
 <p>To add external resources to your app, you need to add a <strong>resource list file</strong> to your project. A resource list file is a text file with the <strong>.lst </strong>extension: <em>res.lst</em> or similar would be a good name for it.</p>
 <p>Create the resource list file by selecting <strong>&nbsp;</strong><strong>New </strong>&gt;<strong> Other</strong> from the MoSync IDE's <strong>File </strong>menu.</p>
@@ -76,7 +76,7 @@ Image* i = new Image(0, 0, 100, 100, NULL, true, true,BACKGROUND_IMAGE);</pre>
 <p>You can then download the image to the placeholder.</p>
 <pre>ImageDownloader* dl = new ImageDownloader();
 dl-&gt;beginDownloading("http://austinspad.net/img/front_batman.png", DOWNLOADEDIMAGE);</pre>
-<p>This is just an excerpt of the code required for downloading. See the <a href="/documentation/tutorials/downloading-data-internet-0">Downloading Data from the Internet </a>tutorial for more information and examples.<em><strong><br></strong></em></p>
+<p>This is just an excerpt of the code required for downloading. See the <a href="TEMPLATE_DOC_PATH/cpp/tutorials/communication/downloading-data-internet/index.html">Downloading Data from the Internet </a>tutorial for more information and examples.<em><strong><br></strong></em></p>
 <p>When this has completed downloading, you can save the image to local storage:</p>
 <pre>MAHandle imagestore = maCreateStore("IMAGESTORE", MAS_CREATE_IF_NECESSARY);
 maWriteStore(imagestore, DOWNLOADEDIMAGE);
@@ -237,7 +237,7 @@ void NotifyProgress(Downloader* dl, int downloadedBytes, int totalBytes)
 .include "resources/test.png"
 </pre>
 <p>I’ve created some content I want to put on to the screen, using some of the resource techniques we’ve already looked at. I can write a simple parser to create screen dynamically at runtime.</p>
-<p>(Creating screens at runtime is the subject of the tutorial <a href="/documentation/tutorials/creating-new-screens">Creating New Screens</a>.)</p>
+<p>(Creating screens at runtime is the subject of the tutorial <a href="TEMPLATE_DOC_PATH/cpp/tutorials/maui/creating-new-screens/index.html">Creating New Screens</a>.)</p>
 <pre class="mosync-code-cpp">// Read the first byte. This determines the number of widgets
 maReadData(BINARYDEMO, &amp;length, 0, 1);
 while(completed &lt; length)

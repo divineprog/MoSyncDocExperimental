@@ -4,7 +4,7 @@
 </head>
 <body>
 <p>There are obvious occasions when you want do download data from the Internet for your games or application. &nbsp;There are even obvious occasions when you want to download images and sounds using the <strong>ImageDownloader</strong>&nbsp;and <strong>AudioDownloader.</strong>&nbsp;&nbsp;What might appear less obvious is the use of a <strong>Custom Downloader</strong>.</p>
-<p><!--break--> [toc]</p>
+<p><!--break--> </p>
 <h2>Custom Downloaders</h2>
 <p><strong>Custom Downloaders</strong>&nbsp;are more useful than you might think.&nbsp; These are classes where you have implemented&nbsp;<strong>ConnectionListener</strong>, but got it to do something with the data before consuming it.</p>
 <p>A great, if lengthy, example is the mapping component below.&nbsp; This is a custom widget (not part of the MoSync MAP SDK) to make scrollable, zoomable maps using the CloudMade map tiles.&nbsp; Initially, this used an&nbsp;<strong>ImageDownloader&nbsp;</strong>to get each and every tile separately from CloudMade.&nbsp; This was very slow, not because the data connection was slow, but because the HTTP latency was so great. &nbsp;It needed to negotiate a connection to the server 36 times to build a screen.</p>

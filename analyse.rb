@@ -49,7 +49,7 @@ def listAllFiles
   puts "========================================================="
 end
 
-# Collect link in all documents and list them
+# Collect links in all documents and list them
 def listAllLinks
   dir = exportsDir2()
   files = allHtmlPaths(dir)
@@ -63,7 +63,7 @@ def listAllLinks
   puts "========================================================="
 end
 
-# Collect link in all documents and list them
+# Collect anchor tags in all documents and list them
 def listAnchors
   dir = exportsDir2()
   files = allHtmlPaths(dir)
@@ -83,6 +83,20 @@ def listAnchors
   puts "========================================================="
 end
 
+# Collect images in all documents and list them
+def listImages
+  dir = exportsDir2()
+  files = allHtmlPaths(dir)
+  imgs = (files.collect { |path|
+    html = File.open(path, "rb") { |f| f.read }
+    html.scan(/<img(.*?)>/)
+  }).flatten
+  puts "========================================================="
+  puts "All img tags in all files in " + dir
+  puts imgs.uniq.sort
+  puts "========================================================="
+end
+
 if (ARGV.include? "new")
   newFiles
 elsif (ARGV.include? "count")
@@ -93,6 +107,8 @@ elsif (ARGV.include? "links")
   listAllLinks
 elsif (ARGV.include? "a")
   listAnchors
+elsif (ARGV.include? "img")
+  listImages
 else
   puts "========================================================="
   puts "Options:"

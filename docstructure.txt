@@ -15,7 +15,18 @@ Page coverage
 Check pages that are missing, blogposts, webview example apps,
 photogallery pages, wormhole guides, quick-start guides, etc.
 
-Export all files in given directories, rather than using content labels?
+Export all files from website directories, rather than using labels.
+
+Example of missing pages:
+
+/content/example-applications
+/documentation/manualpage/sending-device
+/content/api-reference
+/content/code-examples
+/content/demo-examples
+
+WebView examples are missing
+Reload docs are missing
 
 
 Replace links

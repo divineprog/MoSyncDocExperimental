@@ -4,11 +4,11 @@
 </head>
 <body>
 <p class="p1">These developer guidelines provide a brief overview of what should be considered when creating HTML5 (or hybrid HTML5/C++) MoSync apps that should be used on devices with varying screen sizes.<!--break--></p>
-<p class="p1">[toc]</p>
+<p class="p1"></p>
 <h2 class="p1">Prerequisites and preparations</h2>
 <p class="p2">This overview considers a typical MoSync HTML5 based app. Although there is nothing to stop you from importing your own framework for cross platform HTML5 based apps, for this overview we use the WormholeDemo example provided with the MoSync download. That example already has most of what you need already in place.</p>
 <p class="p2"><span>The WormholeDemo example shows you how to use jQuery and jqTouch to style the app with native looking graphical elements. It also shows how to use different style sheets depending on which platform is being run. This may be extended to include screen size and whether the device is tablet. (To learn the inner workings of this, see the embedded script of the project's index.html file)&nbsp;</span></p>
-<p class="p2">To import WormholeDemo, start the MoSync IDE and follow the instructions here: <a href="http://www.mosync.com/documentation/manualpages/importing-example-applications">http://www.mosync.com/documentation/manualpages/importing-example-applications</a>.</p>
+<p class="p2">To import WormholeDemo, start the MoSync IDE and follow the instructions here: <a href="TEMPLATE_DOC_PATH/tools/sdk/ide/importing-example-applications/index.html">TEMPLATE_DOC_PATH/tools/sdk/ide/importing-example-applications/index.html</a>.</p>
 <h2 class="p2">Get your units straight</h2>
 <p class="p2">The proliferation of screen sizes, device types and web clients pushes cross platform enabled web pages into using relative units instead of absolute units. (Google 'responsive web design' for more info.)</p>
 <p class="p2"><span>One commonly used unit is&nbsp;</span><strong>px</strong><span>, or&nbsp;</span><strong>CSS pixels</strong><span>. CSS pixels is <em>not</em> physical pixels. CSS pixels is the number of 'pixels' that is reported by the web browser. It may happen to be the number of physical pixels, but often its not:</span></p>
@@ -77,7 +77,7 @@ if (mosync.isIOS)&nbsp;{
 <tr><td>Android (ldpi)</td><td><span>Launcher icon</span></td><td>36 x 36 (32 x 32)</td></tr>
 </tbody></table>
 <p class="p2">* If you want the HTML5 app to be native looking.</p>
-<p class="p2">For more information on assigning app icons, see&nbsp;<a href="http://www.mosync.com/documentation/manualpages/adding-application-icons">http://www.mosync.com/documentation/manualpages/adding-application-icons</a>.</p>
+<p class="p2">For more information on assigning app icons, see&nbsp;<a href="TEMPLATE_DOC_PATH/tools/sdk/ide/adding-application-icons/index.html">TEMPLATE_DOC_PATH/tools/sdk/ide/adding-application-icons/index.html</a>.</p>
 <h2 class="p2">How to responsively load images</h2>
 <p>To scale images to the proper size, you may either load the image and scale it to the proper size (using for example the above mentioned em/percentage units). But as previously mentioned, some images are not meant for just scaling them proportionally. Attached to this article is the JavaScript file mosponsive.js (for some unrelated reason renamed; please re-rename when downloading). This script handles HTML img tag rewriting. To use it, just include it in your index.html file right after wormhole.js.</p>
 <p>How does it work? Let's show an example where we want one image for general android devices, one image for high density screens and one image for high density, android devices:</p>
@@ -98,6 +98,6 @@ if (mosync.isIOS)&nbsp;{
 }</pre>
 <h2 class="p2">Final words</h2>
 <p class="p2">Creating a cross-platform app requires a lot a effort. But by using relative units and selecting CSS styles dynamically, complexity can be brought down to a workable level.&nbsp;</p>
-<p class="p2"><em>PS. Did we mention that you can create a fully native UI in MoSync just using HTML? Have a look here: <a href="http://www.mosync.com/documentation/manualpages/wormholenativeui">http://www.mosync.com/documentation/manualpages/wormholenativeui</a>. DS.</em></p>
+<p class="p2"><em>PS. Did we mention that you can create a fully native UI in MoSync just using HTML? Have a look here: <a href="TEMPLATE_DOC_PATH/js/examples/wormholenativeui/index.html">TEMPLATE_DOC_PATH/js/examples/wormholenativeui/index.html</a>. DS.</em></p>
 </body>
 </html>

@@ -4,8 +4,8 @@
 </head>
 <body>
 <p>Modern smartphones have a variety of in-built sensors to detect, for example, movement, orientation, rotation, proximity, and magnetic fields. This tutorial explains how to start and stop sensors, and to receive sensor data in your application through the MoSync Sensor API.</p>
-<p><!--break-->[toc]</p>
-<p>Only the MoSync runtimes for Android and iPhone have sensor support at the moment, and sensor simulation is not yet available in the MoSync Emulator.<br><br>Not all devices have hardware sensors. Before you run the application on the device, check which sensors it has using our <a href="http://www.mosync.com/documentation/manualpages/sensortest">SensorTest</a> application.</p>
+<p><!--break--></p>
+<p>Only the MoSync runtimes for Android and iPhone have sensor support at the moment, and sensor simulation is not yet available in the MoSync Emulator.<br><br>Not all devices have hardware sensors. Before you run the application on the device, check which sensors it has using our <a href="TEMPLATE_DOC_PATH/cpp/examples/sensortest/index.html">SensorTest</a> application.</p>
 <h2>Accelerometer</h2>
 <p>An accelerometer is a sensor that measures the acceleration forces. On most modern mobile devices there is a 3-way axis device that determines the phone’s physical position. By measuring the static acceleration due to gravity you can find the angle at which device is tilted and by measuring the dynamic acceleration due to movement you can analyze the direction in which the device is moving. <br><br>This sensor is available for both the Android and iPhone runtimes.</p>
 <h3>Starting the Accelerometer</h3>
@@ -288,6 +288,6 @@ extern "C" int MAMain()
     }
 };</pre>
 <h2>SensorTest Example Application</h2>
-<p>Our <a href="http://www.mosync.com/documentation/manualpages/sensortest">SensorTest</a> example application implements all of the sensor types supported by the MoSync Sensor API. When it is run on a device, it checks for the presence of each type of sensor and shows you the current event data being received from those that it finds.</p>
+<p>Our <a href="TEMPLATE_DOC_PATH/cpp/examples/sensortest/index.html">SensorTest</a> example application implements all of the sensor types supported by the MoSync Sensor API. When it is run on a device, it checks for the presence of each type of sensor and shows you the current event data being received from those that it finds.</p>
 </body>
 </html>

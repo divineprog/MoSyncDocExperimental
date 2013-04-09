@@ -5,48 +5,48 @@
 <body>
 <p>Please note: MoSync 2.7 is available&nbsp;<a href="http://www.mosync.com/pyramid#features">http://www.mosync.com/#features</a>.<br><br>The 2.6 Pyramid release introduces many new device APIs, new libraries for Facebook and NativeUI, and many new application examples. We also now support native emulators and application profiling in the IDE.</p>
 <p>&nbsp;</p>
-<p><!--break-->[toc]</p>
+<p><!--break--></p>
 <h3>Release Highlights</h3>
 <p><em>On iPhone (iOS) and Android:</em></p>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpages/whats-new-mosync-26-pyramid#Updated_APIs">Widget API</a> enhancements — many new NativeUI widgets, enhancements to existing widgets, support for native fonts and custom font loading (requires native emulators).</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/using-nativeui-library">NativeUI Library</a> — classes and functions for high-level NativeUI control (requires native emulators).</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/controlling-sensors">Sensor API</a> — control a device's accelerometer, magnetic field, orientation, gyroscope, and proximity sensors.</li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/release-notes/whats-new-mosync-26-pyramid/index.html#Updated_APIs">Widget API</a> enhancements — many new NativeUI widgets, enhancements to existing widgets, support for native fonts and custom font loading (requires native emulators).</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/nativeui/using-nativeui-library/index.html">NativeUI Library</a> — classes and functions for high-level NativeUI control (requires native emulators).</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/sensors/controlling-sensors/index.html">Sensor API</a> — control a device's accelerometer, magnetic field, orientation, gyroscope, and proximity sensors.</li>
 <li><a href="http://www.mosync.com/documentation/manualpages/controlling-cameras">Camera API</a> — advanced control of the device's cameras, embedding previews in your application, zooming, etc.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/working-opengl-es">OpenGL ES API</a> — access to the devices graphics hardware through OpenGL ES 2.0 (requires native emulators).</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/using-facebook-library">Facebook Library</a> — classes and functions for logging on to Facebook, retrieving information, making posts, creating albums, creating check-ins and events, and a whole lot more.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/pim-access-and-control">PIM API</a> — add to, read from, modify, and delete contacts in a device's address book.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/working-device-fonts-api">Device Fonts API</a> — new syscalls and constants for discovering a device's fonts and loading them for text drawing and Native UI Widgets.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/graphics/working-opengl-es/index.html">OpenGL ES API</a> — access to the devices graphics hardware through OpenGL ES 2.0 (requires native emulators).</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/communication/using-facebook-library/index.html">Facebook Library</a> — classes and functions for logging on to Facebook, retrieving information, making posts, creating albums, creating check-ins and events, and a whole lot more.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/pim/pim-access-and-control/index.html">PIM API</a> — add to, read from, modify, and delete contacts in a device's address book.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/fonts/working-device-fonts-api/index.html">Device Fonts API</a> — new syscalls and constants for discovering a device's fonts and loading them for text drawing and Native UI Widgets.</li>
 </ul>
 <p><em>In the IDE:</em></p>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpage/emulating-device#Installing_and_Working_with_Native_Emulators">Native emulator support</a> (Android, iPhone/iOS) in the IDE.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/application-profiling-mosync-emulator">Application profiling</a> in the MoSync MoRE Emulator.</li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/emulators/emulating-device/index.html#Installing_and_Working_with_Native_Emulators">Native emulator support</a> (Android, iPhone/iOS) in the IDE.</li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/emulators/application-profiling-mosync-emulator/index.html">Application profiling</a> in the MoSync MoRE Emulator.</li>
 </ul>
 <p><em>Other:</em></p>
 <ul>
-<li>Support for MoSync development in <a href="http://www.mosync.com/documentation/manualpages/mosync-visual-studio-2010">Microsoft Visual Studio 2010</a>.</li>
+<li>Support for MoSync development in <a href="TEMPLATE_DOC_PATH/tools/sdk/extensions/mosync-visual-studio-2010/index.html">Microsoft Visual Studio 2010</a>.</li>
 </ul>
 <h3>Important Changes Since MoSync 2.5</h3>
 <p>The <strong>maLogWrite</strong> syscall, and also the <strong>lprintfln/printf</strong> functions, only print to the device console when the application is built in <strong>Debug </strong>mode. For example, if you use lprintfln to output log messages to the logcat console on Android, the application must be built in Debug mode for the output to appear. <strong>No output is shown in Release mode.</strong></p>
 <h3>New Library Classes and Functions</h3>
 <p><em>On iPhone (iOS) and Android:</em></p>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpages/using-nativeui-library">NativeUI Library</a> — classes and functions for high-level NativeUI control. This high-level wrapper API supports all available widgets and is easy to update as new widgets are added. It provides support for specific widget functionalities : properties and events.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/nativeui/using-nativeui-library/index.html">NativeUI Library</a> — classes and functions for high-level NativeUI control. This high-level wrapper API supports all available widgets and is easy to update as new widgets are added. It provides support for specific widget functionalities : properties and events.</li>
 </ul>
 <p><em>On all platforms:</em></p>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpages/working-opengl-es">GLMoblet</a>— a Moblet that creates a fullscreen OpenGL ES application.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/using-facebook-library">Facebook Library</a> — classes and functions for interfacing with Facebook.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/graphics/working-opengl-es/index.html">GLMoblet</a>— a Moblet that creates a fullscreen OpenGL ES application.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/communication/using-facebook-library/index.html">Facebook Library</a> — classes and functions for interfacing with Facebook.</li>
 </ul>
 <h3>New APIs</h3>
 <p><em>On iPhone (iOS) and Android:</em></p>
 <ul>
 <li><a href="http://www.mosync.com/documentation/manualpages/controlling-cameras">Camera API</a> — new syscalls, constants, and properties for advanced camera control.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/working-device-fonts-api">Device Fonts API</a> — new syscalls and constants for discovering a device's fonts and loading them for text drawing and Native UI Widgets.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/controlling-sensors">Sensor API</a> — new syscalls, constants, properties, and event types for controling a devices sensors.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/working-opengl-es">OpenGL ES 2.0 API</a> — new syscalls and constants for advanced graphics hardware control.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/pim-access-and-control">PIM API</a> — new syscalls and constants for contact management in address books.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/fonts/working-device-fonts-api/index.html">Device Fonts API</a> — new syscalls and constants for discovering a device's fonts and loading them for text drawing and Native UI Widgets.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/sensors/controlling-sensors/index.html">Sensor API</a> — new syscalls, constants, properties, and event types for controling a devices sensors.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/graphics/working-opengl-es/index.html">OpenGL ES 2.0 API</a> — new syscalls and constants for advanced graphics hardware control.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/pim/pim-access-and-control/index.html">PIM API</a> — new syscalls and constants for contact management in address books.</li>
 </ul>
 <h3>Updated APIs</h3>
 <p><em>On iPhone (iOS) and Android:</em></p>
@@ -90,49 +90,49 @@
 <p>All new event types are documented in the reference documentation included in the package.</p>
 <h3>New IDE Features and Tools</h3>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpage/emulating-device#Installing_and_Working_with_Native_Emulators">Native emulator support</a> for the Android Emulator and iPhone/iOS Simulator in the IDE.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/application-profiling-mosync-emulator">Application profiling</a> in the MoRE emulator</li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/emulators/emulating-device/index.html#Installing_and_Working_with_Native_Emulators">Native emulator support</a> for the Android Emulator and iPhone/iOS Simulator in the IDE.</li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/emulators/application-profiling-mosync-emulator/index.html">Application profiling</a> in the MoRE emulator</li>
 </ul>
 <h3>New Example Applications</h3>
 <p><em>On iPhone (iOS) and Android:</em></p>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpages/sensortest">SensorTest</a> — an application which checks which sensors (accelerometer, gyroscope, etc) the device has and shows their current readings.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/accelerometeropengles">AccelerometerOpenGL</a> — an application that graphically displays the device's orientation using OpenGL.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/facebookdemo">FacebookDemo</a> — an application for iOS and Android devices, showing how to interface with Facebook. Uses NativeUI.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/camerademo">CameraDemo</a> — an application for iOS and Android devices, showing how to control a device's camera.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/glmobletopengles1">GLMoblet_OpenGLES1</a>— an application in the OpenGLES folder, showing how to use OpenGL ES 1.1 in applications for iOS and Android devices.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/glmobletopengles2">GLMoblet_OpenGLES2</a> — an application in the OpenGLES folder, showing how to use OpenGL ES 2.0 in applications for iOS and Android devices.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/wikisearchnativeui">WikiSearchNativeUI</a> — an application that uses Native UI to text search Wikipedia, based on user input and selected categories.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/videonativeuiexample">VideoNativeUIExample</a> — an application that shows how to use the NativeUI wrapper API video widget to embed video in your application.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/pimdemo">PIMDemo</a> — an application demonstrating how to add a new contact to an address book and how to read contacts from address book.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/devicefonts">DeviceFonts</a> — an application demonstrating how to count, load, and manage device fonts for text drawing.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/devicefontsnativeui">DeviceFontsNativeUI</a> — a new example demonstrating how to count, load, and manage a device fonts for your Native UI applications.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/examples/sensortest/index.html">SensorTest</a> — an application which checks which sensors (accelerometer, gyroscope, etc) the device has and shows their current readings.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/examples/accelerometeropengles/index.html">AccelerometerOpenGL</a> — an application that graphically displays the device's orientation using OpenGL.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/examples/facebookdemo/index.html">FacebookDemo</a> — an application for iOS and Android devices, showing how to interface with Facebook. Uses NativeUI.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/examples/camerademo/index.html">CameraDemo</a> — an application for iOS and Android devices, showing how to control a device's camera.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/graphics/glmobletopengles1/index.html">GLMoblet_OpenGLES1</a>— an application in the OpenGLES folder, showing how to use OpenGL ES 1.1 in applications for iOS and Android devices.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/graphics/glmobletopengles2/index.html">GLMoblet_OpenGLES2</a> — an application in the OpenGLES folder, showing how to use OpenGL ES 2.0 in applications for iOS and Android devices.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/examples/wikisearchnativeui/index.html">WikiSearchNativeUI</a> — an application that uses Native UI to text search Wikipedia, based on user input and selected categories.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/nativeui/videonativeuiexample/index.html">VideoNativeUIExample</a> — an application that shows how to use the NativeUI wrapper API video widget to embed video in your application.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/examples/pimdemo/index.html">PIMDemo</a> — an application demonstrating how to add a new contact to an address book and how to read contacts from address book.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/examples/devicefonts/index.html">DeviceFonts</a> — an application demonstrating how to count, load, and manage device fonts for text drawing.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/examples/devicefonts/index.htmlnativeui">DeviceFontsNativeUI</a> — a new example demonstrating how to count, load, and manage a device fonts for your Native UI applications.</li>
 </ul>
 <p>Documentation for all examples is available at <a href="http://www.mosync.com/content/demo-examples">http://www.mosync.com/content/demo-examples</a>.</p>
 <h3>Updated Example Applications</h3>
 <p><em>On iPhone (iOS) and Android:</em></p>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpages/nativeuidemo">NativeUIDemo</a> - updated to make use of the new NativeUI library.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/examples/nativeuidemo/index.html">NativeUIDemo</a> - updated to make use of the new NativeUI library.</li>
 </ul>
 <h3>New User Guides and Tutorials</h3>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpages/controlling-sensors">Controlling Sensors</a> — a new tutorial covering the use of the Sensor API.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/using-facebook-library">Using the Facebook Library</a> — a new tutorial discussing how to login and work with Facebook from your application.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/sensors/controlling-sensors/index.html">Controlling Sensors</a> — a new tutorial covering the use of the Sensor API.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/communication/using-facebook-library/index.html">Using the Facebook Library</a> — a new tutorial discussing how to login and work with Facebook from your application.</li>
 <li><a href="http://www.mosync.com/documentation/manualpages/controlling-cameras">Controlling Cameras</a> — a new tutorial covering the use of the Camera API.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/working-opengl-es">Working With OpenGL ES</a> — a new tutorial covering the use of OpenGL ES.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/working-device-fonts-api">Working With the Device Fonts API</a> — a new tutorial covering the use of the Device Fonts API.</li>
-<li><a href="http://www.mosync.com/documentation/manualpages/application-profiling-mosync-emulator">Application Profiling in the MoSync Emulator</a> — a new tutorial covering the use of the MoRE Profiler.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/graphics/working-opengl-es/index.html">Working With OpenGL ES</a> — a new tutorial covering the use of OpenGL ES.</li>
+<li><a href="TEMPLATE_DOC_PATH/cpp/guides/fonts/working-device-fonts-api/index.html">Working With the Device Fonts API</a> — a new tutorial covering the use of the Device Fonts API.</li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/emulators/application-profiling-mosync-emulator/index.html">Application Profiling in the MoSync Emulator</a> — a new tutorial covering the use of the MoRE Profiler.</li>
 </ul>
 <p>All documentation is available online at <a href="http://www.mosync.com/documentation">http://www.mosync.com/documentation</a>.</p>
 <h3>Known Issues with MoSync 2.6</h3>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpages/developing-android-applications#Known_Issues_with_Android">Known Issues with Android</a></li>
-<li><a href="http://www.mosync.com/documentation/manualpages/developing-iphone-applications#Known_Issues_and_Limitations">Known Issues with iPhone</a></li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/ide/developing-android-applications/index.html#Known_Issues_with_Android">Known Issues with Android</a></li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/ide/developing-iphone-applications/index.html#Known_Issues_and_Limitations">Known Issues with iPhone</a></li>
 <li><a href="http://www.mosync.com/documentation/manualpages/symbian-packaging-parameters#Known_Issues_with_Symbian">Known Issues with Symbian</a></li>
-<li><a href="http://www.mosync.com/documentation/manualpages/using-debugger#Known_Issues_with_the_Debugger">Known issues with the Debugger</a></li>
-<li><a href="http://www.mosync.com/documentation/manualpages/using-pipe-tool#Known_Issues_with_Pipe-Tool">Known Issues with Pipe-Tool</a></li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/ide/using-debugger/index.html#Known_Issues_with_the_Debugger">Known issues with the Debugger</a></li>
+<li><a href="TEMPLATE_DOC_PATH/tools/sdk/ide/using-pipe-tool/index.html#Known_Issues_with_Pipe-Tool">Known Issues with Pipe-Tool</a></li>
 <li><a href="http://www.mosync.com/documentation/manualpages/controlling-cameras#Known_Issues_and_Limitations">Known Issues with Camera API</a></li>
 </ul>
-<p><br><a href="http://www.mosync.com/documentation/manualpages/using-pipe-tool#Known_Issues_with_Pipe-Tool"></a></p>
+<p><br><a href="TEMPLATE_DOC_PATH/tools/sdk/ide/using-pipe-tool/index.html#Known_Issues_with_Pipe-Tool"></a></p>
 </body>
 </html>

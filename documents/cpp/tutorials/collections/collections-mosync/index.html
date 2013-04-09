@@ -4,7 +4,7 @@
 </head>
 <body>
 <p>The MoSync SDK provides several different collection objects, suitable for different occasions. &nbsp;Collections let you deal with sets of object collectively, but the way you access the collection varies.<!--break-->&nbsp;</p>
-<p>[toc]</p>
+<p></p>
 <h2>Collection Memory Usage</h2>
 <p>Typically, collections will be created on the stack rather than the heap. &nbsp;This will mean that if you have a collection of object pointers (the objects themselves will be in the heap), and the collection goes out of scope, you may loose the pointers to the objects in the heap and you won't be able to access them. &nbsp;The objects will still exist though, and you've got a memory leak. &nbsp;Keep close track of collections, and ensure that they are in a suitable scope. &nbsp;Object scope is very commonly used.</p>
 <pre class="mosync-code-cpp">class MyClass

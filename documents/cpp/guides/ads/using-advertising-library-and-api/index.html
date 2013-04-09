@@ -3,11 +3,11 @@
 <title>The Advertising Library and API</title>
 </head>
 <body>
-<p>The MoSync <a href="http://www.mosync.com/files/imports/doxygen/latest/html/group___advertising_lib.html">Advertising C++ Library</a> and <a href="http://www.mosync.com/files/imports/doxygen/latest/html/group___ads_a_p_i.html">Advertising C API</a> make it easy for C/C++ programmer's to create advertisements and display them in mobile applications. You can get and set properties to determine if the advertisement should be visible in a certain context.<!--break-->[toc]</p>
+<p>The MoSync <a href="http://www.mosync.com/files/imports/doxygen/latest/html/group___advertising_lib.html">Advertising C++ Library</a> and <a href="http://www.mosync.com/files/imports/doxygen/latest/html/group___ads_a_p_i.html">Advertising C API</a> make it easy for C/C++ programmer's to create advertisements and display them in mobile applications. You can get and set properties to determine if the advertisement should be visible in a certain context.<!--break--></p>
 <p>For a list of the platforms supported by the MoSync Advertising Library and API see our <a href="http://www.mosync.com/documentation/manualpages/featureplatform-matrix">Feature/Platform Support</a> page.</p>
 <h2>Example application</h2>
 <p>We make use of the NativeUI layouts to display advertisements. That means that the advertisment matches the look and feel of the target platform.</p>
-<p>Here is a typical advertisement, in this case a banner ad, which we have implemented in the example application <a href="http://www.mosync.com/documentation/manualpages/nativeuidemo">NativeUIDemo</a>:</p>
+<p>Here is a typical advertisement, in this case a banner ad, which we have implemented in the example application <a href="TEMPLATE_DOC_PATH/cpp/examples/nativeuidemo/index.html">NativeUIDemo</a>:</p>
 <p>[img_assist|nid=7875|title=|desc=|link=none|align=none|width=400|height=282]</p>
 <p>Take a look at the code of that example to see how we have implemented the advertisment feature.</p>
 <h2>Getting a publisher ID</h2>
@@ -16,7 +16,7 @@
 <h2>The MoSync C++ Advertising Library</h2>
 <p>At the C++ level we have created a simple library contains two classes:</p>
 <ul>
-<li><strong>Banner</strong> — Provides a widget that displays advertisement to the user. When the user taps a banner, it triggers an action programmed into the advertisement. Your application is notified when an action starts or stops. This class requires our <a href="http://www.mosync.com/documentation/manualpages/using-nativeui-library">NativeUI Library</a>; it can only be added to a <strong>NativeUI</strong> layout object.</li>
+<li><strong>Banner</strong> — Provides a widget that displays advertisement to the user. When the user taps a banner, it triggers an action programmed into the advertisement. Your application is notified when an action starts or stops. This class requires our <a href="TEMPLATE_DOC_PATH/cpp/guides/nativeui/using-nativeui-library/index.html">NativeUI Library</a>; it can only be added to a <strong>NativeUI</strong> layout object.</li>
 </ul>
 <ul>
 <li><strong>BannerListener</strong> —&nbsp; Provides methods for handling any changes in a <strong>Banner</strong> object. The class’s methods are called when a new advertisement is loaded, when a user interacts with an advertisement, and when errors occur.</li>

@@ -38,7 +38,7 @@ extern "C" int MAMain() {
 
 <p>The static function <strong>Moblet::run()</strong> implements the actual event loop. When it gets events, it distributes them to all registered listeners. The Moblet, being both a <strong>KeyListener</strong> and a <strong>CloseListener</strong>, will recieve these event types. It is recommended to handle other event types by letting your moblet inherit the corresponding listener types, such as <strong>BluetoothListener </strong>and <strong>ConnectionListener</strong>.</p>
 
-<p>Working with connections in Moblet-based applications involves using the <strong>ConnectionListener </strong>interface. You inherit the class and implement the <strong>connEvent()</strong> function. You can use one listener for several connections, but each connection can only be associated with one listener. Once the events are received, you should process them in the same way as in the <a href="/content/developing-classic-procedural-applications">classic model</a>.</p>
+<p>Working with connections in Moblet-based applications involves using the <strong>ConnectionListener </strong>interface. You inherit the class and implement the <strong>connEvent()</strong> function. You can use one listener for several connections, but each connection can only be associated with one listener. Once the events are received, you should process them in the same way as in the <a href="TEMPLATE_DOC_PATH/cpp/tutorials/basic/classic-procedural-applications/index.html">classic model</a>.</p>
 
 <h2>Example: A Moblet Application Using Connections</h2>
 
