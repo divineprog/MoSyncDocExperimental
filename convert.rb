@@ -356,8 +356,8 @@ end
 
 # Update links to point to new urls.
 def htmlUpdateLinks(html)
-  puts "Page BEFORE URL update: " + html
-  puts " "
+  #puts "Page BEFORE URL update: " + html
+  #puts " "
   
   # Step 1: Update urls and insert marker
   allPages().each do |page|
@@ -375,8 +375,9 @@ def htmlUpdateLinks(html)
   html = html.gsub("//index.html", "/index.html") 
   html = html.gsub("index.html/", "index.html") 
   
-  puts "Page AFTER URL update: " + html
-  puts " "
+  #puts "Page AFTER URL update: " + html
+  #puts " "
+  
   html
 end
 

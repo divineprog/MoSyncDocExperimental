@@ -1,5 +1,5 @@
-Documentation Exports and Website Structure
-===========================================
+Documentation Export and Website Structure
+==========================================
 
 Document documentation system
 -----------------------------
@@ -7,6 +7,11 @@ Document documentation system
 Make documentation for documentation system :)
 Design considerations, how the structure works, etc.
 Doc author's guide.
+
+Web site location
+-----------------
+
+How to structure SDK doc and Reload doc? Same site but different sources?
 
 
 Page coverage
@@ -24,9 +29,29 @@ Example of missing pages:
 /content/api-reference
 /content/code-examples
 /content/demo-examples
+/screencasts/
 
 WebView examples are missing
 Reload docs are missing
+Blog entries
+
+Release notes, for example: 
+http://www.mosync.com/documentation/release-notes/whats-new-mosync-sdk-321
+
+
+Images
+------
+
+<img src='images/files/images/BluetoothClient.png />
+should  be:
+<img src="images/BluetoothClient.png" />
+
+Also export images with file name references:
+<img src="/system/files/3DLines1.JPG">
+to their respective directories:
+<img src="images/3DLines1.JPG" />
+
+Lower-case JPG?
 
 
 Replace links
@@ -244,29 +269,29 @@ Subjects can be broader is scope and focus on several features - Tutorial = many
 All "getting started" (quick-start) are tutorials
 Tutorial = beginner's guide
 Guide = also for advanced users, more of a reference explained, with example code
-
 Tutorial is longer than a guide
 
 
 Prettyprint HTML
 ----------------
 
-opening/closing nl + indent
- html
- body
- head
- ul
- ol
- div
+    opening/closing nl + indent
+     html
+     body
+     head
+     ul
+     ol
+     div
 
-closing nl
-  h1
-  h2
-  h3
-  h4
-  p
-  pre
-  li
+    closing nl
+      h1
+      h2
+      h3
+      h4
+      p
+      pre
+      li
+
 
 Links
 -----
