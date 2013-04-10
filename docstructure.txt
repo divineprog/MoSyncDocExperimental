@@ -20,15 +20,16 @@ Page coverage
 Check pages that are missing, blogposts, webview example apps,
 photogallery pages, wormhole guides, quick-start guides, etc.
 
-Export all files from website directories, rather than using labels.
+Export all files from website directories, rather than using tags.
 
 Example of missing pages:
 
 /content/example-applications
 /documentation/manualpage/sending-device
-/content/api-reference
-/content/code-examples
-/content/demo-examples
+/content/api-reference -> "Book view"
+/content/code-examples  -> forward http://www.mosync.com/content/example-application-descriptions
+
+/content/demo-examples  -> forward http://www.mosync.com/content/example-application-descriptions
 /screencasts/
 
 WebView examples are missing
@@ -107,12 +108,12 @@ What to insert into generated pages
 Is this needed? (from old pages)
 
     <!DOCTYPE html>
-    <html lang="en" xml:lang="en" dir="ltr">
+    <html lang="en" xml:lang="en" dir="ltr"> should be in
 
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta property="fb:app_id" content=""/>
+    <meta property="fb:app_id" content=""/>  take out
 
 
 Google Analytics
