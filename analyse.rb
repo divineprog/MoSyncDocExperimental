@@ -85,7 +85,8 @@ end
 
 # Collect images in all documents and list them
 def listImages
-  dir = exportsDir2()
+  #dir = exportsDir2()
+  dir = "./documents/"
   files = allHtmlPaths(dir)
   imgs = (files.collect { |path|
     html = File.open(path, "rb") { |f| f.read }

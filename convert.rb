@@ -1,9 +1,28 @@
 require 'fileutils'
 require 'pathname'
+require "open-uri"
 
 load 'structure.rb' 
 
-puts($pages)
+def pathExports
+  "./mosync-doc-exports/"
+end
+
+def pathTemplates
+  "./templates/"
+end
+
+def pathDocuments
+  "./documents/"
+end
+
+def pathWebSite
+  "./docsite/"
+end
+
+def pathWebSitePages
+  pathWebSite + "pages/"
+end
 
 def sh(cmd)
     #TODO: optimize by removing the extra shell
@@ -20,9 +39,9 @@ end
 
 # Not used for now.
 def convertHtmlToMarkdown
-  root = Pathname.new("./mosync-doc-exports")
+  root = pathExports
   n = 1
-  Pathname.glob("./mosync-doc-exports/**/*.html").each  do |p|
+  Pathname.glob(pathExports() + "**/*.html").each  do |p|
     puts "File " + n.to_s + ": " + p.to_s
     n = n + 1
     infile = p.to_s
@@ -35,8 +54,8 @@ end
 
 # Import HTML files exported from Drupal.
 def importHTML
-  sourceDir = Pathname.new("./mosync-doc-exports")
-  destDir = Pathname.new("./documents")
+  sourceDir = Pathname.new pathExports
+  destDir = Pathname.new pathDocuments
   
   # Clean target directory.
   begin
@@ -64,9 +83,74 @@ def importHTML
     html = htmlReplaceSyntaxHighlighterTags(html)
     html = htmlReplaceTabsWithSpaces(html)
     html = htmlPrettify(html)
-    File.open(destFile, "wb") { |f| f.write(html) }
+    fileSaveHTML(destFile, html)
   end
 end
+
+# Iterate over all pages and all image urls on each page.
+# Download images to local files, and update image urls
+# to refer to local files.
+def downloadImages
+  n = 0
+  # Find all files.
+  Pathname.glob(pathDocuments() + "**/*.html").each do |path|
+    n = n + 1
+    puts "Downloading images for file " + n.to_s + ": " + path.to_s
+    # Find images in file.
+    html = fileReadContent(path)
+    html.scan(/(<img.*?>)/) do |img|
+      puts "  img: " + img[0]
+      # Process image tag
+      url = ""
+      imageName = ""
+      img[0].scan(/src="(.*?)"/) do |src|
+        if src[0].start_with?("http://www.mosync.com") then
+          # Download image
+          url = src[0]
+        elsif src[0].start_with?("http://") or 
+          src[0].start_with?("https://") then
+          # Do not download image ?
+          # Or just download every image?
+        elsif src[0].start_with?("/") then
+          # Download from http://www.mosync.com/
+          url = "http://www.mosync.com" + src[0]
+        end
+        
+        # Download and save image.
+        if url != "" then
+          imageName = Pathname(url).basename.to_s
+          destPath = path.parent + "images/" + imageName
+          Pathname(destPath).parent.mkpath
+          puts "    downloading from: " + url.to_s
+          puts "    writing image to: " + destPath.to_s
+          #downloadImage(url, destPath)
+          puts "    done"
+        end
+      end
+
+      # Update img tag.
+      if url != "" then
+        parts = img[0].split(/src="(.*?)"/)
+        newImgTag = parts[0] + "src=\"images/" + imageName + "\"" + parts[2]
+        puts "    new img: " + newImgTag
+        # Update image tag.
+        html = html.gsub(img[0], newImgTag)
+      end
+    end
+    
+    # Write updated file.
+    fileSaveContent(path, html)
+  end
+end
+
+def downloadImage(url, destPath)
+  open(url) do |f|
+    File.open(destPath,"wb") do |file|
+      file.puts f.read
+    end
+  end
+end
+
 
 def webSiteBuild
   webSiteClean
@@ -77,31 +161,31 @@ end
 
 def webSiteClean
   # Clean target directory.
-  dir = Pathname.new("./docsite/pages/")
+  dir = Pathname.new(pathWebSitePages())
   begin
     dir.rmtree()
   rescue
   end
   dir.mkpath()
-  Pathname.new("./docsite/js/").mkpath()
+  Pathname.new(pathWebSite() + "js/").mkpath()
 end
 
 def webSiteBuildHomePage
   title = "MoSync Documentation"
 
   # Get content HTML.
-  homePageFile = Pathname.new("./templates/home.html")
+  homePageFile = Pathname.new(pathTemplates() + "home.html")
   html = File.open(homePageFile, "rb") { |f| f.read }
   
   # Save the page.
-  destFile = Pathname.new("./docsite") + "index.html"
+  destFile = Pathname.new(pathWebSite()) + "index.html"
   webSiteBuildPageFromStandardTemplate(
       title,
       html,
       destFile)
       
   # Copy JavaScript libs.
-  FileUtils.cp_r(Dir["./templates/js/*"], "./docsite/js/")
+  FileUtils.cp_r(Dir[pathTemplates() + "js/*"], pathWebSite() + "js/")
   
   # Copy images.
   #FileUtils.cp(
@@ -110,14 +194,14 @@ def webSiteBuildHomePage
 end
 
 def webSiteBuildDocPages
-  sourceDir = Pathname.new("./documents")
-  destDir = Pathname.new("./docsite/pages")
+  sourceDir = Pathname.new(pathDocuments())
+  destDir = Pathname.new(pathWebSitePages)
   
   # Replace template elements in each file and save.
-  n = 1
+  n = 0
   docPages().each do |page|
-    puts "Processing file " + n.to_s
     n = n + 1
+    puts "Processing file " + n.to_s + ": " + pageTargetFile(page)
     
     sourceFile = sourceDir + pageTargetFile(page) + "index.html"
     destPath = destDir + pageTargetFile(page)
@@ -130,6 +214,11 @@ def webSiteBuildDocPages
       htmlGetPageTitle(html),
       htmlGetPageContent(html),
       destFile)
+	  
+	# Copy images.
+	imagesSource = sourceDir + pageTargetFile(page) + "images"
+	imagesDest = destDir + pageTargetFile(page)
+	FileUtils.cp_r(Dir[imagesSource], imagesDest)
   end
 end
 
@@ -158,7 +247,7 @@ end
 # Exampel of pageShortPath: "cpp/guides/"
 def webSiteBuildCategoryLinkPage(category, type, pageShortPath, pageTitle)
   # Create page path.
-  destDir = Pathname.new("./docsite/pages")
+  destDir = Pathname.new(pathWebSitePages())
   destFile = destDir + pageShortPath + "index.html"
   
   puts "Building page: " + destFile.to_s
@@ -219,9 +308,9 @@ end
 # Build and save page from template file.
 def webSiteBuildPageFromStandardTemplate(title, content, destFile)
   # Set up paths.
-  templateFile = Pathname.new("./templates/docpage.html")
-  pagesDir = Pathname.new("./docsite/pages")
-  jsDir = Pathname.new("./docsite/js")
+  templateFile = Pathname.new(pathTemplates + "docpage.html")
+  pagesDir = Pathname.new(pathWebSitePages())
+  jsDir = Pathname.new(pathWebSite() + "js/")
   destPath = destFile.parent
   
   # Relative paths used for links and js/css imports.
@@ -302,7 +391,7 @@ def pageHasLabel?(page,label)
 end
 
 def pageGetTitleFromTargetFile(page)
-  dir = Pathname.new("./documents")
+  dir = Pathname.new(pathDocuments())
   file = dir + pageTargetFile(page) + "index.html"
   fileGetPageTitle(file)
 end
@@ -315,8 +404,16 @@ def htmlGetPageContent(html)
   htmlGetTagContents(html, "body")
 end
 
+def fileReadContent(filePath)
+  File.open(filePath, "rb") { |f| f.read }
+end
+
+def fileSaveContent(destFile, content)
+  File.open(destFile, "wb") { |f| f.write(content) }
+end
+
 def fileGetPageTitle(filePath)
-  html = File.open(filePath, "rb") { |f| f.read }
+  html = fileReadContent(filePath)
   htmlGetPageTitle(html)
 end
 
@@ -386,9 +483,9 @@ def htmlStripTOC(html)
 end
 
 def cleanmd
-  root = Pathname.new("./mosync-doc-exports")
+  root = Pathname.new pathExports
   n = 1
-  Pathname.glob("./mosync-doc-exports/**/*.md").each  do |p|
+  Pathname.glob(pathExports + "**/*.md").each  do |p|
     puts "rm " + n.to_s + ": " + p.to_s
     n = n + 1
     file = p.to_s
@@ -402,6 +499,8 @@ elsif (ARGV.include? "cleanmd")
     cleanmd
 elsif (ARGV.include? "import")
     importHTML
+elsif (ARGV.include? "downloadimages")
+    downloadImages
 elsif (ARGV.include? "build")
     webSiteBuild
 else
@@ -409,5 +508,7 @@ else
     #puts "  html2md"
     #puts "  cleanmd"
     puts "  import (imports HTML from Drupal export)"
+    puts "  downloadimages (download images and"
+    puts "    modify image urls in all documents)"
     puts "  build (builds web site)"
 end

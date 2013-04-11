@@ -9,7 +9,7 @@
 <h2>Core Concepts</h2>
 <p>In this section we introduce some core concepts that you will need to understand when you write extensions.</p>
 <h3>Runtimes and user code</h3>
-<p style="text-align: center;"><img src="/system/files/runtime-code.png" alt="Interaction of user code and runtime through syscalls" height="110" width="311"></p>
+<p style="text-align: center;"><img src="images/runtime-code.png" alt="Interaction of user code and runtime through syscalls" height="110" width="311"></p>
 <p><strong>User code</strong> includes all the code that you write when you create an application with MoSync along with some of the MoSync libraries, such as the MAUI library.</p>
 <p>A <strong>runtime </strong>is the thing that executes the user code on the device. For each platform that MoSync supports, there is a different runtime. Some runtimes are written in C++, others like the J2ME and Android runtimes are written in Java. <span style="color: #ff0000;"><span style="color: #000000;">Each runtime has two parts: </span><span style="color: #000000;">one that executes the user code and one that interfaces to it to provide low-level services.</span></span></p>
 <h3>Syscalls and events</h3>

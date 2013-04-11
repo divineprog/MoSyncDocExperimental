@@ -69,7 +69,7 @@ XML="XML"
 HOME_PATH = "/"
 
 $pages = [
-#[oldfile,newfile,category,type,labels]]
+#[oldfile,newfile,tags]]
 ["content/3dlines","cpp/examples/3dlines",[CPP,EXAMPLE,GRAPHICS]],
 ["content/advertising-banner-ads",HOME_PATH,[REDIRECT]],
 ["content/advgraphics","cpp/examples/advgraphics",[CPP,EXAMPLE,GRAPHICS]],
@@ -271,4 +271,3 @@ $pages = [
 ["documentation/using-mosync-ide",HOME_PATH,[REDIRECT]],
 ["documentation/wormhole-guides-tutorials-examples",HOME_PATH,[REDIRECT]],
 ]
-puts($pages)
