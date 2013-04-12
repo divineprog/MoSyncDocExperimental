@@ -3,6 +3,9 @@
 <title>Emulating a Device</title>
 </head>
 <body>
+
+<h1>Emulating a Device</h1>
+
 <p>The MoSync IDE ships with a default emulator, MoRE, that can emulate most devices in MoSync's device/platform database and includes multitouch emulation. You can also use native emulators from the IDE, like the Android Emulator and iPhone/iOS Simulator, and run your application in those too.</p>
 <p><!--break--></p>
 <p></p>
@@ -18,42 +21,42 @@
 <p>To start the MoSync emulator, click the <img src="images/mosync-run-button.png"> <strong>Run </strong>button on the toolbar (or press <strong>Ctrl</strong>+<strong>F11</strong>). The current project is saved, built using the "Release" <a href="TEMPLATE_DOC_PATH/tools/sdk/ide/build-configurations/index.html">build configuration</a>, and loaded into the appropriate emulator. A graphical phone is displayed.</p>
 <p>(You can also start the emulator in debug mode by clicking the&nbsp;<img src="images/bug.png"> <strong>Debug </strong>button on the toolbar. In this case the current project is built using the "Debug" build configuration, before being loaded into the emulator.)</p>
 <h2>The MoSync Emulator (MoRE)</h2>
-<p>The MoSync emulator is the default emulator if no other native emulators are installed. It is controlled either by clicking the keys on the graphical phone, or using a number of keyboard shortcuts: <br> [img_assist|nid=6828|title=|desc=|link=none|align=none|width=640|height=350]</p>
+<p>The MoSync emulator is the default emulator if no other native emulators are installed. It is controlled either by clicking the keys on the graphical phone, or using a number of keyboard shortcuts: <br> <img src="images/MoRE.png" align="none" width="640" height="350"></p>
 <p>The MoSync emulator communicates with the MoSync IDE, sending call stacks, panics, and other useful data to the console window.</p>
 <h3>Screen orientation</h3>
 <p>The <strong>F4</strong> key on the keyboard toggles the screen orientation of the emulator between portrait and landscape modes (and causes an EVENT_TYPE_SCREEN_CHANGED to be sent to the application).</p>
 <h3>Multitouch emulation</h3>
 <p>Right-click with the mouse pointer on the emulator screen to engage multitouch simulation. Two filled circles appear, equidistant and opposite from the screen's centre point:</p>
-<p>[img_assist|nid=6906|title=|desc=|link=none|align=none|width=201|height=454]</p>
+<p><img src="images/multitouch.png" align="none" width="201" height="454"></p>
 <p>To emulate pinch-in, pinch-out, and rotational guestures, move the pointer in different directions while holding down the right mouse button</p>
 <h3>Closing the MoSync emulator</h3>
 <p>The <strong>Esc </strong>key closes the emulator.</p>
 <h2>Changing the Emulator's Platform Profile</h2>
 <p>The current profile being used by the emulator (and also the profile that your application will be built for when you click the <strong>Run</strong> button in the IDE) is shown in the IDE toolbar. Clicking that button opens the <strong>Select active profile</strong> window in which you can choose another profile:</p>
-<p>[img_assist|nid=8088|title=|desc=|link=none|align=none|width=588|height=648]</p>
+<p><img src="images/Emulator01.png" align="none" width="588" height="648"></p>
 <h2>Changing the Emulator's Device Profile</h2>
 <p>If your project is configured on a per device basis, then you need to select a specific device to build and test for. The device profile that the emulator currently uses is highlighted in the <strong>Device Profile</strong> list with an orange background. To make the emulator emulate another device, right-click on a device in the <strong>Device Profile</strong> view and select <strong>Set Target Phone</strong>.</p>
 <p><img src="images/userguide_profiles_8.png"><br> <br>If you want to see more information about the device, select <strong>Show Profile Info</strong> from the right-click menu. You will then see the header file that MoSync will use when it builds the application for the emulator.</p>
 <h2>Configuring the Emulator</h2>
 <p>When you press the <strong>Run</strong> button on the toolbar, the MoSync IDE makes intelligent assumptions about how you want to run the application. For instance, if you’ve set the project profile to ‘Android’, it will start the app in the Android emulator. You can manually adjust this setting by clicking the small down-arrow next to the <strong>Run</strong> button in the toolbar, and selecting <strong>Run Configurations</strong>:</p>
-<p>[img_assist|nid=8091|title=|desc=|link=none|align=none|width=650|height=527]</p>
+<p><img src="images/Emulator02_0.png" align="none" width="650" height="527"></p>
 <p>Here you can choose the emulator to use when running your project in the IDE (or let the MoSync SDK automatically select an emulator for you).</p>
 <p>You can define profiles for running your application. &nbsp;Each profile can have a specific emulator assigned to it, or you can continue to use the automatic selection. This may just be a short cut for you to select a particular profile, but it has other options as well. For the MoSync emulator, you can specify the screen size to run at. For the Android emulator, you can specify which AVD to use:</p>
-<p>[img_assist|nid=8092|title=|desc=|link=none|align=none|width=569|height=272]</p>
+<p><img src="images/Emulator03.png" align="none" width="569" height="272"></p>
 <p>You can also choose a build configuration to always use:</p>
-<p>[img_assist|nid=8093|title=|desc=|link=none|align=none|width=383|height=124]<br><br>You can name and save your configuration:</p>
-<p>[img_assist|nid=8094|title=|desc=|link=none|align=none|width=650|height=519]<br><br>The <strong>Run</strong> button now shows your configuration as being the active, default configuration for this project:</p>
-<p>[img_assist|nid=8095|title=|desc=|link=none|align=none|width=274|height=198]</p>
+<p><img src="images/Emulator04.png" align="none" width="383" height="124"><br><br>You can name and save your configuration:</p>
+<p><img src="images/Emulator05.png" align="none" width="650" height="519"><br><br>The <strong>Run</strong> button now shows your configuration as being the active, default configuration for this project:</p>
+<p><img src="images/Emulator06.png" align="none" width="274" height="198"></p>
 <p>If you now select <strong>Organize Favorites...</strong> you can choose configuration profiles you want to see in the <strong>Run</strong> button:</p>
-<p>[img_assist|nid=8096|title=|desc=|link=none|align=none|width=357|height=442]</p>
+<p><img src="images/Emulator07.png" align="none" width="357" height="442"></p>
 <p>Check the ones you want, and press <strong>OK</strong>. You will then see them added to the list of favorites. Click <strong>OK</strong> again, and next time you press the <strong>Run</strong> drop down, you will see the profiles for you to run, even if that project is closed:</p>
-<p>[img_assist|nid=8097|title=|desc=|link=none|align=none|width=273|height=187]<br><br>If you are debugging your application, there is a similar setting for Debug mode: click the small down-arrow next to the <strong>Debug</strong> button in the toolbar, and select <strong>Debug Configurations</strong> to see the settings.<br><br></p>
+<p><img src="images/Emulator08.png" align="none" width="273" height="187"><br><br>If you are debugging your application, there is a similar setting for Debug mode: click the small down-arrow next to the <strong>Debug</strong> button in the toolbar, and select <strong>Debug Configurations</strong> to see the settings.<br><br></p>
 <h2>Debugging in the MoSync Emulator</h2>
-<p>When a MoSync application terminates because of a panic, the call stack is transmitted to the output console in the IDE:[img_assist|nid=8098|title=|desc=|link=none|align=none|width=650|height=379]The call stack shows you all the stack frames that were active when the application terminated, and you can click on each line to go to the corresponding source file and line. This is the format of such lines:</p>
+<p>When a MoSync application terminates because of a panic, the call stack is transmitted to the output console in the IDE:<img src="images/Emulator09.png" align="none" width="650" height="379">The call stack shows you all the stack frames that were active when the application terminated, and you can click on each line to go to the corresponding source file and line. This is the format of such lines:</p>
 <p><strong>IP:</strong><em>&lt;instruction pointer&gt;</em><strong>: </strong><em>&lt;path to source file&gt;</em><strong>:</strong><em>&lt;line number in source file&gt;</em></p>
 <p>If the panic involved MoSync libraries that you do not have the source code to, those lines will not be clickable.</p>
 <h2>Displaying Build Results in the Console</h2>
-<p>When you build your project for the emulator, the progress of the build will be displayed in the Console and includes information about the success of the toolchain invocations, the build paths, and so on. If you build your project successfully, these results will be replaced at the end of the build process by a new Console view showing the output from your application. If you want to examine the build results, you can switch the Console view using the <strong>Display Selected Console</strong> selector on the Console toolbar:&nbsp;[img_assist|nid=8099|title=|desc=|link=none|align=none|width=606|height=405]&nbsp;</p>
+<p>When you build your project for the emulator, the progress of the build will be displayed in the Console and includes information about the success of the toolchain invocations, the build paths, and so on. If you build your project successfully, these results will be replaced at the end of the build process by a new Console view showing the output from your application. If you want to examine the build results, you can switch the Console view using the <strong>Display Selected Console</strong> selector on the Console toolbar:&nbsp;<img src="images/Emulator10.png" align="none" width="606" height="405">&nbsp;</p>
 <h2>Installing and Working with Native Emulators</h2>
 <p>If you would like to run your application in the Android Emulator, iPhone/iOS Simulator or Windows Phone Emulator you will need to install and configure those emulators in the appropriate environment. Once you have done this, when you select an Android or iPhone/iOS device profile and start the emulator, your application will run in the appropriate emulator.&nbsp;On both Windows and Mac OS X you can always use MoSync's MoRE Emulator.</p>
 <h3>Installing the iPhone simulator</h3>

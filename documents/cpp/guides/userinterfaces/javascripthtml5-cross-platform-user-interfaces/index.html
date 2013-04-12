@@ -3,6 +3,9 @@
 <title>JavaScript/HTML5 Cross-Platform User Interfaces</title>
 </head>
 <body>
+
+<h1>JavaScript/HTML5 Cross-Platform User Interfaces</h1>
+
 <p class="p1">These developer guidelines provide a brief overview of what should be considered when creating HTML5 (or hybrid HTML5/C++) MoSync apps that should be used on devices with varying screen sizes.<!--break--></p>
 <p class="p1"></p>
 <h2 class="p1">Prerequisites and preparations</h2>
@@ -25,7 +28,7 @@
 <p class="p2">Some UI elements should not be proportionally resized. Whereas general layouts, list widths, etc, are well suited for CSS percentage units, there is a category of graphical element that is not: Buttons. Or to be precise, anything that requires the user to touch some area of the screen. It is appropriate to assign at least 7-10 mm minimum target area and 2 mm padding between elements. Infrequently used targets can be smaller and targets that trigger actions that are not easy to undo (such as deleting a document or sending a message) should be larger.&nbsp;</p>
 <h2 class="p2">Tablets are different</h2>
 <p class="p2">The larger screen real estate of tablets adds yet another dimension to consider. As an example, the image below shows a popular Android e-mail client. A larger screen could easily display the full message on the right-hand side of the screen, while keeping the list of messages to the left.</p>
-<p class="p2">[img_assist|nid=9144|title=|desc=|link=none|align=middle|width=320|height=480]</p>
+<p class="p2"><img src="images/formfactors.png" align="middle" width="320" height="480"></p>
 <p class="p2">So, not only do we have to consider the display size, but also how that display size can enrich the user experience.&nbsp;</p>
 <h3 class="p1">How can we detect that we are using a tablet?</h3>
 <p class="p2">There is no future-proof, bullet-proof way to do this. But we may apply some heuristics. This code could be inserted right after the mosync.isWindowsPhone variable in wormhole.js. (This JavaScript file is included when you create a new MoSync HTML5 project).</p>

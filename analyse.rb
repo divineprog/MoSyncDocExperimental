@@ -36,7 +36,7 @@ def newFiles
   files1 = allHtmlFiles(exportsDir1())
   files2 = allHtmlFiles(exportsDir2())
   puts "========================================================="
-  puts "New files in " + exportsDir1()
+  puts "New files in " + exportsDir2()
   puts files2 - files1
   puts "========================================================="
 end

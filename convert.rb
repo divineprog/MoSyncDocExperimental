@@ -5,11 +5,17 @@ require "open-uri"
 load 'structure.rb' 
 
 def pathExports
-  "./mosync-doc-exports/"
+  "./mosync-doc-exports-2/"
 end
 
 def pathTemplates
   "./templates/"
+end
+
+# Used for step before downloading
+# images and replacing image urls.
+def pathDocumentsPre
+  "./documentspre/"
 end
 
 def pathDocuments
@@ -52,17 +58,17 @@ def convertHtmlToMarkdown
   end
 end
 
+def importAll
+  importHTML
+end
+
 # Import HTML files exported from Drupal.
 def importHTML
   sourceDir = Pathname.new pathExports
-  destDir = Pathname.new pathDocuments
+  destDir = Pathname.new pathDocumentsPre
   
-  # Clean target directory.
-  begin
-    destDir.rmtree()
-  rescue
-  end
-  destDir.mkpath()
+  # Clean and create target directory.
+  fileCleanPath(destDir)
   
   # Process and copy pages.
   n = 0
@@ -83,14 +89,34 @@ def importHTML
     html = htmlReplaceSyntaxHighlighterTags(html)
     html = htmlReplaceTabsWithSpaces(html)
     html = htmlPrettify(html)
-    fileSaveHTML(destFile, html)
+    fileSaveContent(destFile, html)
   end
+end
+
+# Import (download) image files
+def importImages
+  copyExportedFilesToDocuments
+  downloadImages true
+end
+
+def copyExportedFilesToDocuments
+  sourceDir = Pathname.new pathDocumentsPre
+  destDir = Pathname.new pathDocuments
+  
+  # Clean and create target directory.
+  # Commented out to don't erase images
+  # in destDir when testing conversion.
+  #fileCleanPath(destDir)
+  
+  # Copy files.
+  FileUtils.cp_r(Dir[sourceDir + "*"], destDir)
 end
 
 # Iterate over all pages and all image urls on each page.
 # Download images to local files, and update image urls
 # to refer to local files.
-def downloadImages
+def downloadImages(downloadImage?)
+  puts "Downloading images"
   n = 0
   # Find all files.
   Pathname.glob(pathDocuments() + "**/*.html").each do |path|
@@ -116,14 +142,16 @@ def downloadImages
           url = "http://www.mosync.com" + src[0]
         end
         
+		url = url.gsub(" ", "%20")
+		  
         # Download and save image.
-        if url != "" then
+        if url != "" and downloadImage? then
           imageName = Pathname(url).basename.to_s
           destPath = path.parent + "images/" + imageName
-          Pathname(destPath).parent.mkpath
-          puts "    downloading from: " + url.to_s
+          Pathname(destPath).parent.mkpath()
+          puts "    downloading from: " + url
           puts "    writing image to: " + destPath.to_s
-          #downloadImage(url, destPath)
+          downloadImage(url, destPath)
           puts "    done"
         end
       end
@@ -144,13 +172,13 @@ def downloadImages
 end
 
 def downloadImage(url, destPath)
+# TODO: Catch errors
   open(url) do |f|
     File.open(destPath,"wb") do |file|
       file.puts f.read
     end
   end
 end
-
 
 def webSiteBuild
   webSiteClean
@@ -160,14 +188,9 @@ def webSiteBuild
 end
 
 def webSiteClean
-  # Clean target directory.
-  dir = Pathname.new(pathWebSitePages())
-  begin
-    dir.rmtree()
-  rescue
-  end
-  dir.mkpath()
-  Pathname.new(pathWebSite() + "js/").mkpath()
+  # Clean and create target directories.
+  fileCleanPath(Pathname.new(pathWebSitePages()))
+  fileCleanPath(Pathname.new(pathWebSite() + "js/"))
 end
 
 def webSiteBuildHomePage
@@ -185,7 +208,7 @@ def webSiteBuildHomePage
       destFile)
       
   # Copy JavaScript libs.
-  FileUtils.cp_r(Dir[pathTemplates() + "js/*"], pathWebSite() + "js/")
+  FileUtils.cp_r(Dir[pathTemplates() + "js"], pathWebSite())
   
   # Copy images.
   #FileUtils.cp(
@@ -225,27 +248,30 @@ end
 # Build link pages for all categories and page types.
 def webSiteBuildLinkPages
   title = "C/C++ Coding Guides"
-  webSiteBuildCategoryLinkPage(CPP, GUIDE, "cpp/guides/", title)
+  webSiteBuildCategoryLinkPage([CPP, GUIDE], "cpp/guides/", title)
   
   title = "C/C++ Tutorials"
-  webSiteBuildCategoryLinkPage(CPP, TUTORIAL, "cpp/tutorials/", title)
+  webSiteBuildCategoryLinkPage([CPP,TUTORIAL], "cpp/tutorials/", title)
   
   title = "C/C++ Examples"
-  webSiteBuildCategoryLinkPage(CPP, EXAMPLE, "cpp/examples/", title)
+  webSiteBuildCategoryLinkPage([CPP,EXAMPLE], "cpp/examples/", title)
   
   title = "JavaScript Coding Guides"
-  webSiteBuildCategoryLinkPage(JS, GUIDE, "js/guides/", title)
+  webSiteBuildCategoryLinkPage([JS,GUIDE], "js/guides/", title)
   
   title = "JavaScript Tutorials"
-  webSiteBuildCategoryLinkPage(JS, TUTORIAL, "js/tutorials/", title)
+  webSiteBuildCategoryLinkPage([JS,TUTORIAL], "js/tutorials/", title)
   
   title = "JavaScript Examples"
-  webSiteBuildCategoryLinkPage(JS, EXAMPLE, "js/examples/", title)
+  webSiteBuildCategoryLinkPage([JS,EXAMPLE], "js/examples/", title)
+  
+  title = "All Examples"
+  webSiteBuildCategoryLinkPage([CPP,JS,EXAMPLE], "overviews/examples/", title)
 end
 
 # Builds and saves a page of links for the given category and type.
 # Exampel of pageShortPath: "cpp/guides/"
-def webSiteBuildCategoryLinkPage(category, type, pageShortPath, pageTitle)
+def webSiteBuildCategoryLinkPage(labels, pageShortPath, pageTitle)
   # Create page path.
   destDir = Pathname.new(pathWebSitePages())
   destFile = destDir + pageShortPath + "index.html"
@@ -253,7 +279,7 @@ def webSiteBuildCategoryLinkPage(category, type, pageShortPath, pageTitle)
   puts "Building page: " + destFile.to_s
   
   # Get content HTML.
-  html = webSiteBuildLinkListForCategoryType(category, type, pageShortPath)
+  html = webSiteBuildLinkListForLabels(labels, pageShortPath)
   
   # Save the page.
   webSiteBuildPageFromStandardTemplate(
@@ -266,19 +292,18 @@ end
 # pages of the given category and type.
 # baseDir is a string naming the directory of the
 # target page, e.g. "cpp/guides/".
-def webSiteBuildLinkListForCategoryType(category, type, baseDir)
+def webSiteBuildLinkListForLabels(labels, baseDir)
   # Filter pages.
   pages = docPages()
-  pages = pagesForLabel(pages, category)
-  pages = pagesForLabel(pages, type)
+  pages = pagesForLabels(pages, labels)
 
   # Get all labels except category and type.
-  labels = pagesGetAllLabels(pages).sort
-  labels = labels - [category, type]
+  allLabels = pagesGetAllLabels(pages).sort
+  allLabels = allLabels - labels
   
   # Generate lists for each label.
   html = ""
-  labels.each do |label|
+  allLabels.each do |label|
     html += webSiteBuildLinkListForPages(
       pagesForLabel(pages, label),
       label,
@@ -320,7 +345,7 @@ def webSiteBuildPageFromStandardTemplate(title, content, destFile)
   # Read template.
   template = File.open(templateFile, "rb") { |f| f.read }
   
-  # Cerate HTML from template.
+  # Create HTML from template.
   html = webSiteBuildPageFromTemplate(
     template,
     title,
@@ -361,6 +386,10 @@ def pagesForLabel(pages, label)
   pages.select { |page| pageHasLabel?(page, label) }
 end
 
+def pagesForLabels(pages, labels)
+  pages.select { |page| pageHasAllLabels?(page, labels) }
+end
+
 def pagesGetAllLabels(pages)
   (pages.inject([]) { |result,page| 
     result + pageLabels(page) }).uniq
@@ -386,8 +415,17 @@ def pageLabels(pageData)
   pageData[2]
 end
 
-def pageHasLabel?(page,label)
+def pageHasLabel?(page, label)
   pageLabels(page).include? label
+end
+
+def pageHasAllLabels?(page, labels)
+  labels.each do |label|
+    if not pageHasLabel?(page,label) then
+	  return false
+	end
+  end
+  return true
 end
 
 def pageGetTitleFromTargetFile(page)
@@ -402,19 +440,6 @@ end
 
 def htmlGetPageContent(html)
   htmlGetTagContents(html, "body")
-end
-
-def fileReadContent(filePath)
-  File.open(filePath, "rb") { |f| f.read }
-end
-
-def fileSaveContent(destFile, content)
-  File.open(destFile, "wb") { |f| f.write(content) }
-end
-
-def fileGetPageTitle(filePath)
-  html = fileReadContent(filePath)
-  htmlGetPageTitle(html)
 end
 
 # Works for simple cases.
@@ -458,9 +483,14 @@ def htmlUpdateLinks(html)
   
   # Step 1: Update urls and insert marker
   allPages().each do |page|
+    # Replace full urls
     html = html.gsub(
-      (pageOriginalFile(page)), 
-      ("NEWDOC_UPDATED_URL:TEMPLATE_DOC_PATH/" + pageTargetFile(page) + "/index.html"))
+      "http://www.mosync.com/" + pageOriginalFile(page), 
+      "/NEWDOC_UPDATED_URL:TEMPLATE_DOC_PATH/" + pageTargetFile(page) + "/index.html")
+	# Replace short urls
+    html = html.gsub(
+      pageOriginalFile(page), 
+      "NEWDOC_UPDATED_URL:TEMPLATE_DOC_PATH/" + pageTargetFile(page) + "/index.html")
   end
   
   # Step 2: Strip off absolute urls and markers
@@ -482,6 +512,29 @@ def htmlStripTOC(html)
   html.gsub("[toc]", "")
 end
 
+# Clean (and create) directory.
+def fileCleanPath(pathName) 
+  pathName.mkpath()
+  begin
+    pathName.rmtree()
+  rescue
+  end
+  pathName.mkpath()
+end
+
+def fileReadContent(filePath)
+  File.open(filePath, "rb") { |f| f.read }
+end
+
+def fileSaveContent(destFile, content)
+  File.open(destFile, "wb") { |f| f.write(content) }
+end
+
+def fileGetPageTitle(filePath)
+  html = fileReadContent(filePath)
+  htmlGetPageTitle(html)
+end
+
 def cleanmd
   root = Pathname.new pathExports
   n = 1
@@ -497,18 +550,23 @@ if (ARGV.include? "html2md")
     convertHtmlToMarkdown
 elsif (ARGV.include? "cleanmd")
     cleanmd
-elsif (ARGV.include? "import")
+elsif (ARGV.include? "importall")
+    importAll
+elsif (ARGV.include? "importhtml")
     importHTML
-elsif (ARGV.include? "downloadimages")
-    downloadImages
+elsif (ARGV.include? "importimages")
+    importImages
+elsif (ARGV.include? "updateimages")
+    downloadImages false
 elsif (ARGV.include? "build")
     webSiteBuild
 else
     puts "Options:"
     #puts "  html2md"
     #puts "  cleanmd"
-    puts "  import (imports HTML from Drupal export)"
-    puts "  downloadimages (download images and"
-    puts "    modify image urls in all documents)"
+    puts "  importall (imports HTML and images)"
+    puts "  importhtml (imports HTML from Drupal export)"
+    puts "  importimages (download images and update img urls)"
+    puts "  updateimages (only update img urls)"
     puts "  build (builds web site)"
 end

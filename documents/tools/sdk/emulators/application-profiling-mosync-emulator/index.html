@@ -3,13 +3,16 @@
 <title>Application Profiling in the MoSync Emulator</title>
 </head>
 <body>
+
+<h1>Application Profiling in the MoSync Emulator</h1>
+
 <p>The MoSync SDK 2.6 includes an application profiler which can output performance statistics whenever you run the MoRE emulator. That makes it easy to track down performance issues and optimize your application.</p>
 <p><!--break--></p>
 <h3>Running the profiler</h3>
 <p>To run a profiling session, right click on your project and select <strong>Profile As</strong> &gt; <strong>Profile </strong>on MoSync Emulator.<br><br>Your application will launch in the usual way, and a new tab will open in the editor view. As soon as the application terminates, the profiling data will show on this new tab. (At this time MoSync only supports post-mortem profiling.)</p>
 <h3>Hotspots and Call Tree tabs</h3>
 <p><br>There are two sub-tabs at the bottom of the view: <strong>Hotspots </strong>and <strong>Call Tree</strong>.</p>
-<p>The <strong>Hotspots </strong>sub-tab lets you see which functions are taking the most time:<br>[img_assist|nid=7349|title=|desc=|link=none|align=none|width=640|height=395]<br><br> The Call Tree sub-tab shows which functions called which and the time spent in each:<br>[img_assist|nid=7350|title=|desc=|link=none|align=none|width=640|height=395]<br><br>The following columns are shown:</p>
+<p>The <strong>Hotspots </strong>sub-tab lets you see which functions are taking the most time:<br><img src="images/Profiler1.png" align="none" width="640" height="395"><br><br> The Call Tree sub-tab shows which functions called which and the time spent in each:<br><img src="images/Profiler2.png" align="none" width="640" height="395"><br><br>The following columns are shown:</p>
 <ul>
 <li>Function – The name of the function being profiled.</li>
 <li>[%] – The percentage of time used by the function compared to the total execution time.</li>

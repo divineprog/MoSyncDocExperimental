@@ -3,6 +3,9 @@
 <title>Discovering Devices and Services with Bluetooth</title>
 </head>
 <body>
+
+<h1>Discovering Devices and Services with Bluetooth</h1>
+
 <p>Implementing Bluetooth in your application is done in three stages. Firstly, there is device discovery: getting the phone to scan for other devices in range. Secondly, there is a service discovery: querying a discovered device to see which protocols and services it supports. Lastly, there is the implementation of a service, a specific transfer of data.<!--break-->&nbsp;</p>
 <p></p>
 <h2>Device Discovery</h2>
@@ -56,7 +59,7 @@
   mIsWorking = false;
 }</pre>
 </div>
-<p>[img_assist|nid=4694|title=|desc=|link=none|align=none|width=304|height=598]</p>
+<p><img src="images/btdiscovery1.png" align="none" width="304" height="598"></p>
 <p>Below is the code for our example screen. It searches for devices and builds a list of nearby devices. (Note: this code requires UIBuilder.cpp and UIBuilder.h, which are available as a <a href="http://www.mosync.com/files/UIBuilder.zip">zip file</a> at the bottom of this tutorial.)</p>
 <p><strong>Devices.h</strong></p>
 <div>
@@ -380,7 +383,7 @@ extern "C" int MAMain()
   mIsWorking = false;
 }</pre>
 </div>
-<p>[img_assist|nid=4696|title=|desc=|link=none|align=none|width=304|height=598]</p>
+<p><img src="images/btdiscovery2.png" align="none" width="304" height="598"></p>
 <p>The complete listing for Services is below</p>
 <p><strong>Services.h</strong></p>
 <div>

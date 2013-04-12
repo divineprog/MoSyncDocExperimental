@@ -3,6 +3,9 @@
 <title>Working with Fonts in MAUI</title>
 </head>
 <body>
+
+<h1>Working with Fonts in MAUI</h1>
+
 <p>The MAUI::Font class draws text using bitmap fonts defined in a mof-file. In this guide we show how to convert a bitmap font to a mof-file, and how to add the file as a resource to a MoSync project. We then create a MAUI::Font instance and draw some text with it.</p>
 <p><!--break--></p>
 <p></p>
@@ -19,7 +22,7 @@
 <p>First, create a new folder for the project called <em>/fonttest</em> in the MoSync <em>/projects</em> directory.</p>
 <p>Now open the BMFont tool and configure its settings as follows:</p>
 <p><em>For BMFont v1.12 and MoSync 2.5+</em>:</p>
-<p>[img_assist|nid=6907|title=|desc=|link=none|align=left|width=290|height=409]&nbsp; [img_assist|nid=6908|title=|desc=|link=none|align=none|width=288|height=567]</p>
+<p><img src="images/bitmap-fonts-2.png" align="left" width="290" height="409">&nbsp; <img src="images/bitmap-fonts-3.png" align="none" width="288" height="567"></p>
 <p><em>For BMFont v1.9 and MoSync 2.4 and earlier</em>:</p>
 <p><img src="images/mauifont_bmfont_setup.png"></p>
 <p>Note that:</p>
@@ -33,7 +36,7 @@
 <p><img src="images/mauifont_bmfont_visualize.png"><br> <br>Next, select <strong>Options </strong>&gt; <strong>Save bitmap font as</strong> and save your font to our <em>/fonttest </em>folder as a Bitmap font (*.fnt) file: <br><br><img src="images/mauifont_bmfont_saveas.png"></p>
 <h2>Converting the Font</h2>
 <p>Convert the font using the MAUI font generator (<strong>mof.exe</strong>) from the Windows command line:</p>
-<p>[img_assist|nid=6909|title=|desc=|link=none|align=none|width=640|height=304]</p>
+<p><img src="images/bitmap-fonts-7.png" align="none" width="640" height="304"></p>
 <p>The MAUI font generator takes the following parameters:</p>
 <ul>
 <li><strong>-fontData</strong> the bitmap font file to convert (.fnt)</li>

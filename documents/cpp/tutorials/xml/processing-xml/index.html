@@ -3,6 +3,9 @@
 <title>Processing XML</title>
 </head>
 <body>
+
+<h1>Processing XML</h1>
+
 <p>If you are writing cross-platform mobile apps in the MoSync® SDK, you will probably want at some point to connect to the Internet to get data. Typically, this data will be in XML or in JSON format. If you are getting XML data, the MoSync SDK has a built in XML parser (MTXml) you can use to parse it.<!--break--></p>
 <p>There are also string functions in the MoSync MAUtil library which can be used to read XML in some simple cases. In this tutorial we take a look at retrieving XML data and the various ways of reading the data from it.</p>
 <p>&nbsp;</p>
@@ -39,7 +42,7 @@ String lat = xml.substr(start, end - start);</pre>
 <li>In the box&nbsp;<strong>Additional Libraries</strong>&nbsp;you will see the list of libraries you are already using. Add&nbsp;<strong>MTXml.lib</strong>&nbsp;to this list. If you've got any other .lib files in the&nbsp;<strong>Additional Libraries</strong>&nbsp;box, then put a comma between each of them. You will probably already have&nbsp;<strong>MAUtil.lib</strong>&nbsp;and&nbsp;<strong>MAUI.lib</strong>.</li>
 <li>Click&nbsp;<strong>OK</strong>.</li>
 </ol>
-<p>[img_assist|nid=6477|title=|desc=|link=none|align=none|width=682|height=611]</p>
+<p><img src="images/XMLParser_buildsettings.png" align="none" width="682" height="611"></p>
 <p>You can parse XML from a variety of sources. Most likely this will be from an Internet connection, processing XML as it is being downloaded. &nbsp;The MoSync XML API can start parsing XML from a connection before it has completely downloaded.</p>
 <p>To process XML, the minimum you need to do is to create a C++ class which inherits from&nbsp;<strong>MTXml/MTXml.h</strong>&nbsp;and implements&nbsp;<strong>XmlListener</strong>. This will contain the callback classes which the XML processor will call when it finds the appropriate XML.&nbsp;</p>
 <blockquote><p>You&nbsp;<strong>must</strong>&nbsp;implement all of the methods in XmlListener. If you leave any methods unimplemented, the program may crash if a call to an unimplemented method is made. Just create an empty method, or in the case of&nbsp;<strong>mtxunicodeCharacter</strong>, use the standard implementation.</p>

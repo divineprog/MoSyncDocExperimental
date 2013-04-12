@@ -3,6 +3,9 @@
 <title>MTXml Parser</title>
 </head>
 <body>
+
+<h1>MTXml Parser</h1>
+
 <p>MoSync's Tiny XML parser, MTXml, provides an efficient, callback-based way of parsing XML files. MTXml has a SAX-like interface, and is re-entrant: it can start with just the beginning of an XML document and request additional data when needed.</p>
 <p><!--break--></p>
 <p>MTXml can handle most XML 1.0 and 1.1 documents. However, in the interests of performance, MTXml is not a conforming XML processor, as defined by the W3C Recommendation. It does not validate documents, and it only checks a few of the well-formed-ness criteria. It even ignores some "fatal errors". Still, it should properly parse a well-formed document.<br><br>There are two modes of parsing. One, <strong>mtxFeedProcess()</strong>, is slower, and converts standard entities and UTF-8 characters to Latin-1 before passing them to the application. The other, <strong>mtxFeed()</strong>, is faster, and passes such characters without conversion. If you know which parts of your document need conversion and which ones don't, you can do the conversion manually, using <strong>mtxProcess()</strong>.</p>

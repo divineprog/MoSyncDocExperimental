@@ -3,6 +3,9 @@
 <title>The MoSync Toolchain</title>
 </head>
 <body>
+
+<h1>The MoSync Toolchain</h1>
+
 <p>The MoSync IDE uses a custom GCC backend that outputs MoSync Intermediate Language. This is fed into Pipe-Tool, our transformation engine, which builds code trees, analyzes, optimizes and outputs bytecode or java ready for packaging with the appropriate runtime. The packager does the work of producing the installable packages for your platforms and devices.</p>
 <p><!--break--></p>
 <p></p>
@@ -21,13 +24,13 @@
 <p>Pipe-Tool is also used by the MoSync Resource Compiler to package and index the external resources (images, audio files, binary files, etc.) that your application needs when it executes. For more information, see our <a href="TEMPLATE_DOC_PATH/tools/sdk/ide/resource-compiler-reference/index.html">Resource Compiler Reference</a>.</p>
 <h2>The Packager</h2>
 <p>The MoSync Packager is invoked whenever you build your project. The Packager may be called multiple times if you are <a href="TEMPLATE_DOC_PATH/tools/sdk/ide/finalizing-applications/index.html">Finalizing </a>your application for distribution. Each run of the Packager produces either an installable package, or a project that needs to be finished in another tool, as shown below:</p>
-<p>[img_assist|nid=9446|title=|desc=|link=none|align=none|width=650|height=635]</p>
-<p>[img_assist|nid=9270|title=|desc=|link=none|align=left|width=25|height=23]</p>
+<p><img src="images/MoSync-packaging.png" align="none" width="650" height="635"></p>
+<p><img src="images/ared1_0.png" align="left" width="25" height="23"></p>
 <p>Your codebase can be pure HTML/JavaScript or pure C/C++, or a mixture of both, depending on your needs. The green arrows show how projects containing HTML/JavaScript can be packaged, the blue arrows show how pure C/C++ projects can be packaged.</p>
-<p>[img_assist|nid=9271|title=|desc=|link=none|align=left|width=25|height=23] The MoSync Packager is invoked by the MoSync IDE's Finalizer for each target platform (or target device in legacy mode). The output from the Packager is one of the following:</p>
-<p>[img_assist|nid=9272|title=|desc=|link=none|align=left|width=25|height=23]An installable package for Android (from any codebase) or an installable package for JavaME, Moblin, Symbian, Blackberry, or Windows Mobile (from a pure C/C++ codebase). All these packages can be sent directly to a device and installed in the normal way.</p>
-<p>[img_assist|nid=9273|title=|desc=|link=none|align=left|width=25|height=23]A Visual Studio project. This project needs to be built in Microsoft Visual Studio to create the installable package for a Windows Phone device.</p>
-<p>[img_assist|nid=9274|title=|desc=|link=none|align=left|width=25|height=23]</p>
+<p><img src="images/ared2.png" align="left" width="25" height="23"> The MoSync Packager is invoked by the MoSync IDE's Finalizer for each target platform (or target device in legacy mode). The output from the Packager is one of the following:</p>
+<p><img src="images/ared3.png" align="left" width="25" height="23">An installable package for Android (from any codebase) or an installable package for JavaME, Moblin, Symbian, Blackberry, or Windows Mobile (from a pure C/C++ codebase). All these packages can be sent directly to a device and installed in the normal way.</p>
+<p><img src="images/ared4.png" align="left" width="25" height="23">A Visual Studio project. This project needs to be built in Microsoft Visual Studio to create the installable package for a Windows Phone device.</p>
+<p><img src="images/ared5.png" align="left" width="25" height="23"></p>
 <p>An Apple Xcode project. This project needs to be built in Xcode to create the installable package for an iOS device.</p>
 <p>(The Packager can actually create the full binaries for Windows Phone and iOS, but only if you have Visual Studio and Xcode installed, respectively.)</p>
 <p>&nbsp;</p>

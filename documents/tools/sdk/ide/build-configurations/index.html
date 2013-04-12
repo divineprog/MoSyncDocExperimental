@@ -3,6 +3,9 @@
 <title>Build Configurations and Settings</title>
 </head>
 <body>
+
+<h1>Build Configurations and Settings</h1>
+
 <p>Through MoSync Eclipse IDE, builds can be set to start automatically or started manually. The project's build configuration (Release, Debug mode, etc.) specifies the compiler, packager, and linker build settings, and memory allocations. Here we describe the options available to you, and the effect of various build settings on the output packages.</p>
 <p><!--break--></p>
 <p></p>
@@ -14,7 +17,7 @@
 <li>Select <strong>Build Project</strong> from the <strong>Project </strong>menu, or</li>
 <li>Right-click on a project in the Project Explorer view, then select <strong>Build Project</strong> from the pop-up menu, or</li>
 <li>Click the <strong>Run </strong>button <img src="images/mosync-run-button.png"> to run the application in the emulator, or</li>
-<li>Click one of the <strong>Build</strong> toolbar items (the left one builds for the currently selected profile, the right one builds for all profiles in the project:<br>[img_assist|nid=8075|title=|desc=|link=none|align=none|width=97|height=42]</li>
+<li>Click one of the <strong>Build</strong> toolbar items (the left one builds for the currently selected profile, the right one builds for all profiles in the project:<br><img src="images/2012-02-27_1034.png" align="none" width="97" height="42"></li>
 </ul>
 <p>In the case of both automatic and final builds done this way, the package is only built for the currently selected device profile. For more information about how to to build the application for several devices and platforms, see&nbsp;<a href="TEMPLATE_DOC_PATH/tools/sdk/ide/finalizing-applications/index.html">Finalize Your Application</a>.</p>
 <h2>Command Line Builds</h2>
@@ -37,7 +40,7 @@
 <p>All new MoSync projects have two build configurations available by default: <strong>Release </strong>and <strong>Debug</strong>. These are the build configurations for creating standard release packages and for building a debug version of the application.<br><br> You can create more build configurations if you need them. For example, if your target platforms have different screen sizes and want to use different image files, you can create new build configurations to make sure the right images are included in each package. (Excluding files is done on a per-configuration basis, so in the above case it would be easy to have one resource list file for, say, 320x240 screens, and one for 220x176 screens, and just exclude/include the desired files.)</p>
 <h2>Selecting a Build Configuration</h2>
 <p>The currently active build configuration is shown in a drop down list in the toolbar. To set another build configuration, just select it in the drop down list.</p>
-<p>[img_assist|nid=8151|title=|desc=|link=none|align=none|width=219|height=57]</p>
+<p><img src="images/2012-03-06_1132.png" align="none" width="219" height="57"></p>
 <h2><span style="color: #ff0000; font-size: xx-small;"></span>Adding a New Build Configuration</h2>
 <p>To add a new build configuration to a project:</p>
 <ol>
@@ -50,7 +53,7 @@
 <li>Adjust the build settings as required (see table below).</li>
 </ol>
 <h2>Build Settings</h2>
-<p><strong>[img_assist|nid=8101|title=|desc=|link=none|align=none|width=650|height=496]</strong></p>
+<p><strong><img src="images/Build-Settings.png" align="none" width="650" height="496"></strong></p>
 <table border="1"><tbody><tr><td style="width: 25%;" colspan="2"><strong>Project type</strong></td><td>A project can be a stand-alone application or a library. <em>Note</em>: when building a library, make sure to check the <strong>Ignore default</strong> checkbox to the right of the <strong>Additional Libraries</strong> text box, otherwise the default set of libraries will be included during the build and you will get errors.</td></tr>
 <tr><td colspan="2"><strong>Incremental Build Strategy</strong></td><td>The default incremental build strategy is to compile all C files with the GCC -MF switch which generates dependency files consumed by the IDE and used for determining which files to rebuild. The other strategy is to always perform a full build.</td></tr>
 <tr><td colspan="2"><strong>Configuration</strong></td><td>The configuration selected in this box is the one being edited.</td></tr>

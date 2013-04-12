@@ -3,6 +3,9 @@
 <title>Introduction to MAUI</title>
 </head>
 <body>
+
+<h1>Introduction to MAUI</h1>
+
 <p>This tutorial introduces the MoSync API for User Interfaces (MAUI). It describes how to use the MAUI library classes to build screens and widgets and how to extend the MAUI model with your own custom components.<!--break--></p>
 <h2>What is MAUI?</h2>
 <p>MAUI is the collection of user interface components that you can use in your own applications. It is quite possible to create an entire mobile application in MoSync without them, but they provide a lot of basic functionality, and if you make use of them you can save a lot of time. The MAUI model is extendible, and you can create your own components in it.</p>
@@ -32,7 +35,7 @@
 <p>The UI of a screen is built by creating a hierarchy of widgets.</p>
 <p>There is a widget called <strong>Layout</strong> that can be used to define a grid in which to arrange other widgets, and a widget called <strong>ListBox </strong>that can be used to make a horizontal or vertical list of widgets. Both <strong>ListBox </strong>and <strong>Layout</strong> are designed solely to be containers of other widgets. Others widgets, like <strong>Label</strong> will be more or less successful containers depending on how you employ them.</p>
 <p>A good example of how the <strong>Label </strong>and <strong>ListBox </strong>widgets work together can be found in the <a href="TEMPLATE_DOC_PATH/cpp/examples/mauiex/index.html">MAUIex example application</a> that comes with MoSync. Here we can see a typical hierarchy of <strong>&nbsp;</strong><strong>Layout </strong>and <strong>ListBox </strong>widgets arranging one of that application's screens:</p>
-<p>[img_assist|nid=6636|title=|desc=|link=none|align=none|width=433|height=328]</p>
+<p><img src="images/MAUIex-layouts_0.png" align="none" width="433" height="328"></p>
 <p>Each screen has a main widget which covers the entire physical screen — in this case it is a <strong>Layout </strong>widget with one column and two rows: the top row is the main application area, the bottom row is being used to display navigation buttons ("Back"). Inside the main layout widget is a <strong>ListBox </strong>widget, which allows for vertical scrolling of the main application area.</p>
 <p>You can define the size and background colours of widgets, and they are skinnable. When you create a widget, you specify its size, its position and its parent:</p>
 <pre>Widget* widget = <strong>new</strong> <strong>Widget</strong>(0, 0, 240, 320, NULL);</pre>

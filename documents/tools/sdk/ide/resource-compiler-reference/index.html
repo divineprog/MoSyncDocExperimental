@@ -3,6 +3,9 @@
 <title>Resource Compiler Reference</title>
 </head>
 <body>
+
+<h1>Resource Compiler Reference</h1>
+
 <p>This manual describes how your application resources (such as image, audio, and binary files) are handled by MoSync in C/C++, describes the format and lists that can be used to organize your resource files, and the command switches for the resource compiler.<!--break--></p>
 <p></p>
 <h3>A note on HTML5 resources</h3>
@@ -59,7 +62,7 @@
 <p>There is an inheritance mechanism, so if no AnImage.png exists in the “/Resources/image/large”, the one located in “Resources/image” will be used.</p>
 <h3>Example Resources directory structure</h3>
 <p>&nbsp;</p>
-<p>[img_assist|nid=8042|title=|desc=|link=none|align=none|width=177|height=198]</p>
+<p><img src="images/Resource-Compiler-Standard-Folder-Layout.png" align="none" width="177" height="198"></p>
 <p>This resource directory structure will produce a number of variant resources:</p>
 <ul>
 <li>The default images are brick1.png, brick2.png, etc, and the corresponding C identifiers will be BRICK1, BRICK2, etc.</li>
@@ -106,7 +109,7 @@
         &lt;image id="BRICK1" resource="platform/android/brick1.png"/&gt;
     &lt;/condition&gt;
 &lt;/resources&gt;</pre>
-<h3>[img_assist|nid=8044|title=|desc=|link=none|align=none|width=194|height=236]</h3>
+<h3><img src="images/Resource-Compiler-CustomLSTX-Folder-Layout.png" align="none" width="194" height="236"></h3>
 <h3>Custom Folders and XML lists Reference</h3>
 <p>XML tags</p>
 <h4>resource</h4>
@@ -288,7 +291,7 @@ d         // assigns to d the value of the next enum (366)
 <p>Sets a script variable with the value of expression.</p>
 <pre class="mosync-code-cpp">.res
 .set hello = 1</pre>
-<p>[img_assist|nid=8045|title=|desc=|link=none|align=none|width=177|height=198]</p>
+<p><img src="images/Resource-Compiler-CustomLST-Folder-Layout.png" align="none" width="177" height="198"></p>
 <p>&nbsp;</p>
 </body>
 </html>

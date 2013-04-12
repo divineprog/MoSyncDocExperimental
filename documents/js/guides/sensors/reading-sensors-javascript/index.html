@@ -3,9 +3,12 @@
 <title>Reading Sensors from JavaScript</title>
 </head>
 <body>
+
+<h1>Reading Sensors from JavaScript</h1>
+
 <p>One great feature of our <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/index.html">Wormhole JavaScript Library </a>is its ability to retrieve data from the device's sensors using just standard JavaScript code and HTML5 markup. In this tutorial we will show you a simple sensor-driven app that makes use of the HTML5 &lt;canvas&gt; tag. <!--break--></p>
 <blockquote><p>The project for the whole app is available as a <a href="#foot">zipped attachment</a> at the foot of this page. You can load the project and build and run it in MoSync Reload or in the MoSync SDK.</p>
-</blockquote><p>[img_assist|nid=8900|title=|desc=|link=none|align=left|width=220|height=420]Our app is a spirit level simulator that uses the accelerometer to measure the angles of the device relative the gravitational vector. We will first highlight some interesting aspects of the app, then we will show you the code from the main file. The code is heavily commented so that you can see what is happening at each step.</p>
+</blockquote><p><img src="images/bubble_level_0.png" align="left" width="220" height="420">Our app is a spirit level simulator that uses the accelerometer to measure the angles of the device relative the gravitational vector. We will first highlight some interesting aspects of the app, then we will show you the code from the main file. The code is heavily commented so that you can see what is happening at each step.</p>
 <p>What do we need to simulate a <a href="http://en.wikipedia.org/wiki/Spirit_level">spirit level</a>? Well obviously we need a way to measure the orientation (tilt) of the device. For that we are going to use its accelerometer. The Wormhole JavaScript Library has several APIs for accessing sensors:</p>
 <p>The <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/accelerometer.md.html#Accelerometer">Accelerometer API</a>, <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/compass.md.html#Compass">Compass API</a>, and <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/geolocation.md.html#Geolocation">Geolocation API</a> give you direct access to the respective sensors on the device. (They are also Phonegap-compatible, which simplifies the process of porting existing Phonegap apps to MoSync.)</p>
 <p>The alternative <a href="http://www.mosync.com/files/imports/doxygen/latest/html5/mosync-sensormanager.md.html#Sensor%20Manager">Sensor Manager API</a> is an implementation of the <a href="http://dev.w3.org/2009/dap/system-info/Sensors.html">W3C Sensor API Specification</a> which ensures&nbsp; compatibility for future browser updates.</p>

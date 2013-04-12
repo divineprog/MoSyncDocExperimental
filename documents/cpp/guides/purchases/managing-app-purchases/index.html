@@ -3,6 +3,9 @@
 <title>Managing In-App Purchases</title>
 </head>
 <body>
+
+<h1>Managing In-App Purchases</h1>
+
 <p>With our Purchase C API and its C++ Library wrapper you can easily offer your user in-app purchases, and manage their transaction and refund status and history. Products that you offer your users can include subscriptions to content, software upgrades, and related products. In this tutorial we will lead you through the steps of creating an app that uses the Purchase C++ Library.<!--break--><br></p>
 <h2 dir="ltr">About In-App Purchasing/Billing</h2>
 <p><a href="http://developer.android.com/guide/market/billing/index.html">In-App Billing</a> is a Google Play service that lets you sell digital content from inside your Android apps. Apple offer a similar service called <a href="https://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/StoreKitGuide/Introduction/Introduction.html">In-App Purchasing</a> for iOS apps through iTunes.<br><br>When your app uses one of these services, it sends a billing request for a specific product. The service then handles all of the checkout details for the transaction, including requesting and validating the form of payment and processing the financial transaction. <br><br>When the checkout process is complete, the service sends your application the purchase details, such as the order number, the order date and time, and the price paid. <br><br>At no point does your application need to handle any financial transactions; that is all done by the Google Play or Apple iTunes service.</p>
@@ -30,21 +33,21 @@
 <li>Select <strong>MoSync Project</strong> &gt; <strong>Application Permissions</strong>.</li>
 <li>Check the <strong>In-App Purchase</strong> box:</li>
 </ol>
-<p>[img_assist|nid=9044|title=|desc=|link=none|align=none|width=634|height=457]</p>
+<p><img src="images/in-app-purchase-permissions.png" align="none" width="634" height="457"></p>
 <ol start="9"><li>Click <strong>Apply</strong>.</li>
 </ol>
 <p>For iOS projects you need to do two things. First set the bundle identifier. This is the ID that will be used to uniquely identify your application package on an iOS device (for example "com.MyCoolApps.IAPDemo"):</p>
 <ol start="13"><li>In the properties dialog, select <strong>iPhone OS</strong>.</li>
 <li>Enter a unique bundle identifier:</li>
 </ol>
-<p>[img_assist|nid=9045|title=|desc=|link=none|align=none|width=634|height=457]</p>
+<p><img src="images/in-app-purchase-bundle-id.png" align="none" width="634" height="457"></p>
 <ol start="13"><li>Click <strong>Apply</strong>.</li>
 </ol>
 <p>Second, for iOS, set up the project's provisioning profile by pointing it to the provision file -- that's the file that you get when you have registered with Apple as a developer and go through the iOS Provisioning Portal:</p>
 <ol start="16"><li>In the properties dialog, select <strong>iPhone OS</strong> &gt; <strong>Provisioning</strong>.</li>
 <li>Browse to your provision file and select it:</li>
 </ol>
-<p>[img_assist|nid=9046|title=|desc=|link=none|align=none|width=634|height=457]</p>
+<p><img src="images/in-app-purchase-provisioning-file.png" align="none" width="634" height="457"></p>
 <ol start="16"><li>Click <strong>Apply</strong>.</li>
 <li>Click <strong>OK</strong>.</li>
 </ol>
@@ -185,9 +188,9 @@ Purchase* purchaseObj = new Purchase(
 <p>After the product assigned to <strong>mCurrentPurchase</strong> is validated ( receives PurchaseListener::<strong>productValid</strong> event), the ApplicationController will call mCurrentPurchase-&gt;<strong>requestPurchase()</strong> that will launch the checkoutUI ( the platform independent UI that handles the financial transaction details).</p>
 <h2 dir="ltr">Running the application</h2>
 <p>First, make sure that you have met the <a href="about:blank">prerequisites </a>for running your application.<br><br>When you test on Android, make sure you follow the steps listed in the official help page for testing <a href="http://developer.android.com/guide/market/billing/billing_testing.html">http://developer.android.com/guide/market/billing/billing_testing.html</a> , so that you will be able to test both reserved products and your own products.<br><br>Transfer the application to a device and run it. If the device supports in-app purchasing/billing, you will see a list of your available products. In our example app, when the user selects one of the available products, the checkout UI launches and enables the user to enter his personal credit card information:</p>
-<p>[img_assist|nid=8894|title=|desc=|link=none|align=none|width=210|height=350]</p>
+<p><img src="images/in-app-purchase-visa_0.png" align="none" width="210" height="350"></p>
 <p>If everything goes OK the history list of purchased items is updated.</p>
-<p>[img_assist|nid=8895|title=|desc=|link=none|align=none|width=210|height=350]</p>
-<p>There is a receipt available for each purchase (except for the unmanaged products), and the user can check it by selecting one of them:<br><br>[img_assist|nid=8896|title=|desc=|link=none|align=none|width=210|height=350]<br><br></p>
+<p><img src="images/in-app-purchase-products-and-history.png" align="none" width="210" height="350"></p>
+<p>There is a receipt available for each purchase (except for the unmanaged products), and the user can check it by selecting one of them:<br><br><img src="images/in-app-purchase-receipt.png" align="none" width="210" height="350"><br><br></p>
 </body>
 </html>
