@@ -3,7 +3,7 @@ require 'pathname'
 
 # Old export
 def exportsDir1
- "./mosync-doc-exports/"
+ "./mosync-doc-exports-2-old/"
 end
 
 # New export
@@ -37,7 +37,7 @@ def newFiles
   files2 = allHtmlFiles(exportsDir2())
   puts "========================================================="
   puts "New files in " + exportsDir2()
-  puts files2 - files1
+  puts (files2 - files1).sort
   puts "========================================================="
 end
 
