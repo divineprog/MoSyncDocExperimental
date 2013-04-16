@@ -1,3 +1,6 @@
+Temporary file, to be deleted.
+
+
 =========================================================
 New files in ./mosync-doc-exports-2/
 HTML5-JavaScript-App-Development/index.html
@@ -109,11 +112,14 @@ documentation/manualpages/interacting-user-through-javascript/index.html
 documentation/manualpages/mosync-reload/index.html
 documentation/manualpages/nativeuimap/index.html
 documentation/manualpages/photogallery/index.html
+documentation/manualpages/reload-command-line-tool/index.html
 documentation/manualpages/running-phonegap-app-mosync/index.html
 documentation/manualpages/symbian-packaging-parameters/index.html
+documentation/manualpages/update-wormhole/index.html
 documentation/manualpages/using-c-notification-library/index.html
 documentation/manualpages/using-listview-widget/index.html
 documentation/manualpages/using-nativeui-map-widget/index.html
+documentation/manualpages/using-reloads-javascript-workbench/index.html
 documentation/manualpages/using-sql-hybrid-apps/index.html
 documentation/manualpages/webviewgeolocation/index.html
 documentation/manualpages/webviewlovesms/index.html
@@ -124,6 +130,9 @@ documentation/tutorials/reading-and-writing-data/index.html
 widepage/feature-platform-support/index.html
 =========================================================
 
+
+These are not used in docs:
+
 New files in ./mosync-doc-exports-2/  130415
 HTML5-JavaScript-App-Development_old/index.html
 blog/2011/11/hard-choose-between-html5-or-native-apps-new-mosync-27-pyramid-developers-don´t-need-ma/index.html
@@ -132,10 +141,4 @@ blog/2012/10/which-tools-are-you-using-and-how-you-feel-about-them…/index.html
 blog/2013/01/cloudbaseio-mosync-cloud-made-easy/index.html
 blog/2013/03/new-translation/index.html
 documentation/manualpages/installing-mosync-reload_old/index.html
-documentation/manualpages/reload-command-line-tool/index.html
-documentation/manualpages/update-wormhole/index.html
 documentation/manualpages/using-mosync-reload-beta/index.html
-documentation/manualpages/using-reloads-javascript-workbench/index.html
-
-
-
