@@ -1,35 +1,16 @@
+# Prorgam that bulds the documentation website.
+# And handles the import fo documentation from Drupal.
+
+# This is a way to copy files.
+# FileUtils.cp_r(Dir[sourceDir + "*"], destDir)
+
 require 'fileutils'
 require 'pathname'
 require "open-uri"
 
 load 'structure.rb' 
 
-def pathExports
-  "./mosync-doc-exports-2/"
-end
-
-def pathTemplates
-  "./templates/"
-end
-
-# Used for step before downloading
-# images and replacing image urls.
-def pathDocumentsPre
-  "./documentspre/"
-end
-
-def pathDocuments
-  "./documents/"
-end
-
-def pathWebSite
-  "./docsite/"
-end
-
-def pathWebSitePages
-  pathWebSite + "pages/"
-end
-
+# Helper function to run shell commands.
 def sh(cmd)
     #TODO: optimize by removing the extra shell
     #the Process class should be useful.
@@ -39,9 +20,34 @@ def sh(cmd)
     end
 end
 
-#root.children.each do |p|
-  #puts "Hello " + p.to_s
-#end
+# Directory of Drupal export.
+# Not in git.
+def pathExports
+  "./mosync-doc-exports-2/"
+end
+
+# Templates used for building the web site.
+# In git.
+def pathTemplates
+  "./templates/"
+end
+
+# Documentation main source directory
+# In git.
+def pathDocuments
+  "./documents/"
+end
+
+# Directory of doc web site
+# Not in git.
+def pathWebSite
+  "./website/"
+end
+
+# Root folder for doc pages.
+def pathWebSitePages
+  pathWebSite + "pages/"
+end
 
 # Not used for now.
 def convertHtmlToMarkdown
@@ -58,19 +64,28 @@ def convertHtmlToMarkdown
   end
 end
 
-def importAll
-  importHTML
+def docClean
+  dir = Pathname.new pathDocuments
+  fileCleanPath(dir)
+end
+
+def webSiteClean
+  dir = Pathname.new pathWebSite
+  fileCleanPath(dir)
+end
+
+def docImportAll
+  docImportHTML
+  docDownloadImages
+  docUpdateImageTags
 end
 
 # Import HTML files exported from Drupal.
-def importHTML
+def docImportHTML
   sourceDir = Pathname.new pathExports
-  destDir = Pathname.new pathDocumentsPre
+  destDir = Pathname.new pathDocuments
   
-  # Clean and create target directory.
-  fileCleanPath(destDir)
-  
-  # Process and copy pages.
+  # Process and copy pages to dest dir.
   n = 0
   docPages().each do |page|
     n = n + 1
@@ -79,7 +94,7 @@ def importHTML
     destPath = destDir + pageTargetFile(page)
     destFile = destPath + "index.html"
     
-    puts "Importing File #{n.to_s} #{sourceFile} #{destFile}"
+    puts "Importing File #{n.to_s}: #{sourceFile} #{destFile}"
     puts " "
     
     destPath.mkpath()
@@ -94,41 +109,33 @@ def importHTML
 end
 
 # Import (download) image files
-def importImages
-  copyExportedFilesToDocuments
-  downloadImages true
+def docDownloadImages
+  docProcessImageTags true
 end
 
-def copyExportedFilesToDocuments
-  sourceDir = Pathname.new pathDocumentsPre
-  destDir = Pathname.new pathDocuments
-  
-  # Clean and create target directory.
-  # Commented out to don't erase images
-  # in destDir when testing conversion.
-  #fileCleanPath(destDir)
-  
-  # Copy files.
-  FileUtils.cp_r(Dir[sourceDir + "*"], destDir)
+# Import (download) image files
+def docDownloadImages
+  docProcessImageTags true
 end
 
 # Iterate over all pages and all image urls on each page.
 # Download images to local files, and update image urls
-# to refer to local files.
-def downloadImages(downloadImage?)
+# to refer to local files. Optionally download original image.
+def docProcessImageTags(downloadImage?)
   puts "Downloading images"
   n = 0
   # Find all files.
   Pathname.glob(pathDocuments() + "**/*.html").each do |path|
     n = n + 1
-    puts "Downloading images for file " + n.to_s + ": " + path.to_s
-    # Find images in file.
+    puts "Processing images File " + n.to_s + ": " + path.to_s
+	
+    # Iterate over all images in the file.
     html = fileReadContent(path)
     html.scan(/(<img.*?>)/) do |img|
       puts "  img: " + img[0]
-      # Process image tag
+	  
+      # Get the scr url of the img tag.
       url = ""
-      imageName = ""
       img[0].scan(/src="(.*?)"/) do |src|
         if src[0].start_with?("http://www.mosync.com") then
           # Download image
@@ -142,11 +149,12 @@ def downloadImages(downloadImage?)
           url = "http://www.mosync.com" + src[0]
         end
         
+		# Fix the image url.
 		url = url.gsub(" ", "%20")
 		  
         # Download and save image.
         if url != "" and downloadImage? then
-          imageName = Pathname(url).basename.to_s
+          imageFileName = Pathname(url).basename.to_s
           destPath = path.parent + "images/" + imageName
           Pathname(destPath).parent.mkpath()
           puts "    downloading from: " + url
@@ -547,26 +555,32 @@ def cleanmd
 end
 
 if (ARGV.include? "html2md")
-    convertHtmlToMarkdown
+    #convertHtmlToMarkdown
 elsif (ARGV.include? "cleanmd")
-    cleanmd
+    #cleanmd
 elsif (ARGV.include? "importall")
-    importAll
+    docImportAll
 elsif (ARGV.include? "importhtml")
-    importHTML
-elsif (ARGV.include? "importimages")
-    importImages
-elsif (ARGV.include? "updateimages")
-    downloadImages false
-elsif (ARGV.include? "build")
+    docImportHTML
+elsif (ARGV.include? "downloadimages")
+    docDownloadImages
+elsif (ARGV.include? "updateimagetags")
+    docUpdateImageTags
+elsif (ARGV.include? "cleandoc")
+    docClean
+elsif (ARGV.include? "buildweb")
     webSiteBuild
+elsif (ARGV.include? "cleanweb")
+    webSiteClean
 else
     puts "Options:"
     #puts "  html2md"
     #puts "  cleanmd"
-    puts "  importall (imports HTML and images)"
+    puts "  importall (importhtml + downloadimages + updateimagetags)"
     puts "  importhtml (imports HTML from Drupal export)"
-    puts "  importimages (download images and update img urls)"
-    puts "  updateimages (only update img urls)"
-    puts "  build (builds web site)"
+    puts "  downloadimages (download images)"
+    puts "  updateimagetags (update img urls)"
+    puts "  cleandoc (cleans documentation folder)"
+    puts "  buildweb (builds website)"
+    puts "  cleanweb (cleans website folder)"
 end
