@@ -64,6 +64,9 @@ def convertHtmlToMarkdown
   end
 end
 
+# TODO: Remove this function, it is dangerous.
+# Deletes files under version control.
+# Only for development phase.
 def docClean
   dir = Pathname.new pathDocuments
   fileCleanPath(dir)
@@ -108,86 +111,115 @@ def docImportHTML
   end
 end
 
-# Import (download) image files
+# Iterate over all pages and all image urls
+# and download images to local files.
 def docDownloadImages
-  docProcessImageTags true
-end
-
-# Import (download) image files
-def docDownloadImages
-  docProcessImageTags true
-end
-
-# Iterate over all pages and all image urls on each page.
-# Download images to local files, and update image urls
-# to refer to local files. Optionally download original image.
-def docProcessImageTags(downloadImage?)
   puts "Downloading images"
-  n = 0
+
   # Find all files.
-  Pathname.glob(pathDocuments() + "**/*.html").each do |path|
+  n = 0
+  Pathname.glob(pathDocuments() + "**/*.html").each do |filePath|
     n = n + 1
-    puts "Processing images File " + n.to_s + ": " + path.to_s
+    puts "Processing File " + n.to_s + ": " + filePath.to_s
+    # Iterate over all images in the file.
+    html = fileReadContent(filePath)
+    html.scan(/<img.*?>/) do |imgTag|
+      puts "  img: " + imgTag
+      # Get the scr url of the img tag
+      # and download and save image.
+      url = docGetImageDownloadURL(imgTag)
+      if url != nil then
+	    destFile = docGetImagePath(url, filePath.parent)
+        puts "    downloading from: " + url
+        puts "    writing image to: " + destFile.to_s
+        docDownloadImage(url, destFile)
+        puts "    done"
+	  else
+	    puts "    *** image has no src tag ***"
+      end
+    end
+  end
+end
+
+# Iterate over all pages and all image urls
+# and convert img tags to refer to local files.
+def docUpdateImageTags
+  puts "Updating image tags"
+
+  # Find all files.
+  n = 0
+  Pathname.glob(pathDocuments() + "**/*.html").each do |filePath|
+    n = n + 1
+    puts "Updating File " + n.to_s + ": " + filePath.to_s
 	
     # Iterate over all images in the file.
-    html = fileReadContent(path)
-    html.scan(/(<img.*?>)/) do |img|
-      puts "  img: " + img[0]
-	  
-      # Get the scr url of the img tag.
-      url = ""
-      img[0].scan(/src="(.*?)"/) do |src|
-        if src[0].start_with?("http://www.mosync.com") then
-          # Download image
-          url = src[0]
-        elsif src[0].start_with?("http://") or 
-          src[0].start_with?("https://") then
-          # Do not download image ?
-          # Or just download every image?
-        elsif src[0].start_with?("/") then
-          # Download from http://www.mosync.com/
-          url = "http://www.mosync.com" + src[0]
-        end
-        
-		# Fix the image url.
-		url = url.gsub(" ", "%20")
-		  
-        # Download and save image.
-        if url != "" and downloadImage? then
-          imageFileName = Pathname(url).basename.to_s
-          destPath = path.parent + "images/" + imageName
-          Pathname(destPath).parent.mkpath()
-          puts "    downloading from: " + url
-          puts "    writing image to: " + destPath.to_s
-          downloadImage(url, destPath)
-          puts "    done"
-        end
-      end
-
-      # Update img tag.
-      if url != "" then
-        parts = img[0].split(/src="(.*?)"/)
-        newImgTag = parts[0] + "src=\"images/" + imageName + "\"" + parts[2]
-        puts "    new img: " + newImgTag
+    html = fileReadContent(filePath)
+    html.scan(/<img.*?>/) do |imgTag|
+      puts "  img: " + imgTag
+      url = docGetImageDownloadURL(imgTag)
+      if url != nil then
+        # Update img tag.
+        parts = imgTag.split(/src="(.*?)"/)
+		imageFileName = docGetImagePath(url, "")
+		imageFileName = imageFileName.gsub(" ", "%20")
+        newImgTag = parts[0] + "src=\"" + imageFileName + "\"" + parts[2]
+        puts "  new img: " + newImgTag
         # Update image tag.
-        html = html.gsub(img[0], newImgTag)
+        html = html.gsub(imgTag, newImgTag)
+	  else
+	    puts "    *** image has no src tag ***"
       end
-    end
-    
-    # Write updated file.
-    fileSaveContent(path, html)
+	end
+
+    # Write the updated file.
+    fileSaveContent(filePath, html)
   end
 end
 
-def downloadImage(url, destPath)
-# TODO: Catch errors
-  open(url) do |f|
-    File.open(destPath,"wb") do |file|
-      file.puts f.read
+# Get URL to download image from. Return nil
+# if the image should not be downloaded.
+def docGetImageDownloadURL(imgTag)
+  srcMatch = imgTag.scan(/src="(.*?)"/)
+  if not srcMatch.empty? then 
+	src = srcMatch[0][0]
+    if src.start_with?("http://www.mosync.com") then
+      return src
+    elsif src.start_with?("http://") or 
+      src.start_with?("https://") then
+	  # Return nil here if images from other domains
+	  # should not be downloaded.
+      return src
+    elsif src.start_with?("/") then
+      # Download from http://www.mosync.com/
+      return "http://www.mosync.com" + src
+    else 
+      puts "    *** Unknown image scr: " + src + " ***"
     end
   end
+  return nil
 end
 
+# Given a url and a path, get the 
+# file path to the image file.
+def docGetImagePath(url, dirPath)
+  imageFileName = Pathname(url).basename.to_s
+  return dirPath + "images/" + imageFileName
+end
+
+# Download an image to the destination file.
+def docDownloadImage(url, destFile)
+  # Fix the image url, it cannot contain spaces.
+  url = url.gsub(" ", "%20")
+  begin
+    open(url) do |f|
+      Pathname(destFile).parent.mkpath()
+      File.open(destFile,"wb") do |file| file.puts(f.read) end
+    end
+  rescue
+    puts "*** Cannot download image: " + url.to_s + " ***"
+  end
+end
+  
 def webSiteBuild
   webSiteClean
   webSiteBuildHomePage
@@ -494,21 +526,23 @@ def htmlUpdateLinks(html)
     # Replace full urls
     html = html.gsub(
       "http://www.mosync.com/" + pageOriginalFile(page), 
-      "/NEWDOC_UPDATED_URL:TEMPLATE_DOC_PATH/" + pageTargetFile(page) + "/index.html")
+      "/NEWDOC_UPDATED_URL_TEMPLATE_DOC_PATH/" + pageTargetFile(page) + "/index.html")
 	# Replace short urls
     html = html.gsub(
       pageOriginalFile(page), 
-      "NEWDOC_UPDATED_URL:TEMPLATE_DOC_PATH/" + pageTargetFile(page) + "/index.html")
+      "NEWDOC_UPDATED_URL_TEMPLATE_DOC_PATH/" + pageTargetFile(page) + "/index.html")
   end
   
   # Step 2: Strip off absolute urls and markers
-  html = html.gsub("http://www.mosync.com/NEWDOC_UPDATED_URL:", "")
-  html = html.gsub("/NEWDOC_UPDATED_URL:", "")
+  html = html.gsub("http://www.mosync.com/NEWDOC_UPDATED_URL_", "")
+  html = html.gsub("/NEWDOC_UPDATED_URL_", "")
+  html = html.gsub("NEWDOC_UPDATED_URL_", "")
   
   # Step 3: Clean up weird urls
-  html = html.gsub("//index.html", "/index.html") 
-  html = html.gsub("//index.html", "/index.html") 
-  html = html.gsub("index.html/", "index.html") 
+  html = html.gsub("//index.html", "/index.html")
+  html = html.gsub("//index.html", "/index.html")
+  html = html.gsub("index.html/", "index.html")
+  html = html.gsub("TEMPLATE_DOC_PATH//", "TEMPLATE_DOC_PATH/")
   
   #puts "Page AFTER URL update: " + html
   #puts " "
@@ -526,6 +560,7 @@ def fileCleanPath(pathName)
   begin
     pathName.rmtree()
   rescue
+    puts "Cannot delete: " + pathName.to_s
   end
   pathName.mkpath()
 end

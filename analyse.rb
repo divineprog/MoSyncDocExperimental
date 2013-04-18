@@ -3,7 +3,7 @@ require 'pathname'
 
 # Old export
 def exportsDir1
- "./mosync-doc-exports-2-old/"
+ "./mosync-doc-exports-1/"
 end
 
 # New export
@@ -83,14 +83,15 @@ def listAnchors
   puts "========================================================="
 end
 
-# Collect images in all documents and list them
+# Collect images in all documents and list them.
 def listImages
-  #dir = exportsDir2()
-  dir = "./documents/"
+  dir = exportsDir2()
+  #dir = "./documents/"
   files = allHtmlPaths(dir)
   imgs = (files.collect { |path|
     html = File.open(path, "rb") { |f| f.read }
-    html.scan(/<img(.*?)>/)
+    # html.scan(/<img(.*?)>/)
+    html.scan(/src="(.*?)"/)
   }).flatten
   puts "========================================================="
   puts "All img tags in all files in " + dir
@@ -117,6 +118,7 @@ else
   puts "  new (show new files in new export)"
   puts "  count (count files in all exports)"
   puts "  links (show all links in new export)"
+  puts "  img (show all img src attributes)"
   puts "(please manually update the script to specify"
   puts "export directories)"
   puts "========================================================="

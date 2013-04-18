@@ -3,9 +3,7 @@
 <title>Using Web SQL in MoSync Apps</title>
 </head>
 <body>
-
 <h1>Using Web SQL in MoSync Apps</h1>
-
 <!-- # Using Web SQL in MoSync Apps  --><!-- C:\md>perl Markdown.pl C:\MoSyncProjects\MoSyncApps\WebSQLDemo\Tutorial\WebSQLTutorial.md > output.txt --><!--
 <style type="text/css">
 p>img {
@@ -95,7 +93,7 @@ p>img {
 <p>The app WebSQLDemo is a simple turn-based game of luck (much like playing by tossing a dice). The "dice" in the app is a "wheel" with numbers 1 tho 50. Whoever gets the highest number wins the current round, and the total score gets updated.</p>
 <p>You challenge the app and can affect the outcome by taking a low risk or a high risk. With high risk, you can double your score, but the app gets to roll the wheel twice.</p>
 <p>This is a screenshot of the app:</p>
-<p><img src="https://raw.github.com/divineprog/MoSyncApps/master/WebSQLDemo/Tutorial/WebSQLDemo.png" alt="Web SQL Demo Screenshot" title=""></p>
+<p><img src="images/WebSQLDemo.png" alt="Web SQL Demo Screenshot" title=""></p>
 <p>The source code is available on GitHub. The main entry point of the program is file <a href="https://github.com/divineprog/MoSyncApps/blob/master/WebSQLDemo/LocalFiles/index.html">index.html</a>. The app uses the database.js wrapper library discussed above.</p>
 <p>The database is used to store the total score of the two players (the user and the app). This makes the score persistent. While not a big database with lots of objects, it shows how to perform basic database operations, like querying and updating rows.</p>
 <h2>Alternative database techniques</h2>
@@ -104,7 +102,7 @@ p>img {
 <p>The use of C/C++ opens up for porting alternative database engines to MoSync, and making them available to JavaScript. So called "NoSQL" databases (Document Databases) have became popular alternatives to SQL databases, and there are several implementations one could chose from, like Kyoto Cabinet. We have, however, not test tested any of those on MoSync. Please let us know if you are doing work in this direction, it would be great to hear about your experiences.</p>
 <p>How to access C/C++ from JavaScript to utilize MoSync's database API is a topic we plan to return to in future tutorials. Meanwhile you can check out the existing documentation that provides information about the programming techniques required to do this:</p>
 <ul>
-<li><a href="http://www.mosync.com/documentation/manualpages/how-communicate-between-javascript-and-c-mosync">Extending HTML5 Apps with C++</a></li>
+<li><a href="TEMPLATE_DOC_PATH/js/guides/wormhole/extending-javascript-with-cpp/index.html">Extending HTML5 Apps with C++</a></li>
 <li><a href="TEMPLATE_DOC_PATH/cpp/guides/storage/sql-database-api/index.html">The Database C API</a></li>
 </ul>
 </body>

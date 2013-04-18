@@ -3,9 +3,7 @@
 <title>Draw Targets, Clipping</title>
 </head>
 <body>
-
 <h1>Draw Targets, Clipping</h1>
-
 <p>MoSync graphics operations are always performed to a "draw target". By default, this draw target is the screen, but you can create images that can be drawn to, using maCreateDrawableImage().</p>
 <p><!--break--></p>
 <p>These mutable images behave exactly like any other images, and can be used with maDrawImage() or maDrawImageRegion() - the only difference is that they can't be transparent. Also, all drawing operations respect the "clip rectangle", which is a rectangular portion of the screen that is affected by drawing operations. By default, the clipping rectangle is the whole screen.</p>

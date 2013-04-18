@@ -3,9 +3,7 @@
 <title>The MAFS C++ Library</title>
 </head>
 <body>
-
 <h1>The MAFS C++ Library</h1>
-
 <p>MAFS is a reimplementation of the Standard C File I/O routines. It operates on either a binary image attached as a resource or using local stores for permanent storage. The binary image is actually a virtual filesystem generated using our tool Bundle.<!--break--></p>
 <p>This comes in handy when porting applications that use a lot of data stored as files in the file system: just use the <strong>Bundle </strong>tool on the data folder to generate an image, attach it as a resource in the MoSync application, and mount it using the API functions provided.<br><br> A policy has been implemented to handle transparently the permanent storage of files. The <strong>fopen </strong>function first looks to see if the file exists in permanent storage. If that is the case, everything is written or read from that permanent storage. If no file is found in permanent storage, it continues to search for the file in the binary image. Reading from such a file is done by buffering data from the binary resource. Whenever such a file is written to, a copy of the data is created and saved as permanent storage.<br><br> Any reference documentation for the <strong>f*</strong> functions of the Standard C File API will work as reference, but we've also included documentation for them in our own reference documentation. There are two special functions for mounting the filesystem image and unmounting it. There can only be one filesystem image mounted at once.</p>
 <p>Use the function <strong>setCurrentFileSystem </strong>to mount it and <strong>freeCurrentFileSystem </strong>to unmount it:</p>

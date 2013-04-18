@@ -3,9 +3,7 @@
 <title>Processing XML</title>
 </head>
 <body>
-
 <h1>Processing XML</h1>
-
 <p>If you are writing cross-platform mobile apps in the MoSync® SDK, you will probably want at some point to connect to the Internet to get data. Typically, this data will be in XML or in JSON format. If you are getting XML data, the MoSync SDK has a built in XML parser (MTXml) you can use to parse it.<!--break--></p>
 <p>There are also string functions in the MoSync MAUtil library which can be used to read XML in some simple cases. In this tutorial we take a look at retrieving XML data and the various ways of reading the data from it.</p>
 <p>&nbsp;</p>
@@ -13,10 +11,10 @@
 <p>There are several ways to get XML data into your application:</p>
 <ul>
 <li>Read it from a store saved on the device.</li>
-<li>Create it within your application using the techniques described in our blog post <a href="http://www.mosync.com/blog/2010/03/creating-xml-documents">Creating XML Documents</a>.<a href="http://www.mosync.com/blog/2010/03/creating-xml-documents" title="here" id="pqnc"><span style="color: #000000;">&nbsp;</span></a></li>
+<li>Create it within your application using the techniques described in our blog post <a href="TEMPLATE_DOC_PATH/cpp/tutorials/xml/creating-xml-documents/index.html">Creating XML Documents</a>.<a href="TEMPLATE_DOC_PATH/cpp/tutorials/xml/creating-xml-documents/index.html" title="here" id="pqnc"><span style="color: #000000;">&nbsp;</span></a></li>
 <li>Download it from the Internet using the MoSync <strong>Connection&nbsp;</strong>class. Part of this tutorial will look at how you can do this, and even start processing XML before it has finished downloading.</li>
 </ul>
-<p><strong><em>&nbsp;</em></strong>Note that this tutorial covers XML only. If you are working with JSON data, we have a blog post called <a href="http://www.mosync.com/blog/2010/03/working-json-data" title="here" id="r0-_">Working with JSON Data</a> that describes how to handle it.</p>
+<p><strong><em>&nbsp;</em></strong>Note that this tutorial covers XML only. If you are working with JSON data, we have a blog post called <a href="TEMPLATE_DOC_PATH/cpp/tutorials/json/working-with-json-data/index.html" title="here" id="r0-_">Working with JSON Data</a> that describes how to handle it.</p>
 <h2>Reading XML Using String Functions</h2>
 <p>If you've got simple requirements for XML, then you can read it very easily. Take this example from the Yahoo! XML format for weather data.</p>
 <pre>&lt;title&gt;Conditions for Carcassonne, FR at 10:00 am CEST&lt;/title&gt; &lt;geo:lat&gt;43.22&lt;/geo:lat&gt; &lt;geo:long&gt;2.35&lt;/geo:long&gt;&nbsp;
@@ -30,7 +28,7 @@ String lat = xml.substr(start, end - start);</pre>
 </div>
 <p>We can use the standard&nbsp;<strong>String&nbsp;</strong>functions to get the values out of the XML. The start of the data can be found by getting the position of &lt;geo:lat&gt;. 9 is added to this value, which is the length of the string we're looking for. The value of start is now the number of characters from the start to the beginning of the latitude value. The end of the value is found in a similar way, but we don't need to add any additional characters. Finally, the value of latitude can be extracted using the substring function (substr), passing it the start location and the length of the data to extract (end - start).</p>
 <h2>SAX Parser and DOM Parsers</h2>
-<p>Broadly speaking, there are two ways to handle XML documents: via the DOM or via SAX.<br><br>If you load the XML into an object model that represents the XML structure, you can then look at the properties of each XML element in the model and navigate the model with an XPATH. This is very common approach for manipulating XML and is called using a&nbsp;<em>Document Object Model</em>&nbsp;or DOM. Java and C# developers will be very used to dealing with XML like this.&nbsp;<br>It is easy to use this approach, but can use a lot of memory. If you have a burning need for DOM processing, read the&nbsp;<a href="http://www.mosync.com/blog/2010/03/creating-xml-documents">blog post</a>&nbsp;on our website which details a lightweight DOM approach to XML with the MoSync SDK.</p>
+<p>Broadly speaking, there are two ways to handle XML documents: via the DOM or via SAX.<br><br>If you load the XML into an object model that represents the XML structure, you can then look at the properties of each XML element in the model and navigate the model with an XPATH. This is very common approach for manipulating XML and is called using a&nbsp;<em>Document Object Model</em>&nbsp;or DOM. Java and C# developers will be very used to dealing with XML like this.&nbsp;<br>It is easy to use this approach, but can use a lot of memory. If you have a burning need for DOM processing, read the&nbsp;<a href="TEMPLATE_DOC_PATH/cpp/tutorials/xml/creating-xml-documents/index.html">blog post</a>&nbsp;on our website which details a lightweight DOM approach to XML with the MoSync SDK.</p>
 <pre>&lt;myTag&gt;
 </pre>
 <p>it will raise an event to say that it has found an open tag. The program listening to events, or receiving the callback can then decide whether or not to do something with this knowledge.</p>

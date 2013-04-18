@@ -3,9 +3,7 @@
 <title>Using MAUI Layouts</title>
 </head>
 <body>
-
 <h1>Using MAUI Layouts</h1>
-
 <p>Layouts format your widgets on screen. They provide a grid into which all of your widgets can be aligned. Almost every screen you’ll create will have a Layout widget on it, and whilst they can’t do everything you can imagine, they can help you create some attractive and useful screens.</p>
 <p><!--break--></p>
 <p>[toc title: Topics; maxlevel: 2]</p>
@@ -40,7 +38,7 @@ Layout* createMainLayout(const char *left, const  char *right)
 <p>This example comes from the MAUIex project supplied with MoSync. Widgets are added into the Layout from left to right and top to bottom. If you have a Layout with a 2x2 grid, the first widget you add will be placed top left, the second top right, the third bottom left and the fourth in the bottom right. If you want to skip a cell, then you have to add a blank widget.</p>
 <h2>Advanced Layouts</h2>
 <p>I’ve created a new Widget, which is a grid-based menu where each cell contains an icon and label. You may have seen these on some phones.</p>
-<p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_33qjsp2qg5_b"></p>
+<p><img src="images/File?id=ddwb2zz_33qjsp2qg5_b"></p>
 <p>To do this, the Widget has inherited from Layout instead of Widget.&nbsp; By doing this you can control some of the placements within your control, and make it really easy to reuse it.</p>
 <p>&nbsp;</p>
 <pre class="mosync-code-cpp">#ifndef _GRID_MENU_H_

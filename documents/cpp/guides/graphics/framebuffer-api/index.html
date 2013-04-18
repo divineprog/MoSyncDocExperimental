@@ -3,9 +3,7 @@
 <title>Framebuffer API</title>
 </head>
 <body>
-
 <h1>Framebuffer API</h1>
-
 <p>The Framebuffer API provides an API for overriding the backbuffer of MoSync. In order to use this API, the program should use <strong><tt>maFrameBufferGetInfo</tt> </strong>to fill a structure containing such information as the native pixel format and screensize of the underlying system. These parameters should then in turn be used to allocate memory for a backbuffer.</p>
 <p>The custom backbuffer is enabled by using the <strong><tt>maFrameBufferInit</tt></strong> syscall. By using <strong><tt>maFrameBufferClose</tt></strong>, the overridden backbuffer is disabled. In order to make a program pixel format and screensize independent, actual drawing should be done using the information retrieved by using the syscall <strong><tt>maFrameBufferGetInfo</tt></strong>. Increased performance may be gained by using different code paths for different bit depths and creating optimized innerloops.</p>
 <p><em>Note</em>: Whenever a <strong>EVENT_TYPE_SCREEN_CHANGED</strong> event is sent from the runtime (i.e., when the size of the screen has changed), the native framebuffer gets invalidated and needs to be reinitialized. Just use <strong>maFrameBufferClose </strong>and <strong>maFrameBufferInit </strong>in<strong> </strong>sequence and everything should be just fine.</p>

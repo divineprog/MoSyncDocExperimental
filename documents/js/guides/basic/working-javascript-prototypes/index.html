@@ -3,9 +3,7 @@
 <title>Working with JavaScript Prototypes</title>
 </head>
 <body>
-
 <h1>Working with JavaScript Prototypes</h1>
-
 <p>The object hierarchy in JavaScript enables any object (which in JavaScript is just about everything) to inherit methods and properties. The parent object from which a child inherits is called the child object's "prototype". Prototypes are a great way to teach JavaScript new tricks, and we are going to take a look at some of the things you can do with them in this tutorial.<!--break--></p>
 <h2>Extending Objects with Methods and Properties</h2>
 <p>Let's start by looking at how we normally add a custom method or property to an object in JavaScript, starting with pre-defined objects. In the following code we create a new object (<strong>myImage</strong>) based on one of JavaScript's built-in objects (<strong>Image</strong>) and add a custom property (<strong>size</strong>) to it:</p>
@@ -76,7 +74,7 @@ alert(myText.initialCap() ); // Displays 'Foo'</pre>
 var myString = '42';
 alert(myString.toNumber() ); // Displays 42</pre>
 <h2>Prototypes in MoSync Wormhole</h2>
-<p>To give an example of how prototypes are used in library code, here are some code snippets from the PhoneGap library, which is included in the <a href="TEMPLATE_DOC_PATH/js/guides/libs/html5-javascript-wormhole/index.html">MoSync Wormhole JavaScript Library</a> (that is our library that makes it possible for your JavaScript apps to talk to services on your mobile device).</p>
+<p>To give an example of how prototypes are used in library code, here are some code snippets from the PhoneGap library, which is included in the <a href="TEMPLATE_DOC_PATH/js/guides/wormhole/html5-javascript-wormhole/index.html">MoSync Wormhole JavaScript Library</a> (that is our library that makes it possible for your JavaScript apps to talk to services on your mobile device).</p>
 <pre class="mosync-code-cpp">// Define the Notification object.
 var Notification = function() {
 };
