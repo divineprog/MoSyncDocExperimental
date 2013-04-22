@@ -1,0 +1,1107 @@
+Updating image tags
+Updating File 1: ./documents/reload/release-notes/whats-new-mosync-reload-10/index.html
+Updating File 2: ./documents/reload/guides/tools/reload-command-line-tool/index.html
+  img: <img alt="MoSync IDE Reload integration." title="MoSync IDE Reload integration." src="http://www.mosync.com/files/mosync_ide_cli_setup.png"/>
+  new img: <img alt="MoSync IDE Reload integration." title="MoSync IDE Reload integration." src="images/mosync_ide_cli_setup.png"/>
+Updating File 3: ./documents/reload/guides/tools/using-javascript-workbench/index.html
+  img: <img src="/files/images/Reload_WebUI_Workbench_Highlighted.png" align="none" width="650" height="415">
+  new img: <img src="images/Reload_WebUI_Workbench_Highlighted.png" align="none" width="650" height="415">
+Updating File 4: ./documents/reload/guides/quick-start/mosync-reload-overview/index.html
+Updating File 5: ./documents/reload/guides/quick-start/mosync-reload-quick-start/index.html
+  img: <img src="/files/images/MoSync-Reload-Architecture.png" align="none" width="650" height="241">
+  new img: <img src="images/MoSync-Reload-Architecture.png" align="none" width="650" height="241">
+  img: <img src="/files/images/Reload_QuickStart.png" align="none" width="651" height="426">
+  new img: <img src="images/Reload_QuickStart.png" align="none" width="651" height="426">
+  img: <img src="/files/images/Reload_WebUIApp_Selected_CloseUp.png" align="none" width="315" height="194">
+  new img: <img src="images/Reload_WebUIApp_Selected_CloseUp.png" align="none" width="315" height="194">
+Updating File 6: ./documents/reload/guides/debugging/debugging-javascript-ios-mosync-reload/index.html
+  img: <img src="/files/images/debug-js-on-ios-with-reload-01.png" align="none" width="264" height="496">
+  new img: <img src="images/debug-js-on-ios-with-reload-01.png" align="none" width="264" height="496">
+  img: <img src="/files/images/debug-js-on-ios-with-reload-02.png" align="none" width="264" height="496">
+  new img: <img src="images/debug-js-on-ios-with-reload-02.png" align="none" width="264" height="496">
+  img: <img src="/files/images/debug-js-on-ios-with-reload-03.png" align="none" width="649" height="572">
+  new img: <img src="images/debug-js-on-ios-with-reload-03.png" align="none" width="649" height="572">
+  img: <img src="/files/images/debug-js-on-ios-with-reload-04.png" align="none" width="264" height="496">
+  new img: <img src="images/debug-js-on-ios-with-reload-04.png" align="none" width="264" height="496">
+Updating File 7: ./documents/reload/guides/debugging/debugging-javascript-rlog/index.html
+  img: <img src="/files/images/Reload_Log_Example0_Highlighted.png" align="none" width="650" height="439">
+  new img: <img src="images/Reload_Log_Example0_Highlighted.png" align="none" width="650" height="439">
+  img: <img src="/files/images/reload-rlog-tutorial-03.png" align="none" width="266" height="482">
+  new img: <img src="images/reload-rlog-tutorial-03.png" align="none" width="266" height="482">
+  img: <img src="/files/images/Reload_Log_Example1.png" align="none" width="650" height="439">
+  new img: <img src="images/Reload_Log_Example1.png" align="none" width="650" height="439">
+  img: <img src="/files/images/Reload_Log_Example2.png" align="none" width="650" height="439">
+  new img: <img src="images/Reload_Log_Example2.png" align="none" width="650" height="439">
+  img: <img src="/files/images/Reload_Log_Example4.png" align="none" width="650" height="439">
+  new img: <img src="images/Reload_Log_Example4.png" align="none" width="650" height="439">
+Updating File 8: ./documents/js/examples/wormholedemo/index.html
+  img: <img src="/files/images/WormholeDemo1.png" align="none" width="210" height="315">
+  new img: <img src="images/WormholeDemo1.png" align="none" width="210" height="315">
+  img: <img src="/files/images/WormholeDemo2.png" align="none" width="210" height="315">
+  new img: <img src="images/WormholeDemo2.png" align="none" width="210" height="315">
+Updating File 9: ./documents/js/examples/webviewgeolocation/index.html
+  img: <img src="/files/images/GeoLocation.png" align="none" width="260" height="432">
+  new img: <img src="images/GeoLocation.png" align="none" width="260" height="432">
+Updating File 10: ./documents/js/examples/photogallery/index.html
+  img: <img src="/files/images/PhotoGallery-1.png" align="none" width="250" height="427">
+  new img: <img src="images/PhotoGallery-1.png" align="none" width="250" height="427">
+  img: <img src="/files/images/PhotoGallery-2.png" align="none" width="250" height="427">
+  new img: <img src="images/PhotoGallery-2.png" align="none" width="250" height="427">
+Updating File 11: ./documents/js/examples/wormholenativeui/index.html
+  img: <img src="/files/images/WormholeNativeUI-ios-01.png" align="none" width="210" height="317">
+  new img: <img src="images/WormholeNativeUI-ios-01.png" align="none" width="210" height="317">
+  img: <img src="/files/images/WormholeNativeUI-wp7-01.png" align="none" width="210" height="350">
+  new img: <img src="images/WormholeNativeUI-wp7-01.png" align="none" width="210" height="350">
+  img: <img src="/files/images/WormholeNativeUI-ios-02.png" align="none" width="210" height="313">
+  new img: <img src="images/WormholeNativeUI-ios-02.png" align="none" width="210" height="313">
+  img: <img src="/files/images/WormholeNativeUI-wp7-02.png" align="none" width="210" height="354">
+  new img: <img src="images/WormholeNativeUI-wp7-02.png" align="none" width="210" height="354">
+Updating File 12: ./documents/js/examples/webviewlovesms/index.html
+  img: <img src="/files/images/LoveSMS.png" align="none" width="227" height="376">
+  new img: <img src="images/LoveSMS.png" align="none" width="227" height="376">
+Updating File 13: ./documents/js/examples/webviewtwitter/index.html
+  img: <img src="/files/images/WebViewTwitter1_0.png" align="none" width="220" height="367">
+  new img: <img src="images/WebViewTwitter1_0.png" align="none" width="220" height="367">
+  img: <img src="/files/images/WebViewTwitter2_0.png" align="none" width="220" height="367">
+  new img: <img src="images/WebViewTwitter2_0.png" align="none" width="220" height="367">
+Updating File 14: ./documents/js/examples/photogallery-explained/index.html
+Updating File 15: ./documents/js/guides/wormhole/running-phonegap-app-mosync/index.html
+  img: <img src="/files/images/PhoneGap01.png" align="none" width="210" height="348">
+  new img: <img src="images/PhoneGap01.png" align="none" width="210" height="348">
+  img: <img src="/files/images/PhoneGap02.png" align="none" width="220" height="330">
+  new img: <img src="images/PhoneGap02.png" align="none" width="220" height="330">
+Updating File 16: ./documents/js/guides/wormhole/html5-javascript-wormhole/index.html
+Updating File 17: ./documents/js/guides/wormhole/extending-javascript-with-cpp/index.html
+Updating File 18: ./documents/js/guides/wormhole/update-wormhole/index.html
+Updating File 19: ./documents/js/guides/basic/working-javascript-prototypes/index.html
+Updating File 20: ./documents/js/guides/basic/event-handling-mosync-hybrid-app/index.html
+  img: <img src="/files/images/MoSyncHTML5KeyPressEventSimpleNarrow_1.png" align="none" width="578" height="883">
+  new img: <img src="images/MoSyncHTML5KeyPressEventSimpleNarrow_1.png" align="none" width="578" height="883">
+  img: <img src="/files/images/ared1_0.png" align="left" width="25" height="23">
+  new img: <img src="images/ared1_0.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared2.png" align="left" width="25" height="23">
+  new img: <img src="images/ared2.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared3.png" align="left" width="25" height="23">
+  new img: <img src="images/ared3.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared4.png" align="left" width="25" height="23">
+  new img: <img src="images/ared4.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared5.png" align="left" width="25" height="23">
+  new img: <img src="images/ared5.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared6.png" align="left" width="25" height="23">
+  new img: <img src="images/ared6.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared7.png" align="left" width="25" height="23">
+  new img: <img src="images/ared7.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared8.png" align="left" width="25" height="23">
+  new img: <img src="images/ared8.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared9.png" align="left" width="25" height="23">
+  new img: <img src="images/ared9.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared10.png" align="left" width="25" height="23">
+  new img: <img src="images/ared10.png" align="left" width="25" height="23">
+Updating File 21: ./documents/js/guides/basic/using-javascript-callbacks/index.html
+Updating File 22: ./documents/js/guides/ads/app-advertisement-javascript/index.html
+  img: <img src="/files/images/inmobi-new-logo.jpg" align="none" width="175" height="70">
+  new img: <img src="images/inmobi-new-logo.jpg" align="none" width="175" height="70">
+  img: <img src="/files/images/MyAdsAppBasic_0.png" align="none" width="240" height="400">
+  new img: <img src="images/MyAdsAppBasic_0.png" align="none" width="240" height="400">
+  img: <img src="/files/images/MyAdsAppBanner_0.png" align="none" width="240" height="400">
+  new img: <img src="images/MyAdsAppBanner_0.png" align="none" width="240" height="400">
+Updating File 23: ./documents/js/guides/sensors/reading-sensors-javascript/index.html
+  img: <img src="/files/images/bubble_level_0.png" align="left" width="220" height="420">
+  new img: <img src="images/bubble_level_0.png" align="left" width="220" height="420">
+Updating File 24: ./documents/js/guides/ui/interacting-with-users-using-javascript/index.html
+  img: <img src="/files/images/you-clicked-me.png" align="none" width="313" height="203">
+  new img: <img src="images/you-clicked-me.png" align="none" width="313" height="203">
+  img: <img src="/files/images/loading-icon_0.png" align="none" width="289" height="368">
+  new img: <img src="images/loading-icon_0.png" align="none" width="289" height="368">
+  img: <img src="/files/images/modal-dialog_0.png" align="none" width="250" height="437">
+  new img: <img src="images/modal-dialog_0.png" align="none" width="250" height="437">
+Updating File 25: ./documents/js/guides/storage/using-sql-hybrid-apps/index.html
+  img: <img src="https://raw.github.com/divineprog/MoSyncApps/master/HybridSQLDemo/Tutorial/HybridSQLDemoIOS.jpg" alt="Hybrid SQL Demo iOS Screenshot" title="">
+  new img: <img src="images/HybridSQLDemoIOS.jpg" alt="Hybrid SQL Demo iOS Screenshot" title="">
+  img: <img src="https://raw.github.com/divineprog/MoSyncApps/master/HybridSQLDemo/Tutorial/HybridSQLDemoAndroid.jpg" alt="Hybrid SQL Demo Android Screenshot" title="">
+  new img: <img src="images/HybridSQLDemoAndroid.jpg" alt="Hybrid SQL Demo Android Screenshot" title="">
+Updating File 26: ./documents/js/guides/storage/using-web-sql/index.html
+  img: <img src="https://raw.github.com/divineprog/MoSyncApps/master/WebSQLDemo/Tutorial/WebSQLDemo.png" alt="Web SQL Demo Screenshot" title="">
+  new img: <img src="images/WebSQLDemo.png" alt="Web SQL Demo Screenshot" title="">
+Updating File 27: ./documents/js/guides/nativeui/jsnativeui-library/index.html
+  img: <img src="/files/images/JSNativeUIFirstTab.png" align="none" width="400" height="369">
+  new img: <img src="images/JSNativeUIFirstTab.png" align="none" width="400" height="369">
+  img: <img src="/files/images/JSNativeUISecondTab.png" align="none" width="400" height="368">
+  new img: <img src="images/JSNativeUISecondTab.png" align="none" width="400" height="368">
+  img: <img src="/files/images/JSNativeUIImproved.png" align="none" width="400" height="368">
+  new img: <img src="images/JSNativeUIImproved.png" align="none" width="400" height="368">
+  img: <img src="/files/images/MoSyncUI Layers.png" align="none" width="515" height="260">
+  new img: <img src="images/MoSyncUI%20Layers.png" align="none" width="515" height="260">
+Updating File 28: ./documents/js/tutorials/graphics/rendering-particles-mixing-html5-and-native-ui-opengl-using-mosync/index.html
+Updating File 29: ./documents/js/tutorials/lua/extending-html5-apps-lua/index.html
+  img: <img src="/files/images/lua.png" align="none" width="210" height="129">
+  new img: <img src="images/lua.png" align="none" width="210" height="129">
+Updating File 30: ./documents/js/tutorials/lua/mixing-javascript-and-lua-dynamic-language-interplay/index.html
+  img: <img src="/files/images/JavaScriptLuaInterplay.png" align="none" width="300" height="159">
+  new img: <img src="images/JavaScriptLuaInterplay.png" align="none" width="300" height="159">
+  img: <img src="/files/images/LuaWebView.png" align="none" width="250" height="417">
+  new img: <img src="images/LuaWebView.png" align="none" width="250" height="417">
+  img: <img src="/files/images/LuaCountDown.png" align="none" width="250" height="417">
+  new img: <img src="images/LuaCountDown.png" align="none" width="250" height="417">
+Updating File 31: ./documents/js/tutorials/ui/extend-javascript-with-custom-cpp-code/index.html
+  img: <img src="https://raw.github.com/divineprog/MoSyncApps/master/PlatformRequestDemo/Tutorial/PlatformRequestDemo_iOS_1.png" alt="PlatformRequestDemo iOS 1" title="" height="408" width="220">
+  new img: <img src="images/PlatformRequestDemo_iOS_1.png" alt="PlatformRequestDemo iOS 1" title="" height="408" width="220">
+  img: <img src="https://raw.github.com/divineprog/MoSyncApps/master/PlatformRequestDemo/Tutorial/PlatformRequestDemo_iOS_2.png" alt="PlatformRequestDemo iOS 2" title="" height="408" width="220">
+  new img: <img src="images/PlatformRequestDemo_iOS_2.png" alt="PlatformRequestDemo iOS 2" title="" height="408" width="220">
+  img: <img src="https://raw.github.com/divineprog/MoSyncApps/master/PlatformRequestDemo/Tutorial/PlatformRequestDemo_Android_1.png" alt="PlatformRequestDemo Android 1" title="" height="294" width="220">
+  new img: <img src="images/PlatformRequestDemo_Android_1.png" alt="PlatformRequestDemo Android 1" title="" height="294" width="220">
+  img: <img src="https://raw.github.com/divineprog/MoSyncApps/master/PlatformRequestDemo/Tutorial/PlatformRequestDemo_Android_2.png" alt="PlatformRequestDemo Android 2" title="" height="294" width="220">
+  new img: <img src="images/PlatformRequestDemo_Android_2.png" alt="PlatformRequestDemo Android 2" title="" height="294" width="220">
+Updating File 32: ./documents/js/tutorials/ui/fun-things-do-lovesms-example-application/index.html
+  img: <img src="/files/images/LoveSMSScreenshotsSmall.png" align="none" width="600" height="329">
+  new img: <img src="images/LoveSMSScreenshotsSmall.png" align="none" width="600" height="329">
+Updating File 33: ./documents/js/tutorials/quick-start/how-create-html5-project-mosync/index.html
+  img: <img src="/files/images/EclipseHTML5LocalFiles.png" align="none" width="252" height="432">
+  new img: <img src="images/EclipseHTML5LocalFiles.png" align="none" width="252" height="432">
+Updating File 34: ./documents/js/tutorials/quick-start/getting-started-html5-and-javascript/index.html
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-02.png" align="none" width="550" height="337">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-02.png" align="none" width="550" height="337">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-03.png" align="none" width="550" height="337">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-03.png" align="none" width="550" height="337">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-04.png" align="none" width="551" height="333">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-04.png" align="none" width="551" height="333">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-05.png" align="none" width="500" height="500">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-05.png" align="none" width="500" height="500">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-06.png" align="none" width="500" height="500">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-06.png" align="none" width="500" height="500">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-07.png" align="none" width="500" height="500">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-07.png" align="none" width="500" height="500">
+  img: <img src="/files/images/EclipseHTML5WebUINewlyCreatedProject.png" align="none" width="650" height="488">
+  new img: <img src="images/EclipseHTML5WebUINewlyCreatedProject.png" align="none" width="650" height="488">
+  img: <img src="/files/images/ScreenshotSendToTargetDevice.png" align="none" width="560" height="222">
+  new img: <img src="images/ScreenshotSendToTargetDevice.png" align="none" width="560" height="222">
+  img: <img src="/files/images/ScreenshotSelectTransport.png" align="none" width="500" height="487">
+  new img: <img src="images/ScreenshotSelectTransport.png" align="none" width="500" height="487">
+  img: <img src="/files/images/ScreenshotSelectProfile.png" align="none" width="300" height="486">
+  new img: <img src="images/ScreenshotSelectProfile.png" align="none" width="300" height="486">
+  img: <img src="/files/images/ScreenshotHTML5WebUIAndroidDevice.jpg" align="none" width="300" height="400">
+  new img: <img src="images/ScreenshotHTML5WebUIAndroidDevice.jpg" align="none" width="300" height="400">
+  img: <img src="/files/images/ScreenshotSelectActiveProfileAndroid.png" align="none" width="550" height="518">
+  new img: <img src="images/ScreenshotSelectActiveProfileAndroid.png" align="none" width="550" height="518">
+  img: <img src="http://www.mosync.com/files/images/Getting-Started-With-HTML5-and-JavaScript-10.png" alt="" title="" style="display: inline-block;" height="14" width="15">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-10.png" alt="" title="" style="display: inline-block;" height="14" width="15">
+  img: <img src="/files/images/ScreenshotRunInAndroidEmulator.png" align="none" width="550" height="251">
+  new img: <img src="images/ScreenshotRunInAndroidEmulator.png" align="none" width="550" height="251">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-11.png" align="none" width="450" height="211">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-11.png" align="none" width="450" height="211">
+  img: <img src="/files/images/ScreenshotHTML5WebUIAndroidEmulator.png" align="none" width="240" height="406">
+  new img: <img src="images/ScreenshotHTML5WebUIAndroidEmulator.png" align="none" width="240" height="406">
+  img: <img src="/files/images/ScreenshotSelectActiveProfileWindowsPhone.png" align="none" width="550" height="518">
+  new img: <img src="images/ScreenshotSelectActiveProfileWindowsPhone.png" align="none" width="550" height="518">
+  img: <img src="http://www.mosync.com/files/images/Getting-Started-With-HTML5-and-JavaScript-10.png" alt="" title="" style="display: inline-block;" height="14" width="15">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-10.png" alt="" title="" style="display: inline-block;" height="14" width="15">
+  img: <img src="/files/images/ScreenshotRunInWindowsPhoneEmulator.png" align="none" width="550" height="282">
+  new img: <img src="images/ScreenshotRunInWindowsPhoneEmulator.png" align="none" width="550" height="282">
+  img: <img src="/files/images/ScreenshotHTML5WebUIWindowsPhoneEmulator.png" align="none" width="240" height="440">
+  new img: <img src="images/ScreenshotHTML5WebUIWindowsPhoneEmulator.png" align="none" width="240" height="440">
+  img: <img src="/files/images/ScreenshotSelectActiveProfileIPhone.png" align="none" width="550" height="518">
+  new img: <img src="images/ScreenshotSelectActiveProfileIPhone.png" align="none" width="550" height="518">
+  img: <img src="http://www.mosync.com/files/images/Getting-Started-With-HTML5-and-JavaScript-10.png" alt="" title="" style="display: inline-block;" height="14" width="15">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-10.png" alt="" title="" style="display: inline-block;" height="14" width="15">
+  img: <img src="/files/images/ScreenshotHTML5WebUIIOSSimulator.png" align="none" width="240" height="471">
+  new img: <img src="images/ScreenshotHTML5WebUIIOSSimulator.png" align="none" width="240" height="471">
+Updating File 35: ./documents/sdk/release-notes/whats-new-mosync-sdk-31/index.html
+Updating File 36: ./documents/sdk/release-notes/whats-new-mosync-sdk-32/index.html
+Updating File 37: ./documents/sdk/release-notes/whats-new-mosync-sdk-321/index.html
+Updating File 38: ./documents/sdk/release-notes/whats-new-mosync-sdk-30/index.html
+Updating File 39: ./documents/sdk/guides/emulators/emulating-device/index.html
+  img: <img src="/system/files/mosync-run-button.png">
+  new img: <img src="images/mosync-run-button.png">
+  img: <img src="/system/files/bug.png">
+  new img: <img src="images/bug.png">
+  img: <img src="/files/images/MoRE.png" align="none" width="640" height="350">
+  new img: <img src="images/MoRE.png" align="none" width="640" height="350">
+  img: <img src="/files/images/multitouch.png" align="none" width="201" height="454">
+  new img: <img src="images/multitouch.png" align="none" width="201" height="454">
+  img: <img src="/files/images/Emulator01.png" align="none" width="588" height="648">
+  new img: <img src="images/Emulator01.png" align="none" width="588" height="648">
+  img: <img src="/docs/2.0b1/images/userguide_profiles_8.png">
+  new img: <img src="images/userguide_profiles_8.png">
+  img: <img src="/files/images/Emulator02_0.png" align="none" width="650" height="527">
+  new img: <img src="images/Emulator02_0.png" align="none" width="650" height="527">
+  img: <img src="/files/images/Emulator03.png" align="none" width="569" height="272">
+  new img: <img src="images/Emulator03.png" align="none" width="569" height="272">
+  img: <img src="/files/images/Emulator04.png" align="none" width="383" height="124">
+  new img: <img src="images/Emulator04.png" align="none" width="383" height="124">
+  img: <img src="/files/images/Emulator05.png" align="none" width="650" height="519">
+  new img: <img src="images/Emulator05.png" align="none" width="650" height="519">
+  img: <img src="/files/images/Emulator06.png" align="none" width="274" height="198">
+  new img: <img src="images/Emulator06.png" align="none" width="274" height="198">
+  img: <img src="/files/images/Emulator07.png" align="none" width="357" height="442">
+  new img: <img src="images/Emulator07.png" align="none" width="357" height="442">
+  img: <img src="/files/images/Emulator08.png" align="none" width="273" height="187">
+  new img: <img src="images/Emulator08.png" align="none" width="273" height="187">
+  img: <img src="/files/images/Emulator09.png" align="none" width="650" height="379">
+  new img: <img src="images/Emulator09.png" align="none" width="650" height="379">
+  img: <img src="/files/images/Emulator10.png" align="none" width="606" height="405">
+  new img: <img src="images/Emulator10.png" align="none" width="606" height="405">
+  img: <img src="https://lh3.googleusercontent.com/kagz7By-5MQj3YFQcJXTKN12TwD_gkvgEFGZIDgog6uZ4uve7YtONZLYFc4jQNG9E6LaSFhxvohknmi2qt2b-pr4-QSrZrvoNhzSfMvLgrLF-Gotng0" width="14px;" height="14px;">
+    *** External image: https://lh3.googleusercontent.com/kagz7By-5MQj3YFQcJXTKN12TwD_gkvgEFGZIDgog6uZ4uve7YtONZLYFc4jQNG9E6LaSFhxvohknmi2qt2b-pr4-QSrZrvoNhzSfMvLgrLF-Gotng0
+    *** IMAGE IGNORED: <img src="https://lh3.googleusercontent.com/kagz7By-5MQj3YFQcJXTKN12TwD_gkvgEFGZIDgog6uZ4uve7YtONZLYFc4jQNG9E6LaSFhxvohknmi2qt2b-pr4-QSrZrvoNhzSfMvLgrLF-Gotng0" width="14px;" height="14px;">
+Updating File 40: ./documents/sdk/guides/emulators/more-mosync-runtime-environment/index.html
+Updating File 41: ./documents/sdk/guides/emulators/application-profiling-mosync-emulator/index.html
+  img: <img src="/files/images/Profiler1.png" align="none" width="640" height="395">
+  new img: <img src="images/Profiler1.png" align="none" width="640" height="395">
+  img: <img src="/files/images/Profiler2.png" align="none" width="640" height="395">
+  new img: <img src="images/Profiler2.png" align="none" width="640" height="395">
+Updating File 42: ./documents/sdk/guides/architecture/runtimes/index.html
+Updating File 43: ./documents/sdk/guides/architecture/mosync-glossary/index.html
+Updating File 44: ./documents/sdk/guides/architecture/runtime-architecture/index.html
+  img: <img src="/files/images/Runtime-Architecture.png" align="none" width="650" height="253">
+  new img: <img src="images/Runtime-Architecture.png" align="none" width="650" height="253">
+Updating File 45: ./documents/sdk/guides/architecture/toolchain/index.html
+  img: <img src="http://www.mosync.com/files/Toolchain.png" height="417" width="669">
+  new img: <img src="images/Toolchain.png" height="417" width="669">
+  img: <img src="/files/images/MoSync-packaging.png" align="none" width="650" height="635">
+  new img: <img src="images/MoSync-packaging.png" align="none" width="650" height="635">
+  img: <img src="/files/images/ared1_0.png" align="left" width="25" height="23">
+  new img: <img src="images/ared1_0.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared2.png" align="left" width="25" height="23">
+  new img: <img src="images/ared2.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared3.png" align="left" width="25" height="23">
+  new img: <img src="images/ared3.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared4.png" align="left" width="25" height="23">
+  new img: <img src="images/ared4.png" align="left" width="25" height="23">
+  img: <img src="/files/images/ared5.png" align="left" width="25" height="23">
+  new img: <img src="images/ared5.png" align="left" width="25" height="23">
+Updating File 46: ./documents/sdk/guides/ide/sending-to-device/index.html
+  img: <img src="/files/images/Sending01.png" align="none" width="275" height="182">
+  new img: <img src="images/Sending01.png" align="none" width="275" height="182">
+  img: <img src="/files/images/Sending02.png" align="none" width="249" height="510">
+  new img: <img src="images/Sending02.png" align="none" width="249" height="510">
+  img: <img src="/docs/2.0b1/images/userguide_send_3.png">
+  new img: <img src="images/userguide_send_3.png">
+  img: <img src="/files/images/Sending04.png" align="none" width="253" height="177">
+  new img: <img src="images/Sending04.png" align="none" width="253" height="177">
+Updating File 47: ./documents/sdk/guides/ide/using-pipe-tool/index.html
+Updating File 48: ./documents/sdk/guides/ide/resource-compiler-tutorial/index.html
+Updating File 49: ./documents/sdk/guides/ide/resource-compiler-reference/index.html
+  img: <img src="/files/images/Resource-Compiler-Standard-Folder-Layout.png" align="none" width="177" height="198">
+  new img: <img src="images/Resource-Compiler-Standard-Folder-Layout.png" align="none" width="177" height="198">
+  img: <img src="/files/images/Resource-Compiler-CustomLSTX-Folder-Layout.png" align="none" width="194" height="236">
+  new img: <img src="images/Resource-Compiler-CustomLSTX-Folder-Layout.png" align="none" width="194" height="236">
+  img: <img src="/files/images/Resource-Compiler-CustomLST-Folder-Layout.png" align="none" width="177" height="198">
+  new img: <img src="images/Resource-Compiler-CustomLST-Folder-Layout.png" align="none" width="177" height="198">
+Updating File 50: ./documents/sdk/guides/ide/installing-mosync/index.html
+  img: <img src="/files/images/Publisher-Warning.png" align="none" width="404" height="309">
+  new img: <img src="images/Publisher-Warning.png" align="none" width="404" height="309">
+  img: <img src="/files/images/InstallWin01.png" align="none" width="257" height="74">
+  new img: <img src="images/InstallWin01.png" align="none" width="257" height="74">
+  img: <img src="/files/images/install-win-1.png" align="none" width="503" height="393">
+  new img: <img src="images/install-win-1.png" align="none" width="503" height="393">
+  img: <img src="/files/images/install-win-2.png" align="none" width="503" height="393">
+  new img: <img src="images/install-win-2.png" align="none" width="503" height="393">
+  img: <img src="/files/images/install-win-3.png" align="none" width="503" height="393">
+  new img: <img src="images/install-win-3.png" align="none" width="503" height="393">
+  img: <img src="/files/images/Install-SDK-remove-directory.png" align="none" width="650" height="105">
+  new img: <img src="images/Install-SDK-remove-directory.png" align="none" width="650" height="105">
+  img: <img src="/files/images/install-win-5.png" align="none" width="503" height="393">
+  new img: <img src="images/install-win-5.png" align="none" width="503" height="393">
+  img: <img src="/files/images/MoSync-Shortcut.png" align="none" width="45" height="50">
+  new img: <img src="images/MoSync-Shortcut.png" align="none" width="45" height="50">
+Updating File 51: ./documents/sdk/guides/ide/building-and-running-examples/index.html
+  img: <img src="/system/files/file-import-mosync.png">
+  new img: <img src="images/file-import-mosync.png">
+  img: <img src="/system/files/file-import-mosync-projects.png">
+  new img: <img src="images/file-import-mosync-projects.png">
+Updating File 52: ./documents/sdk/guides/ide/launching-mosync/index.html
+  img: <img src="/files/images/Launching01.png" align="none" width="600" height="383">
+  new img: <img src="images/Launching01.png" align="none" width="600" height="383">
+  img: <img src="/files/images/Launching02.png" align="none" width="596" height="244">
+  new img: <img src="images/Launching02.png" align="none" width="596" height="244">
+  img: <img src="/files/images/Launching03.png" align="none" width="650" height="392">
+  new img: <img src="images/Launching03.png" align="none" width="650" height="392">
+  img: <img src="/files/images/Launching04.png" align="none" width="650" height="488">
+  new img: <img src="images/Launching04.png" align="none" width="650" height="488">
+  img: <img src="/files/images/Launching05.png" align="none" width="650" height="488">
+  new img: <img src="images/Launching05.png" align="none" width="650" height="488">
+  img: <img src="/files/images/Launching06.png" align="none" width="650" height="488">
+  new img: <img src="images/Launching06.png" align="none" width="650" height="488">
+  img: <img src="/files/images/2012-03-06_0947.png" align="none" width="650" height="367">
+  new img: <img src="images/2012-03-06_0947.png" align="none" width="650" height="367">
+  img: <img src="/files/images/Launching08.png" align="none" width="539" height="254">
+  new img: <img src="images/Launching08.png" align="none" width="539" height="254">
+Updating File 53: ./documents/sdk/guides/ide/importing-example-applications/index.html
+  img: <img src="/system/files/help-welcome-example-workspace.png">
+  new img: <img src="images/help-welcome-example-workspace.png">
+  img: <img src="/system/files/mosync-run-button.png">
+  new img: <img src="images/mosync-run-button.png">
+Updating File 54: ./documents/sdk/guides/ide/symbian-packaging-parameters/index.html
+  img: <img src="/system/files/projectproperties-symbian.png">
+  new img: <img src="images/projectproperties-symbian.png">
+  img: <img src="/system/files/projectproperties-symbian-selfsigning_0.png">
+  new img: <img src="images/projectproperties-symbian-selfsigning_0.png">
+Updating File 55: ./documents/sdk/guides/ide/using-device-profiles/index.html
+  img: <img src="/files/images/2012-02-27_0817.png" align="middle" width="257" height="47">
+  new img: <img src="images/2012-02-27_0817.png" align="middle" width="257" height="47">
+  img: <img src="/files/images/2012-02-27_0813.png" align="middle" width="422" height="480">
+  new img: <img src="images/2012-02-27_0813.png" align="middle" width="422" height="480">
+  img: <img src="/files/images/2012-02-27_0815.png" align="middle" width="650" height="372">
+  new img: <img src="images/2012-02-27_0815.png" align="middle" width="650" height="372">
+  img: <img src="/files/images/devices.jpg" align="none" width="330" height="679">
+  new img: <img src="images/devices.jpg" align="none" width="330" height="679">
+  img: <img src="/docs/r504/images/userguide_profiles_8.png">
+  new img: <img src="images/userguide_profiles_8.png">
+  img: <img src="/files/images/device-profile-properties.png" align="none" width="319" height="374">
+  new img: <img src="images/device-profile-properties.png" align="none" width="319" height="374">
+  img: <img src="/docs/r504/images/userguide_profiles_2.png">
+  new img: <img src="images/userguide_profiles_2.png">
+  img: <img src="/docs/r504/images/userguide_profiles_3.png">
+  new img: <img src="images/userguide_profiles_3.png">
+  img: <img src="/docs/r504/images/userguide_profiles_4.png">
+  new img: <img src="images/userguide_profiles_4.png">
+  img: <img src="/docs/r504/images/userguide_profiles_5.png">
+  new img: <img src="images/userguide_profiles_5.png">
+  img: <img src="/docs/r504/images/userguide_profiles_6.png">
+  new img: <img src="images/userguide_profiles_6.png">
+Updating File 56: ./documents/sdk/guides/ide/build-configurations/index.html
+  img: <img src="/system/files/mosync-run-button.png">
+  new img: <img src="images/mosync-run-button.png">
+  img: <img src="/files/images/2012-02-27_1034.png" align="none" width="97" height="42">
+  new img: <img src="images/2012-02-27_1034.png" align="none" width="97" height="42">
+  img: <img src="/files/images/2012-03-06_1132.png" align="none" width="219" height="57">
+  new img: <img src="images/2012-03-06_1132.png" align="none" width="219" height="57">
+  img: <img src="/files/images/Build-Settings.png" align="none" width="650" height="496">
+  new img: <img src="images/Build-Settings.png" align="none" width="650" height="496">
+Updating File 57: ./documents/sdk/guides/ide/finalizing-applications/index.html
+  img: <img src="/sites/all/modules/wysiwyg/plugins/break/images/spacer.gif" alt="<--break->
+  new img: <img src="images/spacer.gif" alt="<--break->
+  img: <img src="/files/images/2012-03-06_1252.png" align="none" width="203" height="44">
+  new img: <img src="images/2012-03-06_1252.png" align="none" width="203" height="44">
+  img: <img src="/files/images/2012-02-27_0813.png" align="none" width="422" height="480">
+  new img: <img src="images/2012-02-27_0813.png" align="none" width="422" height="480">
+  img: <img src="/files/images/2012-02-27_0815.png" align="none" width="650" height="372">
+  new img: <img src="images/2012-02-27_0815.png" align="none" width="650" height="372">
+  img: <img src="/files/images/2012-02-27_1034.png" align="none" width="97" height="42">
+  new img: <img src="images/2012-02-27_1034.png" align="none" width="97" height="42">
+  img: <img src="/files/images/finalizer6.png" align="none" width="349" height="533">
+  new img: <img src="images/finalizer6.png" align="none" width="349" height="533">
+  img: <img src="/files/images/2012-03-06_1308.png" align="none" width="350" height="464">
+  new img: <img src="images/2012-03-06_1308.png" align="none" width="350" height="464">
+  img: <img src="/files/images/2012-03-06_1314.png" align="none" width="349" height="466">
+  new img: <img src="images/2012-03-06_1314.png" align="none" width="349" height="466">
+Updating File 58: ./documents/sdk/guides/ide/setting-application-permissions/index.html
+  img: <img src="/files/images/application-permissions_0.png" align="none" width="650" height="504">
+  new img: <img src="images/application-permissions_0.png" align="none" width="650" height="504">
+Updating File 59: ./documents/sdk/guides/ide/scanning-for-device/index.html
+  img: <img src="/files/images/2012-03-06_1030.png" align="none" width="106" height="62">
+  new img: <img src="images/2012-03-06_1030.png" align="none" width="106" height="62">
+  img: <img src="/files/images/2012-03-06_1031.png" align="none" width="354" height="312">
+  new img: <img src="images/2012-03-06_1031.png" align="none" width="354" height="312">
+  img: <img src="/files/images/2012-03-06_1043.png" align="none" width="502" height="320">
+  new img: <img src="images/2012-03-06_1043.png" align="none" width="502" height="320">
+  img: <img src="/files/images/2012-03-06_1039.png" align="none" width="214" height="445">
+  new img: <img src="images/2012-03-06_1039.png" align="none" width="214" height="445">
+Updating File 60: ./documents/sdk/guides/ide/developing-android-applications/index.html
+Updating File 61: ./documents/sdk/guides/ide/device-profile-database/index.html
+  img: <img src="/files/images/2012-02-27_1032.png" align="middle" width="213" height="53">
+  new img: <img src="images/2012-02-27_1032.png" align="middle" width="213" height="53">
+  img: <img src="/files/images/2012-02-27_1034.png" align="middle" width="97" height="42">
+  new img: <img src="images/2012-02-27_1034.png" align="middle" width="97" height="42">
+  img: <img src="/files/images/ifdefs.png" alt="if-defs sample" border="0">
+  new img: <img src="images/ifdefs.png" alt="if-defs sample" border="0">
+  img: <img src="/files/images/Device-Profiles-01.png" align="none" width="350" height="506">
+  new img: <img src="images/Device-Profiles-01.png" align="none" width="350" height="506">
+  img: <img src="/files/images/Device-Profiles-02.png" align="none" width="325" height="488">
+  new img: <img src="images/Device-Profiles-02.png" align="none" width="325" height="488">
+  img: <img src="/files/images/Device-Profile-03.png" align="none" width="318" height="272">
+  new img: <img src="images/Device-Profile-03.png" align="none" width="318" height="272">
+Updating File 62: ./documents/sdk/guides/ide/projects-and-templates/index.html
+  img: <img src="/files/images/ide-new-project.png" align="none" width="410" height="364">
+  new img: <img src="images/ide-new-project.png" align="none" width="410" height="364">
+  img: <img src="/files/images/new-project-window.png" align="none" width="500" height="500">
+  new img: <img src="images/new-project-window.png" align="none" width="500" height="500">
+  img: <img src="https://lh4.googleusercontent.com/XyA5vnj4YLIVlZslWnH8VSUQjNauADNhgFqko6dxNoxzjdZ4Sq5vuDEbee6wAERyfVPgGmJPVh9fkX_Mxyx3oQ2w6W2LMLkIfumEt6GO5R49PnKAPsw" id="internal-source-marker_0.16723757584989185" height="500px;" width="500px;">
+    *** External image: https://lh4.googleusercontent.com/XyA5vnj4YLIVlZslWnH8VSUQjNauADNhgFqko6dxNoxzjdZ4Sq5vuDEbee6wAERyfVPgGmJPVh9fkX_Mxyx3oQ2w6W2LMLkIfumEt6GO5R49PnKAPsw
+    *** IMAGE IGNORED: <img src="https://lh4.googleusercontent.com/XyA5vnj4YLIVlZslWnH8VSUQjNauADNhgFqko6dxNoxzjdZ4Sq5vuDEbee6wAERyfVPgGmJPVh9fkX_Mxyx3oQ2w6W2LMLkIfumEt6GO5R49PnKAPsw" id="internal-source-marker_0.16723757584989185" height="500px;" width="500px;">
+  img: <img src="/files/images/create-new-project-window.png" align="none" width="500" height="500">
+  new img: <img src="images/create-new-project-window.png" align="none" width="500" height="500">
+Updating File 63: ./documents/sdk/guides/ide/tour-of-the-mosync-sdk-ide/index.html
+  img: <img src="/files/images/JavaScript-Proposals.png" align="none" width="650" height="412">
+  new img: <img src="images/JavaScript-Proposals.png" align="none" width="650" height="412">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-B1.png" align="none" width="650" height="485">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-B1.png" align="none" width="650" height="485">
+  img: <img src="/files/images/Build-Profile.png" align="none" width="632" height="138">
+  new img: <img src="images/Build-Profile.png" align="none" width="632" height="138">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-B3.png" align="none" width="650" height="372">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-B3.png" align="none" width="650" height="372">
+  img: <img src="/files/images/scan-bluetooth.png" align="none" width="239" height="210">
+  new img: <img src="images/scan-bluetooth.png" align="none" width="239" height="210">
+  img: <img src="/files/images/Build-for-all-profiles.png" align="none" width="27" height="26">
+  new img: <img src="images/Build-for-all-profiles.png" align="none" width="27" height="26">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-B5.png" align="none" width="450" height="211">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-B5.png" align="none" width="450" height="211">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-B5b.png" align="none" width="252" height="349">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-B5b.png" align="none" width="252" height="349">
+  img: <img src="/files/emimage-custom_url-http:--www.mosync.com-files-images-NFC.png.png" alt="" title="" class="custom_url" width="60">
+  new img: <img src="images/emimage-custom_url-http:--www.mosync.com-files-images-NFC.png.png" alt="" title="" class="custom_url" width="60">
+  img: <img src="/files/emimage-custom_url-http:--www.mosync.com-files-images-LoveSMS.img_assist_custom-226x376.png.png" alt="" title="" class="custom_url" width="60">
+  new img: <img src="images/emimage-custom_url-http:--www.mosync.com-files-images-LoveSMS.img_assist_custom-226x376.png.png" alt="" title="" class="custom_url" width="60">
+  img: <img src="/files/emimage-custom_url-http:--www.mosync.com-files-images-GeoLocation.img_assist_custom-260x432.png.png" alt="" title="" class="custom_url" width="60">
+  new img: <img src="images/emimage-custom_url-http:--www.mosync.com-files-images-GeoLocation.img_assist_custom-260x432.png.png" alt="" title="" class="custom_url" width="60">
+  img: <img src="/files/emimage-custom_url-http:--www.mosync.com-files-images-WebViewTwitter1.png.png" alt="" title="" class="custom_url" width="60">
+  new img: <img src="images/emimage-custom_url-http:--www.mosync.com-files-images-WebViewTwitter1.png.png" alt="" title="" class="custom_url" width="60">
+  img: <img src="/files/images/welcome_screen02.png" align="none" width="650" height="399">
+  new img: <img src="images/welcome_screen02.png" align="none" width="650" height="399">
+  img: <img src="/files/images/Getting-Started-With-HTML5-and-JavaScript-B7.png" align="none" width="650" height="378">
+  new img: <img src="images/Getting-Started-With-HTML5-and-JavaScript-B7.png" align="none" width="650" height="378">
+Updating File 64: ./documents/sdk/guides/ide/developing-windows-phone-applications/index.html
+Updating File 65: ./documents/sdk/guides/ide/using-debugger/index.html
+  img: <img src="/system/files/run_debugger.png">
+  new img: <img src="images/run_debugger.png">
+  img: <img src="/system/files/pause_button.png">
+  new img: <img src="images/pause_button.png">
+  img: <img src="/system/files/stop_button.png">
+  new img: <img src="images/stop_button.png">
+  img: <img src="/system/files/setting_breakpoints.png">
+  new img: <img src="images/setting_breakpoints.png">
+  img: <img src="/system/files/run_debugger.png">
+  new img: <img src="images/run_debugger.png">
+  img: <img src="/system/files/step_into.png">
+  new img: <img src="images/step_into.png">
+  img: <img src="/system/files/step_over.png">
+  new img: <img src="images/step_over.png">
+  img: <img src="/system/files/step_return.png">
+  new img: <img src="images/step_return.png">
+  img: <img src="/system/files/variable_expansion_after.png">
+  new img: <img src="images/variable_expansion_after.png">
+  img: <img src="/system/files/expressions_tab.png">
+  new img: <img src="images/expressions_tab.png">
+  img: <img src="/system/files/add_watch_expression_from_view.png">
+  new img: <img src="images/add_watch_expression_from_view.png">
+  img: <img src="/system/files/add_watch_expression_from_editor.png">
+  new img: <img src="images/add_watch_expression_from_editor.png">
+Updating File 66: ./documents/sdk/guides/ide/adding-application-icons/index.html
+Updating File 67: ./documents/sdk/guides/ide/creating-new-workspace/index.html
+  img: <img src="/system/files/file-switch-workspace.png">
+  new img: <img src="images/file-switch-workspace.png">
+Updating File 68: ./documents/sdk/guides/ide/debugging-javascript-device/index.html
+  img: <img src="/files/images/javascript-debugging1.png" align="none" width="135" height="143">
+  new img: <img src="images/javascript-debugging1.png" align="none" width="135" height="143">
+  img: <img src="/files/images/javascript-debugging2.png" align="none" width="346" height="185">
+  new img: <img src="images/javascript-debugging2.png" align="none" width="346" height="185">
+  img: <img src="/files/images/javascript-debugging3.png" align="none" width="630" height="535">
+  new img: <img src="images/javascript-debugging3.png" align="none" width="630" height="535">
+  img: <img src="/files/images/javascript-debugging4.png" align="none" width="39" height="44">
+  new img: <img src="images/javascript-debugging4.png" align="none" width="39" height="44">
+  img: <img src="/files/images/javascript-debugging5.png" align="none" width="39" height="41">
+  new img: <img src="images/javascript-debugging5.png" align="none" width="39" height="41">
+  img: <img src="/files/images/javascript-debugging6.png" align="none" width="650" height="237">
+  new img: <img src="images/javascript-debugging6.png" align="none" width="650" height="237">
+  img: <img src="/files/images/javascript-debugging7.png" align="none" width="595" height="377">
+  new img: <img src="images/javascript-debugging7.png" align="none" width="595" height="377">
+  img: <img src="/files/images/javascript-debugging8.png" align="none" width="90" height="23">
+  new img: <img src="images/javascript-debugging8.png" align="none" width="90" height="23">
+  img: <img src="/files/images/javascript-debugging9.png" align="none" width="26" height="28">
+  new img: <img src="images/javascript-debugging9.png" align="none" width="26" height="28">
+  img: <img src="/files/images/javascript-debugging10.png" align="none" width="23" height="25">
+  new img: <img src="images/javascript-debugging10.png" align="none" width="23" height="25">
+  img: <img src="/files/images/javascript-debugging11.png" align="none" width="590" height="416">
+  new img: <img src="images/javascript-debugging11.png" align="none" width="590" height="416">
+Updating File 69: ./documents/sdk/guides/ide/developing-iphone-applications/index.html
+Updating File 70: ./documents/sdk/guides/ide/installing-mosync-os-x/index.html
+  img: <img src="/files/images/install-osx-1.png" align="none" width="620" height="440">
+  new img: <img src="images/install-osx-1.png" align="none" width="620" height="440">
+  img: <img src="/files/images/install-osx-2.png" align="none" width="620" height="440">
+  new img: <img src="images/install-osx-2.png" align="none" width="620" height="440">
+  img: <img src="/files/images/install-osx-3.png" align="none" width="420" height="174">
+  new img: <img src="images/install-osx-3.png" align="none" width="420" height="174">
+  img: <img src="/files/images/install-osx-4.png" align="none" width="620" height="440">
+  new img: <img src="images/install-osx-4.png" align="none" width="620" height="440">
+Updating File 71: ./documents/sdk/guides/extensions/building-mosync-source-linux/index.html
+Updating File 72: ./documents/sdk/guides/extensions/extending-mosync-sdk/index.html
+Updating File 73: ./documents/sdk/guides/extensions/using-mosync-visual-studio/index.html
+  img: <img src="/docs/2.0b1/images/userguide_vs_1.png">
+  new img: <img src="images/userguide_vs_1.png">
+  img: <img src="/docs/2.0b1/images/userguide_vs_2.png">
+  new img: <img src="images/userguide_vs_2.png">
+  img: <img src="/docs/2.0b1/images/userguide_vs_4.png">
+  new img: <img src="images/userguide_vs_4.png">
+Updating File 74: ./documents/sdk/guides/extensions/mosync-visual-studio-2010/index.html
+  img: <img src="/files/images/VS2010E.001.png" align="none" width="650" height="462">
+  new img: <img src="images/VS2010E.001.png" align="none" width="650" height="462">
+  img: <img src="/files/images/VS2010E.002.png" align="none" width="615" height="520">
+  new img: <img src="images/VS2010E.002.png" align="none" width="615" height="520">
+  img: <img src="/files/images/VS2010E.004.png" align="none" width="650" height="459">
+  new img: <img src="images/VS2010E.004.png" align="none" width="650" height="459">
+  img: <img src="/files/images/VS2010E.007.png" align="none" width="640" height="452">
+  new img: <img src="images/VS2010E.007.png" align="none" width="640" height="452">
+  img: <img src="/files/images/VS2010E.008.png" align="none" width="640" height="452">
+  new img: <img src="images/VS2010E.008.png" align="none" width="640" height="452">
+  img: <img src="/files/images/VS2010E.009.png" align="none" width="640" height="480">
+  new img: <img src="images/VS2010E.009.png" align="none" width="640" height="480">
+Updating File 75: ./documents/sdk/guides/extensions/coding-conventions/index.html
+Updating File 76: ./documents/sdk/guides/extensions/building-moblin-runtimes-linux/index.html
+Updating File 77: ./documents/sdk/guides/extensions/writing-extensions/index.html
+  img: <img src="/system/files/runtime-code.png" alt="Interaction of user code and runtime through syscalls" height="110" width="311">
+  new img: <img src="images/runtime-code.png" alt="Interaction of user code and runtime through syscalls" height="110" width="311">
+Updating File 78: ./documents/sdk/guides/extensions/issue-tracker/index.html
+  img: <img src="/files/images/slide2.png" align="middle" width="637" height="397">
+  new img: <img src="images/slide2.png" align="middle" width="637" height="397">
+  img: <img src="/files/images/slide1.png" align="middle" width="574" height="624">
+  new img: <img src="images/slide1.png" align="middle" width="574" height="624">
+  img: <img src="/files/images/slide3.png" align="left" width="650" height="457">
+  new img: <img src="images/slide3.png" align="left" width="650" height="457">
+  img: <img src="/files/images/slide4.png" align="middle" width="544" height="603">
+  new img: <img src="images/slide4.png" align="middle" width="544" height="603">
+Updating File 79: ./documents/sdk/guides/extensions/building-mosync-source-windows/index.html
+Updating File 80: ./documents/sdk/guides/extensions/building-mosync-sdk-source-os-x/index.html
+Updating File 81: ./documents/cpp/references/feature-platform-support/index.html
+Updating File 82: ./documents/cpp/examples/3dlines/index.html
+  img: <img src="/system/files/3DLines1.JPG">
+  new img: <img src="images/3DLines1.JPG">
+  img: <img src="/system/files/3DLines2.JPG">
+  new img: <img src="images/3DLines2.JPG">
+Updating File 83: ./documents/cpp/examples/hellomaui/index.html
+  img: <img src="/files/images/hellomaui1.png" align="none" width="240" height="320">
+  new img: <img src="images/hellomaui1.png" align="none" width="240" height="320">
+  img: <img src="/files/images/hellomaui2.png" align="none" width="240" height="320">
+  new img: <img src="images/hellomaui2.png" align="none" width="240" height="320">
+Updating File 84: ./documents/cpp/examples/videonativeuiexample/index.html
+  img: <img src="/files/images/VideoNativeUIExample1.png" align="none" width="210" height="336">
+  new img: <img src="images/VideoNativeUIExample1.png" align="none" width="210" height="336">
+  img: <img src="/files/images/VideoNativeUIExample2.png" align="none" width="210" height="314">
+  new img: <img src="images/VideoNativeUIExample2.png" align="none" width="210" height="314">
+  img: <img src="/files/images/VideoNativeUIExample3_0.png" align="none" width="210" height="355">
+  new img: <img src="images/VideoNativeUIExample3_0.png" align="none" width="210" height="355">
+Updating File 85: ./documents/cpp/examples/devicefonts/index.html
+  img: <img src="/files/images/DeviceFonts.png" align="none" width="210" height="315">
+  new img: <img src="images/DeviceFonts.png" align="none" width="210" height="315">
+Updating File 86: ./documents/cpp/examples/hellomoblet/index.html
+  img: <img src="/files/images/hellomoblet.png" align="none" width="240" height="320">
+  new img: <img src="images/hellomoblet.png" align="none" width="240" height="320">
+Updating File 87: ./documents/cpp/examples/mosound/index.html
+  img: <img src="/files/images/mosound.png" align="none" width="240" height="320">
+  new img: <img src="images/mosound.png" align="none" width="240" height="320">
+Updating File 88: ./documents/cpp/examples/connections/index.html
+  img: <img src="/files/images/ConnectionExample1.png" align="none" width="240" height="320">
+  new img: <img src="images/ConnectionExample1.png" align="none" width="240" height="320">
+  img: <img src="/files/images/ConnectionExample2.png" align="none" width="240" height="320">
+  new img: <img src="images/ConnectionExample2.png" align="none" width="240" height="320">
+Updating File 89: ./documents/cpp/examples/graphun/index.html
+  img: <img src="/files/images/graphun_large.png" align="none" width="231" height="340">
+  new img: <img src="images/graphun_large.png" align="none" width="231" height="340">
+  img: <img src="/files/images/graphun_settings.png" align="none" width="228" height="340">
+  new img: <img src="images/graphun_settings.png" align="none" width="228" height="340">
+  img: <img src="/files/images/graphun_wierd.png" align="none" width="229" height="340">
+  new img: <img src="images/graphun_wierd.png" align="none" width="229" height="340">
+Updating File 90: ./documents/cpp/examples/hellonativeui/index.html
+  img: <img src="/files/images/hello_native_ui_1.png" align="left" width="240" height="353">
+  new img: <img src="images/hello_native_ui_1.png" align="left" width="240" height="353">
+  img: <img src="/files/images/hello_native_ui_2.png" align="none" width="242" height="362">
+  new img: <img src="images/hello_native_ui_2.png" align="none" width="242" height="362">
+Updating File 91: ./documents/cpp/examples/wikisearchnativeui/index.html
+  img: <img src="/files/images/WikiSearchNativuUI1_0.png" align="none" width="210" height="332">
+  new img: <img src="images/WikiSearchNativuUI1_0.png" align="none" width="210" height="332">
+  img: <img src="/files/images/WikiSearchNativeUI2.png" align="none" width="210" height="331">
+  new img: <img src="images/WikiSearchNativeUI2.png" align="none" width="210" height="331">
+  img: <img src="/files/images/WikiSearchNativeUI3.png" align="none" width="210" height="332">
+  new img: <img src="images/WikiSearchNativeUI3.png" align="none" width="210" height="332">
+Updating File 92: ./documents/cpp/examples/location-gps/index.html
+  img: <img src="/files/images/Location_0.png" align="none" width="241" height="319">
+  new img: <img src="images/Location_0.png" align="none" width="241" height="319">
+Updating File 93: ./documents/cpp/examples/soap/index.html
+  img: <img src="/files/images/soap.png" align="none" width="240" height="320">
+  new img: <img src="images/soap.png" align="none" width="240" height="320">
+Updating File 94: ./documents/cpp/examples/nativeuidemo/index.html
+  img: <img src="/files/images/android_colors_screen_0.png" align="none" width="210" height="343">
+  new img: <img src="images/android_colors_screen_0.png" align="none" width="210" height="343">
+  img: <img src="/files/images/android_image_swiper.png" align="none" width="210" height="349">
+  new img: <img src="images/android_image_swiper.png" align="none" width="210" height="349">
+  img: <img src="/files/images/android_webview.png" align="none" width="210" height="349">
+  new img: <img src="images/android_webview.png" align="none" width="210" height="349">
+  img: <img src="/files/images/colors_screen.png" align="none" width="210" height="314">
+  new img: <img src="images/colors_screen.png" align="none" width="210" height="314">
+  img: <img src="/files/images/image_swiper.png" align="none" width="210" height="317">
+  new img: <img src="images/image_swiper.png" align="none" width="210" height="317">
+  img: <img src="/files/images/webview.png" align="none" width="210" height="315">
+  new img: <img src="images/webview.png" align="none" width="210" height="315">
+  img: <img src="/files/images/NativeUIDemoWP7-ColorsScreen.png" align="left" width="210" height="339">
+  new img: <img src="images/NativeUIDemoWP7-ColorsScreen.png" align="left" width="210" height="339">
+  img: <img src="/files/images/NativeUIDemoWP7-ImageScreen.png" align="left" width="210" height="339">
+  new img: <img src="images/NativeUIDemoWP7-ImageScreen.png" align="left" width="210" height="339">
+  img: <img src="/files/images/NativeUIDemoWP7-WebScreen.png" align="left" width="210" height="339">
+  new img: <img src="images/NativeUIDemoWP7-WebScreen.png" align="left" width="210" height="339">
+  img: <img src="/files/images/advertising-ios.png" align="none" width="210" height="315">
+  new img: <img src="images/advertising-ios.png" align="none" width="210" height="315">
+  img: <img src="/files/images/advertising-android.png" align="none" width="210" height="282">
+  new img: <img src="images/advertising-android.png" align="none" width="210" height="282">
+Updating File 95: ./documents/cpp/examples/nfcexample/index.html
+  img: <img src="/files/images/NFC.png" align="none" width="210" height="349">
+  new img: <img src="images/NFC.png" align="none" width="210" height="349">
+Updating File 96: ./documents/cpp/examples/resourcetest/index.html
+  img: <img src="/files/images/ResourceTest01_0.png" align="none" width="210" height="312">
+  new img: <img src="images/ResourceTest01_0.png" align="none" width="210" height="312">
+  img: <img src="/files/images/ResourceTest02.png" align="none" width="210" height="312">
+  new img: <img src="images/ResourceTest02.png" align="none" width="210" height="312">
+  img: <img src="/files/images/ResourceTest03.png" align="none" width="210" height="312">
+  new img: <img src="images/ResourceTest03.png" align="none" width="210" height="312">
+  img: <img src="/files/images/ResourceTest04_0.png" align="none" width="229" height="347">
+  new img: <img src="images/ResourceTest04_0.png" align="none" width="229" height="347">
+Updating File 97: ./documents/cpp/examples/europeancountries/index.html
+  img: <img src="/files/images/iOS1.png" align="none" width="220" height="328">
+  new img: <img src="images/iOS1.png" align="none" width="220" height="328">
+  img: <img src="/files/images/iOS2.png" align="none" width="219" height="328">
+  new img: <img src="images/iOS2.png" align="none" width="219" height="328">
+  img: <img src="/files/images/Android1.png" align="none" width="220" height="384">
+  new img: <img src="images/Android1.png" align="none" width="220" height="384">
+  img: <img src="/files/images/Android2.png" align="none" width="229" height="385">
+  new img: <img src="images/Android2.png" align="none" width="229" height="385">
+  img: <img src="/files/images/WP7_1.png" align="none" width="220" height="362">
+  new img: <img src="images/WP7_1.png" align="none" width="220" height="362">
+  img: <img src="/files/images/WP7_2.png" align="none" width="215" height="364">
+  new img: <img src="images/WP7_2.png" align="none" width="215" height="364">
+Updating File 98: ./documents/cpp/examples/hellomap/index.html
+  img: <img src="/files/images/map.png" align="none" width="239" height="319">
+  new img: <img src="images/map.png" align="none" width="239" height="319">
+  img: <img src="/files/images/map2.png" align="none" width="239" height="319">
+  new img: <img src="images/map2.png" align="none" width="239" height="319">
+Updating File 99: ./documents/cpp/examples/bluetoothserver/index.html
+  img: <img src="/files/images/BluetoothServer.png" align="none" width="240" height="320">
+  new img: <img src="images/BluetoothServer.png" align="none" width="240" height="320">
+  img: <img src="/files/images/BluetoothServer-connection.png" align="none" width="240" height="320">
+  new img: <img src="images/BluetoothServer-connection.png" align="none" width="240" height="320">
+  img: <img src="/files/images/BluetoothServer-keys-received.png" align="none" width="240" height="320">
+  new img: <img src="images/BluetoothServer-keys-received.png" align="none" width="240" height="320">
+Updating File 100: ./documents/cpp/examples/otaload/index.html
+Updating File 101: ./documents/cpp/examples/helloworld/index.html
+  img: <img src="/files/images/HelloWorld.png" align="none" width="240" height="319">
+  new img: <img src="images/HelloWorld.png" align="none" width="240" height="319">
+Updating File 102: ./documents/cpp/examples/bluetoothclient/index.html
+  img: <img src="/files/images/BluetoothClient.png" align="none" width="240" height="320">
+  new img: <img src="images/BluetoothClient.png" align="none" width="240" height="320">
+  img: <img src="/files/images/BluetoothClient-keys-sent.png" align="none" width="240" height="320">
+  new img: <img src="images/BluetoothClient-keys-sent.png" align="none" width="240" height="320">
+Updating File 103: ./documents/cpp/examples/pimdemo/index.html
+  img: <img src="/files/images/PIMDemo1.png" align="none" width="210" height="313">
+  new img: <img src="images/PIMDemo1.png" align="none" width="210" height="313">
+Updating File 104: ./documents/cpp/examples/mastx/index.html
+  img: <img src="/system/files/MaStx1.JPG">
+  new img: <img src="images/MaStx1.JPG">
+  img: <img src="/system/files/MaStx2.JPG">
+  new img: <img src="images/MaStx2.JPG">
+Updating File 105: ./documents/cpp/examples/unit-test/index.html
+  img: <img src="/files/images/unittest1.png" align="none" width="245" height="326">
+  new img: <img src="images/unittest1.png" align="none" width="245" height="326">
+  img: <img src="/files/images/unittest2.png" align="none" width="251" height="326">
+  new img: <img src="images/unittest2.png" align="none" width="251" height="326">
+Updating File 106: ./documents/cpp/examples/stylus/index.html
+  img: <img src="http://www.mosync.com/system/files/Stylus.jpg">
+  new img: <img src="images/Stylus.jpg">
+Updating File 107: ./documents/cpp/examples/multitouch/index.html
+  img: <img src="/files/images/multitouch-example-app.png" align="none" width="240" height="320">
+  new img: <img src="images/multitouch-example-app.png" align="none" width="240" height="320">
+Updating File 108: ./documents/cpp/examples/nativeuimap/index.html
+  img: <img src="/files/images/NativeUIMap-example-app-wp7.png" align="none" width="220" height="364">
+  new img: <img src="images/NativeUIMap-example-app-wp7.png" align="none" width="220" height="364">
+  img: <img src="/files/images/NativeUIMap-example-app-ios.png" align="none" width="242" height="364">
+  new img: <img src="images/NativeUIMap-example-app-ios.png" align="none" width="242" height="364">
+Updating File 109: ./documents/cpp/examples/camerademo/index.html
+  img: <img src="/files/images/CameraDemo1.png" align="none" width="200" height="333">
+  new img: <img src="images/CameraDemo1.png" align="none" width="200" height="333">
+  img: <img src="/files/images/CameraDemo2_0.png" align="none" width="200" height="333">
+  new img: <img src="images/CameraDemo2_0.png" align="none" width="200" height="333">
+  img: <img src="/files/images/CameraDemo3.png" align="none" width="200" height="333">
+  new img: <img src="images/CameraDemo3.png" align="none" width="200" height="333">
+  img: <img src="/files/images/CameraDemo4.png" align="none" width="246" height="182">
+  new img: <img src="images/CameraDemo4.png" align="none" width="246" height="182">
+Updating File 110: ./documents/cpp/examples/helloopengles/index.html
+  img: <img src="/files/images/helloopengl.png" align="none" width="238" height="338">
+  new img: <img src="images/helloopengl.png" align="none" width="238" height="338">
+Updating File 111: ./documents/cpp/examples/timer/index.html
+  img: <img src="/system/files/Timer.jpg">
+  new img: <img src="images/Timer.jpg">
+Updating File 112: ./documents/cpp/examples/accelerometeropengles/index.html
+  img: <img src="/files/images/AccelerometerOpenGL.png" align="none" width="210" height="350">
+  new img: <img src="images/AccelerometerOpenGL.png" align="none" width="210" height="350">
+Updating File 113: ./documents/cpp/examples/advgraphics/index.html
+  img: <img src="/system/files/AdvGraphics.jpg">
+  new img: <img src="images/AdvGraphics.jpg">
+  img: <img src="/system/files/AdvGraphics1.jpg">
+  new img: <img src="images/AdvGraphics1.jpg">
+  img: <img src="/system/files/AdvGraphics5.jpg">
+  new img: <img src="images/AdvGraphics5.jpg">
+Updating File 114: ./documents/cpp/examples/devicefontsnativeui/index.html
+  img: <img src="/files/images/DeviceFontsNativeUI1.png" align="none" width="212" height="318">
+  new img: <img src="images/DeviceFontsNativeUI1.png" align="none" width="212" height="318">
+  img: <img src="/files/images/DeviceFontsNativeUI2.png" align="none" width="210" height="344">
+  new img: <img src="images/DeviceFontsNativeUI2.png" align="none" width="210" height="344">
+Updating File 115: ./documents/cpp/examples/screenorientation/index.html
+  img: <img src="/files/images/screenorientation1.png" align="left" width="240" height="320">
+  new img: <img src="images/screenorientation1.png" align="left" width="240" height="320">
+  img: <img src="/files/images/screenorientation2.png" align="none" width="320" height="240">
+  new img: <img src="images/screenorientation2.png" align="none" width="320" height="240">
+Updating File 116: ./documents/cpp/examples/debugging/index.html
+  img: <img src="/system/files/debuggeingJPG.jpg">
+  new img: <img src="images/debuggeingJPG.jpg">
+Updating File 117: ./documents/cpp/examples/motris/index.html
+  img: <img src="/files/images/motris-wndSDL_app4.png" align="none" width="240" height="320">
+  new img: <img src="images/motris-wndSDL_app4.png" align="none" width="240" height="320">
+Updating File 118: ./documents/cpp/examples/simple/index.html
+  img: <img src="/files/images/simple.png" align="none" width="240" height="320">
+  new img: <img src="images/simple.png" align="none" width="240" height="320">
+Updating File 119: ./documents/cpp/examples/mosketch/index.html
+  img: <img src="/files/images/mosketch_1.png" align="none" width="240" height="320">
+  new img: <img src="images/mosketch_1.png" align="none" width="240" height="320">
+Updating File 120: ./documents/cpp/examples/databasetest/index.html
+  img: <img src="/files/images/DatabaseTest1_0.png" align="none" width="240" height="320">
+  new img: <img src="images/DatabaseTest1_0.png" align="none" width="240" height="320">
+  img: <img src="/files/images/DatabaseTest2.png" align="none" width="240" height="320">
+  new img: <img src="images/DatabaseTest2.png" align="none" width="240" height="320">
+Updating File 121: ./documents/cpp/examples/mapdemo/index.html
+  img: <img src="/files/images/mapdemo1.png" align="left" width="240" height="320">
+  new img: <img src="images/mapdemo1.png" align="left" width="240" height="320">
+  img: <img src="/files/images/mapdemo.png" align="left" width="240" height="320">
+  new img: <img src="images/mapdemo.png" align="left" width="240" height="320">
+  img: <img src="/files/images/mapdemo3.png" align="left" width="240" height="320">
+  new img: <img src="images/mapdemo3.png" align="left" width="240" height="320">
+Updating File 122: ./documents/cpp/examples/rockpaperscissors/index.html
+  img: <img src="http://www.mosync.com/files/images/LossState.png" alt="" title="" class="image image-_original " height="395" width="238">
+  new img: <img src="images/LossState.png" alt="" title="" class="image image-_original " height="395" width="238">
+  img: <img src="/files/images/WinState_0_0.png" align="left" width="239" height="394">
+  new img: <img src="images/WinState_0_0.png" align="left" width="239" height="394">
+  img: <img src="/files/images/layoutsRPS.png" align="left" width="650" height="429">
+  new img: <img src="images/layoutsRPS.png" align="left" width="650" height="429">
+Updating File 123: ./documents/cpp/examples/purchaseexample/index.html
+  img: <img src="/files/images/in-app-purchase-products-and-history.png" align="none" width="210" height="350">
+  new img: <img src="images/in-app-purchase-products-and-history.png" align="none" width="210" height="350">
+  img: <img src="/files/images/in-app-purchase-visa_0.png" align="none" width="210" height="350">
+  new img: <img src="images/in-app-purchase-visa_0.png" align="none" width="210" height="350">
+  img: <img src="/files/images/in-app-purchase-receipt.png" align="none" width="210" height="350">
+  new img: <img src="images/in-app-purchase-receipt.png" align="none" width="210" height="350">
+  img: <img src="/files/images/in-app-purchase-products-and-history-ios.png" align="none" width="210" height="315">
+  new img: <img src="images/in-app-purchase-products-and-history-ios.png" align="none" width="210" height="315">
+  img: <img src="/files/images/in-app-purchase-confirmation-screen-ios.png" align="none" width="210" height="315">
+  new img: <img src="images/in-app-purchase-confirmation-screen-ios.png" align="none" width="210" height="315">
+  img: <img src="/files/images/in-app-purchase-receipt-ios.png" align="none" width="210" height="315">
+  new img: <img src="images/in-app-purchase-receipt-ios.png" align="none" width="210" height="315">
+Updating File 124: ./documents/cpp/examples/facebookdemo/index.html
+  img: <img src="/files/images/FacebookDemo1.png" align="none" width="210" height="278">
+  new img: <img src="images/FacebookDemo1.png" align="none" width="210" height="278">
+  img: <img src="/files/images/FacebookDemo2.png" align="none" width="210" height="277">
+  new img: <img src="images/FacebookDemo2.png" align="none" width="210" height="277">
+  img: <img src="/files/images/FacebookDemo3.png" align="none" width="210" height="277">
+  new img: <img src="images/FacebookDemo3.png" align="none" width="210" height="277">
+  img: <img src="/files/images/FacebookDemo4.png" align="none" width="210" height="149">
+  new img: <img src="images/FacebookDemo4.png" align="none" width="210" height="149">
+Updating File 125: ./documents/cpp/examples/sensortest/index.html
+  img: <img src="/files/images/SensorTest.png" align="none" width="240" height="321">
+  new img: <img src="images/SensorTest.png" align="none" width="240" height="321">
+Updating File 126: ./documents/cpp/examples/mauiex/index.html
+  img: <img src="/files/images/mauiex1.png" align="none" width="240" height="320">
+  new img: <img src="images/mauiex1.png" align="none" width="240" height="320">
+  img: <img src="/files/images/mauiex2.png" align="none" width="240" height="320">
+  new img: <img src="images/mauiex2.png" align="none" width="240" height="320">
+  img: <img src="/files/images/mauiex3.png" align="none" width="240" height="320">
+  new img: <img src="images/mauiex3.png" align="none" width="240" height="320">
+  img: <img src="/files/images/mauiex4.png" align="none" width="240" height="320">
+  new img: <img src="images/mauiex4.png" align="none" width="240" height="320">
+  img: <img src="/files/images/mauiex5.png" align="none" width="240" height="320">
+  new img: <img src="images/mauiex5.png" align="none" width="240" height="320">
+  img: <img src="/files/images/MAUIex-layouts_0.png" align="none" width="433" height="328">
+  new img: <img src="images/MAUIex-layouts_0.png" align="none" width="433" height="328">
+Updating File 127: ./documents/cpp/examples/motooth/index.html
+  img: <img src="/files/images/MoTooth1.png" align="none" width="240" height="320">
+  new img: <img src="images/MoTooth1.png" align="none" width="240" height="320">
+  img: <img src="/files/images/MoTooth2.png" align="none" width="240" height="320">
+  new img: <img src="images/MoTooth2.png" align="none" width="240" height="320">
+  img: <img src="/files/images/MoTooth3.png" align="none" width="240" height="320">
+  new img: <img src="images/MoTooth3.png" align="none" width="240" height="320">
+Updating File 128: ./documents/cpp/guides/libs/standard-cc-libraries/index.html
+Updating File 129: ./documents/cpp/guides/libs/working-mosync-libraries/index.html
+  img: <img src="/files/images/wormhole-library-in-ide.png" align="none" width="650" height="322">
+  new img: <img src="images/wormhole-library-in-ide.png" align="none" width="650" height="322">
+  img: <img src="/files/images/wormhole-library-inclusion.png" align="none" width="650" height="437">
+  new img: <img src="images/wormhole-library-inclusion.png" align="none" width="650" height="437">
+  img: <img src="/files/images/libraries1.png" align="none" width="604" height="271">
+  new img: <img src="images/libraries1.png" align="none" width="604" height="271">
+  img: <img src="/files/images/libraries3.png" align="none" width="607" height="431">
+  new img: <img src="images/libraries3.png" align="none" width="607" height="431">
+  img: <img src="/files/images/libraries2_0.png" align="none" width="607" height="719">
+  new img: <img src="images/libraries2_0.png" align="none" width="607" height="719">
+  img: <img src="/files/images/libraries4.png" align="none" width="641" height="468">
+  new img: <img src="images/libraries4.png" align="none" width="641" height="468">
+Updating File 130: ./documents/cpp/guides/libs/c-standard-template-library-stl/index.html
+Updating File 131: ./documents/cpp/guides/libs/purchase-library-and-api/index.html
+Updating File 132: ./documents/cpp/guides/graphics/graphics-clipping-draw-targets/index.html
+Updating File 133: ./documents/cpp/guides/graphics/mautil-graphics/index.html
+  img: <img src="/system/files/MAUtil_graphics.png" width="235" height="473">
+  new img: <img src="images/MAUtil_graphics.png" width="235" height="473">
+Updating File 134: ./documents/cpp/guides/graphics/working-opengl-es/index.html
+Updating File 135: ./documents/cpp/guides/graphics/framebuffer-api/index.html
+Updating File 136: ./documents/cpp/guides/graphics/glmobletopengles2/index.html
+  img: <img src="/files/images/GLMoblet_OpenGLES2.png" align="none" width="210" height="316">
+  new img: <img src="images/GLMoblet_OpenGLES2.png" align="none" width="210" height="316">
+Updating File 137: ./documents/cpp/guides/graphics/mdlbenchmark/index.html
+  img: <img src="/files/images/mdlbenchmark1.png" align="none" width="239" height="319">
+  new img: <img src="images/mdlbenchmark1.png" align="none" width="239" height="319">
+  img: <img src="/files/images/mdlbenchmark2.png" align="none" width="240" height="319">
+  new img: <img src="images/mdlbenchmark2.png" align="none" width="240" height="319">
+  img: <img src="/files/images/quakemdl-selector.png" align="none" width="295" height="409">
+  new img: <img src="images/quakemdl-selector.png" align="none" width="295" height="409">
+Updating File 138: ./documents/cpp/guides/graphics/mautil-framebuffer/index.html
+Updating File 139: ./documents/cpp/guides/graphics/glmobletopengles1/index.html
+  img: <img src="/files/images/GLMoblet_OpenGLES1.png" align="none" width="210" height="316">
+  new img: <img src="images/GLMoblet_OpenGLES1.png" align="none" width="210" height="316">
+Updating File 140: ./documents/cpp/guides/graphics/graphics-primitives/index.html
+  img: <img src="/docs/r504/images/gfx_syscalls_coords.png">
+  new img: <img src="images/gfx_syscalls_coords.png">
+  img: <img src="/docs/r504/images/gfx_syscalls_tristrip.png">
+  new img: <img src="images/gfx_syscalls_tristrip.png">
+  img: <img src="/docs/r504/images/gfx_syscalls_trifan.png">
+  new img: <img src="images/gfx_syscalls_trifan.png">
+Updating File 141: ./documents/cpp/guides/memory/using-placeholders-and-handles/index.html
+Updating File 142: ./documents/cpp/guides/xml/xml-mtxml-parser/index.html
+Updating File 143: ./documents/cpp/guides/xml/xml-mtxml-parser-c/index.html
+Updating File 144: ./documents/cpp/guides/basic/mosync-java-and-c-developers/index.html
+Updating File 145: ./documents/cpp/guides/ads/using-advertising-library-and-api/index.html
+  img: <img src="/files/images/advertising-android-annotated.png" align="none" width="400" height="282">
+  new img: <img src="images/advertising-android-annotated.png" align="none" width="400" height="282">
+Updating File 146: ./documents/cpp/guides/events/detecting-events/index.html
+Updating File 147: ./documents/cpp/guides/testing/optimizing-mobile-applications/index.html
+Updating File 148: ./documents/cpp/guides/testing/testify-test-framework/index.html
+Updating File 149: ./documents/cpp/guides/communication/using-facebook-library/index.html
+  img: <img src="/files/images/FacebookLibrary.png" align="none" width="640" height="228">
+  new img: <img src="images/FacebookLibrary.png" align="none" width="640" height="228">
+Updating File 150: ./documents/cpp/guides/communication/mautil-connection-sockets/index.html
+  img: <img src="/docs/r504/images/connsocket_ftp.png">
+  new img: <img src="images/connsocket_ftp.png">
+Updating File 151: ./documents/cpp/guides/communication/http-connections/index.html
+Updating File 152: ./documents/cpp/guides/sensors/controlling-sensors/index.html
+Updating File 153: ./documents/cpp/guides/ui/javascripthtml5-cross-platform-user-interfaces/index.html
+  img: <img src="/files/images/formfactors.png" align="middle" width="320" height="480">
+  new img: <img src="images/formfactors.png" align="middle" width="320" height="480">
+Updating File 154: ./documents/cpp/guides/ui/creating-user-interfaces-mosync/index.html
+  img: <img src="/files/images/hellomaui10.png" align="none" width="200" height="0">
+  new img: <img src="images/hellomaui10.png" align="none" width="200" height="0">
+  img: <img src="/files/images/hello_native_ui_1_0.png" align="none" width="200" height="0">
+  new img: <img src="images/hello_native_ui_1_0.png" align="none" width="200" height="0">
+  img: <img src="/files/images/Twitter.png" align="none" width="200" height="0">
+  new img: <img src="images/Twitter.png" align="none" width="200" height="0">
+Updating File 155: ./documents/cpp/guides/sound/audio/index.html
+Updating File 156: ./documents/cpp/guides/sound/using-audio-api/index.html
+Updating File 157: ./documents/cpp/guides/camera/controlling-cameras/index.html
+  img: <img src="/files/images/CameraAPI-architecture.png" align="none" width="453" height="380">
+  new img: <img src="images/CameraAPI-architecture.png" align="none" width="453" height="380">
+Updating File 158: ./documents/cpp/guides/camera/using-capture-api/index.html
+Updating File 159: ./documents/cpp/guides/pim/pim-access-and-control/index.html
+Updating File 160: ./documents/cpp/guides/storage/file-storage-syscall-functions/index.html
+Updating File 161: ./documents/cpp/guides/storage/mafs-library/index.html
+  img: <img src="/system/files/mafs_text_file.png">
+  new img: <img src="images/mafs_text_file.png">
+  img: <img src="/system/files/mafs_bundle.png">
+  new img: <img src="images/mafs_bundle.png">
+Updating File 162: ./documents/cpp/guides/storage/sql-database-api/index.html
+Updating File 163: ./documents/cpp/guides/maps/map-library/index.html
+Updating File 164: ./documents/cpp/guides/maui/font-tools/index.html
+  img: <img src="/files/images/bitmap-fonts-2.png" align="left" width="290" height="409">
+  new img: <img src="images/bitmap-fonts-2.png" align="left" width="290" height="409">
+  img: <img src="/files/images/bitmap-fonts-3.png" align="none" width="288" height="567">
+  new img: <img src="images/bitmap-fonts-3.png" align="none" width="288" height="567">
+  img: <img src="/docs/r504/images/mauifont_bmfont_setup.png">
+  new img: <img src="images/mauifont_bmfont_setup.png">
+  img: <img src="/docs/r504/images/mauifont_bmfont_visualize.png">
+  new img: <img src="images/mauifont_bmfont_visualize.png">
+  img: <img src="/docs/r504/images/mauifont_bmfont_saveas.png">
+  new img: <img src="images/mauifont_bmfont_saveas.png">
+  img: <img src="/files/images/bitmap-fonts-7.png" align="none" width="640" height="304">
+  new img: <img src="images/bitmap-fonts-7.png" align="none" width="640" height="304">
+Updating File 165: ./documents/cpp/guides/maui/gui-based-applications-with-maui/index.html
+Updating File 166: ./documents/cpp/guides/nativeui/using-listview-widget/index.html
+  img: <img src="/files/images/ListView-widget-default-list-on-ios.png" align="none" width="214" height="318">
+  new img: <img src="images/ListView-widget-default-list-on-ios.png" align="none" width="214" height="318">
+  img: <img src="/files/images/ListView-widget-default-list-on-wp7.png" align="none" width="198" height="329">
+  new img: <img src="images/ListView-widget-default-list-on-wp7.png" align="none" width="198" height="329">
+  img: <img src="/files/images/ListView-widget-default-list-on-android.png" align="none" width="221" height="329">
+  new img: <img src="images/ListView-widget-default-list-on-android.png" align="none" width="221" height="329">
+  img: <img src="/index.php?q=image/view/10534" alt="nid%3D10534%7Ctitle%3D%7Cdesc%3D%7Clink%3Dnone" title="" align="none" height="341" width="205">
+  new img: <img src="images/10534" alt="nid%3D10534%7Ctitle%3D%7Cdesc%3D%7Clink%3Dnone" title="" align="none" height="341" width="205">
+  img: <img src="/index.php?q=image/view/10535" alt="nid%3D10535%7Ctitle%3D%7Cdesc%3D%7Clink%3Dnone" title="" align="none" height="336" width="221">
+  new img: <img src="images/10535" alt="nid%3D10535%7Ctitle%3D%7Cdesc%3D%7Clink%3Dnone" title="" align="none" height="336" width="221">
+  img: <img src="/files/images/ListView-widget-alphabetical-list-on-ios.png" align="none" width="206" height="311">
+  new img: <img src="images/ListView-widget-alphabetical-list-on-ios.png" align="none" width="206" height="311">
+  img: <img src="/files/images/ListView-widget-alphabetical-list-on-wp7.png" align="none" width="197" height="324">
+  new img: <img src="images/ListView-widget-alphabetical-list-on-wp7.png" align="none" width="197" height="324">
+  img: <img src="/files/images/ListView-widget-WP7-list-jump-screen.png" align="none" width="195" height="324">
+  new img: <img src="images/ListView-widget-WP7-list-jump-screen.png" align="none" width="195" height="324">
+  img: <img src="/files/images/ListView-widget-segmented-list-on-ios.png" align="none" width="220" height="329">
+  new img: <img src="images/ListView-widget-segmented-list-on-ios.png" align="none" width="220" height="329">
+  img: <img src="/files/images/ListView-widget-segmented-list-on-wp7.png" align="none" width="199" height="327">
+  new img: <img src="images/ListView-widget-segmented-list-on-wp7.png" align="none" width="199" height="327">
+  img: <img src="/files/images/ListView-widget-segmented-list-on-wp7-jump-screen.png" align="none" width="197" height="327">
+  new img: <img src="images/ListView-widget-segmented-list-on-wp7-jump-screen.png" align="none" width="197" height="327">
+  img: <img src="/files/images/ListView-widget-segmented-list-on-android.png" align="none" width="305" height="183">
+  new img: <img src="images/ListView-widget-segmented-list-on-android.png" align="none" width="305" height="183">
+  img: <img src="/files/images/ListView-widget-segmented-secton-on-ios.png" align="none" width="220" height="146">
+  new img: <img src="images/ListView-widget-segmented-secton-on-ios.png" align="none" width="220" height="146">
+  img: <img src="/files/images/ListView-widget-alphabetical-secton-on-ios.png" align="none" width="220" height="76">
+  new img: <img src="images/ListView-widget-alphabetical-secton-on-ios.png" align="none" width="220" height="76">
+  img: <img src="/files/images/ListView-widget-subtitle.png" align="none" width="263" height="35">
+  new img: <img src="images/ListView-widget-subtitle.png" align="none" width="263" height="35">
+  img: <img src="/files/images/ListView-widget-set-selected.png" align="none" width="263" height="45">
+  new img: <img src="images/ListView-widget-set-selected.png" align="none" width="263" height="45">
+  img: <img src="/files/images/ListView-widget-insert-delete.png" align="none" width="267" height="103">
+  new img: <img src="images/ListView-widget-insert-delete.png" align="none" width="267" height="103">
+  img: <img src="/files/images/ListView-widget-delete-button-text.png" align="none" width="263" height="41">
+  new img: <img src="images/ListView-widget-delete-button-text.png" align="none" width="263" height="41">
+  img: <img src="/files/images/ListView-widget-greyed-out.png" align="none" width="265" height="43">
+  new img: <img src="images/ListView-widget-greyed-out.png" align="none" width="265" height="43">
+Updating File 167: ./documents/cpp/guides/nativeui/using-nativeui-library/index.html
+Updating File 168: ./documents/cpp/guides/nativeui/using-nativeui-map-widget/index.html
+  img: <img src="/files/images/Map-API-Road-Map-wp7.png" align="none" width="220" height="366">
+  new img: <img src="images/Map-API-Road-Map-wp7.png" align="none" width="220" height="366">
+  img: <img src="/files/images/Map-API-Road-Map-ios.png" align="none" width="245" height="365">
+  new img: <img src="images/Map-API-Road-Map-ios.png" align="none" width="245" height="365">
+  img: <img src="/files/images/Map-API-Satellite-Map-wp7.png" align="none" width="220" height="364">
+  new img: <img src="images/Map-API-Satellite-Map-wp7.png" align="none" width="220" height="364">
+  img: <img src="/files/images/Map-API-Satellite-Map-ios.png" align="none" width="244" height="364">
+  new img: <img src="images/Map-API-Satellite-Map-ios.png" align="none" width="244" height="364">
+  img: <img src="/files/images/Map-API-Example-wp7.png" align="none" width="220" height="366">
+  new img: <img src="images/Map-API-Example-wp7.png" align="none" width="220" height="366">
+  img: <img src="/files/images/Map-API-Map-pin-ios.png" align="none" width="244" height="366">
+  new img: <img src="images/Map-API-Map-pin-ios.png" align="none" width="244" height="366">
+  img: <img src="/files/images/Map-API-Example-wp7_0.png" align="none" width="220" height="367">
+  new img: <img src="images/Map-API-Example-wp7_0.png" align="none" width="220" height="367">
+  img: <img src="/files/images/Map-API-Example-ios.png" align="none" width="245" height="367">
+  new img: <img src="images/Map-API-Example-ios.png" align="none" width="245" height="367">
+Updating File 169: ./documents/cpp/guides/fonts/working-device-fonts-api/index.html
+Updating File 170: ./documents/cpp/guides/notifications/using-notification-library/index.html
+Updating File 171: ./documents/cpp/guides/notifications/push-notification-tutorial/index.html
+  img: <img src="/files/images/Bundle-identifier.png" align="none" width="640" height="194">
+  new img: <img src="images/Bundle-identifier.png" align="none" width="640" height="194">
+  img: <img src="/files/images/pushnotification.png" align="none" width="210" height="314">
+  new img: <img src="images/pushnotification.png" align="none" width="210" height="314">
+Updating File 172: ./documents/cpp/guides/collections/vector/index.html
+Updating File 173: ./documents/cpp/guides/collections/dictionaries/index.html
+Updating File 174: ./documents/cpp/guides/purchases/managing-app-purchases/index.html
+  img: <img src="/files/images/in-app-purchase-permissions.png" align="none" width="634" height="457">
+  new img: <img src="images/in-app-purchase-permissions.png" align="none" width="634" height="457">
+  img: <img src="/files/images/in-app-purchase-bundle-id.png" align="none" width="634" height="457">
+  new img: <img src="images/in-app-purchase-bundle-id.png" align="none" width="634" height="457">
+  img: <img src="/files/images/in-app-purchase-provisioning-file.png" align="none" width="634" height="457">
+  new img: <img src="images/in-app-purchase-provisioning-file.png" align="none" width="634" height="457">
+  img: <img src="/files/images/in-app-purchase-visa_0.png" align="none" width="210" height="350">
+  new img: <img src="images/in-app-purchase-visa_0.png" align="none" width="210" height="350">
+  img: <img src="/files/images/in-app-purchase-products-and-history.png" align="none" width="210" height="350">
+  new img: <img src="images/in-app-purchase-products-and-history.png" align="none" width="210" height="350">
+  img: <img src="/files/images/in-app-purchase-receipt.png" align="none" width="210" height="350">
+  new img: <img src="images/in-app-purchase-receipt.png" align="none" width="210" height="350">
+Updating File 175: ./documents/cpp/tutorials/json/working-with-json-data/index.html
+  img: <img src="http://docs.google.com/File?id=ddwb2zz_36dtgcx8hr_b" />
+    *** External image: http://docs.google.com/File?id=ddwb2zz_36dtgcx8hr_b
+    *** IMAGE IGNORED: <img src="http://docs.google.com/File?id=ddwb2zz_36dtgcx8hr_b" />
+  img: <img src="http://docs.google.com/File?id=ddwb2zz_37xd39vccb_b" />
+    *** External image: http://docs.google.com/File?id=ddwb2zz_37xd39vccb_b
+    *** IMAGE IGNORED: <img src="http://docs.google.com/File?id=ddwb2zz_37xd39vccb_b" />
+Updating File 176: ./documents/cpp/tutorials/xml/processing-xml/index.html
+  img: <img src="/files/images/XMLParser_buildsettings.png" align="none" width="682" height="611">
+  new img: <img src="images/XMLParser_buildsettings.png" align="none" width="682" height="611">
+Updating File 177: ./documents/cpp/tutorials/xml/creating-xml-documents/index.html
+Updating File 178: ./documents/cpp/tutorials/basic/event-driven-object-oriented-applications/index.html
+Updating File 179: ./documents/cpp/tutorials/basic/development-models/index.html
+Updating File 180: ./documents/cpp/tutorials/basic/classic-procedural-applications/index.html
+Updating File 181: ./documents/cpp/tutorials/communication/downloading-audio-internet/index.html
+Updating File 182: ./documents/cpp/tutorials/communication/downloading-images-internet/index.html
+Updating File 183: ./documents/cpp/tutorials/communication/creating-bluetooth-clients/index.html
+Updating File 184: ./documents/cpp/tutorials/communication/creating-bluetooth-server/index.html
+Updating File 185: ./documents/cpp/tutorials/communication/downloading-data-internet/index.html
+Updating File 186: ./documents/cpp/tutorials/communication/custom-downloaders/index.html
+Updating File 187: ./documents/cpp/tutorials/sensors/determining-location/index.html
+Updating File 188: ./documents/cpp/tutorials/hello-world-deconstructed/index.html
+Updating File 189: ./documents/cpp/tutorials/storage/serial-data-access/index.html
+Updating File 190: ./documents/cpp/tutorials/storage/reading-and-writing-data/index.html
+Updating File 191: ./documents/cpp/tutorials/quick-start/creating-your-first-cpp-application/index.html
+  img: <img src="/files/images/workspace_prompt.png" align="none" width="640" height="279">
+  new img: <img src="images/workspace_prompt.png" align="none" width="640" height="279">
+  img: <img src="/files/images/Creating-New-Project.png" align="none" width="426" height="377">
+  new img: <img src="images/Creating-New-Project.png" align="none" width="426" height="377">
+  img: <img src="/files/images/Creating-IDE-with-template-loaded.png" align="none" width="650" height="385">
+  new img: <img src="images/Creating-IDE-with-template-loaded.png" align="none" width="650" height="385">
+  img: <img src="/system/files/mosync-run-button.png">
+  new img: <img src="images/mosync-run-button.png">
+  img: <img src="/files/images/Creating-Project-Run.png" align="none" width="650" height="401">
+  new img: <img src="images/Creating-Project-Run.png" align="none" width="650" height="401">
+Updating File 192: ./documents/cpp/tutorials/bluetooth/discovering-devices-and-services-bluetooth/index.html
+  img: <img src="/files/images/btdiscovery1.png" align="none" width="304" height="598">
+  new img: <img src="images/btdiscovery1.png" align="none" width="304" height="598">
+  img: <img src="/files/images/btdiscovery2.png" align="none" width="304" height="598">
+  new img: <img src="images/btdiscovery2.png" align="none" width="304" height="598">
+Updating File 193: ./documents/cpp/tutorials/maui/creating-new-screens/index.html
+Updating File 194: ./documents/cpp/tutorials/maui/creating-new-fonts/index.html
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_125mbsvtcw_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_125mbsvtcw_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_125mbsvtcw_b">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_13hhhqszc5_b" width="655" height="440">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_13hhhqszc5_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_13hhhqszc5_b" width="655" height="440">
+  img: <img src="/files/images/bitmap-fonts-2.png" align="left" width="290" height="409">
+  new img: <img src="images/bitmap-fonts-2.png" align="left" width="290" height="409">
+  img: <img src="/files/images/bitmap-fonts-3.png" align="none" width="288" height="567">
+  new img: <img src="images/bitmap-fonts-3.png" align="none" width="288" height="567">
+  img: <img src="/docs/r504/images/mauifont_bmfont_setup.png">
+  new img: <img src="images/mauifont_bmfont_setup.png">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_15cv8m2vft_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_15cv8m2vft_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_15cv8m2vft_b">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_16c87zvthq_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_16c87zvthq_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_16c87zvthq_b">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_17dxmshpg5_b" width="280" height="212">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_17dxmshpg5_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_17dxmshpg5_b" width="280" height="212">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_18gprsq8gs_b" width="281" height="152">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_18gprsq8gs_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_18gprsq8gs_b" width="281" height="152">
+Updating File 195: ./documents/cpp/tutorials/maui/introduction-maui/index.html
+  img: <img src="/files/images/MAUIex-layouts_0.png" align="none" width="433" height="328">
+  new img: <img src="images/MAUIex-layouts_0.png" align="none" width="433" height="328">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_24cdkpj34v_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_24cdkpj34v_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_24cdkpj34v_b">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_25hfrmt2gm_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_25hfrmt2gm_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_25hfrmt2gm_b">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_26cf4bswfn_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_26cf4bswfn_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_26cf4bswfn_b">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_27gsk77hgv_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_27gsk77hgv_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_27gsk77hgv_b">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_28njv35gr4_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_28njv35gr4_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_28njv35gr4_b">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_29d2x4b6dr_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_29d2x4b6dr_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_29d2x4b6dr_b">
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_30dp4pgm62_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_30dp4pgm62_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_30dp4pgm62_b">
+Updating File 196: ./documents/cpp/tutorials/maui/starting-new-moblet-project/index.html
+  img: <img src="/files/images/StartingANewMobletProject1.png" align="none" width="640" height="452">
+  new img: <img src="images/StartingANewMobletProject1.png" align="none" width="640" height="452">
+  img: <img src="/files/images/StartingANewMobletProject2.png" align="none" width="411" height="411">
+  new img: <img src="images/StartingANewMobletProject2.png" align="none" width="411" height="411">
+  img: <img src="/files/images/StartingANewMobletProject3.png" align="none" width="406" height="406">
+  new img: <img src="images/StartingANewMobletProject3.png" align="none" width="406" height="406">
+  img: <img src="/files/images/StartingANewMobletProject4.png" align="none" width="435" height="435">
+  new img: <img src="images/StartingANewMobletProject4.png" align="none" width="435" height="435">
+  img: <img src="/files/images/StartingANewMobletProject5.png" align="none" width="640" height="452">
+  new img: <img src="images/StartingANewMobletProject5.png" align="none" width="640" height="452">
+  img: <img src="/files/images/StartingANewMobletProject6.png" align="none" width="393" height="393">
+  new img: <img src="images/StartingANewMobletProject6.png" align="none" width="393" height="393">
+  img: <img src="/files/images/moblet-emulator.png" align="none" width="292" height="612">
+  new img: <img src="images/moblet-emulator.png" align="none" width="292" height="612">
+Updating File 197: ./documents/cpp/tutorials/maui/using-layouts/index.html
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_33qjsp2qg5_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_33qjsp2qg5_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_33qjsp2qg5_b">
+Updating File 198: ./documents/cpp/tutorials/adding-resources-mosync-project/index.html
+  img: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_19f8cfz2fz_b">
+    *** External image: https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_19f8cfz2fz_b
+    *** IMAGE IGNORED: <img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_19f8cfz2fz_b">
+Updating File 199: ./documents/cpp/tutorials/collections/collections-mosync/index.html

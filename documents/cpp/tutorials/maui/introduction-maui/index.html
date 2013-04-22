@@ -432,7 +432,7 @@ extern "C" int MAMain()
 <p>Probably the most basic widget, the <strong>Label </strong>will put some text on screen.</p>
 <pre>Label* myLabel = new Label(0, 0, scrWidth, scrHeight, NULL, "My Label", 0xFFC0C0, myFont);</pre>
 <p>&nbsp;</p>
-<p><img src="images/File?id=ddwb2zz_24cdkpj34v_b"></p>
+<p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_24cdkpj34v_b"></p>
 <p><strong>Label </strong>has the standard Widget constructor as described above, but you can also call it a caption to display, the background colour as hex and a font. To use the default font, you have to do it the long way.</p>
 <pre>Label* myLabel = new Label(0, 0, scrWidth, scrHeight, NULL);
 myLabel-&gt;setCaption("My label");</pre>
@@ -444,14 +444,14 @@ myLabel-&gt;setCaption("My label");</pre>
 label-&gt;setAutoSizeY(true);
 // Prevent the label from resizing horizontally automatically.
 label-&gt;setAutoSizeX(false);</pre>
-<p><img src="images/File?id=ddwb2zz_25hfrmt2gm_b"></p>
+<p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_25hfrmt2gm_b"></p>
 <h2>Images</h2>
 <p>An image will let you put a picture in your application.&nbsp; These are used frequently as buttons. Creating them is very simple. In addition to the default Widget constructor, there is</p>
 <p>&nbsp;</p>
 <pre class="mosync-code-cpp">// Create a new Image object based on the PNG file in the resources.
 Image* image = new Image(0, 0, 100, 100, listbox, true, true, IMAGE);</pre>
 <p>Where the last three arguments are to automatically resize automatically horizontally, resize automatically vertically and the MAHandle of the image resource. By setting the resize arguments as above, you can use this command to create any image you want and it will be the correct size for the image. If you set the resize arguments to false, it does not resize the image. If the sizes you’ve specified are too small, it will crop from the centre of the image. If the sizes are too large, it will show the background colour, if it has been set. This image has been cropped.</p>
-<p><img src="images/File?id=ddwb2zz_26cf4bswfn_b"></p>
+<p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_26cf4bswfn_b"></p>
 <p>If you want to show a border on the image, you can use the padding as described earlier. If you’ve got it automatically resizing, you won’t see the entire image. This is because the widget has sized to dimensions of the image, but then the padding will eat some of that space.</p>
 <p>&nbsp;</p>
 <pre class="mosync-code-cpp">// Create a new Image object based on the PNG file in the resources.
@@ -459,7 +459,7 @@ Image* image = new Image(0, 0, 150, 150, listbox, true, true, IMAGE);
 image-&gt;setPaddingTop(10);
 image-&gt;setPaddingLeft(10);</pre>
 <p>This image has padding set.</p>
-<p><img src="images/File?id=ddwb2zz_27gsk77hgv_b"></p>
+<p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_27gsk77hgv_b"></p>
 <p>You can animate images by listening for timer events, and changing the MAHandle of the resource you are using. See the tutorial on resource files for more on this.</p>
 <h2>Layouts</h2>
 <p>The layout widget does not display much in its own right, but it will organise your widgets on screen for you. You can specify a grid into which widgets will be placed. They will be added from top left to bottom right. Don’t confuse this too much with an HTML table. There are some similarities, but the Layout does not give you all the options an HTML table will.</p>
@@ -477,7 +477,7 @@ image-&gt;setPaddingLeft(10);</pre>
 <pre class="mosync-code-cpp">infobox = new ListBox(0, 0, scrWidth, scrHeight, layout, 
           ListBox::LBO_VERTICAL, ListBox::LBA_LINEAR, true);</pre>
 <p>You can decide whether it is going to grow vertically or horizontally, whether it is going to be animated, and whether it will wrap to the beginning when you get to the end. Typically, an app screen will contain a Layout with a child ListBox. In the diagram below, there is a Layout in a 1x3 grid. The widgets in the Layout have been marked.</p>
-<p><img src="images/File?id=ddwb2zz_28njv35gr4_b"></p>
+<p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_28njv35gr4_b"></p>
 <p>The ListBox will not break out of its space in the layout. Should it grow longer than its space, it will scroll as items are selected in it. When a specific widget in the ListBox is selected, it will scroll so that widget is on screen. You can scroll a widget using <strong>selectNextItem()</strong> and<strong>selectPreviousItem()</strong> methods. In this example, key press on the screen has been captured, and the application is going to scroll up and down the ListBox (contentBox):</p>
 <p>&nbsp;</p>
 <pre class="mosync-code-cpp">void Menu::keyPressEvent(int keycode)
@@ -522,7 +522,7 @@ image-&gt;setPaddingLeft(10);</pre>
 <p>There are two text entry modes. You can use it capture letters, or you can set it so it only takes in numbers. The hash key (#) acts as a temporary shift, so if the user presses # and the 4, they will get an upper case G.</p>
 <p><span style="font-weight: bold; font-size: 16px;">WidgetSkins</span></p>
 <p>Most widgets can have a skin applied. This is a standard image which will be applied to the border and background of the widgets to give them a uniform look and feel. Here is a skin which is supplied in the MAUIex examples. The skin is split into a 3x3 grid, and lines have been drawn to show where the grid is defined. When it is applied to a widget, the corners stay as they are, and the other five sections are tiled to fill the required space. Whatever is in box 5 is tiled over the background of the widget. You do have to be careful with this, as nice looking gradients won’t look so nice when tiled.</p>
-<p><img src="images/File?id=ddwb2zz_29d2x4b6dr_b"></p>
+<p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_29d2x4b6dr_b"></p>
 <p>To define the skin, you don’t specify the top left and bottom right corners of the center box as you might expect, but instead you specify the horizontal positions of the vertical cuts, and then the vertical positions of the horizontal cuts.</p>
 <p>&nbsp;</p>
 <pre class="mosync-code-cpp">gSkin = new WidgetSkin(
@@ -531,7 +531,7 @@ image-&gt;setPaddingLeft(10);</pre>
         );</pre>
 <p>The first two arguments are the MAHandles of the images you want to use as the skin. The first one is the skin to apply when the widget has focus (is selected), and one to use when it doesn’t have focus. You then specify the offsets of the vertical cuts, the offsets of the horizontal cuts, and whether the images you want to use contain any transparent elements (which they probably do).</p>
 <p>Very importantly, both the selected and unselected skins must be exactly the same size. You can see here the skins being applied to EditBoxes.</p>
-<p><img src="images/File?id=ddwb2zz_30dp4pgm62_b"></p>
+<p><img src="https://docs.google.com/a/mobilesorcery.com/File?id=ddwb2zz_30dp4pgm62_b"></p>
 <h2>Creating your own Widgets</h2>
 <p>The best thing about the Widget model is that it is easily extendible. There are many widgets to handle common features like softkey bars, progress bars, buttons, calendars and sliders. There will be another tutorial which will go into detail on creating your own widgets. In short, you need to inherit from Widget, and implement the drawWidget() method.</p>
 <p>This is from the ProgressBar widget:</p>

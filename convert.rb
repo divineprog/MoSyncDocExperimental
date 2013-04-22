@@ -10,20 +10,10 @@ require "open-uri"
 
 load 'structure.rb' 
 
-# Helper function to run shell commands.
-def sh(cmd)
-    #TODO: optimize by removing the extra shell
-    #the Process class should be useful.
-    $stderr.puts cmd
-    if (!system(cmd)) then
-        error "Command failed: '#{$?}'"
-    end
-end
-
 # Directory of Drupal export.
 # Not in git.
 def pathExports
-  "./mosync-doc-exports-2/"
+  "./mosync-doc-exports-130418/"
 end
 
 # Templates used for building the web site.
@@ -111,11 +101,14 @@ def docImportHTML
   end
 end
 
+
 # Iterate over all pages and all image urls
 # and download images to local files.
 def docDownloadImages
   puts "Downloading images"
-
+  
+  externalImages = "EXTERNAL IMAGES:\n"
+  
   # Find all files.
   n = 0
   Pathname.glob(pathDocuments() + "**/*.html").each do |filePath|
@@ -135,10 +128,14 @@ def docDownloadImages
         docDownloadImage(url, destFile)
         puts "    done"
 	  else
-	    puts "    *** image has no src tag ***"
+	    puts "    *** IMAGE NOT DOWNLOADED: " + imgTag
+        # A hack indeed.
+        externalImages += filePath.to_s + ": " + $lastImageUrl + "\n"
       end
     end
   end
+  
+  puts externalImages
 end
 
 # Iterate over all pages and all image urls
@@ -167,7 +164,7 @@ def docUpdateImageTags
         # Update image tag.
         html = html.gsub(imgTag, newImgTag)
 	  else
-	    puts "    *** image has no src tag ***"
+	    puts "    *** IMAGE IGNORED: " + imgTag
       end
 	end
 
@@ -182,18 +179,22 @@ def docGetImageDownloadURL(imgTag)
   srcMatch = imgTag.scan(/src="(.*?)"/)
   if not srcMatch.empty? then 
 	src = srcMatch[0][0]
+    $lastImageUrl = src # Useful for logging when returning nil below
     if src.start_with?("http://www.mosync.com") then
+      return src
+    elsif src.start_with?("https://raw.github.com") then
       return src
     elsif src.start_with?("http://") or 
       src.start_with?("https://") then
 	  # Return nil here if images from other domains
 	  # should not be downloaded.
-      return src
+      puts "    *** External image: " + src
+      return nil
     elsif src.start_with?("/") then
       # Download from http://www.mosync.com/
       return "http://www.mosync.com" + src
     else 
-      puts "    *** Unknown image scr: " + src + " ***"
+      puts "    *** UKNOWN IMAGE SOURCE: " + src
     end
   end
   return nil
@@ -589,6 +590,17 @@ def cleanmd
   end
 end
 
+# Helper function to run shell commands.
+def sh(cmd)
+    #TODO: optimize by removing the extra shell
+    #the Process class should be useful.
+    $stderr.puts cmd
+    if (!system(cmd)) then
+        error "Command failed: '#{$?}'"
+    end
+end
+
+# Commands
 if (ARGV.include? "html2md")
     #convertHtmlToMarkdown
 elsif (ARGV.include? "cleanmd")

@@ -36,7 +36,7 @@
 <ul>
 <li>Google in-app billing can be implemented only in applications that you publish through Google Play.</li>
 <li>You cannot use Android emulator (or MoSync's MoRE emulator) to test in-app purchases; you must install your application on a device to test it.</li>
-<li>Make sure that your application is signed with the release key (i.e. build it in the MoSync IDE in <a href="TEMPLATE_DOC_PATH/tools/sdk/ide/build-configurations/index.html">Release mode</a>) before testing in-app purchasing.</li>
+<li>Make sure that your application is signed with the release key (i.e. build it in the MoSync IDE in <a href="TEMPLATE_DOC_PATH/sdk/guides/ide/build-configurations/index.html">Release mode</a>) before testing in-app purchasing.</li>
 <li>You must have a Google Checkout Merchant account to use Google Play in-app purchase.</li>
 <li>If your device is running Android 3.0, in-app purchase requires version 5.0.12 (or higher) of the MyApps application. If your device is running any other version of Android, in-app purchase requires version 2.3.4 (or higher) of the Google Play application.</li>
 <li>An application can use in-app purchase only if the device is running Android 1.6 (API level 4) or higher. So remember to call <strong>PurchaseManager::checkPurchaseSupported()</strong> at the application entry point so that you can enable/disable certain UI features related to in-app purchase.</li>
@@ -64,7 +64,7 @@
 <li>The developer must sign the application with a valid iOS developer certificate that has in app purchase enabled.</li>
 </ul>
 <h2>Purchase C++ Library Classes and Methods</h2>
-<p>For a list of the platforms supported by the Purchase C++ Library, see <a href="http://www.mosync.com/widepage/feature-platform-support">Feature/Platform Support</a>.</p>
+<p>For a list of the platforms supported by the Purchase C++ Library, see <a href="TEMPLATE_DOC_PATH/cpp/references/feature-platform-support/index.html">Feature/Platform Support</a>.</p>
 <p>Purchases are encapsulated in objects of the <strong>Purchase</strong> class. The <strong>Purchase </strong>wraps a product that can be bought along with all the details of the transaction (such as the <strong>Receipt</strong>). <br> <br> The main methods of the <strong>Purchase </strong>class include:</p>
 <ul>
 <li><strong>Purchase()</strong> — the constructor, the minimum required to create a purchase object. Requires the <strong>productId </strong>that identifies the product and a listener.</li>
@@ -111,7 +111,7 @@
 <li><strong>purchaseRefunded()</strong> notifies that a purchase has been refunded.</li>
 </ul>
 <h2>Purchase C API IOCTLs</h2>
-<p>The Purchase C++ Library described above makes use of the MoSync Purchase C API which contains a number of lower-level C IOCTLs. For a list of the platforms supported by the Purchase C API, see <a href="http://www.mosync.com/widepage/feature-platform-support">Feature/Platform Support</a>.</p>
+<p>The Purchase C++ Library described above makes use of the MoSync Purchase C API which contains a number of lower-level C IOCTLs. For a list of the platforms supported by the Purchase C API, see <a href="TEMPLATE_DOC_PATH/cpp/references/feature-platform-support/index.html">Feature/Platform Support</a>.</p>
 <ul>
 <li><strong>maPurchaseSupported()</strong> — check if in-app purchase is supported/enabled on a device.</li>
 <li><strong>maPurchaseCreate() </strong>— create a product object asynchronously.</li>
