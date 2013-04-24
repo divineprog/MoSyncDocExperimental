@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+	<style>
+	@media (min-width:35em)
+	{
+		/* wrap on wide viewports once open */
+
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push.ui-panel-content-fixed-toolbar-position-left,
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal.ui-panel-content-fixed-toolbar-position-left,
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-left,
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-left {
+			margin-right: 17em;
+		}
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push.ui-panel-content-fixed-toolbar-position-right,
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal.ui-panel-content-fixed-toolbar-position-right,
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-right,
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-right {
+			margin-left: 17em;
+		}
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push,
+		.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal {
+			width: auto;
+		}
+
+		/* disable "dismiss" on wide viewports */
+		.ui-responsive-panel .ui-panel-dismiss {
+			display: none;
+		}
+	}
+	</style>
+    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	<script>
+	
+	$(document).on('pagebeforeshow', '#index', function(){       
+		$("#mypanel").panel("open");
+	});
+	
+	</script>
+</head>
+<body>
+    <div data-role="page" id="index" class="ui-responsive-panel">
+        
+        <div data-role="panel" id="mypanel" data-position-fixed="true" data-theme="a">
+            <ul data-role="listview" data-theme="a">
+                <li><a data-ajax="false" href="layout-panel.html">layout-panel.html</a></li>
+                <li><a href="item1.html">item1</a></li>
+            </ul>
+        </div><!-- /panel -->        
+        
+        <div data-theme="a" data-role="header">
+            <h1>
+                First Page
+            </h1>
+            <a href="#mypanel" class="ui-btn-left">Panel</a>
+        </div>
+
+        <div data-role="content">
+			<h2>Content</h2>
+        </div>
+
+		<div data-theme="a" data-role="footer" data-position="fixed"> 
+			<p>Footer</p>
+        </div>
+    </div>  
+	<script>
+	// If width of page > 560px then show the panel.
+	/*if (document.body.clientWidth > 560)
+	{
+		setTimeout(function() {    
+			$("#mypanel").panel("open");
+		}, 10);
+	}*/
+	</script>
+</body>
+</html>
