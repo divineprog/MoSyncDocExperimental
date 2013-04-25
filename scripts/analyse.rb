@@ -3,12 +3,12 @@ require 'pathname'
 
 # Old export
 def exportsDir1
- "./mosync-doc-exports-130415/"
+ "../mosync-doc-exports-130415/"
 end
 
 # New export
 def exportsDir2
- "./mosync-doc-exports-130418/"
+ "../mosync-doc-exports-130418/"
 end
 
 # All HTML file names stripped of basePath

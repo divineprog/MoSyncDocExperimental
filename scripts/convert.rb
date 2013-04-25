@@ -1,5 +1,5 @@
-# Prorgam that bulds the documentation website.
-# And handles the import fo documentation from Drupal.
+# Prorgam that builds the documentation website.
+# And handles the import of documentation from Drupal.
 
 # This is a way to copy files.
 # FileUtils.cp_r(Dir[sourceDir + "*"], destDir)
@@ -13,30 +13,30 @@ load 'structure.rb'
 # Directory of Drupal export.
 # Not in git.
 def pathExports
-  "./mosync-doc-exports-130418/"
+  "../mosync-doc-exports-130418/"
 end
 
 # Templates used for building the web site.
 # In git.
 def pathTemplates
-  "./templates/"
+  "../templates/"
 end
 
 # Documentation main source directory
 # In git.
 def pathDocuments
-  "./documents/"
+  "../docs/"
 end
 
 # Directory of doc web site
 # Not in git.
 def pathWebSite
-  "./website/"
+  "../website/"
 end
 
 # Root folder for doc pages.
 def pathWebSitePages
-  pathWebSite + "pages/"
+  pathWebSite
 end
 
 # Not used for now.
@@ -246,6 +246,7 @@ def webSiteBuildHomePage
   webSiteBuildPageFromStandardTemplate(
       title,
       html,
+      "sdk-navigation.html",
       destFile)
       
   # Copy JavaScript libs.
@@ -277,6 +278,7 @@ def webSiteBuildDocPages
     webSiteBuildPageFromStandardTemplate(
       htmlGetPageTitle(html),
       htmlGetPageContent(html),
+      "sdk-navigation.html",
       destFile)
 	  
 	# Copy images.
@@ -289,25 +291,28 @@ end
 # Build link pages for all categories and page types.
 def webSiteBuildLinkPages
   title = "C/C++ Coding Guides"
-  webSiteBuildCategoryLinkPage([CPP, GUIDE], "cpp/guides/", title)
+  webSiteBuildCategoryLinkPage([CPP, GUIDE], "sdk/cpp/guides/", title)
   
   title = "C/C++ Tutorials"
-  webSiteBuildCategoryLinkPage([CPP,TUTORIAL], "cpp/tutorials/", title)
+  webSiteBuildCategoryLinkPage([CPP,TUTORIAL], "sdk/cpp/tutorials/", title)
   
   title = "C/C++ Examples"
-  webSiteBuildCategoryLinkPage([CPP,EXAMPLE], "cpp/examples/", title)
+  webSiteBuildCategoryLinkPage([CPP,EXAMPLE], "sdk/cpp/examples/", title)
   
   title = "JavaScript Coding Guides"
-  webSiteBuildCategoryLinkPage([JS,GUIDE], "js/guides/", title)
+  webSiteBuildCategoryLinkPage([JS,GUIDE], "sdk/js/guides/", title)
   
   title = "JavaScript Tutorials"
-  webSiteBuildCategoryLinkPage([JS,TUTORIAL], "js/tutorials/", title)
+  webSiteBuildCategoryLinkPage([JS,TUTORIAL], "sdk/js/tutorials/", title)
   
   title = "JavaScript Examples"
-  webSiteBuildCategoryLinkPage([JS,EXAMPLE], "js/examples/", title)
+  webSiteBuildCategoryLinkPage([JS,EXAMPLE], "sdk/js/examples/", title)
   
-  title = "All Examples"
-  webSiteBuildCategoryLinkPage([CPP,JS,EXAMPLE], "overviews/examples/", title)
+  #title = "All Examples"
+  #webSiteBuildCategoryLinkPage([CPP,JS,EXAMPLE], "sdk/overviews/examples/", title)
+  
+  title = "Tool Guides"
+  webSiteBuildCategoryLinkPage([SDK,TOOLS,GUIDE], "sdk/tools/guides/", title)
 end
 
 # Builds and saves a page of links for the given category and type.
@@ -326,6 +331,7 @@ def webSiteBuildCategoryLinkPage(labels, pageShortPath, pageTitle)
   webSiteBuildPageFromStandardTemplate(
       pageTitle,
       html,
+      "sdk-navigation.html",
       destFile)
 end
 
@@ -372,9 +378,10 @@ def webSiteBuildLinkListForPages(pages, label, baseDir)
 end
 
 # Build and save page from template file.
-def webSiteBuildPageFromStandardTemplate(title, content, destFile)
+def webSiteBuildPageFromStandardTemplate(title, content, navigationTemplate, destFile)
   # Set up paths.
-  templateFile = Pathname.new(pathTemplates + "docpage.html")
+  templateFile = Pathname.new(pathTemplates() + "page-template.html")
+  navigationTemplateFile = Pathname.new(pathTemplates() + navigationTemplate)
   pagesDir = Pathname.new(pathWebSitePages())
   jsDir = Pathname.new(pathWebSite() + "js/")
   destPath = destFile.parent
@@ -385,12 +392,14 @@ def webSiteBuildPageFromStandardTemplate(title, content, destFile)
 
   # Read template.
   template = File.open(templateFile, "rb") { |f| f.read }
+  navigation = File.open(navigationTemplateFile, "rb") { |f| f.read }
   
   # Create HTML from template.
   html = webSiteBuildPageFromTemplate(
     template,
     title,
     content,
+    navigation,
     jsDirRelativePath,
     pagesDirRelativePath)
   
@@ -400,12 +409,13 @@ def webSiteBuildPageFromStandardTemplate(title, content, destFile)
 end
 
 # Returns HTML for page built from template.
-def webSiteBuildPageFromTemplate(template, title, content, jsDirRelativePath, pagesDirRelativePath)
+def webSiteBuildPageFromTemplate(template, title, content, navigation, jsDirRelativePath, pagesDirRelativePath)
   html = template.gsub(
     "TEMPLATE_PAGE_CONTENT", content).gsub(
-      "TEMPLATE_PAGE_TITLE", title).gsub(
-        "TEMPLATE_JS_PATH", jsDirRelativePath.to_s).gsub(
-          "TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
+      "TEMPLATE_PAGE_NAVIGATION", navigation).gsub(
+        "TEMPLATE_PAGE_TITLE", title).gsub(
+          "TEMPLATE_JS_PATH", jsDirRelativePath.to_s).gsub(
+            "TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
   html
 end
 
@@ -590,6 +600,25 @@ def cleanmd
   end
 end
 
+# Used for one shot conversion of symbolic path names.
+def updatePathSymbols
+  puts "Updating path symbols"
+
+  # Find all files.
+  n = 0
+  Pathname.glob("../**/*.html").each do |filePath|
+    n = n + 1
+    puts "Updating File " + n.to_s + ": " + filePath.to_s
+	
+    # Replace all symbols in file.
+    html = fileReadContent(filePath)
+    html = html.gsub("RELATIVE_", "TEMPLATE_")
+
+    # Write the updated file.
+    fileSaveContent(filePath, html)
+  end
+end
+
 # Helper function to run shell commands.
 def sh(cmd)
     #TODO: optimize by removing the extra shell
@@ -619,6 +648,8 @@ elsif (ARGV.include? "buildweb")
     webSiteBuild
 elsif (ARGV.include? "cleanweb")
     webSiteClean
+elsif (ARGV.include? "updatepathsymbols")
+    updatePathSymbols
 else
     puts "Options:"
     #puts "  html2md"

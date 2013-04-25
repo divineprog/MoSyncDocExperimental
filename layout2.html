@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <!-- <link rel="stylesheet" href="layout.css"/> -->    
+    <style>
+    @media all and (min-width: 500px) {
+      #nav {
+        width: 20%;
+        float: left;
+        /*margin-right: 20px;*/
+      }
+      #info {
+        width: 70%;
+        float: right;
+      }
+    }
+
+    @media all and (max-width: 499px) {
+      #nav {
+        width: 100%;
+      }
+      #info {
+        width: 100%;
+      }
+    }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+</head>
+<body>
+    <div data-role="page">
+        <div data-role="header">Layout test</div>
+        <div data-role="content">
+            <div id="nav">
+                <ul data-inset="true" data-role="listview" data-theme="b">
+                    <li><a href="#">Page 1</a>
+                    </li>
+                    <li><a href="#">Page 2</a>
+                    </li>
+                    <li><a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="main">
+                <ul data-inset="true" data-role="listview" data-theme="c">
+                    <li><a href="#">This is some dummy text to test whether this works 4</a>
+                    </li>
+                    <li><a href="#">This is some dummy text to test whether this works 5</a>
+                    </li>
+                    <li><a href="#">This is some dummy text to test whether this works 6</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="footer">Footer</div>
+    </div>
+</body>
+</html>
