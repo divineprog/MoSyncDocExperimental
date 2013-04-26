@@ -410,12 +410,16 @@ end
 
 # Returns HTML for page built from template.
 def webSiteBuildPageFromTemplate(template, title, content, navigation, jsDirRelativePath, pagesDirRelativePath)
-  html = template.gsub(
-    "TEMPLATE_PAGE_CONTENT", content).gsub(
-      "TEMPLATE_PAGE_NAVIGATION", navigation).gsub(
-        "TEMPLATE_PAGE_TITLE", title).gsub(
-          "TEMPLATE_JS_PATH", jsDirRelativePath.to_s).gsub(
-            "TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
+  # Order of these statements is important since included parts
+  # also contain placeholders to be replaced.
+  html = template.gsub("TEMPLATE_PAGE_CONTENT", content)
+  html = html.gsub("TEMPLATE_PAGE_TITLE", title)
+  html = html.gsub("TEMPLATE_PAGE_NAVIGATION", navigation)
+  html = html.gsub("TEMPLATE_NAVIGATION_INSET", "true")
+  html = html.gsub("TEMPLATE_PANEL_NAVIGATION", navigation)
+  html = html.gsub("TEMPLATE_NAVIGATION_INSET", "false")
+  html = html.gsub("TEMPLATE_JS_PATH", jsDirRelativePath.to_s)
+  html = html.gsub("TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
   html
 end
 
