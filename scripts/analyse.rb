@@ -3,12 +3,12 @@ require 'pathname'
 
 # Old export
 def exportsDir1
- "../mosync-doc-exports-130415/"
+ "../mosync-doc-exports-130418/"
 end
 
 # New export
 def exportsDir2
- "../mosync-doc-exports-130418/"
+ "../mosync-doc-exports-130429/"
 end
 
 # All HTML file names stripped of basePath
@@ -86,7 +86,6 @@ end
 # Collect images in all documents and list them.
 def listImages
   dir = exportsDir2()
-  #dir = "./documents/"
   files = allHtmlPaths(dir)
   imgs = (files.collect { |path|
     html = File.open(path, "rb") { |f| f.read }
@@ -96,6 +95,20 @@ def listImages
   puts "========================================================="
   puts "All img tags in all files in " + dir
   puts imgs.uniq.sort
+  puts "========================================================="
+end
+
+def listSyntaxHighlighterTags
+  dir = exportsDir2()
+  files = allHtmlPaths(dir)
+  tags = (files.collect { |path|
+    html = File.open(path, "rb") { |f| f.read }
+    match = html.scan(/{syntaxhighlighter brush: .*?}/)
+	if match == [] then [] else match end
+  }).flatten
+  puts "========================================================="
+  puts "All syntax highlight tags in all files in " + dir
+  puts tags.uniq.sort
   puts "========================================================="
 end
 
@@ -111,6 +124,8 @@ elsif (ARGV.include? "a")
   listAnchors
 elsif (ARGV.include? "img")
   listImages
+elsif (ARGV.include? "syntax")
+  listSyntaxHighlighterTags
 else
   puts "========================================================="
   puts "Options:"

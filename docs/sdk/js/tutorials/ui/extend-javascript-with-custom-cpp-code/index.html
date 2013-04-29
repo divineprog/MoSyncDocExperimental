@@ -11,7 +11,7 @@
 <p>The solution is to use a C++ level syscall called <a href="http://www.mosync.com/files/imports/doxygen/latest/html/maapi_8h.html#a155b042c55d95404035d081c08d40ebf">maPlatformRequest</a>. This opens a URL in a new Activity on Android, in a fully featured web browser. And the back button works to return to your app. To invoke this syscall from JavaScript, you use the JavaScript to C++ bridge available in the MoSync Wormhole API. This API allows you to call any C++ code in your application.</p>
 <p>Of course, the situation would be simpler if the functionality of maPlatformRequest would already be available in the Wormhole JavaScript API, but as it goes, it is not in there yet.</p>
 <p>Note that if you are using MoSync Reload, calling custom C++ code won't work. You need to build your app with the MoSync SDK for the C++ code to be built and included with your app.</p>
-<p>If you have not used the MoSync SDK previously, <a href="TEMPLATE_DOC_PATH/js/tutorials/quick-start/getting-started-html5-and-javascript/index.html">read this tutorial to get started quickly</a>.</p>
+<p>If you have not used the MoSync SDK previously, <a href="TEMPLATE_DOC_PATH/sdk/js/tutorials/quick-start/getting-started-html5-and-javascript/index.html">read this tutorial to get started quickly</a>.</p>
 <h2>Demo application</h2>
 <p>The app PlatformRequestDemo has a very simple user interface with buttons that open locations on Google Maps.</p>
 <p>Screenshots from the app running in the iOS Simulator and on Android (Nexus 7):</p>
@@ -83,7 +83,7 @@ public:
         maPlatformRequest(url);
     }
 };</pre>
-<p>To get a more in-depth explanation of how the JavaScript to C++ bridge works, I suggest you read the tutorials <a href="TEMPLATE_DOC_PATH/js/guides/wormhole/extending-javascript-with-cpp/index.html">Extending HTML5 Mobile Apps with C++</a> and <a href="TEMPLATE_DOC_PATH/js/guides/storage/using-sql-hybrid-apps/index.html">Using SQL in Hybrid Apps</a>.</p>
+<p>To get a more in-depth explanation of how the JavaScript to C++ bridge works, I suggest you read the tutorials <a href="TEMPLATE_DOC_PATH/sdk/js/guides/wormhole/extending-javascript-with-cpp/index.html">Extending HTML5 Mobile Apps with C++</a> and <a href="TEMPLATE_DOC_PATH/sdk/js/guides/storage/using-sql-hybrid-apps/index.html">Using SQL in Hybrid Apps</a>.</p>
 <h2>Wrapping up</h2>
 <p>HTML5 and libraries like PhoneGap brings great power to mobile apps, but there can be times when you encounter functionality that is missing. By making a Hybrid App, which combines JavaScript with native code, the missing functionality can be made available. In the case of the MoSync SDK, functionality not available in JavaScript can be implemented in C/C++, as illustrated by the PlatformRequestDemo application. This is a powerful capability that can significantly improve your apps.</p>
 </body>

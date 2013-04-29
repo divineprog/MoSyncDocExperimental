@@ -7,7 +7,7 @@
 <p>This manual describes how your application resources (such as image, audio, and binary files) are handled by MoSync in C/C++, describes the format and lists that can be used to organize your resource files, and the command switches for the resource compiler.<!--break--></p>
 <p></p>
 <h3>A note on HTML5 resources</h3>
-<p>The MoSync Resource Compiler provides a way to manage applications resources for <em><strong>C/C++ applications</strong>.</em> If you are working in <strong>HTML5/JavaScript</strong>, those resources should be handled in the normal HTML way: store them in the <em>/LocalFiles</em> folder, load them using e.g. &lt;img&gt; tags, use conditions to call the appropriate resource file, and so on. See <a href="TEMPLATE_DOC_PATH/js/tutorials/quick-start/how-create-html5-project-mosync/index.html">Developing Apps in HTML5 and JavaScript</a>.</p>
+<p>The MoSync Resource Compiler provides a way to manage applications resources for <em><strong>C/C++ applications</strong>.</em> If you are working in <strong>HTML5/JavaScript</strong>, those resources should be handled in the normal HTML way: store them in the <em>/LocalFiles</em> folder, load them using e.g. &lt;img&gt; tags, use conditions to call the appropriate resource file, and so on. See <a href="TEMPLATE_DOC_PATH/sdk/js/tutorials/quick-start/how-create-html5-project-mosync/index.html">Developing Apps in HTML5 and JavaScript</a>.</p>
 <h2>C/C++ resource handling alternatives</h2>
 <p>Using its Resource Compiler, MoSync can handle application resources for C/C++ apps in several different ways:</p>
 <ul>
@@ -28,10 +28,10 @@
 <li>Tilemaps and tilesets</li>
 <li>Enums and script values</li>
 </ul>
-<p>For more information about resources and how to create them, see the programming guide <a href="TEMPLATE_DOC_PATH/sdk/guides/ide/resource-compiler-tutorial/index.html">Compiling Resources</a>. We also have a general tutorial, <a href="TEMPLATE_DOC_PATH/cpp/tutorials/adding-resources-mosync-project/index.html">Adding Resources to a Project</a>, which demonstrates how to make resources available to your applications and discusses many importants aspects of resource handling.</p>
+<p>For more information about resources and how to create them, see the programming guide <a href="TEMPLATE_DOC_PATH/sdk/tools/guides/ide/resource-compiler-tutorial/index.html">Compiling Resources</a>. We also have a general tutorial, <a href="TEMPLATE_DOC_PATH/sdk/cpp/tutorials/adding-resources-mosync-project/index.html">Adding Resources to a Project</a>, which demonstrates how to make resources available to your applications and discusses many importants aspects of resource handling.</p>
 <p>One important aspect is to be able to select what resource to load depending on which environment the app runs in—such as the platform (e.g. “Android” or “iOS”) the app is built for, or the screen size of the device that the app runs on. These are called <em>variant resources</em> (variant resources are supported in the MoSync SDK 3.0 onwards).</p>
 <h2>The Resource Compiler command line options</h2>
-<p>The resource compiler is part of the MoSync <a href="TEMPLATE_DOC_PATH/sdk/guides/architecture/toolchain/index.html">Pipe-Tool</a>. It is automatically invoked during the build process, so there is usually nothing you need to do to use it. <br><br>You can, however, run the resource compiler from the command line, if you really need to:</p>
+<p>The resource compiler is part of the MoSync <a href="TEMPLATE_DOC_PATH/sdk/tools/guides/architecture/toolchain/index.html">Pipe-Tool</a>. It is automatically invoked during the build process, so there is usually nothing you need to do to use it. <br><br>You can, however, run the resource compiler from the command line, if you really need to:</p>
 <h3>For standard folders</h3>
 <p>This command line will compile the resources organized as per the default directory structure:</p>
 <p><strong>rescomp</strong> <em>platform</em> <em>outputdir directory1</em> <em>directory2</em> …</p>

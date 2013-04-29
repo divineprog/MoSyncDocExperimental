@@ -9,7 +9,7 @@
 <h2>Opening Connections</h2>
 <p>To create a connection to the Bluetooth device that you want to communicate with, you can use the <strong>Connection</strong> class in the <strong>MAUtil </strong>library (#include &lt;MAUtil/Connection.h&gt;). The <strong>Connection</strong> class wraps up common connection commands into one easy-to-use object.</p>
 <h2>Creating ConnectionListeners</h2>
-<p>Creating <strong>Connection</strong> objects is discussed at length in the tutorial <a href="TEMPLATE_DOC_PATH/cpp/tutorials/communication/downloading-data-internet/index.html">Downloading Data from the Internet</a>, but the one thing you do have to do though is to implement <strong>ConnectionListener</strong>. The <strong>ConnectionListener </strong>has the following methods you need to implement:</p>
+<p>Creating <strong>Connection</strong> objects is discussed at length in the tutorial <a href="TEMPLATE_DOC_PATH/sdk/cpp/tutorials/communication/downloading-data/index.html">Downloading Data from the Internet</a>, but the one thing you do have to do though is to implement <strong>ConnectionListener</strong>. The <strong>ConnectionListener </strong>has the following methods you need to implement:</p>
 <div>
 <pre class="mosync-code-cpp">void connectFinished(Connection* conn, int result);
 void connRecvFinished(Connection* conn, int result);
@@ -37,7 +37,7 @@ void connReadFinished(Connection* conn, int result)
 }</pre>
 </div>
 <p>To create the <strong>Connection</strong>, you need to be able to format a URL to the desired Bluetooth server correctly. This is the only real difference between connecting to a Bluetooth service and connecting to an HTTP resource on the Internet.</p>
-<p>This tutorial assumes that you’ve either already followed the discovery processes in our tutorial <a href="TEMPLATE_DOC_PATH/cpp/tutorials/bluetooth/discovering-devices-and-services-bluetooth/index.html">Discovering Devices and Services with Bluetooth</a>. That tutorial explains how to find the service you want to connect to, and introduces the classes <strong>BtDevice </strong>and <strong>BtService</strong>.</p>
+<p>This tutorial assumes that you’ve either already followed the discovery processes in our tutorial <a href="TEMPLATE_DOC_PATH/sdk/cpp/tutorials/bluetooth/discovering-devices-and-services-bluetooth/index.html">Discovering Devices and Services with Bluetooth</a>. That tutorial explains how to find the service you want to connect to, and introduces the classes <strong>BtDevice </strong>and <strong>BtService</strong>.</p>
 <h2>Formatting Bluetooth URLs</h2>
 <p>When you want to create a URL to connect to a Bluetooth service, you need the <strong>MABtAddr </strong>address class from <strong>BtDevice</strong><strong> </strong>and the port number&nbsp;from <strong>BtService</strong>. The example we are working through today assumes you’ve already got the both a <strong>BtDevice </strong>and a <strong>BtService</strong>.</p>
 <p>The Bluetooth URL is in the format:</p>
@@ -54,7 +54,7 @@ void connReadFinished(Connection* conn, int result)
 </div>
 <h2>Reading and Writing to the Service</h2>
 <p>Once connected, you’ve got the same <strong>Connection </strong>object as you have for connecting to the Internet. You can read and write into the connection.</p>
-<p>In this example, we are going to create a client which is for the Bluetooth service created for the tutorial <a href="TEMPLATE_DOC_PATH/cpp/tutorials/communication/creating-bluetooth-server/index.html">Creating a Bluetooth Server</a>. In that tutorial, the service simply receives a stream of bytes, counts them, and then returns a running total to the client. Our client is going to connect to that server, send a short string, and then listen for the count to be returned.</p>
+<p>In this example, we are going to create a client which is for the Bluetooth service created for the tutorial <a href="TEMPLATE_DOC_PATH/sdk/cpp/tutorials/communication/creating-bluetooth-server/index.html">Creating a Bluetooth Server</a>. In that tutorial, the service simply receives a stream of bytes, counts them, and then returns a running total to the client. Our client is going to connect to that server, send a short string, and then listen for the count to be returned.</p>
 <p>To do this, we need to expand the implementation of <strong>ConnectionListener</strong> we produced earlier. The first stage is to make the connection to the correct URL. This means we need to write a short method to start the connection:</p>
 <div>
 <pre class="mosync-code-cpp">void BluetoothClient::connect(BtDevice&amp; device, BtService&amp; service)

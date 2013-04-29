@@ -10,17 +10,17 @@
 </blockquote><h2>Overview</h2>
 <p><strong></strong>The MoSync SDK 3.2.1 release is an incremental update of the previous MoSync SDK 3.2 release. Kindly consult the <a href="TEMPLATE_DOC_PATH/sdk/release-notes/whats-new-mosync-sdk-32/index.html">Release Notes for MoSync SDK 3.2</a> for a complete list of the many new features and updates that were introduced in this release. This document list the updates made for MoSync SDK 3.2.1.</p>
 <h2>Updating Existing Wormhole Projects</h2>
-<p>If you have HTML5/JavaScript projects that use the Wormhole library, you need to update the file wormhole.js and in some cases also the file main.cpp. For detailed instructions, please read the <strong><a href="TEMPLATE_DOC_PATH/js/guides/wormhole/update-wormhole/index.html">Wormhole Upgrade Guide</a></strong>.</p>
+<p>If you have HTML5/JavaScript projects that use the Wormhole library, you need to update the file wormhole.js and in some cases also the file main.cpp. For detailed instructions, please read the <strong><a href="TEMPLATE_DOC_PATH/sdk/js/guides/wormhole/update-wormhole/index.html">Wormhole Upgrade Guide</a></strong>.</p>
 <h3>Updating wormhole.js</h3>
 <p>For your existing HTML5/JS projects to work in the MoSync SDK 3.2.1, you must update the file <strong>wormhole.js</strong> to the most recent version. You can make a copy of this file from a project created with the new version of the SDK, and paste it into your existing project to replace the old version.</p>
 <h3>Updating your C++ code</h3>
 <p>You need to update the code in file main.cpp if you have HTML5/JS projects created with MoSync SDK 3.1.1 or earlier versions. Class WebAppMoblet (deprecated) has been replaced by class HybridMoblet. If you just created an HTML5 project from a template without modifying any C++ code, you can create a new project using MoSync SKD 3.2.1 and paste your HTML/JS files and resources into the new project. That should work out-of-the-box.</p>
-<p>If you have modified the code in main.cpp, you need to manually update the code. For further details, see the <a href="TEMPLATE_DOC_PATH/js/guides/wormhole/update-wormhole/index.html">Wormhole Upgrade Guide</a>.</p>
+<p>If you have modified the code in main.cpp, you need to manually update the code. For further details, see the <a href="TEMPLATE_DOC_PATH/sdk/js/guides/wormhole/update-wormhole/index.html">Wormhole Upgrade Guide</a>.</p>
 <h2>New Functionality in the Wormhole Library</h2>
 <p>The MoSync JavaScript library has been updated with new functionality. Updating Wormhole apps is essential if you have existing apps developed with previous MoSync SDK versions.</p>
 <h3>Screen Orientation Support in JavaScript</h3>
 <p>There is a new function for setting the screen orientation of the device called<strong> mosync.app.screenSetOrientation()</strong>. This function allows you to set the screen orientation to portrait, landscape, or dynamic mode. Examples:</p>
-<pre class="mosync-code-cpp">mosync.app.setScreenOrientation(mosync.SCREEN_ORIENTATION_DYNAMIC);
+<pre class="mosync-code-js">mosync.app.setScreenOrientation(mosync.SCREEN_ORIENTATION_DYNAMIC);
 mosync.app.setScreenOrientation(mosync.SCREEN_ORIENTATION_PORTRAIT);
 mosync.app.setScreenOrientation(mosync.SCREEN_ORIENTATION_LANDSCAPE);</pre>
 <h3>Open External Web Browser from JavaScript</h3>

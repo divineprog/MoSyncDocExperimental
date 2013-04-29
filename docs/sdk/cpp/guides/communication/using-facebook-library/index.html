@@ -16,7 +16,7 @@ String oAuthUrl = mFacebookManager-&gt;getOAuthUrl();
 mLoginScreen = new FacebookLoginScreen();
 mLoginScreen-&gt;setUrl ( oAuthUrl );
 mLoginScreen-&gt;show(); //displays the login screen</pre>
-<p>After the user logs in, we are redirected to the <strong> redirect_uri</strong>. The access token is passed in the <strong>redirect_uri</strong>. The <strong>redirect_uri</strong> must be parsed to get the access token. An example of how to extract the access token can be found in our <a href="TEMPLATE_DOC_PATH/cpp/examples/facebookdemo/index.html">FacebookDemo</a> example application in <strong>FacebookDemoMoblet::customEvent</strong>.<br>&nbsp;<br>After retrieving the access token, we must send it to the FacebookManager:</p>
+<p>After the user logs in, we are redirected to the <strong> redirect_uri</strong>. The access token is passed in the <strong>redirect_uri</strong>. The <strong>redirect_uri</strong> must be parsed to get the access token. An example of how to extract the access token can be found in our <a href="TEMPLATE_DOC_PATH/sdk/cpp/examples/facebookdemo/index.html">FacebookDemo</a> example application in <strong>FacebookDemoMoblet::customEvent</strong>.<br>&nbsp;<br>After retrieving the access token, we must send it to the FacebookManager:</p>
 <pre class="mosync-code-cpp">mFacebookManager-&gt;setAccessToken(accessToken); </pre>
 <h3>Permissions</h3>
 <p>You must request specific permissions from the user if your app needs more information than the user has made available to everyone on Facebook. To do this, pass the <strong>FacebookManager </strong>the permissions you need.</p>

@@ -13,13 +13,37 @@ load 'structure.rb'
 # Directory of Drupal export.
 # Not in git.
 def pathExports
-  "../mosync-doc-exports-130418/"
+  "../mosync-doc-exports-130429/"
 end
 
 # Templates used for building the web site.
 # In git.
 def pathTemplates
   "../templates/"
+end
+
+def pathPageTemplate
+  pathTemplates + "page-template.html"
+end
+
+def pathMainMenuTemplate
+  pathTemplates + "page-template.html"
+end
+
+def pathPageSDK
+  pathTemplates + "page-sdk.html"
+end
+
+def pathPageSDKMenu
+  pathTemplates + "page-sdk-menu.html"
+end
+
+def pathPageReload
+  pathTemplates + "page-reload.html"
+end
+
+def pathPageReloadMenu
+  pathTemplates + "page-reload-menu.html"
 end
 
 # Documentation main source directory
@@ -217,7 +241,7 @@ def docDownloadImage(url, destFile)
       File.open(destFile,"wb") do |file| file.puts(f.read) end
     end
   rescue
-    puts "*** Cannot download image: " + url.to_s + " ***"
+    puts "*** CANNOT DOWNLOAD IMAGE: " + url.to_s + " ***"
   end
 end
   
@@ -274,18 +298,33 @@ def webSiteBuildDocPages
 
     puts "Building #{sourceFile} #{destFile}"
       
-    html = File.open(sourceFile, "rb") { |f| f.read }
-    webSiteBuildPageFromStandardTemplate(
-      htmlGetPageTitle(html),
-      htmlGetPageContent(html),
-      "sdk-navigation.html",
-      destFile)
-	  
-	# Copy images.
+    webSiteBuildPageFromFiles(
+      :pagePath => sourceFile,
+      :pageTemplatePath => "dummy",
+      :menuTemplatePath => "sdk-navigation.html",
+      :outputPath => destFile
+	)
+	
+	
+	# Copy images to destination directory.
 	imagesSource = sourceDir + pageTargetFile(page) + "images"
 	imagesDest = destDir + pageTargetFile(page)
 	FileUtils.cp_r(Dir[imagesSource], imagesDest)
   end
+end
+
+def webSiteBuildPageFromFiles params
+    pagePath = params[:pagePath]
+    outputPath = params[:outputPath]
+    pageTemplatePath = params[:pageTemplatePath]
+    menuTemplatePath = params[:menuTemplatePath]
+	
+    html = File.open(pagePath, "rb") { |f| f.read }
+    webSiteBuildPageFromStandardTemplate(
+      htmlGetPageTitle(html),
+      htmlGetPageContent(html),
+      menuTemplatePath.to_s,
+      outputPath)
 end
 
 # Build link pages for all categories and page types.
@@ -427,6 +466,11 @@ def allPages()
   $pages
 end
 
+def allPagesNotIgnore()
+  $pages.select { |page|
+    not pageIsIgnore?(page) }
+end
+
 def docPages()
   $pages.select { |page| 
     #puts "Page:" + page.to_s
@@ -523,8 +567,11 @@ def htmlPrettify(html)
 end
 
 def htmlReplaceSyntaxHighlighterTags(html)
-  html.gsub(/{syntaxhighlighter(.*?)}/, "<pre class=\"mosync-code-cpp\">").gsub(
-    /{\/syntaxhighlighter}/, "</pre>")
+  html = html.gsub(/{syntaxhighlighter brush: cpp.*?}/, "<pre class=\"mosync-code-cpp\">")
+  html = html.gsub(/{syntaxhighlighter brush: jscript.*?}/, "<pre class=\"mosync-code-js\">")
+  html = html.gsub(/{syntaxhighlighter brush: css.*?}/, "<pre class=\"mosync-code-css\">")
+  html = html.gsub(/{syntaxhighlighter brush: xml.*?}/, "<pre class=\"mosync-code-xml\">")
+  html = html.gsub(/{\/syntaxhighlighter}/, "</pre>")
 end
 
 def htmlReplaceTabsWithSpaces(html)
@@ -605,7 +652,7 @@ def cleanmd
 end
 
 # Used for one shot conversion of symbolic path names.
-def updatePathSymbols
+def do_not_use_updatePathSymbols
   puts "Updating path symbols"
 
   # Find all files.
@@ -622,6 +669,51 @@ def updatePathSymbols
     fileSaveContent(filePath, html)
   end
 end
+
+def listExportedPagesNotInDocs
+  exportedFileNames = 
+    Pathname.glob(pathExports + "**/*.html").collect do |filename|
+	  filename.to_s.gsub(pathExports, "").gsub("/index.html", "")
+	end
+  importedFileNames = allPages().collect do |page|
+    pageOriginalFile(page)
+  end
+  
+  puts exportedFileNames - importedFileNames
+end
+
+def listTargetFileNames
+  targetFileNames = allPages().collect do |page|
+    pageTargetFile(page)
+  end
+  
+  puts targetFileNames.sort
+end
+
+def generateRedirectSQL
+  deleteTemplate = "DELETE FROM mosyncweb_path_redirect where source = 'ORIGINAL_PATH';"
+  insertTemplate = "INSERT INTO mosyncweb_path_redirect (rid,source,redirect,query,fragment,type,last_used,language)
+VALUES (NULL,'ORIGINAL_PATH','TARGET_PATH',NULL,NULL,'301',NOW(),'');"
+
+  sql = ""
+  targetFileNames = allPagesNotIgnore().collect do |page|
+    originalPath = pageOriginalFile(page)
+    targetPath = pageTargetFile(page)
+	if (targetPath == HOME_PATH) then
+	  targetPath = "docs/index.html"
+	else
+	  targetPath = "docs/" + targetPath + "/index.html"
+	end
+	deleteStatement = deleteTemplate.gsub("ORIGINAL_PATH", originalPath)
+	insertStatement = insertTemplate.
+		gsub("ORIGINAL_PATH", originalPath).
+			gsub("TARGET_PATH", targetPath)
+	sql += deleteStatement + "\n" + insertStatement + "\n"
+  end
+  
+  puts sql
+end
+
 
 # Helper function to run shell commands.
 def sh(cmd)
@@ -652,8 +744,12 @@ elsif (ARGV.include? "buildweb")
     webSiteBuild
 elsif (ARGV.include? "cleanweb")
     webSiteClean
-elsif (ARGV.include? "updatepathsymbols")
-    updatePathSymbols
+elsif (ARGV.include? "listexports")
+    listExportedPagesNotInDocs
+elsif (ARGV.include? "listtargets")
+	listTargetFileNames
+elsif (ARGV.include? "redirects")
+	generateRedirectSQL
 else
     puts "Options:"
     #puts "  html2md"

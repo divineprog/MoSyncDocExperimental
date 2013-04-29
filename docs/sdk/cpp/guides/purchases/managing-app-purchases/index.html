@@ -10,9 +10,9 @@
 <h2 dir="ltr">MoSync Guides and Examples</h2>
 <p>As well as this tutorial, we provide other resources that can be helpful when creating an app that uses in-app purchasing/billing:</p>
 <ul>
-<li><a href="TEMPLATE_DOC_PATH/cpp/guides/libs/purchase-library-and-api/index.html">The Purchase Library and API</a>&nbsp;— an overview of the MoSync C++ classes and methods, and the C syscall functions available for managing in-app purchases/billing. Here you will find some important information (including prerequisites) for both Apple's In-App Purchasing service and Google Play's In-App Billing service.</li>
+<li><a href="TEMPLATE_DOC_PATH/sdk/cpp/guides/libs/purchase-library-and-api/index.html">The Purchase Library and API</a>&nbsp;— an overview of the MoSync C++ classes and methods, and the C syscall functions available for managing in-app purchases/billing. Here you will find some important information (including prerequisites) for both Apple's In-App Purchasing service and Google Play's In-App Billing service.</li>
 <li><a href="http://www.mosync.com/files/imports/doxygen/latest/html/namespace_i_a_p.html">Purchase C++ Library</a> and <a href="http://www.mosync.com/files/imports/doxygen/latest/html/group___purchase_a_p_i.html">Purchase C API</a> — our reference manuals detailing all the classes, methods, functions, etc. in the MySync Purchase module.</li>
-<li><a href="TEMPLATE_DOC_PATH/cpp/examples/purchaseexample/index.html">PurchaseExample</a> — an example application, included with the MoSync SDK, that demonstrates the presentation of products, the handling of purchases, and the return of receipts. (Note that this example requires some configuration to work.)</li>
+<li><a href="TEMPLATE_DOC_PATH/sdk/cpp/examples/purchaseexample/index.html">PurchaseExample</a> — an example application, included with the MoSync SDK, that demonstrates the presentation of products, the handling of purchases, and the return of receipts. (Note that this example requires some configuration to work.)</li>
 </ul>
 <h2 dir="ltr">Creating and Configuring Your Project</h2>
 <p>Start by creating a new NativeUI project:</p>
@@ -58,7 +58,7 @@
 <li>Create an <strong>Application</strong> controller class to handle all purchase related events, and notify the user interface of progress.</li>
 <li>Make a purchase and follow the application’s flow.</li>
 </ul>
-<blockquote><p>You might also want to store all your purchase information to a database, so the users will see how many products (and of which type) they have purchased, even if the application gets closed. See <a href="TEMPLATE_DOC_PATH/cpp/guides/storage/sql-database-api/index.html">Database API</a> for more information.</p>
+<blockquote><p>You might also want to store all your purchase information to a database, so the users will see how many products (and of which type) they have purchased, even if the application gets closed. See <a href="TEMPLATE_DOC_PATH/sdk/cpp/guides/storage/sql-database-api/index.html">Database API</a> for more information.</p>
 </blockquote><h3 dir="ltr">Checking for in-app purchase support</h3>
 <p dir="ltr">In the <strong>main.cpp</strong> file in the project, add the <strong>#include</strong> directive for the <strong>PurchaseManager</strong> and the IAP namespace, then use the <strong>checkPurchaseSupported</strong> method to check that in-app purchasing/billing is supported on the device.</p>
 <pre class="mosync-code-cpp">#include &lt;MAUtil/Moblet.h&gt;
@@ -83,7 +83,7 @@ NativeUIMoblet()
    }
 }</pre>
 <h3 dir="ltr">Creating the user interface</h3>
-<p>The layout of your user interface will of course reflect the purpose of your app. Take a look at our <span style="color: #ff0000;"></span><a href="TEMPLATE_DOC_PATH/cpp/examples/purchaseexample/index.html">PurchaseExample</a> application to see how we did it. There we created a <strong>MainScreen</strong> class to serve as our user interface. The <strong>MainScreen</strong> class has two sections:</p>
+<p>The layout of your user interface will of course reflect the purpose of your app. Take a look at our <span style="color: #ff0000;"></span><a href="TEMPLATE_DOC_PATH/sdk/cpp/examples/purchaseexample/index.html">PurchaseExample</a> application to see how we did it. There we created a <strong>MainScreen</strong> class to serve as our user interface. The <strong>MainScreen</strong> class has two sections:</p>
 <ul>
 <li>A "Buy" section with a <strong>Buy</strong> button and a list of the available items for sale.</li>
 <li>A "History" section with a list of already purchased items.</li>
@@ -155,7 +155,7 @@ virtual void receiptError(const Purchase&amp; purchase, const int errorCode)
 <li>Wait for the <strong>PurchaseListener</strong> events <strong>receiptValid</strong>, <strong>receiptInvalid</strong> and <strong>receiptError</strong>.</li>
 <li>If the Receipt is valid, your application can get all the transaction information, like <strong>applicationId</strong>, <strong>productId</strong>, transaction date, and <strong>transactionID</strong>.</li>
 </ol>
-<p>In our <a href="TEMPLATE_DOC_PATH/cpp/examples/purchaseexample/index.html">PurchaseExample</a> application there is a list of available products from which you can choose:</p>
+<p>In our <a href="TEMPLATE_DOC_PATH/sdk/cpp/examples/purchaseexample/index.html">PurchaseExample</a> application there is a list of available products from which you can choose:</p>
 <pre class="mosync-code-cpp">void MainScreen::createProductIdList()
 {
    if ( getPlatform() == ANDROID )

@@ -11,7 +11,7 @@
 <p>If you do not have an Apple Mac available right now, you can install the <strong>MoSync SDK for Windows </strong>on an Windows machine. You will still be able to build your project, but the output will be an Xcode project which will then need to be built on an Apple Mac Snow Leopard running Xcode version 3.2.5.</p>
 <h3>Building iOS Apps with the MoSync SDK for OS X</h3>
 <ol>
-<li>Set an iOS device (iPhone, iPad, etc.) as a <a href="TEMPLATE_DOC_PATH/sdk/guides/ide/using-device-profiles/index.html">target device profile</a> in the MoSync IDE.</li>
+<li>Set an iOS device (iPhone, iPad, etc.) as a <a href="TEMPLATE_DOC_PATH/sdk/tools/guides/ide/using-device-profiles/index.html">target device profile</a> in the MoSync IDE.</li>
 <li><a href="http://www.mosync.com/documentation/manualpage/building-applications">Build your application</a>. An Xcode project will be created for you.</li>
 <li>Open the Mac Finder and find the Xcode project file: <em>&lt;ProjectDirectory&gt;/Output/Release/Apple/iPhone/package/xcode-proj/&lt;ProjectName&gt;.xcodeproj</em></li>
 <li>Double-click on the Xcode-project to open it with Xcode.</li>
@@ -20,7 +20,7 @@
 </ol>
 <h3>Building iOS Apps with the MoSync SDK for Windows</h3>
 <ol>
-<li>Set an iOS device (iPhone, iPad, etc.) as a <a href="TEMPLATE_DOC_PATH/sdk/guides/ide/using-device-profiles/index.html">target device profile</a> in the MoSync IDE.</li>
+<li>Set an iOS device (iPhone, iPad, etc.) as a <a href="TEMPLATE_DOC_PATH/sdk/tools/guides/ide/using-device-profiles/index.html">target device profile</a> in the MoSync IDE.</li>
 <li><a href="http://www.mosync.com/documentation/manualpage/building-applications">Build your application</a>. An Xcode project will be created for you.</li>
 <li>Open Windows Explorer and find the Xcode project file: <em>&lt;ProjectDirectory&gt;/Output/Release/Apple/iPhone/package/xcode-proj/&lt;ProjectName&gt;.xcodeproj</em></li>
 <li>Move the created Xcode project to an Apple Mac Snow Leopard running Xcode to finalize the application.</li>
@@ -37,8 +37,8 @@
 <h2>Storing the Application's State</h2>
 <p>An application may be closed when the phone receives a call or if the application uses too much memory. Therefore one thing users rely on is that the state of an application is stored at all times, so that when the application is restarted, its state can restored. This can easliy be implemented using MoSync's store syscalls defined in <strong>maapi.h</strong> (<strong>maOpenStore</strong>, <strong>maWriteStore</strong>...). When the application receives an EVENT_TYPE_CLOSE event, make sure you write the state to a store, so that it can be restored whenever the application is restarted.</p>
 <h2>Image and Sound Support</h2>
-<p>For <a href="TEMPLATE_DOC_PATH/sdk/guides/ide/resource-compiler-tutorial/index.html">image resources</a>, iOS supports only JPEG and PNG formats.</p>
-<p>For <a href="TEMPLATE_DOC_PATH/sdk/guides/ide/adding-application-icons/index.html">application icons</a>, the MoSync SDK for OS X supports only SVG and PNG image formats. SVG images work well and get converted automatically by the SDK to PNG. To be able to use PNG images you will need to install the latest version of Image Magick: see issue <a href="http://jira.mosync.com/browse/MOSYNC-2308">MOSYNC-2308</a>.</p>
+<p>For <a href="TEMPLATE_DOC_PATH/sdk/tools/guides/ide/resource-compiler-tutorial/index.html">image resources</a>, iOS supports only JPEG and PNG formats.</p>
+<p>For <a href="TEMPLATE_DOC_PATH/sdk/tools/guides/ide/adding-application-icons/index.html">application icons</a>, the MoSync SDK for OS X supports only SVG and PNG image formats. SVG images work well and get converted automatically by the SDK to PNG. To be able to use PNG images you will need to install the latest version of Image Magick: see issue <a href="http://jira.mosync.com/browse/MOSYNC-2308">MOSYNC-2308</a>.</p>
 <p>The playback audio codecs are described in the&nbsp;<a href="http://developer.apple.com/iphone/library/documentation/AudioVideo/Conceptual/MultimediaPG/UsingAudio/UsingAudio.html">iOS Reference library</a></p>
 <h2>Known Issues and Limitations</h2>
 <p>For known issues and limitations with our iOS/iPhone implementation, see our <a href="http://jira.mosync.com/secure/IssueNavigator.jspa?mode=hide&amp;requestId=10123">Issue Tracker</a>.</p>

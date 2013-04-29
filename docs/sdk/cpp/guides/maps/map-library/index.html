@@ -6,16 +6,16 @@
 <h1>Using the MAP Library</h1>
 <p>The Mosync MAP library is a standard library that provides a MapWidget for displaying geographical maps, sometimes called slippy or panning maps, consisting of tiles provided by a map source. This guide introduces the basics of the MAP library and shows you how to create map applications from scratch.<!--break--></p>
 <p></p>
-<p><em><strong>Important</strong>: MoSync 2.5 includes an improved MAP Library. If you want to compile in MoSync 2.5 an existing application that uses the 2.4 MAP Library you will need to update that application. See <a href="TEMPLATE_DOC_PATH/cpp/guides/maps/map-library/index.html#Migrating_to_the_2.5_MAP_Library">Migrating to the 2.5 MAP Library</a>.&nbsp;</em></p>
+<p><em><strong>Important</strong>: MoSync 2.5 includes an improved MAP Library. If you want to compile in MoSync 2.5 an existing application that uses the 2.4 MAP Library you will need to update that application. See <a href="TEMPLATE_DOC_PATH/sdk/cpp/guides/maps/map-library/index.html#Migrating_to_the_2.5_MAP_Library">Migrating to the 2.5 MAP Library</a>.&nbsp;</em></p>
 <h2>Introduction</h2>
 <p>At the heart of the MAP Library is <strong>MapWidget</strong>. You can use it as is, or extend it to overlay information on top of the map. The library contains map classes for using one or more tile-based map servers such as OpenStreetMap, CloudMade, and Google Maps. <br><br>Latitude and longitude co-ordinates can be converted to meters and pixels (both global and device). Connection to a location-aware sensor is performed by the client, and is outside of the scope of the library itself.<br><br>The primary public map source is OpenStreetMap (<a href="http://www.openstreetmap.org/">openstreetmap.org</a>). There is a working hook into Google Static Maps; however use of Google Static Maps requires a license agreement with Google, so this is more of a code sample.</p>
 <h2>Example Programs</h2>
 <p>There are two examples programs you can use to study the use of the MAP Library:&nbsp;<strong>&nbsp;</strong></p>
 <ul>
-<li><a href="TEMPLATE_DOC_PATH/cpp/examples/hellomap/index.html">HelloMap</a> is a simple Moblet that displays an OpenStreetMap across the entire device screen. The user can use the phone keys to pan the map and to zoom in and out. The core of the HelloMap sample application is in <em>HelloMapScreen.cpp</em>.</li>
+<li><a href="TEMPLATE_DOC_PATH/sdk/cpp/examples/hellomap/index.html">HelloMap</a> is a simple Moblet that displays an OpenStreetMap across the entire device screen. The user can use the phone keys to pan the map and to zoom in and out. The core of the HelloMap sample application is in <em>HelloMapScreen.cpp</em>.</li>
 </ul>
 <ul>
-<li><a href="TEMPLATE_DOC_PATH/cpp/examples/mapdemo/index.html">MapDemo</a> is a more full-blown example that illustrates the use of the map library in an application.</li>
+<li><a href="TEMPLATE_DOC_PATH/sdk/cpp/examples/mapdemo/index.html">MapDemo</a> is a more full-blown example that illustrates the use of the map library in an application.</li>
 </ul>
 <p><strong>&nbsp;</strong>These examples are written using a memory tracker to allocate and deallocate memory. This makes the code a little more complex than is strictly necessary, but will prove useful if you want to use a memory tracker in your application.</p>
 <h2>The MAP Library</h2>

@@ -11,9 +11,9 @@
 <p>When it is invoked, Pipe-Tool makes several passes through your code. It is very fast: it takes only around one second to make six passes through a 25000 line application.</p>
 <p>For specialist uses, Pipe-Tool can also be run on demand from the command line.</p>
 <h3>Code Compilation</h3>
-<p>As the first step of the build process, the MoSync Eclipse IDE invokes the <a href="TEMPLATE_DOC_PATH/sdk/guides/architecture/toolchain/index.html">GCC compiler</a> to compile your application code.&nbsp;</p>
+<p>As the first step of the build process, the MoSync Eclipse IDE invokes the <a href="TEMPLATE_DOC_PATH/sdk/tools/guides/architecture/toolchain/index.html">GCC compiler</a> to compile your application code.&nbsp;</p>
 <h2>Code Verification and Optimization</h2>
-<p>A little later in the build process, Pipe-Tool takes the output from GCC and the resource pre-compiler (for information about resource compilation, see our <a href="TEMPLATE_DOC_PATH/sdk/guides/ide/resource-compiler-reference/index.html">Resource Compiler Reference</a>) and performs code verification, code optimization, and dead code elimination. Code verification includes among other things:</p>
+<p>A little later in the build process, Pipe-Tool takes the output from GCC and the resource pre-compiler (for information about resource compilation, see our <a href="TEMPLATE_DOC_PATH/sdk/tools/guides/ide/resource-compiler-reference/index.html">Resource Compiler Reference</a>) and performs code verification, code optimization, and dead code elimination. Code verification includes among other things:</p>
 <ul style="font-family: Verdana;"><li>Bounds checking</li>
 <li>Division error detection</li>
 <li>Stack abuse detection</li>
@@ -34,7 +34,7 @@
 <p>When a program has been optimized and linked, Pipe-Tool sends the internal representation of the program to the compiler backend. The backend transforms the application into a representation that can be understood by the target architecture. Most commonly the program gets assembled into MoSync bytecode which in turn may be interpreted or recompiled by the MoSync runtimes. We also have experimental support for producing a Java bytecode representation of the application that can be executed on Java virtual machines.</p>
 <h2>Using Pipe-Tool from the Command Line</h2>
 <h3>Compiling Resources</h3>
-<p>If your resources are declared via a LST file (see the <a href="TEMPLATE_DOC_PATH/sdk/guides/ide/resource-compiler-reference/index.html">Resource Compiler Reference</a>) you can invoke the resource compiler from the Pipe-Tool command line, if you really need to:</p>
+<p>If your resources are declared via a LST file (see the <a href="TEMPLATE_DOC_PATH/sdk/tools/guides/ide/resource-compiler-reference/index.html">Resource Compiler Reference</a>) you can invoke the resource compiler from the Pipe-Tool command line, if you really need to:</p>
 <p><strong>pipe-tool -R</strong> <em>options outfile infile1 </em>[<em>infile2 </em>...]</p>
 <h3>Building a Library</h3>
 <p>In <strong>-L</strong> mode, Pipe-Tool combines the specifed infiles (<strong>.s</strong> files) into a single library <strong>.lib</strong> file.</p>
