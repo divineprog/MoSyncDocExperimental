@@ -10,6 +10,10 @@ require "open-uri"
 
 load 'structure.rb' 
 
+######################################################
+#                     PATH NAMES                     #
+######################################################
+
 # Directory of Drupal export.
 # Not in git.
 def pathExports
@@ -26,20 +30,24 @@ def pathPageTemplate
   pathTemplates + "page-template.html"
 end
 
-def pathMainMenuTemplate
-  pathTemplates + "page-template.html"
+def pathPageDocHome
+  pathTemplates + "page-doc-home.html"
 end
 
-def pathPageSDK
-  pathTemplates + "page-sdk.html"
+def pathPageDocMenu
+  pathTemplates + "page-doc-menu.html"
 end
 
-def pathPageSDKMenu
+def pathPageSdkHome
+  pathTemplates + "page-sdk-home.html"
+end
+
+def pathPageSdkMenu
   pathTemplates + "page-sdk-menu.html"
 end
 
-def pathPageReload
-  pathTemplates + "page-reload.html"
+def pathPageReloadHome
+  pathTemplates + "page-reload-home.html"
 end
 
 def pathPageReloadMenu
@@ -58,14 +66,13 @@ def pathWebSite
   "../website/"
 end
 
-# Root folder for doc pages.
-def pathWebSitePages
-  pathWebSite
-end
+######################################################
+#                 IMPORT FROM DRUPAL                 #
+######################################################
 
 # Not used for now.
 def convertHtmlToMarkdown
-  root = pathExports
+  root = pathExports()
   n = 1
   Pathname.glob(pathExports() + "**/*.html").each  do |p|
     puts "File " + n.to_s + ": " + p.to_s
@@ -81,13 +88,8 @@ end
 # TODO: Remove this function, it is dangerous.
 # Deletes files under version control.
 # Only for development phase.
-def docClean
+def XdocClean
   dir = Pathname.new pathDocuments
-  fileCleanPath(dir)
-end
-
-def webSiteClean
-  dir = Pathname.new pathWebSite
   fileCleanPath(dir)
 end
 
@@ -245,20 +247,28 @@ def docDownloadImage(url, destFile)
   end
 end
   
+######################################################
+#                   BUILD WEB SITE                   #
+######################################################
+
 def webSiteBuild
   webSiteClean
-  webSiteBuildHomePage
-  webSiteBuildDocPages
-  webSiteBuildLinkPages
+  webSiteBuildDocHomePage
+  webSiteBuildSdkHomePage
+  webSiteBuildSdkDocPages
+  webSiteBuildSdkIndexPages
+  webSiteBuildReloadHomePage
+  webSiteBuildReloadDocPages
+  webSiteBuildReloadIndexPages
 end
 
 def webSiteClean
   # Clean and create target directories.
-  fileCleanPath(Pathname.new(pathWebSitePages()))
+  fileCleanPath(Pathname.new(pathWebSite()))
   fileCleanPath(Pathname.new(pathWebSite() + "js/"))
 end
 
-def webSiteBuildHomePage
+def webSiteBuildDocHomePage
   title = "MoSync Documentation"
 
   # Get content HTML.
@@ -282,9 +292,9 @@ def webSiteBuildHomePage
   #  Pathname.new("./docsite/pages/mosync_logo.jpg"))
 end
 
-def webSiteBuildDocPages
+def webSiteBuildSdkDocPages
   sourceDir = Pathname.new(pathDocuments())
-  destDir = Pathname.new(pathWebSitePages)
+  destDir = Pathname.new(pathWebSite())
   
   # Replace template elements in each file and save.
   n = 0
@@ -304,14 +314,26 @@ def webSiteBuildDocPages
       :menuTemplatePath => "sdk-navigation.html",
       :outputPath => destFile
 	)
-	
-	
+
 	# Copy images to destination directory.
 	imagesSource = sourceDir + pageTargetFile(page) + "images"
 	imagesDest = destDir + pageTargetFile(page)
 	FileUtils.cp_r(Dir[imagesSource], imagesDest)
   end
 end
+
+def webSiteBuildSdkIndexPages
+end
+
+def webSiteBuildReloadHomePage
+end
+
+def webSiteBuildReloadDocPages
+end
+
+def webSiteBuildReloadIndexPages
+end
+
 
 def webSiteBuildPageFromFiles params
     pagePath = params[:pagePath]
@@ -358,7 +380,7 @@ end
 # Exampel of pageShortPath: "cpp/guides/"
 def webSiteBuildCategoryLinkPage(labels, pageShortPath, pageTitle)
   # Create page path.
-  destDir = Pathname.new(pathWebSitePages())
+  destDir = Pathname.new(pathWebSite())
   destFile = destDir + pageShortPath + "index.html"
   
   puts "Building page: " + destFile.to_s
@@ -421,7 +443,7 @@ def webSiteBuildPageFromStandardTemplate(title, content, navigationTemplate, des
   # Set up paths.
   templateFile = Pathname.new(pathTemplates() + "page-template.html")
   navigationTemplateFile = Pathname.new(pathTemplates() + navigationTemplate)
-  pagesDir = Pathname.new(pathWebSitePages())
+  pagesDir = Pathname.new(pathWebSite())
   jsDir = Pathname.new(pathWebSite() + "js/")
   destPath = destFile.parent
   
@@ -461,6 +483,11 @@ def webSiteBuildPageFromTemplate(template, title, content, navigation, jsDirRela
   html = html.gsub("TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
   html
 end
+
+######################################################
+#                   GET PAGE DATA                    #
+######################################################
+
 
 def allPages()
   $pages
@@ -536,6 +563,10 @@ end
 def htmlGetPageTitle(html)
   htmlGetTagContents(html, "title")
 end
+
+######################################################
+#                  HTML PROCESSING                   #
+######################################################
 
 def htmlGetPageContent(html)
   htmlGetTagContents(html, "body")
@@ -616,6 +647,10 @@ def htmlStripTOC(html)
   html.gsub("[toc]", "")
 end
 
+######################################################
+#                    FILE HELPERS                    #
+######################################################
+
 # Clean (and create) directory.
 def fileCleanPath(pathName) 
   pathName.mkpath()
@@ -640,7 +675,11 @@ def fileGetPageTitle(filePath)
   htmlGetPageTitle(html)
 end
 
-def cleanmd
+######################################################
+#                       UNUSED                       #
+######################################################
+
+def not_used_cleanmd
   root = Pathname.new pathExports
   n = 1
   Pathname.glob(pathExports + "**/*.md").each  do |p|
@@ -652,7 +691,7 @@ def cleanmd
 end
 
 # Used for one shot conversion of symbolic path names.
-def do_not_use_updatePathSymbols
+def not_used_updatePathSymbols
   puts "Updating path symbols"
 
   # Find all files.
@@ -669,6 +708,10 @@ def do_not_use_updatePathSymbols
     fileSaveContent(filePath, html)
   end
 end
+
+######################################################
+#                   ANALYSIS TOOLS                   #
+######################################################
 
 def listExportedPagesNotInDocs
   exportedFileNames = 
@@ -714,6 +757,9 @@ VALUES (NULL,'ORIGINAL_PATH','TARGET_PATH',NULL,NULL,'301',NOW(),'');"
   puts sql
 end
 
+######################################################
+#                 UTILITY FUNCTIONS                  #
+######################################################
 
 # Helper function to run shell commands.
 def sh(cmd)
@@ -724,6 +770,10 @@ def sh(cmd)
         error "Command failed: '#{$?}'"
     end
 end
+
+######################################################
+#              COMMAND INVOKATION TABLE              #
+######################################################
 
 # Commands
 if (ARGV.include? "html2md")
