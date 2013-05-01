@@ -17,7 +17,7 @@
     
     @media all and (min-width: 800px)
     {
-      #page-navigation
+      #page-menu
       {
         width: 272px;
         float: left;
@@ -29,7 +29,7 @@
         margin-left: 300px;
         left: -300px;
       }
-      #button-panel-navigation
+      #button-panel-menu
       {
         display: none;
       }
@@ -37,7 +37,7 @@
 
     @media all and (max-width: 799px)
     {
-      #page-navigation
+      #page-menu
       {
         width: 100%;
         display: none;
@@ -87,6 +87,7 @@
     }
     */
     
+    // Not used.
     function showDocPage(path)
     {
         /*$.mobile.changePage(path, { 
@@ -109,10 +110,10 @@
                  data-rel="back"
                  data-role="button"
                  data-icon="back">Back</a>
-               <a href="#panel-navigation"
-                 id="button-panel-navigation"
+               <a href="#panel-menu"
+                 id="button-panel-menu"
                  data-role="button"
-                 data-icon="bars">Content</a>
+                 data-icon="bars">Menu</a>
             </div>
             <a data-ajax="false"
                 href="TEMPLATE_DOC_PATH/index.html"
@@ -121,8 +122,8 @@
         </div>
         
         <div data-role="content" id="page-container">
-            <div id="page-navigation">
-                TEMPLATE_PAGE_NAVIGATION
+            <div id="page-menu">
+                TEMPLATE_PAGE_MENU
             </div>
             <div id="page-content">
                 TEMPLATE_PAGE_CONTENT
@@ -131,12 +132,12 @@
         
         <!-- Dynamic Panel -->
         <div data-role="panel"
-            id="panel-navigation"
+            id="panel-menu"
             data-position="left"
             data-display="overlay"
             data-mini="false"
             data-theme="c">
-           TEMPLATE_PANEL_NAVIGATION
+           TEMPLATE_PANEL_MENU
         </div>
 
     </div>

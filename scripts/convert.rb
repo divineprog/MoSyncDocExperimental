@@ -1,5 +1,6 @@
-# Prorgam that builds the documentation website.
-# And handles the import of documentation from Drupal.
+# Program that builds the documentation website.
+# Also handles the import of documentation from Drupal.
+# Author: Mikael Kindborg
 
 # This is a way to copy files.
 # FileUtils.cp_r(Dir[sourceDir + "*"], destDir)
@@ -8,6 +9,7 @@ require 'fileutils'
 require 'pathname'
 require "open-uri"
 
+# The structure file contains all pages and category info.
 load 'structure.rb' 
 
 ######################################################
@@ -21,9 +23,12 @@ def pathExports
 end
 
 # Templates used for building the web site.
-# In git.
 def pathTemplates
   "../templates/"
+end
+
+def pathTemplateJs
+  pathTemplates + "js/"
 end
 
 def pathPageTemplate
@@ -54,17 +59,392 @@ def pathPageReloadMenu
   pathTemplates + "page-reload-menu.html"
 end
 
-# Documentation main source directory
-# In git.
-def pathDocuments
+# Documentation main source directory.
+def pathDocs
   "../docs/"
 end
 
-# Directory of doc web site
-# Not in git.
+def pathDocsSdk
+  pathDocs + "sdk/"
+end
+
+def pathDocsReload
+  pathDocs + "reload/"
+end
+
+# Directory of doc web site. This is not in git.
 def pathWebSite
   "../website/"
 end
+
+def pathWebSiteJs
+  pathWebSite + "js/"
+end
+
+def pathWebSiteSdk
+  pathWebSite + "sdk/"
+end
+
+def pathWebSiteReload
+  pathWebSite + "reload/"
+end
+
+######################################################
+#                   BUILD WEB SITE                   #
+######################################################
+
+# Menu items that can be highlighted
+MENU_START_HOME="TEMPLATE_THEME_MENU_START_HOME"
+MENU_START_SDK="TEMPLATE_THEME_MENU_START_SDK"
+MENU_START_RELOAD="TEMPLATE_THEME_MENU_START_RELOAD"
+MENU_CPP_GUIDES="TEMPLATE_THEME_MENU_CPP_GUIDES"
+MENU_CPP_TUTORIALS="TEMPLATE_THEME_MENU_CPP_TUTORIALS"
+MENU_CPP_EXAMPLES="TEMPLATE_THEME_MENU_CPP_EXAMPLES"
+MENU_JS_GUIDES="TEMPLATE_THEME_MENU_JS_GUIDES"
+MENU_JS_TUTORIALS="TEMPLATE_THEME_MENU_JS_TUTORIALS"
+MENU_JS_EXAMPLES="TEMPLATE_THEME_MENU_JS_EXAMPLES"
+MENU_SDK_GUIDES="TEMPLATE_THEME_MENU_SDK_GUIDES"
+MENU_SDK_REFERENCES="TEMPLATE_THEME_MENU_SDK_REFERENCES"
+MENU_SDK_RELEASE_NOTES="TEMPLATE_THEME_MENU_SDK_RELEASE_NOTES"
+
+MENU_ALL = [
+MENU_START_HOME,
+MENU_START_SDK,
+MENU_START_RELOAD,
+MENU_START_HOME,
+MENU_START_SDK,
+MENU_START_RELOAD,
+MENU_CPP_GUIDES,
+MENU_CPP_TUTORIALS,
+MENU_CPP_EXAMPLES,
+MENU_JS_GUIDES,
+MENU_JS_TUTORIALS,
+MENU_JS_EXAMPLES,
+MENU_SDK_GUIDES,
+MENU_SDK_REFERENCES,
+MENU_SDK_RELEASE_NOTES,
+]
+
+def webSiteBuild
+  webSiteClean
+  webSiteCopyLibs
+  webSiteBuildDocHomePage
+  webSiteBuildSdkHomePage
+  webSiteBuildSdkDocPages
+  webSiteBuildSdkIndexPages
+  webSiteBuildReloadHomePage
+  webSiteBuildReloadDocPages
+  webSiteBuildReloadIndexPages
+end
+
+def webSiteClean
+  # Clean and create target directories.
+  fileCleanPath(Pathname.new(pathWebSite()))
+  fileCleanPath(Pathname.new(pathWebSiteJs()))
+end
+
+def webSiteCopyLibs
+  # Copy JavaScript libs.
+  FileUtils.cp_r(Dir[pathTemplateJs()], pathWebSite())
+  
+  # Copy images.
+  #FileUtils.cp(
+  #  Pathname.new("../templates/mosync_logo.jpg"),
+  #  Pathname.new("../docs/pages/mosync_logo.jpg"))
+end
+
+def webSiteBuildPage params
+  # Get parameters.
+  outputFile = params[:outputFile]
+  pageFile = params[:pageFile]
+  pageHtml = params[:pageHtml]
+  menuFile = params[:menuFile]
+  templateFile = params[:templateFile]
+  pageTitle = params[:pageTitle]
+  selectedMenuItem = params[:selectedMenuItem]
+
+  # Create Pathname objects.
+  outputPath = Pathname.new(outputFile)
+  menuPath = Pathname.new(menuFile)
+  templatePath = Pathname.new(templateFile)
+  
+  # Web site Pathname objects.
+  webRootPath = Pathname.new(pathWebSite())
+  webJsPath = Pathname.new(pathWebSiteJs())
+
+  # Read files.
+  if (pageFile != nil) then
+    pageData = fileReadContent(Pathname.new(pageFile))
+  else
+    pageData = pageHtml
+  end
+  menuData = fileReadContent(menuPath)
+  templateData = fileReadContent(templatePath)
+  
+  # Relative paths used for links and js/css imports.
+  relativeDocPath = webRootPath.relative_path_from(outputPath)
+  relativeJsPath = webJsPath.relative_path_from(outputPath)
+  
+  relativeDocPath = webRootPath.relative_path_from(outputPath.dirname)
+  relativeJsPath = webJsPath.relative_path_from(outputPath.dirname)
+
+=begin
+  puts "outputPath:  " + outputPath.dirname.to_s
+  puts "webRootPath: " + webRootPath.to_s
+  puts "webJsPath:   " + webJsPath.to_s
+  puts "relDocPath:  " + relativeDocPath.to_s
+  puts "relJsPath:   " + relativeJsPath.to_s
+=end
+
+  # Fill in template data.
+  html = webSiteBuildPageFromTemplateData(
+    :pageTitle => pageTitle,
+    :pageData => pageData,
+    :menuData => menuData,
+    :templateData => templateData,
+    :selectedMenuItem => selectedMenuItem,
+    :relativeDocPath => relativeDocPath.to_s,
+    :relativeJsPath => relativeJsPath.to_s
+    )
+    
+  # Make sure dest path exists and save page.
+  outputPath.parent.mkpath()
+  fileSaveContent(outputPath, html)
+end
+
+
+# Returns HTML for page built from template.
+def webSiteBuildPageFromTemplateData(params)
+  # Get parameters.
+  pageTitle = params[:pageTitle]
+  pageData = params[:pageData]
+  menuData = params[:menuData]
+  templateData = params[:templateData]
+  selectedMenuItem = params[:selectedMenuItem]
+  relativeDocPath = params[:relativeDocPath]
+  relativeJsPath = params[:relativeJsPath]
+  
+  # Substitute template placeholders.
+  # Order of these statements is important since included
+  # parts in turn contain placeholders to be replaced.
+  
+  # Insert content and title.
+  html = templateData.gsub("TEMPLATE_PAGE_CONTENT", pageData)
+  html = html.gsub("TEMPLATE_PAGE_TITLE", pageTitle)
+  
+  # Insert menu at two places with different insets.
+  html = html.gsub("TEMPLATE_PAGE_MENU", menuData)
+  html = html.gsub("TEMPLATE_MENU_INSET", "true")
+  html = html.gsub("TEMPLATE_PANEL_MENU", menuData)
+  html = html.gsub("TEMPLATE_MENU_INSET", "false")
+  
+  # Set selected menu item.
+  MENU_ALL.each do |menuItem|
+    if menuItem == selectedMenuItem then
+      html = html.gsub(menuItem, "data-theme=\"b\"")
+    else
+      html = html.gsub(menuItem, "")
+    end
+  end
+  
+  # Insert relative paths for urls.
+  html = html.gsub("TEMPLATE_JS_PATH", relativeJsPath)
+  html = html.gsub("TEMPLATE_DOC_PATH", relativeDocPath)
+  
+  # Return generated HTML code.
+  html
+end
+
+def webSiteBuildDocHomePage
+  title = "MoSync Documentation"
+  webSiteBuildPage(
+    :outputFile => pathWebSite() + "index.html",
+    :pageFile => pathPageDocHome,
+    :menuFile => pathPageDocMenu,
+    :templateFile => pathPageTemplate,
+    :pageTitle => title,
+    :selectedMenuItem => MENU_START_HOME
+	)
+end
+
+def webSiteBuildSdkHomePage
+  title = "MoSync SDK"
+  webSiteBuildPage(
+    :outputFile => pathWebSiteSdk() + "index.html",
+    :pageFile => pathPageSdkHome,
+    :menuFile => pathPageSdkMenu,
+    :templateFile => pathPageTemplate,
+    :pageTitle => title,
+    :selectedMenuItem => MENU_START_SDK
+	)
+end
+
+def webSiteBuildSdkDocPages
+  docSourcePath = Pathname.new(pathDocsSdk())
+  webOutputPath = Pathname.new(pathWebSiteSdk())
+  
+  # Build web page for each documentation page.
+  n = 0
+  docSdkPages().each do |page|
+    n = n + 1
+    puts "Processing file " + n.to_s + ": " + pageTargetFile(page)
+    
+    # Set up path names.
+    pageFile = pathDocs() + pageTargetFile(page) + "/index.html"
+    outputFile = pathWebSite() + pageTargetFile(page) + "/index.html"
+
+    puts "Building #{pageFile} #{outputFile}"
+    
+    # Build and save page.
+    title = htmlGetPageTitle(fileReadContent(pageFile))
+    webSiteBuildPage(
+      :outputFile => outputFile,
+      :pageFile => pageFile,
+      :menuFile => pathPageSdkMenu,
+      :templateFile => pathPageTemplate,
+      :pageTitle => title,
+      :selectedMenuItem => webSiteGetMenuItemTypeForPage(page)
+	  )
+    
+	# Copy images to destination directory.
+	imageSourceDir = pathDocs() + pageTargetFile(page) + "/images"
+	imageDestDir = pathWebSite() + pageTargetFile(page)
+    puts "Copy images from " + imageSourceDir + " to " + imageDestDir
+	FileUtils.cp_r(Dir[imageSourceDir], imageDestDir)
+  end
+end
+
+# Get the menu item template placeholder for this page.
+def webSiteGetMenuItemTypeForPage(page)
+  if pageHasAllLabels?(page, [SDK,CPP,GUIDE]) then
+    MENU_CPP_GUIDES
+  elsif pageHasAllLabels?(page, [SDK,CPP,TUTORIAL]) then
+    MENU_CPP_TUTORIALS
+  elsif pageHasAllLabels?(page, [SDK,CPP,EXAMPLE]) then
+    MENU_CPP_EXAMPLES
+  elsif pageHasAllLabels?(page, [SDK,JS,GUIDE]) then
+    MENU_JS_GUIDES
+  elsif pageHasAllLabels?(page, [SDK,JS,TUTORIAL]) then
+    MENU_JS_TUTORIALS
+  elsif pageHasAllLabels?(page, [SDK,JS,EXAMPLE]) then
+    MENU_JS_EXAMPLES
+  elsif pageHasAllLabels?(page, [SDK,TOOLS,GUIDE]) then
+    MENU_SDK_GUIDES
+  elsif pageHasAllLabels?(page, [SDK,TOOLS,GUIDE]) then
+    MENU_SDK_REFERENCES
+  elsif pageHasAllLabels?(page, [SDK,RELEASE_NOTE]) then
+    MENU_SDK_RELEASE_NOTES
+  end
+  # TODO: Add Reload menu items as needed.
+end
+
+# Build index pages for all categories and page types.
+def webSiteBuildSdkIndexPages
+  title = "C/C++ Coding Guides"
+  webSiteBuildSdkIndexPage([SDK,CPP,GUIDE], "sdk/cpp/guides/", title, MENU_CPP_GUIDES)
+  
+  title = "C/C++ Tutorials"
+  webSiteBuildSdkIndexPage([SDK,CPP,TUTORIAL], "sdk/cpp/tutorials/", title, MENU_CPP_TUTORIALS)
+  
+  title = "C/C++ Examples"
+  webSiteBuildSdkIndexPage([SDK,CPP,EXAMPLE], "sdk/cpp/examples/", title, MENU_CPP_EXAMPLES)
+  
+  title = "JavaScript Coding Guides"
+  webSiteBuildSdkIndexPage([SDK,JS,GUIDE], "sdk/js/guides/", title, MENU_JS_GUIDES)
+  
+  title = "JavaScript Tutorials"
+  webSiteBuildSdkIndexPage([SDK,JS,TUTORIAL], "sdk/js/tutorials/", title, MENU_JS_TUTORIALS)
+  
+  title = "JavaScript Examples"
+  webSiteBuildSdkIndexPage([SDK,JS,EXAMPLE], "sdk/js/examples/", title, MENU_JS_EXAMPLES)
+  
+  #title = "All Examples"
+  #webSiteBuildSdkIndexPage([CPP,JS,EXAMPLE], "sdk/overviews/examples/", title)
+  
+  title = "SDK Tools Guides"
+  webSiteBuildSdkIndexPage([SDK,TOOLS,GUIDE], "sdk/tools/guides/", title, MENU_SDK_GUIDES)
+  
+  title = "SDK Tools References"
+  webSiteBuildSdkIndexPage([SDK,TOOLS,REFERENCE], "sdk/tools/references/", title, MENU_SDK_REFERENCES)
+
+  title = "SDK Release Notes"
+  webSiteBuildSdkIndexPage([SDK,RELEASE_NOTE], "sdk/release-notes/", title, MENU_SDK_RELEASE_NOTES)
+end
+
+# Builds and saves a page of links for the given category and type.
+# Exampel of pageShortPath: "cpp/guides/"
+def webSiteBuildSdkIndexPage(labels, pageShortPath, pageTitle, selectedMenuItem)
+  # Create page path.
+  outputFile = pathWebSite() + pageShortPath + "index.html"
+  
+  puts "Building index page: " + outputFile.to_s
+  
+  # Get content HTML.
+  html = webSiteBuildIndexListForLabels(labels, pageShortPath)
+  
+  # Build the page.
+  webSiteBuildPage(
+    :outputFile => outputFile,
+    :pageFile => nil,
+    :pageHtml => html,
+    :menuFile => pathPageSdkMenu(),
+    :templateFile => pathPageTemplate(),
+    :pageTitle => pageTitle,
+    :selectedMenuItem => selectedMenuItem
+    )
+end
+
+# Returns HTML with list items for each label found in 
+# pages of the given category and type.
+# baseDir is a string naming the directory of the
+# target page, e.g. "cpp/guides/".
+def webSiteBuildIndexListForLabels(labels, baseDir)
+  # Filter pages.
+  pages = docPages()
+  pages = pagesForLabels(pages, labels)
+
+  # Get all labels except the ones given in the labels param.
+  allLabels = pagesGetAllLabels(pages).sort
+  allLabels = allLabels - labels
+  
+  # Generate lists for each label.
+  html = ""
+  allLabels.each do |label|
+    html += webSiteBuildLinkListForPages(
+      pagesForLabel(pages, label),
+      label,
+      baseDir)
+  end
+
+  html
+end
+
+# Return HTML for a list with links to the given pages.
+# baseDir is a string naming the directory of the
+# target page, e.g. "cpp/guides/".
+# TODO: Sort list by title of pages.
+def webSiteBuildLinkListForPages(pages, label, baseDir)
+  html = "<ul data-role=\"listview\" data-inset=\"true\">\n"
+  html += "<li data-role=\"list-divider\">#{label}</li>\n"
+  pages.each do |page|
+    title = pageGetTitleFromTargetFile(page)
+    target = pageTargetFile(page) + "/index.html"
+    url = target.split(baseDir)[1]
+    html += "<li><a data-ajax=\"false\" href=\"#{url}\">#{title}</a></li>\n"
+  end
+  html += "</ul>\n"
+  html
+end
+
+def webSiteBuildReloadHomePage
+end
+
+def webSiteBuildReloadDocPages
+end
+
+def webSiteBuildReloadIndexPages
+end
+
 
 ######################################################
 #                 IMPORT FROM DRUPAL                 #
@@ -85,14 +465,6 @@ def convertHtmlToMarkdown
   end
 end
 
-# TODO: Remove this function, it is dangerous.
-# Deletes files under version control.
-# Only for development phase.
-def XdocClean
-  dir = Pathname.new pathDocuments
-  fileCleanPath(dir)
-end
-
 def docImportAll
   docImportHTML
   docDownloadImages
@@ -102,7 +474,7 @@ end
 # Import HTML files exported from Drupal.
 def docImportHTML
   sourceDir = Pathname.new pathExports
-  destDir = Pathname.new pathDocuments
+  destDir = Pathname.new pathDocs
   
   # Process and copy pages to dest dir.
   n = 0
@@ -127,7 +499,6 @@ def docImportHTML
   end
 end
 
-
 # Iterate over all pages and all image urls
 # and download images to local files.
 def docDownloadImages
@@ -137,7 +508,7 @@ def docDownloadImages
   
   # Find all files.
   n = 0
-  Pathname.glob(pathDocuments() + "**/*.html").each do |filePath|
+  Pathname.glob(pathDocs() + "**/*.html").each do |filePath|
     n = n + 1
     puts "Processing File " + n.to_s + ": " + filePath.to_s
     # Iterate over all images in the file.
@@ -171,7 +542,7 @@ def docUpdateImageTags
 
   # Find all files.
   n = 0
-  Pathname.glob(pathDocuments() + "**/*.html").each do |filePath|
+  Pathname.glob(pathDocs() + "**/*.html").each do |filePath|
     n = n + 1
     puts "Updating File " + n.to_s + ": " + filePath.to_s
 	
@@ -246,265 +617,33 @@ def docDownloadImage(url, destFile)
     puts "*** CANNOT DOWNLOAD IMAGE: " + url.to_s + " ***"
   end
 end
-  
-######################################################
-#                   BUILD WEB SITE                   #
-######################################################
-
-def webSiteBuild
-  webSiteClean
-  webSiteBuildDocHomePage
-  webSiteBuildSdkHomePage
-  webSiteBuildSdkDocPages
-  webSiteBuildSdkIndexPages
-  webSiteBuildReloadHomePage
-  webSiteBuildReloadDocPages
-  webSiteBuildReloadIndexPages
-end
-
-def webSiteClean
-  # Clean and create target directories.
-  fileCleanPath(Pathname.new(pathWebSite()))
-  fileCleanPath(Pathname.new(pathWebSite() + "js/"))
-end
-
-def webSiteBuildDocHomePage
-  title = "MoSync Documentation"
-
-  # Get content HTML.
-  homePageFile = Pathname.new(pathTemplates() + "home.html")
-  html = File.open(homePageFile, "rb") { |f| f.read }
-  
-  # Save the page.
-  destFile = Pathname.new(pathWebSite()) + "index.html"
-  webSiteBuildPageFromStandardTemplate(
-      title,
-      html,
-      "sdk-navigation.html",
-      destFile)
-      
-  # Copy JavaScript libs.
-  FileUtils.cp_r(Dir[pathTemplates() + "js"], pathWebSite())
-  
-  # Copy images.
-  #FileUtils.cp(
-  #  Pathname.new("./templates/mosync_logo.jpg"),
-  #  Pathname.new("./docsite/pages/mosync_logo.jpg"))
-end
-
-def webSiteBuildSdkDocPages
-  sourceDir = Pathname.new(pathDocuments())
-  destDir = Pathname.new(pathWebSite())
-  
-  # Replace template elements in each file and save.
-  n = 0
-  docPages().each do |page|
-    n = n + 1
-    puts "Processing file " + n.to_s + ": " + pageTargetFile(page)
-    
-    sourceFile = sourceDir + pageTargetFile(page) + "index.html"
-    destPath = destDir + pageTargetFile(page)
-    destFile = destPath + "index.html"
-
-    puts "Building #{sourceFile} #{destFile}"
-      
-    webSiteBuildPageFromFiles(
-      :pagePath => sourceFile,
-      :pageTemplatePath => "dummy",
-      :menuTemplatePath => "sdk-navigation.html",
-      :outputPath => destFile
-	)
-
-	# Copy images to destination directory.
-	imagesSource = sourceDir + pageTargetFile(page) + "images"
-	imagesDest = destDir + pageTargetFile(page)
-	FileUtils.cp_r(Dir[imagesSource], imagesDest)
-  end
-end
-
-def webSiteBuildSdkIndexPages
-end
-
-def webSiteBuildReloadHomePage
-end
-
-def webSiteBuildReloadDocPages
-end
-
-def webSiteBuildReloadIndexPages
-end
-
-
-def webSiteBuildPageFromFiles params
-    pagePath = params[:pagePath]
-    outputPath = params[:outputPath]
-    pageTemplatePath = params[:pageTemplatePath]
-    menuTemplatePath = params[:menuTemplatePath]
-	
-    html = File.open(pagePath, "rb") { |f| f.read }
-    webSiteBuildPageFromStandardTemplate(
-      htmlGetPageTitle(html),
-      htmlGetPageContent(html),
-      menuTemplatePath.to_s,
-      outputPath)
-end
-
-# Build link pages for all categories and page types.
-def webSiteBuildLinkPages
-  title = "C/C++ Coding Guides"
-  webSiteBuildCategoryLinkPage([CPP, GUIDE], "sdk/cpp/guides/", title)
-  
-  title = "C/C++ Tutorials"
-  webSiteBuildCategoryLinkPage([CPP,TUTORIAL], "sdk/cpp/tutorials/", title)
-  
-  title = "C/C++ Examples"
-  webSiteBuildCategoryLinkPage([CPP,EXAMPLE], "sdk/cpp/examples/", title)
-  
-  title = "JavaScript Coding Guides"
-  webSiteBuildCategoryLinkPage([JS,GUIDE], "sdk/js/guides/", title)
-  
-  title = "JavaScript Tutorials"
-  webSiteBuildCategoryLinkPage([JS,TUTORIAL], "sdk/js/tutorials/", title)
-  
-  title = "JavaScript Examples"
-  webSiteBuildCategoryLinkPage([JS,EXAMPLE], "sdk/js/examples/", title)
-  
-  #title = "All Examples"
-  #webSiteBuildCategoryLinkPage([CPP,JS,EXAMPLE], "sdk/overviews/examples/", title)
-  
-  title = "Tool Guides"
-  webSiteBuildCategoryLinkPage([SDK,TOOLS,GUIDE], "sdk/tools/guides/", title)
-end
-
-# Builds and saves a page of links for the given category and type.
-# Exampel of pageShortPath: "cpp/guides/"
-def webSiteBuildCategoryLinkPage(labels, pageShortPath, pageTitle)
-  # Create page path.
-  destDir = Pathname.new(pathWebSite())
-  destFile = destDir + pageShortPath + "index.html"
-  
-  puts "Building page: " + destFile.to_s
-  
-  # Get content HTML.
-  html = webSiteBuildLinkListForLabels(labels, pageShortPath)
-  
-  # Save the page.
-  webSiteBuildPageFromStandardTemplate(
-      pageTitle,
-      html,
-      "sdk-navigation.html",
-      destFile)
-end
-
-# Returns HTML with list items for each label found in 
-# pages of the given category and type.
-# baseDir is a string naming the directory of the
-# target page, e.g. "cpp/guides/".
-def webSiteBuildLinkListForLabels(labels, baseDir)
-  # Filter pages.
-  pages = docPages()
-  pages = pagesForLabels(pages, labels)
-
-  # Get all labels except category and type.
-  allLabels = pagesGetAllLabels(pages).sort
-  allLabels = allLabels - labels
-  
-  # Generate lists for each label.
-  html = ""
-  allLabels.each do |label|
-    html += webSiteBuildLinkListForPages(
-      pagesForLabel(pages, label),
-      label,
-      baseDir)
-  end
-
-  html
-end
-
-# Return HTML for a list with links to the given pages.
-# baseDir is a string naming the directory of the
-# target page, e.g. "cpp/guides/".
-# TODO: Sort kist by title of pages.
-def webSiteBuildLinkListForPages(pages, label, baseDir)
-  html = "<ul data-role=\"listview\" data-inset=\"true\">\n"
-  html += "<li data-role=\"list-divider\">#{label}</li>\n"
-  pages.each do |page|
-    title = pageGetTitleFromTargetFile(page)
-    target = pageTargetFile(page) + "/index.html"
-    url = target.split(baseDir)[1]
-    html += "<li><a data-ajax=\"false\" href=\"#{url}\">#{title}</a></li>\n"
-  end
-  html += "</ul>\n"
-  html
-end
-
-# Build and save page from template file.
-def webSiteBuildPageFromStandardTemplate(title, content, navigationTemplate, destFile)
-  # Set up paths.
-  templateFile = Pathname.new(pathTemplates() + "page-template.html")
-  navigationTemplateFile = Pathname.new(pathTemplates() + navigationTemplate)
-  pagesDir = Pathname.new(pathWebSite())
-  jsDir = Pathname.new(pathWebSite() + "js/")
-  destPath = destFile.parent
-  
-  # Relative paths used for links and js/css imports.
-  pagesDirRelativePath = pagesDir.relative_path_from(destPath)
-  jsDirRelativePath = jsDir.relative_path_from(destPath)
-
-  # Read template.
-  template = File.open(templateFile, "rb") { |f| f.read }
-  navigation = File.open(navigationTemplateFile, "rb") { |f| f.read }
-  
-  # Create HTML from template.
-  html = webSiteBuildPageFromTemplate(
-    template,
-    title,
-    content,
-    navigation,
-    jsDirRelativePath,
-    pagesDirRelativePath)
-  
-  # Make sure dest path exists and write file.
-  destPath.mkpath()
-  File.open(destFile, "wb") { |f| f.write(html) }
-end
-
-# Returns HTML for page built from template.
-def webSiteBuildPageFromTemplate(template, title, content, navigation, jsDirRelativePath, pagesDirRelativePath)
-  # Order of these statements is important since included parts
-  # also contain placeholders to be replaced.
-  html = template.gsub("TEMPLATE_PAGE_CONTENT", content)
-  html = html.gsub("TEMPLATE_PAGE_TITLE", title)
-  html = html.gsub("TEMPLATE_PAGE_NAVIGATION", navigation)
-  html = html.gsub("TEMPLATE_NAVIGATION_INSET", "true")
-  html = html.gsub("TEMPLATE_PANEL_NAVIGATION", navigation)
-  html = html.gsub("TEMPLATE_NAVIGATION_INSET", "false")
-  html = html.gsub("TEMPLATE_JS_PATH", jsDirRelativePath.to_s)
-  html = html.gsub("TEMPLATE_DOC_PATH", pagesDirRelativePath.to_s)
-  html
-end
 
 ######################################################
 #                   GET PAGE DATA                    #
 ######################################################
 
 
-def allPages()
+def docAllPages()
   $pages
 end
 
-def allPagesNotIgnore()
-  $pages.select { |page|
+def docAllPagesNotIgnore()
+  docAllPages().select { |page|
     not pageIsIgnore?(page) }
 end
 
 def docPages()
-  $pages.select { |page| 
+  docAllPages().select { |page| 
     #puts "Page:" + page.to_s
     not pageIsRedirect?(page) and not pageIsIgnore?(page) }
 end
 
-def redirectPages()
+def docSdkPages()
+  $pages.select { |page| 
+    pageHasLabel?(page, SDK) }
+end
+
+def docRedirectPages()
   $pages.select { |page| pageIsRedirect?(page) }
 end
 
@@ -555,7 +694,7 @@ def pageHasAllLabels?(page, labels)
 end
 
 def pageGetTitleFromTargetFile(page)
-  dir = Pathname.new(pathDocuments())
+  dir = Pathname.new(pathDocs())
   file = dir + pageTargetFile(page) + "index.html"
   fileGetPageTitle(file)
 end
