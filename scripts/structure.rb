@@ -273,7 +273,7 @@ $pages = [
 ["documentation/manualpages/using-nativeui-map-widget","sdk/cpp/guides/nativeui/using-nativeui-map-widget",[SDK,CPP,GUIDE,NATIVEUI,MAPS]],
 ["documentation/manualpages/using-pipe-tool","sdk/tools/guides/ide/using-pipe-tool",[SDK,TOOLS,GUIDE,IDE]],
 ["documentation/manualpages/using-placeholders-and-handles","sdk/cpp/guides/memory/using-placeholders-and-handles",[SDK,CPP,GUIDE,MEMORY]],
-["documentation/manualpages/using-reloads-javascript-workbench","reload/guides/tools/using-javascript-workbench",[RELOAD,GUIDE,TOOLS,DEBUGGING]],
+["documentation/manualpages/using-reloads-javascript-workbench","reload/guides/tools/using-javascript-workbench",[RELOAD,GUIDE,DEBUGGING]],
 ["documentation/manualpages/using-sql-hybrid-apps","sdk/js/guides/storage/using-sql-hybrid-apps",[SDK,JS,GUIDE,STORAGE,HYBRID]],
 ["documentation/manualpages/using-web-sql-mosync-apps","sdk/js/guides/storage/using-web-sql",[SDK,JS,GUIDE,STORAGE]],
 ["documentation/manualpages/vector-class","sdk/cpp/guides/collections/vector",[SDK,CPP,GUIDE,COLLECTIONS]],
